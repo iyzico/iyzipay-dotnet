@@ -1,0 +1,21 @@
+﻿using System;
+
+namespace Iyzipay.Request
+{
+    public class CreateCrossBookingRequest : BaseRequest
+    {
+        public String SubMerchantKey { get; set; }
+        public decimal? Price { get; set; }
+        public String Reason { get; set; }
+
+        public override String ToPKIRequestString()
+        {
+            return ToStringRequestBuilder.NewInstance()
+                .AppendSuper(base.ToPKIRequestString())
+                .Append("subMerchantKey", SubMerchantKey)
+                .AppendPrice("price", Price)
+                .Append("reason", Reason)
+                .GetRequestString();
+        }
+    }
+}

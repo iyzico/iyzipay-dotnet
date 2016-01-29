@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    class BKMInstallment : RequestStringConvertible
+   public class BKMInstallment : RequestStringConvertible
     {
         public long BankId { get; set; }
         public List<BKMInstallmentPrice> InstallmentPrices { get; set; }

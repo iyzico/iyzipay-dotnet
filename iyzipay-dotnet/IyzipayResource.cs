@@ -37,10 +37,7 @@ namespace Iyzipay
 
         private static String PrepareAuthorizationString(BaseRequest request, String randomHeaderValue, Options options)
         {
-            HashAlgorithm algorithm = new SHA1Managed();
-            string hashStr = options.ApiKey + randomHeaderValue + options.SecretKey + request.ToPKIRequestString();
-            byte[] computeHash = algorithm.ComputeHash(Encoding.UTF8.GetBytes(hashStr));
-            return IYZIWS_HEADER_NAME + options.ApiKey + COLON + Convert.ToBase64String(computeHash);
-        }    
+            return IYZIWS_HEADER_NAME + options.ApiKey + COLON + HashGenerator.generateHash(options.ApiKey, options.SecretKey, randomHeaderValue, request);
+        }
     }
 }

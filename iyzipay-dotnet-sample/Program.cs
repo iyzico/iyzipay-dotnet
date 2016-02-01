@@ -7,7 +7,9 @@ namespace iyzipay_dotnet_sample
     {
         public static void Main(string[] args)
         {
-            new ApiTestSample().should_test_api();
+            //new ApiTestSample().Should_Test_Api();
+            //new ApprovalSample().Should_Approve_Payment_Item();
+            new ApprovalSample().Should_Disapprove_Payment_Item();
             Console.ReadLine();
         }
     }

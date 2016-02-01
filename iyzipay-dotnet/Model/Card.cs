@@ -20,14 +20,12 @@ namespace Iyzipay.Model
 
         public static Task<Card> Create(CreateCardRequest request, Options options)
         {
-            PrepareHttpClientWithHeaders(request, options);
-            return new BaseHttpClient().Post<Card>(options.BaseUrl + "/cardstorage/card", request);
+            return new RestHttpClient().Post<Card>(options.BaseUrl + "/cardstorage/card", GetHttpHeaders(request, options), request);
         }
 
         public static Task<Card> Delete(DeleteCardRequest request, Options options)
         {
-            PrepareHttpClientWithHeaders(request, options);
-            return new BaseHttpClient().Delete<Card>(options.BaseUrl + "/cardstorage/card", request);
+            return new RestHttpClient().Delete<Card>(options.BaseUrl + "/cardstorage/card", GetHttpHeaders(request, options), request);
         }
     }
 }

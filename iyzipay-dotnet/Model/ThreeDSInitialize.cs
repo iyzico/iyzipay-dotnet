@@ -12,8 +12,7 @@ namespace Iyzipay.Model
 
         public static Task<ThreeDSInitialize> Create(CreateThreeDSInitializeRequest request, Options options)
         {
-            PrepareHttpClientWithHeaders(request, options);
-            return new BaseHttpClient().Post<ThreeDSInitialize>(options.BaseUrl + "/payment/iyzipos/initialize3ds/ecom", request);
+            return new RestHttpClient().Post<ThreeDSInitialize>(options.BaseUrl + "/payment/iyzipos/initialize3ds/ecom", GetHttpHeaders(request, options), request);
         }
     }
 }

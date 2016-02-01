@@ -11,8 +11,7 @@ namespace Iyzipay.Model
 
         public static Task<PayoutCompletedTransactionList> Retrieve(RetrieveTransactionsRequest request, Options options)
         {
-            PrepareHttpClientWithHeaders(request, options);
-            return new BaseHttpClient().Post<PayoutCompletedTransactionList>(options.BaseUrl + "/reporting/settlement/payoutcompleted", request);
+            return new RestHttpClient().Post<PayoutCompletedTransactionList>(options.BaseUrl + "/reporting/settlement/payoutcompleted", GetHttpHeaders(request, options), request);
         }
     }
 }

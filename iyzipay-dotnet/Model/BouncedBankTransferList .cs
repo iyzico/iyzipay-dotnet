@@ -15,8 +15,7 @@ namespace Iyzipay.Model
 
         public static Task<BouncedBankTransferList> Retrieve(RetrieveTransactionsRequest request, Options options)
         {
-            PrepareHttpClientWithHeaders(request, options);
-            return new BaseHttpClient().Post<BouncedBankTransferList>(options.BaseUrl + "/reporting/settlement/bounced", request);
+            return new RestHttpClient().Post<BouncedBankTransferList>(options.BaseUrl + "/reporting/settlement/bounced", GetHttpHeaders(request, options), request);
         }
     }
 }

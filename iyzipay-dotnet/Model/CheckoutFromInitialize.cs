@@ -13,8 +13,7 @@ namespace Iyzipay.Model
 
         public static Task<BinNumber> Retrieve(CreateCheckoutFromInitializeRequest request, Options options)
         {
-            PrepareHttpClientWithHeaders(request, options);
-            return new BaseHttpClient().Post<BinNumber>(options.BaseUrl + "/payment/iyzipos/checkoutform/initialize/ecom", request);
+            return new RestHttpClient().Post<BinNumber>(options.BaseUrl + "/payment/iyzipos/checkoutform/initialize/ecom", GetHttpHeaders(request, options), request);
         }
 
     }

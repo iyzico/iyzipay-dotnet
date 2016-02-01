@@ -10,8 +10,7 @@ namespace Iyzipay.Model
 
         public static Task<Approval> Create(CreateBKMInitializeRequest request, Options options)
         {
-            PrepareHttpClientWithHeaders(request, options);
-            return new BaseHttpClient().Post<Approval>(options.BaseUrl + "/payment/iyzipos/bkm/initialize/ecom", request);
+            return new RestHttpClient().Post<Approval>(options.BaseUrl + "/payment/iyzipos/bkm/initialize/ecom", GetHttpHeaders(request, options), request);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace iyzipay_dotnet_sample.sample
 {
     class ApiTestSample
     {
-        public async void should_test_api()
+        public async void Should_Test_Api()
         {
             Options options = new Options();
             options.ApiKey = "apiKey";

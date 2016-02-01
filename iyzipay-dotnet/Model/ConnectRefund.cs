@@ -13,8 +13,7 @@ namespace Iyzipay.Model
 
         public static Task<ConnectRefund> Create(CreateRefundRequest request, Options options)
         {
-            PrepareHttpClientWithHeaders(request, options);
-            return new BaseHttpClient().Post<ConnectRefund>(options.BaseUrl + "/payment/iyziconnect/refund", request);
+            return new RestHttpClient().Post<ConnectRefund>(options.BaseUrl + "/payment/iyziconnect/refund", GetHttpHeaders(request, options), request);
         }
     }
 }

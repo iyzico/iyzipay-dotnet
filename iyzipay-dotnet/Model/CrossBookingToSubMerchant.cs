@@ -7,8 +7,7 @@ namespace Iyzipay.Model
     {
         public static Task<CrossBookingToSubMerchant> Create(CreateCrossBookingRequest request, Options options)
         {
-            PrepareHttpClientWithHeaders(request, options);
-            return new BaseHttpClient().Post<CrossBookingToSubMerchant>(options.BaseUrl + "/crossbooking/send", request);
+            return new RestHttpClient().Post<CrossBookingToSubMerchant>(options.BaseUrl + "/crossbooking/send", GetHttpHeaders(request, options), request);
         }
     }
 }

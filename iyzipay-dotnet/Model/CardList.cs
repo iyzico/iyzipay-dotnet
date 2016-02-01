@@ -12,8 +12,7 @@ namespace Iyzipay.Model
 
         public static Task<CardList> Create(RetrieveCardListRequest request, Options options)
         {
-            PrepareHttpClientWithHeaders(request, options);
-            return new BaseHttpClient().Post<CardList>(options.BaseUrl + "/cardstorage/cards", request);
+            return new RestHttpClient().Post<CardList>(options.BaseUrl + "/cardstorage/cards", GetHttpHeaders(request, options), request);
         }
     }
 }

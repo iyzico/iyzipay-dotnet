@@ -12,8 +12,7 @@ namespace Iyzipay.Model
 
         public static Task<ConnectBKMAuth> Retrieve(RetrieveBKMAuthRequest request, Options options)
         {
-            PrepareHttpClientWithHeaders(request, options);
-            return new BaseHttpClient().Post<ConnectBKMAuth>(options.BaseUrl + "/payment/iyziconnect/bkm/auth/detail", request);
+            return new RestHttpClient().Post<ConnectBKMAuth>(options.BaseUrl + "/payment/iyziconnect/bkm/auth/detail", GetHttpHeaders(request, options), request);
         }
     }
 }

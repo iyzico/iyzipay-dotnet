@@ -12,8 +12,7 @@ namespace Iyzipay.Model
 
         public static Task<ConnectPaymentPostAuth> Create(CreatePaymentPostAuthRequest request, Options options)
         {
-            PrepareHttpClientWithHeaders(request, options);
-            return new BaseHttpClient().Post<ConnectPaymentPostAuth>(options.BaseUrl + "/payment/iyziconnect/postauth", request);
+            return new RestHttpClient().Post<ConnectPaymentPostAuth>(options.BaseUrl + "/payment/iyziconnect/postauth", GetHttpHeaders(request, options), request);
         }
     }
 }

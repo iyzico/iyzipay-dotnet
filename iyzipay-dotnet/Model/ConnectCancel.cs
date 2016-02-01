@@ -12,8 +12,7 @@ namespace Iyzipay.Model
 
         public static Task<ConnectCancel> Create(CreateCancelRequest request, Options options)
         {
-            PrepareHttpClientWithHeaders(request, options);
-            return new BaseHttpClient().Post<ConnectCancel>(options.BaseUrl + "/payment/iyziconnect/cancel", request);
+            return new RestHttpClient().Post<ConnectCancel>(options.BaseUrl + "/payment/iyziconnect/cancel", GetHttpHeaders(request, options), request);
         }
     }
 }

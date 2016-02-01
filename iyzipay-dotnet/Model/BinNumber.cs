@@ -15,8 +15,7 @@ namespace Iyzipay.Model
 
         public static Task<BinNumber> Retrieve(RetrieveBinNumberRequest request, Options options)
         {
-            PrepareHttpClientWithHeaders(request, options);
-            return new BaseHttpClient().Post<BinNumber>(options.BaseUrl + "/payment/bin/check", request);
+            return new RestHttpClient().Post<BinNumber>(options.BaseUrl + "/payment/bin/check", GetHttpHeaders(request,options), request);
         }
     }
 }

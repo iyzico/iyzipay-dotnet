@@ -2,7 +2,7 @@
 
 namespace Iyzipay.Request
 {
-    class CreateApprovalRequest : BaseRequest
+    public class CreateApprovalRequest : BaseRequest
     {
         public String PaymentTransactionId { get; set; }
 

@@ -7,7 +7,7 @@ namespace Iyzipay.Model
     {
         public static  Task<IyzipayResource> Retrieve(Options options)
         {
-            return new BaseHttpClient().Get<IyzipayResource>(options.BaseUrl + "/payment/test");
+            return new RestHttpClient().Get<IyzipayResource>(options.BaseUrl + "/payment/test");
         }
     }
 }

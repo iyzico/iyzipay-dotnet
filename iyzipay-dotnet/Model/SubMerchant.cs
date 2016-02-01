@@ -23,20 +23,17 @@ namespace Iyzipay.Model
 
         public static Task<SubMerchant> Create(CreateSubMerchantRequest request, Options options)
         {
-            PrepareHttpClientWithHeaders(request, options);
-            return new BaseHttpClient().Post<SubMerchant>(options.BaseUrl + "/onboarding/submerchant", request);
+            return new RestHttpClient().Post<SubMerchant>(options.BaseUrl + "/onboarding/submerchant", GetHttpHeaders(request, options), request);
         }
 
         public static Task<SubMerchant> Update(UpdateSubMerchantRequest request, Options options)
         {
-            PrepareHttpClientWithHeaders(request, options);
-            return new BaseHttpClient().Put<SubMerchant>(options.BaseUrl + "/onboarding/submerchant", request);
+            return new RestHttpClient().Put<SubMerchant>(options.BaseUrl + "/onboarding/submerchant", GetHttpHeaders(request, options), request);
         }
 
         public static Task<SubMerchant> Retrieve(RetrieveSubMerchantRequest request, Options options)
         {
-            PrepareHttpClientWithHeaders(request, options);
-            return new BaseHttpClient().Post<SubMerchant>(options.BaseUrl + "/onboarding/submerchant/detail", request);
+            return new RestHttpClient().Post<SubMerchant>(options.BaseUrl + "/onboarding/submerchant/detail", GetHttpHeaders(request, options), request);
         }
     }
 }

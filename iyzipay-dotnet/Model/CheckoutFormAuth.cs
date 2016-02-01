@@ -12,8 +12,7 @@ namespace Iyzipay.Model
 
         public static Task<CheckoutFormAuth> Retrieve(RetrieveCheckoutFormAuthRequest request, Options options)
         {
-            PrepareHttpClientWithHeaders(request, options);
-            return new BaseHttpClient().Post<CheckoutFormAuth>(options.BaseUrl + "/payment/iyzipos/checkoutform/auth/ecom/detail", request);
+            return new RestHttpClient().Post<CheckoutFormAuth>(options.BaseUrl + "/payment/iyzipos/checkoutform/auth/ecom/detail", GetHttpHeaders(request, options), request);
         }
     }
 }

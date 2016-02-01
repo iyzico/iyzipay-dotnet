@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Cryptography;
@@ -12,7 +14,6 @@ namespace Iyzipay
         private static readonly String RANDOM_HEADER_NAME = "x-iyzi-rnd";
         private static readonly String IYZIWS_HEADER_NAME = "IYZWS ";
         private static readonly String COLON = ":";
-        private static readonly int RANDOM_STRING_SIZE = 8;
 
         public String Status { get; set; }
         public String ErrorCode { get; set; }
@@ -26,18 +27,20 @@ namespace Iyzipay
         {
         }
 
-        protected static void PrepareHttpClientWithHeaders(BaseRequest request, Options options)
+        protected static WebHeaderCollection GetHttpHeaders(BaseRequest request, Options options)
         {
-            HttpClient httpClient = new HttpClient();
-            string randomHeaderValue = DateTime.Now.ToLongTimeString();
-            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            httpClient.DefaultRequestHeaders.Add(RANDOM_HEADER_NAME, randomHeaderValue);
-            httpClient.DefaultRequestHeaders.Add(AUTHORIZATION, PrepareAuthorizationString(request, randomHeaderValue, options));
+            string randomString = DateTime.Now.ToLongTimeString();
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers.Add("Accept", "application/json");
+            headers.Add(RANDOM_HEADER_NAME, randomString);
+            headers.Add(AUTHORIZATION, PrepareAuthorizationString(request, randomString, options));
+            return headers;
         }
 
-        private static String PrepareAuthorizationString(BaseRequest request, String randomHeaderValue, Options options)
+        private static String PrepareAuthorizationString(BaseRequest request, String randomString, Options options)
         {
-            return IYZIWS_HEADER_NAME + options.ApiKey + COLON + HashGenerator.generateHash(options.ApiKey, options.SecretKey, randomHeaderValue, request);
+            String hash = HashGenerator.generateHash(options.ApiKey, options.SecretKey, randomString, request);
+            return IYZIWS_HEADER_NAME + options.ApiKey + COLON + hash;
         }
     }
 }

@@ -1,0 +1,40 @@
+﻿using System;
+
+namespace Iyzipay.Request
+{
+    public class UpdateSubMerchantRequest : BaseRequest
+    {
+        public String Name { get; set; }
+        public String Email { get; set; }
+        public String GsmNumber { get; set; }
+        public String Address { get; set; }
+        public String Iban { get; set; }
+        public String TaxOffice { get; set; }
+        public String ContactName { get; set; }
+        public String ContactSurname { get; set; }
+        public String LegalCompanyTitle { get; set; }
+        public String SubMerchantKey { get; set; }
+        public String IdentityNumber { get; set; }
+        public String TaxNumber { get; set; }
+       
+
+        public override String ToPKIRequestString()
+        {
+            return ToStringRequestBuilder.NewInstance()
+                .AppendSuper(base.ToPKIRequestString())
+                .Append("name", Name)
+                .Append("email", Email)
+                .Append("gsmNumber", GsmNumber)
+                .Append("address", Address)
+                .Append("iban", Iban)
+                .Append("taxOffice", TaxOffice)
+                .Append("contactName", ContactName)
+                .Append("contactSurname", ContactSurname)
+                .Append("legalCompanyTitle", LegalCompanyTitle)
+                .Append("subMerchantKey", SubMerchantKey)
+                .Append("identityNumber", IdentityNumber)
+                .Append("taxNumber", TaxNumber)
+                .GetRequestString();
+        }
+    }
+}

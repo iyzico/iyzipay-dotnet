@@ -8,9 +8,9 @@ namespace Iyzipay.Model
     {
         public String PaymentTransactionId { get; set; }
 
-        public static Task<Disapproval> Create(CreateApprovalRequest request, Options options)
+        public static Disapproval Create(CreateApprovalRequest request, Options options)
         {
-            return new RestHttpClient().Post<Disapproval>(options.BaseUrl + "/payment/iyzipos/item/disapprove", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Post<Disapproval>(options.BaseUrl + "/payment/iyzipos/item/disapprove", GetHttpHeaders(request, options), request);
         }
     }
 }

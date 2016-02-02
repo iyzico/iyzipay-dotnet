@@ -10,9 +10,9 @@ namespace Iyzipay.Model
         [JsonProperty(PropertyName ="threeDSHtmlContent")]
         public String HtmlContent { get; set; }
 
-        public static Task<ThreeDSInitialize> Create(CreateThreeDSInitializeRequest request, Options options)
+        public static ThreeDSInitialize Create(CreateThreeDSInitializeRequest request, Options options)
         {
-            return new RestHttpClient().Post<ThreeDSInitialize>(options.BaseUrl + "/payment/iyzipos/initialize3ds/ecom", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Post<ThreeDSInitialize>(options.BaseUrl + "/payment/iyzipos/initialize3ds/ecom", GetHttpHeaders(request, options), request);
         }
     }
 }

@@ -11,9 +11,9 @@ namespace Iyzipay.Model
         public decimal? Price { get; set; }
         public String ConnectorName { get; set; }
 
-        public static Task<ConnectRefund> Create(CreateRefundRequest request, Options options)
+        public static ConnectRefund Create(CreateRefundRequest request, Options options)
         {
-            return new RestHttpClient().Post<ConnectRefund>(options.BaseUrl + "/payment/iyziconnect/refund", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Post<ConnectRefund>(options.BaseUrl + "/payment/iyziconnect/refund", GetHttpHeaders(request, options), request);
         }
     }
 }

@@ -13,9 +13,9 @@ namespace Iyzipay.Model
         public String BankName { get; set; }
         public long BankCode { get; set; }
 
-        public static Task<BinNumber> Retrieve(RetrieveBinNumberRequest request, Options options)
+        public static BinNumber Retrieve(RetrieveBinNumberRequest request, Options options)
         {
-            return new RestHttpClient().Post<BinNumber>(options.BaseUrl + "/payment/bin/check", GetHttpHeaders(request,options), request);
+            return RestHttpClient.Create().Post<BinNumber>(options.BaseUrl + "/payment/bin/check", GetHttpHeaders(request,options), request);
         }
     }
 }

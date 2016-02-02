@@ -10,9 +10,9 @@ namespace Iyzipay.Model
         public String cardUserKey { get; set; }
         public List<Card> cardDetails { get; set; }
 
-        public static Task<CardList> Create(RetrieveCardListRequest request, Options options)
+        public static CardList Create(RetrieveCardListRequest request, Options options)
         {
-            return new RestHttpClient().Post<CardList>(options.BaseUrl + "/cardstorage/cards", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Post<CardList>(options.BaseUrl + "/cardstorage/cards", GetHttpHeaders(request, options), request);
         }
     }
 }

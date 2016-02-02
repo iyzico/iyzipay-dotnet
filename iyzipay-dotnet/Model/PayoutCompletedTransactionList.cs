@@ -9,9 +9,9 @@ namespace Iyzipay.Model
     {
         public List<PayoutCompletedTransaction> PayoutCompletedTransactions { get; set; }
 
-        public static Task<PayoutCompletedTransactionList> Retrieve(RetrieveTransactionsRequest request, Options options)
+        public static PayoutCompletedTransactionList Retrieve(RetrieveTransactionsRequest request, Options options)
         {
-            return new RestHttpClient().Post<PayoutCompletedTransactionList>(options.BaseUrl + "/reporting/settlement/payoutcompleted", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Post<PayoutCompletedTransactionList>(options.BaseUrl + "/reporting/settlement/payoutcompleted", GetHttpHeaders(request, options), request);
         }
     }
 }

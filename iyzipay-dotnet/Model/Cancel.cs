@@ -9,9 +9,9 @@ namespace Iyzipay.Model
         public String PaymentId { get; set; }
         public decimal? Price { get; set; }
 
-        public static Task<Cancel> Create(CreateCancelRequest request, Options options)
+        public static Cancel Create(CreateCancelRequest request, Options options)
         {
-            return new RestHttpClient().Post<Cancel>(options.BaseUrl + "/payment/iyzipos/cancel", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Post<Cancel>(options.BaseUrl + "/payment/iyzipos/cancel", GetHttpHeaders(request, options), request);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace iyzipay_dotnet_sample.sample
 {
     class ApprovalSample
     {
-        public async void Should_Approve_Payment_Item()
+        public  void Should_Approve_Payment_Item()
         {
             Options options = new Options();
             options.ApiKey = "apiKey";
@@ -21,13 +21,13 @@ namespace iyzipay_dotnet_sample.sample
             request.ConversationId = "123456789";
             request.PaymentTransactionId = "2";
 
-            Approval approval = await Approval.Create(request, options);
+            Approval approval =  Approval.Create(request, options);
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(JsonConvert.SerializeObject(approval, new JsonSerializerSettings() { Formatting = Formatting.Indented, ContractResolver = new CamelCasePropertyNamesContractResolver() }));
         }
 
-        public async void Should_Disapprove_Payment_Item()
+        public  void Should_Disapprove_Payment_Item()
         {
             Options options = new Options();
             options.ApiKey = "apiKey";
@@ -39,7 +39,7 @@ namespace iyzipay_dotnet_sample.sample
             request.ConversationId = "123456789";
             request.PaymentTransactionId = "2";
 
-            Disapproval disapproval = await Disapproval.Create(request, options);
+            Disapproval disapproval =  Disapproval.Create(request, options);
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(JsonConvert.SerializeObject(disapproval, new JsonSerializerSettings() { Formatting = Formatting.Indented, ContractResolver = new CamelCasePropertyNamesContractResolver() }));

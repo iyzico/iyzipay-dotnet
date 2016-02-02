@@ -21,19 +21,19 @@ namespace Iyzipay.Model
         public String SubMerchantType { get; set; }
         public String SubMerchantKey { get; set; }
 
-        public static Task<SubMerchant> Create(CreateSubMerchantRequest request, Options options)
+        public static SubMerchant Create(CreateSubMerchantRequest request, Options options)
         {
-            return new RestHttpClient().Post<SubMerchant>(options.BaseUrl + "/onboarding/submerchant", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Post<SubMerchant>(options.BaseUrl + "/onboarding/submerchant", GetHttpHeaders(request, options), request);
         }
 
-        public static Task<SubMerchant> Update(UpdateSubMerchantRequest request, Options options)
+        public static SubMerchant Update(UpdateSubMerchantRequest request, Options options)
         {
-            return new RestHttpClient().Put<SubMerchant>(options.BaseUrl + "/onboarding/submerchant", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Put<SubMerchant>(options.BaseUrl + "/onboarding/submerchant", GetHttpHeaders(request, options), request);
         }
 
-        public static Task<SubMerchant> Retrieve(RetrieveSubMerchantRequest request, Options options)
+        public static SubMerchant Retrieve(RetrieveSubMerchantRequest request, Options options)
         {
-            return new RestHttpClient().Post<SubMerchant>(options.BaseUrl + "/onboarding/submerchant/detail", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Post<SubMerchant>(options.BaseUrl + "/onboarding/submerchant/detail", GetHttpHeaders(request, options), request);
         }
     }
 }

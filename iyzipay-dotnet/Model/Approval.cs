@@ -8,7 +8,7 @@ namespace Iyzipay.Model
     {
         public String PaymentTransactionId { get; set; }
 
-        public static Task<Approval> Create(CreateApprovalRequest request, Options options)
+        public static Approval Create(CreateApprovalRequest request, Options options)
         {
             return  RestHttpClient.Create().Post<Approval>(options.BaseUrl + "/payment/iyzipos/item/approve", GetHttpHeaders(request, options), request);
         }

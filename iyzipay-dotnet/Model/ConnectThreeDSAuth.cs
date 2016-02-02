@@ -5,9 +5,9 @@ namespace Iyzipay.Model
 {
     class ConnectThreeDSAuth : ConnectPayment
     {
-        public static Task<ConnectThreeDSAuth> Create(CreateConnectThreeDSAuthRequest request, Options options)
+        public static ConnectThreeDSAuth Create(CreateConnectThreeDSAuthRequest request, Options options)
         {
-            return new RestHttpClient().Post<ConnectThreeDSAuth>(options.BaseUrl + "/payment/iyziconnect/auth3ds", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Post<ConnectThreeDSAuth>(options.BaseUrl + "/payment/iyziconnect/auth3ds", GetHttpHeaders(request, options), request);
         }
     }
 }

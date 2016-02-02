@@ -9,9 +9,9 @@ namespace Iyzipay.Model
         public String PaymentId { get; set; }
         public decimal? Price { get; set; }
 
-        public static Task<PaymentPostAuth> Create(CreatePaymentPostAuthRequest request, Options options)
+        public static PaymentPostAuth Create(CreatePaymentPostAuthRequest request, Options options)
         {
-            return new RestHttpClient().Post<PaymentPostAuth>(options.BaseUrl + "/payment/iyzipos/postauth", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Post<PaymentPostAuth>(options.BaseUrl + "/payment/iyzipos/postauth", GetHttpHeaders(request, options), request);
         }
     }
 }

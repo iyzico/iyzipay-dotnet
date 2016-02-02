@@ -11,9 +11,9 @@ namespace Iyzipay.Model
         public long? TokenExpireTime { get; set; }
         public String PaymentPageUrl { get; set; }
 
-        public static Task<BinNumber> Retrieve(CreateCheckoutFromInitializeRequest request, Options options)
+        public static BinNumber Retrieve(CreateCheckoutFromInitializeRequest request, Options options)
         {
-            return new RestHttpClient().Post<BinNumber>(options.BaseUrl + "/payment/iyzipos/checkoutform/initialize/ecom", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Post<BinNumber>(options.BaseUrl + "/payment/iyzipos/checkoutform/initialize/ecom", GetHttpHeaders(request, options), request);
         }
 
     }

@@ -18,14 +18,14 @@ namespace Iyzipay.Model
         public long? CardBankCode{ get; set; }
         public String CardBankName{ get; set; }
 
-        public static Task<Card> Create(CreateCardRequest request, Options options)
+        public static Card Create(CreateCardRequest request, Options options)
         {
-            return new RestHttpClient().Post<Card>(options.BaseUrl + "/cardstorage/card", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Post<Card>(options.BaseUrl + "/cardstorage/card", GetHttpHeaders(request, options), request);
         }
 
-        public static Task<Card> Delete(DeleteCardRequest request, Options options)
+        public static Card Delete(DeleteCardRequest request, Options options)
         {
-            return new RestHttpClient().Delete<Card>(options.BaseUrl + "/cardstorage/card", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Delete<Card>(options.BaseUrl + "/cardstorage/card", GetHttpHeaders(request, options), request);
         }
     }
 }

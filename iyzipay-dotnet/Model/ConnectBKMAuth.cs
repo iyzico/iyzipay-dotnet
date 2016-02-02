@@ -10,9 +10,9 @@ namespace Iyzipay.Model
         public String CallbackUrl { get; set; }
         public String PaymentStatus { get; set; }
 
-        public static Task<ConnectBKMAuth> Retrieve(RetrieveBKMAuthRequest request, Options options)
+        public static ConnectBKMAuth Retrieve(RetrieveBKMAuthRequest request, Options options)
         {
-            return new RestHttpClient().Post<ConnectBKMAuth>(options.BaseUrl + "/payment/iyziconnect/bkm/auth/detail", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Post<ConnectBKMAuth>(options.BaseUrl + "/payment/iyziconnect/bkm/auth/detail", GetHttpHeaders(request, options), request);
         }
     }
 }

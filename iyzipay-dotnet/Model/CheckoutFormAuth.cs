@@ -10,9 +10,9 @@ namespace Iyzipay.Model
         public String CallbackUrl { get; set; }
         public String PaymentStatus { get; set; }
 
-        public static Task<CheckoutFormAuth> Retrieve(RetrieveCheckoutFormAuthRequest request, Options options)
+        public static CheckoutFormAuth Retrieve(RetrieveCheckoutFormAuthRequest request, Options options)
         {
-            return new RestHttpClient().Post<CheckoutFormAuth>(options.BaseUrl + "/payment/iyzipos/checkoutform/auth/ecom/detail", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Post<CheckoutFormAuth>(options.BaseUrl + "/payment/iyzipos/checkoutform/auth/ecom/detail", GetHttpHeaders(request, options), request);
         }
     }
 }

@@ -13,9 +13,9 @@ namespace Iyzipay.Model
         [JsonProperty(PropertyName = "bouncedRows")]
         public List<BankTransfer> BankTransfers { get; set; }
 
-        public static Task<BouncedBankTransferList> Retrieve(RetrieveTransactionsRequest request, Options options)
+        public static BouncedBankTransferList Retrieve(RetrieveTransactionsRequest request, Options options)
         {
-            return new RestHttpClient().Post<BouncedBankTransferList>(options.BaseUrl + "/reporting/settlement/bounced", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Post<BouncedBankTransferList>(options.BaseUrl + "/reporting/settlement/bounced", GetHttpHeaders(request, options), request);
         }
     }
 }

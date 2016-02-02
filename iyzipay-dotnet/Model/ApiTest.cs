@@ -5,9 +5,9 @@ namespace Iyzipay.Model
 {
    public class ApiTest : IyzipayResource
     {
-        public static  Task<IyzipayResource> Retrieve(Options options)
+        public static IyzipayResource Retrieve(Options options)
         {
-            return new RestHttpClient().Get<IyzipayResource>(options.BaseUrl + "/payment/test");
+            return RestHttpClient.Create().Get<IyzipayResource>(options.BaseUrl + "/payment/test");
         }
     }
 }

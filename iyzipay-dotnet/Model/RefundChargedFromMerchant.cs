@@ -10,9 +10,9 @@ namespace Iyzipay.Model
         public String PaymentTransactionId { get; set; }
         public decimal? Price { get; set; }
 
-        public static Task<RefundChargedFromMerchant> Create(CreateRefundRequest request, Options options)
+        public static RefundChargedFromMerchant Create(CreateRefundRequest request, Options options)
         {
-            return new RestHttpClient().Post<RefundChargedFromMerchant>(options.BaseUrl + "/payment/iyzipos/refund/merchant/charge", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Post<RefundChargedFromMerchant>(options.BaseUrl + "/payment/iyzipos/refund/merchant/charge", GetHttpHeaders(request, options), request);
         }
     }
 }

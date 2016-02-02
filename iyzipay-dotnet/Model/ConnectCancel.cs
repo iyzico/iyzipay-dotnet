@@ -10,9 +10,9 @@ namespace Iyzipay.Model
         public decimal? Price { get; set; }
         public String ConnectorName { get; set; }
 
-        public static Task<ConnectCancel> Create(CreateCancelRequest request, Options options)
+        public static ConnectCancel Create(CreateCancelRequest request, Options options)
         {
-            return new RestHttpClient().Post<ConnectCancel>(options.BaseUrl + "/payment/iyziconnect/cancel", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Post<ConnectCancel>(options.BaseUrl + "/payment/iyziconnect/cancel", GetHttpHeaders(request, options), request);
         }
     }
 }

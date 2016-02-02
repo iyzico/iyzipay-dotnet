@@ -1,10 +1,8 @@
 ﻿using Iyzipay.Request;
-using System;
-using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    class PaymentPreAuth : Payment
+    public class PaymentPreAuth : Payment
     {
         public static PaymentPreAuth Create(CreatePaymentRequest request, Options options)
         {

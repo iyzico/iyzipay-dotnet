@@ -1,24 +1,18 @@
-﻿using Iyzipay;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Iyzipay;
 using Iyzipay.Model;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using System;
 
-namespace iyzipay_dotnet_sample.sample
+namespace iyzipay_dotnet_sample.Sample
 {
-    class ApiTestSample
+    [TestClass]
+    public class ApiTestSample : Sample
     {
-        public  void Should_Test_Api()
+        [TestMethod]
+        public void Should_Test_Api()
         {
-            Options options = new Options();
-            options.ApiKey = "apiKey";
-            options.SecretKey = "secretKey";
-            options.BaseUrl = "baseUrl";
-
-            IyzipayResource iyzipayResource =  ApiTest.Retrieve(options);
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(JsonConvert.SerializeObject(iyzipayResource, new JsonSerializerSettings() { Formatting = Formatting.Indented, ContractResolver = new CamelCasePropertyNamesContractResolver() }));
+            IyzipayResource iyzipayResource = ApiTest.Retrieve(options);
+            Assert.IsNotNull(iyzipayResource.SystemTime);
+            Assert.AreEqual(Status.SUCCESS.ToString(), iyzipayResource.Status);
         }
     }
 }

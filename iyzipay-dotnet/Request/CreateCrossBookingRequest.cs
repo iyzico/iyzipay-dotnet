@@ -5,7 +5,7 @@ namespace Iyzipay.Request
     public class CreateCrossBookingRequest : BaseRequest
     {
         public String SubMerchantKey { get; set; }
-        public decimal? Price { get; set; }
+        public String Price { get; set; }
         public String Reason { get; set; }
 
         public override String ToPKIRequestString()

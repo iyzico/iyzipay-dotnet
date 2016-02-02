@@ -1,48 +1,42 @@
-﻿using Iyzipay;
-using Iyzipay.Model;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Iyzipay.Request;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using System;
+using Iyzipay.Model;
 
-namespace iyzipay_dotnet_sample.sample
+namespace iyzipay_dotnet_sample.Sample
 {
-    class ApprovalSample
+    [TestClass]
+    public class ApprovalSample : Sample
     {
-        public  void Should_Approve_Payment_Item()
+        [TestMethod]
+        public void Should_Approve_Payment_Item()
         {
-            Options options = new Options();
-            options.ApiKey = "apiKey";
-            options.SecretKey = "secretKey";
-            options.BaseUrl = "baseUrl";
-
             CreateApprovalRequest request = new CreateApprovalRequest();
-            request.Locale = Locale.TR.ToString();
+            request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.PaymentTransactionId = "2";
 
-            Approval approval =  Approval.Create(request, options);
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(JsonConvert.SerializeObject(approval, new JsonSerializerSettings() { Formatting = Formatting.Indented, ContractResolver = new CamelCasePropertyNamesContractResolver() }));
+            Approval approval = Approval.Create(request, options);
+            Assert.IsNotNull(approval.SystemTime);
+            Assert.AreEqual(Status.SUCCESS.ToString(), approval.Status);
+            Assert.AreEqual(Locale.TR.GetName(), approval.Locale);
+            Assert.AreEqual("123456789", approval.ConversationId);
+            Assert.AreEqual("2", approval.PaymentTransactionId);
         }
 
-        public  void Should_Disapprove_Payment_Item()
+        [TestMethod]
+        public void Should_Disapprove_Payment_Item()
         {
-            Options options = new Options();
-            options.ApiKey = "apiKey";
-            options.SecretKey = "secretKey";
-            options.BaseUrl = "baseUrl";
-
             CreateApprovalRequest request = new CreateApprovalRequest();
-            request.Locale = Locale.TR.ToString();
+            request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.PaymentTransactionId = "2";
 
-            Disapproval disapproval =  Disapproval.Create(request, options);
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(JsonConvert.SerializeObject(disapproval, new JsonSerializerSettings() { Formatting = Formatting.Indented, ContractResolver = new CamelCasePropertyNamesContractResolver() }));
+            Disapproval disapproval = Disapproval.Create(request, options);
+            Assert.IsNotNull(disapproval.SystemTime);
+            Assert.AreEqual(Status.SUCCESS.ToString(), disapproval.Status);
+            Assert.AreEqual(Locale.TR.GetName(), disapproval.Locale);
+            Assert.AreEqual("123456789", disapproval.ConversationId);
+            Assert.AreEqual("2", disapproval.PaymentTransactionId);
         }
     }
 }

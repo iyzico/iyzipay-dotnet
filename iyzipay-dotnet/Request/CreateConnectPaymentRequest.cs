@@ -7,8 +7,8 @@ namespace Iyzipay.Request
     {
         public static readonly int SINGLE_INSTALLMENT = 1;
 
-        public decimal? Price { get; set; }
-        public decimal? PaidPrice { get; set; }
+        public String Price { get; set; }
+        public String PaidPrice { get; set; }
         public int? Installment { get; set; }
         public String BuyerEmail { get; set; }
         public String BuyerId { get; set; }
@@ -25,11 +25,11 @@ namespace Iyzipay.Request
                 .AppendPrice("paidPrice", PaidPrice)
                 .Append("installment", Installment)
                 .Append("buyerEmail", BuyerEmail)
-                 .Append("buyerId", BuyerId)
+                .Append("buyerId", BuyerId)
                 .Append("buyerIp", BuyerIp)
                 .Append("posOrderId", PosOrderId)
                 .Append("paymentCard", PaymentCard)
-                 .Append("connectorName", ConnectorName)
+                .Append("connectorName", ConnectorName)
                 .GetRequestString();
         }
 

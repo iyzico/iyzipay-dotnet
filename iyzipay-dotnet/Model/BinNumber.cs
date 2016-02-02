@@ -1,10 +1,9 @@
 ﻿using Iyzipay.Request;
 using System;
-using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-     class BinNumber : IyzipayResource
+    public class BinNumber : IyzipayResource
     {
         public String Bin { get; set; }
         public String CardType { get; set; }
@@ -15,7 +14,7 @@ namespace Iyzipay.Model
 
         public static BinNumber Retrieve(RetrieveBinNumberRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<BinNumber>(options.BaseUrl + "/payment/bin/check", GetHttpHeaders(request,options), request);
+            return RestHttpClient.Create().Post<BinNumber>(options.BaseUrl + "/payment/bin/check", GetHttpHeaders(request, options), request);
         }
     }
 }

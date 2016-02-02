@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Iyzipay
 {
-    class ToStringRequestBuilder
+    public class ToStringRequestBuilder
     {
         private String _requestString;
 
@@ -53,11 +53,11 @@ namespace Iyzipay
             return this;
         }
 
-        public ToStringRequestBuilder AppendPrice(String key, decimal? value)
+        public ToStringRequestBuilder AppendPrice(String key, String value)
         {
-            if (value.HasValue)
+            if (value != null)
             {
-                AppendKeyValue(key, RequestFormatter.FormatPrice((Decimal)value));
+                AppendKeyValue(key, RequestFormatter.FormatPrice(value));
             }
             return this;
         }

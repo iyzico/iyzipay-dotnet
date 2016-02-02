@@ -2,16 +2,16 @@
 
 namespace Iyzipay
 {
-    class RequestFormatter
+    public class RequestFormatter
     {
-        public static String FormatPrice(decimal price)
+        public static String FormatPrice(String price)
         {
-            if (!price.ToString().Contains(","))
+            if (!price.Contains(","))
             {
                 return price + ".0";
             }
             int subStrIndex = 0;
-            String priceReversed = Reverse(price.ToString());
+            String priceReversed = Reverse(price);
             for (int i = 0; i < priceReversed.Length; i++)
             {
                 if (priceReversed[i].Equals('0'))

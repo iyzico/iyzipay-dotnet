@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Iyzipay.Model
 {
-    class BankTransfer
+    public class BankTransfer
     {
         public String SubMerchantKey { get; set; }
         public String Iban { get; set; }

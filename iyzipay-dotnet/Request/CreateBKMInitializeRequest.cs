@@ -6,7 +6,7 @@ namespace Iyzipay.Request
 {
     public class CreateBKMInitializeRequest : BaseRequest
     {
-        public decimal? Price { get; set; }
+        public String Price { get; set; }
         public String BasketId { get; set; }
         public String PaymentGroup { get; set; }
         public String PaymentSource { get; set; }

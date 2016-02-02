@@ -1,10 +1,9 @@
 ﻿using Iyzipay.Request;
 using System;
-using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    class ConnectBKMInitialize : IyzipayResource
+    public class ConnectBKMInitialize : IyzipayResource
     {
         public String HtmlContent { get; set; }
 

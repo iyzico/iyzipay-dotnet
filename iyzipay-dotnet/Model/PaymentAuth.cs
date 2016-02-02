@@ -1,9 +1,8 @@
 ﻿using Iyzipay.Request;
-using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    class PaymentAuth : Payment
+    public class PaymentAuth : Payment
     {
         public static PaymentAuth Create(CreatePaymentRequest request, Options options)
         {

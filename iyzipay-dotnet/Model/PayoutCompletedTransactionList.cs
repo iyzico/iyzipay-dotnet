@@ -1,11 +1,9 @@
 ﻿using Iyzipay.Request;
-using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    class PayoutCompletedTransactionList : IyzipayResource
+    public class PayoutCompletedTransactionList : IyzipayResource
     {
         public List<PayoutCompletedTransaction> PayoutCompletedTransactions { get; set; }
 

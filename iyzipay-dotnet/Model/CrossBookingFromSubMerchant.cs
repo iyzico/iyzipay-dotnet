@@ -1,9 +1,8 @@
 ﻿using Iyzipay.Request;
-using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    class CrossBookingFromSubMerchant : IyzipayResource
+    public class CrossBookingFromSubMerchant : IyzipayResource
     {
         public static CrossBookingFromSubMerchant Create(CreateCrossBookingRequest request, Options options)
         {

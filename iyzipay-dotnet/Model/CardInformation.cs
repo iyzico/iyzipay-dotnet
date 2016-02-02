@@ -2,7 +2,7 @@
 
 namespace Iyzipay.Model
 {
-    class CardInformation : RequestStringConvertible
+    public class CardInformation : RequestStringConvertible
     {
         public String CardAlias { get; set; }
         public String CardNumber { get; set; }

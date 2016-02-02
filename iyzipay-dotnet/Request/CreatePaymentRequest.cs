@@ -6,8 +6,8 @@ namespace Iyzipay.Request
 {
     public class CreatePaymentRequest : BaseRequest
     {
-        public decimal? Price { get; set; }
-        public decimal? PaidPrice { get; set; }
+        public String Price { get; set; }
+        public String PaidPrice { get; set; }
         public int? Installment { get; set; }
         public String PaymentChannel { get; set; }
         public String BasketId { get; set; }

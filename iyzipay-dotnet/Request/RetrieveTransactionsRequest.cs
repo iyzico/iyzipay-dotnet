@@ -2,7 +2,7 @@
 
 namespace Iyzipay.Request
 {
-    class RetrieveTransactionsRequest: BaseRequest
+    public class RetrieveTransactionsRequest: BaseRequest
     {
         public String Date { get; set; }
 

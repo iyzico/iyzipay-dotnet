@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace Iyzipay.Model
 {
-    class InstallmentDetail
+    public class InstallmentDetail
     {
         public String BinNumber { get; set; }
-        public decimal? Price { get; set; }
+        public String Price { get; set; }
         public String CardType { get; set; }
         public String CardAssociation { get; set; }
         public String CardFamilyName { get; set; }

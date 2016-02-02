@@ -2,25 +2,25 @@
 
 namespace Iyzipay.Model
 {
-    class PaymentItem
+    public class PaymentItem
     {
         public String ItemId { get; set; }
         public String PaymentTransactionId { get; set; }
         public int? TransactionStatus { get; set; }
-        public decimal? Price { get; set; }
-        public decimal? PaidPrice { get; set; }
-        public decimal? MerchantCommissionRate { get; set; }
-        public decimal? MerchantCommissionRateAmount { get; set; }
-        public decimal? IyziCommissionRateAmount { get; set; }
-        public decimal? IyziCommissionFee { get; set; }
-        public decimal? BlockageRate { get; set; }
-        public decimal? BlockageRateAmountMerchant { get; set; }
-        public decimal? BlockageRateAmountSubMerchant { get; set; }
+        public String Price { get; set; }
+        public String PaidPrice { get; set; }
+        public String MerchantCommissionRate { get; set; }
+        public String MerchantCommissionRateAmount { get; set; }
+        public String IyziCommissionRateAmount { get; set; }
+        public String IyziCommissionFee { get; set; }
+        public String BlockageRate { get; set; }
+        public String BlockageRateAmountMerchant { get; set; }
+        public String BlockageRateAmountSubMerchant { get; set; }
         public String BlockageResolvedDate { get; set; }
         public String SubMerchantKey { get; set; }
-        public decimal? SubMerchantPrice { get; set; }
-        public decimal? SubMerchantPayoutRate { get; set; }
-        public decimal? SubMerchantPayoutAmount { get; set; }
-        public decimal? MerchantPayoutAmount { get; set; }
+        public String SubMerchantPrice { get; set; }
+        public String SubMerchantPayoutRate { get; set; }
+        public String SubMerchantPayoutAmount { get; set; }
+        public String MerchantPayoutAmount { get; set; }
     }
 }

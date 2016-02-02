@@ -7,7 +7,7 @@ namespace Iyzipay.Request
     public class CreateConnectBKMInitializeRequest : BaseRequest
     {
         public String ConnectorName { set; get; }
-        public decimal? Price { set; get; }
+        public String Price { set; get; }
         public String CallbackUrl { set; get; }
         public String BuyerEmail {set;get;}
         public String BuyerId { set; get; }

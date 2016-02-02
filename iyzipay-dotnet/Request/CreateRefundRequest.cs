@@ -5,7 +5,7 @@ namespace Iyzipay.Request
     public class CreateRefundRequest : BaseRequest
     {
         public String PaymentTransactionId { get; set; }
-        public decimal? Price { get; set; }
+        public String Price { get; set; }
         public String Ip { get; set; }
 
         public override String ToPKIRequestString()

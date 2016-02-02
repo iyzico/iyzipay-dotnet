@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Iyzipay
 {
-    class JsonBuilder
+    public class JsonBuilder
     {
         public static string SerializeToJsonString(BaseRequest request)
         {

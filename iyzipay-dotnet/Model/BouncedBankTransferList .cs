@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 using Iyzipay.Request;
 
 namespace Iyzipay.Model
 {
-    class BouncedBankTransferList : IyzipayResource
+    public class BouncedBankTransferList : IyzipayResource
     {
         [JsonProperty(PropertyName = "bouncedRows")]
         public List<BankTransfer> BankTransfers { get; set; }

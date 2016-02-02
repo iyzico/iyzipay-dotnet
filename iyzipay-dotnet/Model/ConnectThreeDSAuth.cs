@@ -1,9 +1,8 @@
 ﻿using Iyzipay.Request;
-using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    class ConnectThreeDSAuth : ConnectPayment
+    public class ConnectThreeDSAuth : ConnectPayment
     {
         public static ConnectThreeDSAuth Create(CreateConnectThreeDSAuthRequest request, Options options)
         {

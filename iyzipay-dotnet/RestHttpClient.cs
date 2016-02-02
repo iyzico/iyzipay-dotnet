@@ -5,7 +5,7 @@ using System.Net.Http;
 
 namespace Iyzipay
 {
-    class RestHttpClient
+    public class RestHttpClient
     {
         public static RestHttpClient Create()
         {

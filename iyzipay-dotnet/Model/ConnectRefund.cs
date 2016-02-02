@@ -1,14 +1,13 @@
 ﻿using Iyzipay.Request;
 using System;
-using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    class ConnectRefund : IyzipayResource
+    public class ConnectRefund : IyzipayResource
     {
         public String PaymentId { get; set; }
         public String PaymentTransactionId { get; set; }
-        public decimal? Price { get; set; }
+        public String Price { get; set; }
         public String ConnectorName { get; set; }
 
         public static ConnectRefund Create(CreateRefundRequest request, Options options)

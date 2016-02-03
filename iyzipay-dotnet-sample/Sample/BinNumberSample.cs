@@ -16,6 +16,9 @@ namespace iyzipay_dotnet_sample.Sample
             request.Locale = Locale.TR.GetName();
 
             BinNumber binNumber = BinNumber.Retrieve(request, options);
+
+            PrintResponse<BinNumber>(binNumber);
+
             Assert.IsNotNull(binNumber.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), binNumber.Status);
             Assert.AreEqual(Locale.TR.GetName(), binNumber.Locale);
@@ -25,7 +28,7 @@ namespace iyzipay_dotnet_sample.Sample
             Assert.AreEqual("VISA", binNumber.CardAssociation);
             Assert.AreEqual("Ziraat Bankası CC", binNumber.CardFamily);
             Assert.AreEqual("Ziraat Bankası", binNumber.BankName);
-            Assert.AreEqual(10L, binNumber.BankCode);
+            Assert.AreEqual(10, binNumber.BankCode);
         }
     }
 }

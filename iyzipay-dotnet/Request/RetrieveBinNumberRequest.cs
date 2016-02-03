@@ -9,6 +9,7 @@ namespace Iyzipay.Request
         public override String ToPKIRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
+                .AppendSuper(base.ToPKIRequestString())
                 .Append("binNumber", BinNumber)
                 .GetRequestString();
         }

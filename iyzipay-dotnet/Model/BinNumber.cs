@@ -1,10 +1,12 @@
 ﻿using Iyzipay.Request;
+using Newtonsoft.Json;
 using System;
 
 namespace Iyzipay.Model
 {
     public class BinNumber : IyzipayResource
     {
+        [JsonProperty(PropertyName = "binNumber")]
         public String Bin { get; set; }
         public String CardType { get; set; }
         public String CardAssociation { get; set; }

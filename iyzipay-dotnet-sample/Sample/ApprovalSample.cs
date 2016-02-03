@@ -1,6 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Iyzipay.Request;
 using Iyzipay.Model;
+using System;
+using System.Diagnostics;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace iyzipay_dotnet_sample.Sample
 {
@@ -16,6 +20,9 @@ namespace iyzipay_dotnet_sample.Sample
             request.PaymentTransactionId = "2";
 
             Approval approval = Approval.Create(request, options);
+
+            PrintResponse<Approval>(approval);
+
             Assert.IsNotNull(approval.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), approval.Status);
             Assert.AreEqual(Locale.TR.GetName(), approval.Locale);
@@ -32,6 +39,9 @@ namespace iyzipay_dotnet_sample.Sample
             request.PaymentTransactionId = "2";
 
             Disapproval disapproval = Disapproval.Create(request, options);
+
+            PrintResponse<Disapproval>(disapproval);
+
             Assert.IsNotNull(disapproval.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), disapproval.Status);
             Assert.AreEqual(Locale.TR.GetName(), disapproval.Locale);

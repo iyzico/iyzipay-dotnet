@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 namespace Iyzipay.Request
 {
-    public class CreateCheckoutFromInitializeRequest : BaseRequest
+    public class CreateCheckoutFormInitializeRequest : BaseRequest
     {
-        public decimal? Price { get; set; }
-        public decimal? PaidPrice { get; set; }
+        public String Price { get; set; }
+        public String PaidPrice { get; set; }
         public String BasketId { get; set; }
         public String PaymentGroup { get; set; }
         public String PaymentSource { get; set; }
@@ -34,7 +34,7 @@ namespace Iyzipay.Request
                 .Append("callbackUrl", CallbackUrl)
                 .Append("paymentSource", PaymentSource)
                 .Append("posOrderId", PosOrderId)
-                .Append("paidPrice", PaidPrice)
+                .AppendPrice("paidPrice", PaidPrice)
                 .Append("forceThreeDS", ForceThreeDS)
                 .Append("cardUserKey", CardUserKey)
                 .GetRequestString();

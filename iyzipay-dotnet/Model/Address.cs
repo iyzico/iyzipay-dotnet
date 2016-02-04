@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace Iyzipay.Model
 {
     public class Address : RequestStringConvertible
     {
+        [JsonProperty(PropertyName = "Address")]
         public String Description { get; set; }
         public String ZipCode { get; set; }
         public String ContactName { get; set; }

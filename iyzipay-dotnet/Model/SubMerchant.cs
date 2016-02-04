@@ -1,10 +1,9 @@
 ﻿using Iyzipay.Request;
 using System;
-using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    class SubMerchant : IyzipayResource
+    public class SubMerchant : IyzipayResource
     {
         public String Name{ get; set; }
         public String Email{ get; set; }

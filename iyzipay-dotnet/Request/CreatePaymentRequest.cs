@@ -6,8 +6,8 @@ namespace Iyzipay.Request
 {
     public class CreatePaymentRequest : BaseRequest
     {
-        public decimal? Price { get; set; }
-        public decimal? PaidPrice { get; set; }
+        public String Price { get; set; }
+        public String PaidPrice { get; set; }
         public int? Installment { get; set; }
         public String PaymentChannel { get; set; }
         public String BasketId { get; set; }
@@ -29,12 +29,12 @@ namespace Iyzipay.Request
                 .Append("paymentChannel", PaymentChannel)
                 .Append("basketId", BasketId)
                 .Append("paymentGroup", PaymentGroup)
-                .Append("paymentSource", PaymentSource)
-                .Append("paymentCard", PaymentCard)
+                .Append("paymentCard", PaymentCard)               
                 .Append("buyer", Buyer)
                 .Append("shippingAddress", ShippingAddress)
                 .Append("billingAddress", BillingAddress)
                 .AppendList("basketItems", BasketItems)
+                .Append("paymentSource", PaymentSource)
                 .GetRequestString();
         }
     }

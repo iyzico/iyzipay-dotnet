@@ -1,13 +1,12 @@
 ﻿using Iyzipay.Request;
 using System;
-using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    class ConnectCancel : IyzipayResource
+   public class ConnectCancel : IyzipayResource
     {
         public String PaymentId { get; set; }
-        public decimal? Price { get; set; }
+        public String Price { get; set; }
         public String ConnectorName { get; set; }
 
         public static ConnectCancel Create(CreateCancelRequest request, Options options)

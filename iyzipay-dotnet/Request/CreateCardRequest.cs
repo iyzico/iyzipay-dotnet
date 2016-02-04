@@ -3,7 +3,7 @@ using System;
 
 namespace Iyzipay.Request
 {
-     class CreateCardRequest : BaseRequest
+    public class CreateCardRequest : BaseRequest
     {
         public String ExternalId { get; set; }
         public String Email { get; set; }

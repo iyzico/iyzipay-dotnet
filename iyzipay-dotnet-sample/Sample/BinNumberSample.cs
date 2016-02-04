@@ -2,7 +2,7 @@
 using Iyzipay.Request;
 using Iyzipay.Model;
 
-namespace iyzipay_dotnet_sample.Sample
+namespace IyzipaySample.Sample
 {
     [TestClass]
     public class BinNumberSample : Sample

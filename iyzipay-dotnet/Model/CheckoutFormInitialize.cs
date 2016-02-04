@@ -14,6 +14,5 @@ namespace Iyzipay.Model
         {
             return RestHttpClient.Create().Post<CheckoutFormInitialize>(options.BaseUrl + "/payment/iyzipos/checkoutform/initialize/ecom", GetHttpHeaders(request, options), request);
         }
-
     }
 }

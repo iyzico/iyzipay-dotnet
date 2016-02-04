@@ -11,7 +11,13 @@ namespace Iyzipay.Model
 
         public static ConnectThreeDSInitialize Create(CreateConnectThreeDSInitializeRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<ConnectThreeDSInitialize>(options.BaseUrl + "/payment/iyziconnect/initialize3ds", GetHttpHeaders(request, options), request);
+            ConnectThreeDSInitialize response = RestHttpClient.Create().Post<ConnectThreeDSInitialize>(options.BaseUrl + "/payment/iyziconnect/initialize3ds", GetHttpHeaders(request, options), request);
+
+            if (response != null)
+            {
+                response.HtmlContent = DigestHelper.decodeString(response.HtmlContent);
+            }
+            return response;
         }
     }
 }

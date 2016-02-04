@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Diagnostics;
 
-namespace iyzipay_dotnet_sample.Sample
+namespace IyzipaySample.Sample
 {
     [TestClass]
     public class Sample

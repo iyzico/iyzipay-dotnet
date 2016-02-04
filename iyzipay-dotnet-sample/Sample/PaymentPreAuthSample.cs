@@ -3,7 +3,7 @@ using Iyzipay.Model;
 using Iyzipay.Request;
 using System.Collections.Generic;
 
-namespace iyzipay_dotnet_sample.Sample
+namespace IyzipaySample.Sample
 {
     [TestClass]
     public class PaymentPreAuthSample : Sample
@@ -99,6 +99,8 @@ namespace iyzipay_dotnet_sample.Sample
 
             PaymentPreAuth paymentPreAuth = PaymentPreAuth.Create(request, options);
 
+            PrintResponse<PaymentPreAuth>(paymentPreAuth);
+
             Assert.IsNotNull(paymentPreAuth.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), paymentPreAuth.Status);
             Assert.AreEqual(Locale.TR.GetName(), paymentPreAuth.Locale);
@@ -189,6 +191,8 @@ namespace iyzipay_dotnet_sample.Sample
             request.BasketItems = basketItems;
 
             PaymentPreAuth paymentPreAuth = PaymentPreAuth.Create(request, options);
+
+            PrintResponse<PaymentPreAuth>(paymentPreAuth);
 
             Assert.IsNotNull(paymentPreAuth.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), paymentPreAuth.Status);

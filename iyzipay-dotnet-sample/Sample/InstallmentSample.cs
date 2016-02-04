@@ -2,7 +2,7 @@
 using Iyzipay.Request;
 using Iyzipay.Model;
 
-namespace iyzipay_dotnet_sample.Sample
+namespace IyzipaySample.Sample
 {
     [TestClass]
     public class InstallmentSample : Sample
@@ -17,6 +17,8 @@ namespace iyzipay_dotnet_sample.Sample
             request.Price = "1";
 
             InstallmentInfo installmentInfo = InstallmentInfo.Retrieve(request, options);
+
+            PrintResponse<InstallmentInfo>(installmentInfo);
 
             Assert.IsNotNull(installmentInfo.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), installmentInfo.Status);

@@ -4,7 +4,7 @@ using Iyzipay.Model;
 using Iyzipay.Request;
 using System.Collections.Generic;
 
-namespace iyzipay_dotnet_sample.Sample
+namespace IyzipaySample.Sample
 {
     [TestClass]
     public class CheckoutFormSample : Sample
@@ -26,6 +26,9 @@ namespace iyzipay_dotnet_sample.Sample
             request.CallbackUrl = "https://www.merchant.com/callback";
 
             CheckoutFormInitialize checkoutFormInitialize = CheckoutFormInitialize.Create(request, options);
+
+            PrintResponse<CheckoutFormInitialize>(checkoutFormInitialize);
+
             Assert.IsNotNull(checkoutFormInitialize.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), checkoutFormInitialize.Status);
             Assert.AreEqual(Locale.TR.GetName(), checkoutFormInitialize.Locale);
@@ -40,6 +43,9 @@ namespace iyzipay_dotnet_sample.Sample
             request.Token = "myToken";
 
             CheckoutFormAuth checkoutFormAuth = CheckoutFormAuth.Retrieve(request, options);
+
+            PrintResponse<CheckoutFormAuth>(checkoutFormAuth);
+
             Assert.IsNotNull(checkoutFormAuth.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), checkoutFormAuth.Status);
             Assert.AreEqual("123456789", checkoutFormAuth.ConversationId);

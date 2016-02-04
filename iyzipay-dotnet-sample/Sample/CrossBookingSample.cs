@@ -2,7 +2,7 @@
 using Iyzipay.Request;
 using Iyzipay.Model;
 
-namespace iyzipay_dotnet_sample.Sample
+namespace IyzipaySample.Sample
 {
     [TestClass]
     public class CrossBookingSample : Sample
@@ -18,6 +18,8 @@ namespace iyzipay_dotnet_sample.Sample
             request.Reason = "reason text";
 
             CrossBookingToSubMerchant crossBookingToSubMerchant = CrossBookingToSubMerchant.Create(request, options);
+
+            PrintResponse<CrossBookingToSubMerchant>(crossBookingToSubMerchant);
 
             Assert.IsNotNull(crossBookingToSubMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), crossBookingToSubMerchant.Status);
@@ -36,6 +38,8 @@ namespace iyzipay_dotnet_sample.Sample
             request.Reason = "reason text";
 
             CrossBookingFromSubMerchant crossBookingFromSubMerchant = CrossBookingFromSubMerchant.Create(request, options);
+
+            PrintResponse<CrossBookingFromSubMerchant>(crossBookingFromSubMerchant);
 
             Assert.IsNotNull(crossBookingFromSubMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), crossBookingFromSubMerchant.Status);

@@ -2,7 +2,7 @@
 
 namespace Iyzipay.Model
 {
-    public class ThreeDSAuth : ConnectPayment
+    public class ThreeDSAuth : Payment
     {
         public static ThreeDSAuth Create(CreateThreeDSAuthRequest request, Options options)
         {

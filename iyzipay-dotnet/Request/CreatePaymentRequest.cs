@@ -29,12 +29,12 @@ namespace Iyzipay.Request
                 .Append("paymentChannel", PaymentChannel)
                 .Append("basketId", BasketId)
                 .Append("paymentGroup", PaymentGroup)
-                .Append("paymentSource", PaymentSource)
-                .Append("paymentCard", PaymentCard)
+                .Append("paymentCard", PaymentCard)               
                 .Append("buyer", Buyer)
                 .Append("shippingAddress", ShippingAddress)
                 .Append("billingAddress", BillingAddress)
                 .AppendList("basketItems", BasketItems)
+                .Append("paymentSource", PaymentSource)
                 .GetRequestString();
         }
     }

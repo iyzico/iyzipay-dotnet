@@ -9,7 +9,13 @@ namespace Iyzipay.Model
 
         public static ConnectBKMInitialize Create(CreateConnectBKMInitializeRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<ConnectBKMInitialize>(options.BaseUrl + "/payment/iyziconnect/bkm/initialize", GetHttpHeaders(request, options), request);
+            ConnectBKMInitialize response = RestHttpClient.Create().Post<ConnectBKMInitialize>(options.BaseUrl + "/payment/iyziconnect/bkm/initialize", GetHttpHeaders(request, options), request);
+
+            if (response != null)
+            {
+                response.HtmlContent = DigestHelper.decodeString(response.HtmlContent);
+            }
+            return response;
         }
     }
 }

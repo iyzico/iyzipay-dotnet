@@ -11,7 +11,7 @@ namespace Iyzipay
 
         public static String decodeString(String content)
         {
-            return (!String.IsNullOrEmpty(content)) ? Encoding.Unicode.GetString(Convert.FromBase64String(content)) : null;
+            return (!String.IsNullOrEmpty(content)) ? Encoding.UTF8.GetString(Convert.FromBase64String(content)) : null;
         }
     }
 }

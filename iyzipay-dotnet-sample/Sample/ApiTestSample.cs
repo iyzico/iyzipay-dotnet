@@ -2,7 +2,7 @@
 using Iyzipay;
 using Iyzipay.Model;
 
-namespace iyzipay_dotnet_sample.Sample
+namespace IyzipaySample.Sample
 {
     [TestClass]
     public class ApiTestSample : Sample

@@ -4,7 +4,7 @@ using Iyzipay.Request;
 using Iyzipay.Model;
 using System.Collections.Generic;
 
-namespace iyzipay_dotnet_sample.Sample
+namespace IyzipaySample.Sample
 {
     [TestClass]
     public class ThreeDSSample : Sample
@@ -102,6 +102,8 @@ namespace iyzipay_dotnet_sample.Sample
 
             ThreeDSInitialize threeDSInitialize = ThreeDSInitialize.Create(request, options);
 
+            PrintResponse<ThreeDSInitialize>(threeDSInitialize);
+
             Assert.IsNotNull(threeDSInitialize.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), threeDSInitialize.Status);
             Assert.AreEqual(Locale.TR.GetName(), threeDSInitialize.Locale);
@@ -195,6 +197,8 @@ namespace iyzipay_dotnet_sample.Sample
 
             ThreeDSInitialize threeDSInitialize = ThreeDSInitialize.Create(request, options);
 
+            PrintResponse<ThreeDSInitialize>(threeDSInitialize);
+
             Assert.IsNotNull(threeDSInitialize.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), threeDSInitialize.Status);
             Assert.AreEqual(Locale.TR.GetName(), threeDSInitialize.Locale);
@@ -212,6 +216,8 @@ namespace iyzipay_dotnet_sample.Sample
             request.ConversationData = "conversation data";
 
             ThreeDSAuth threeDSAuth = ThreeDSAuth.Create(request, options);
+
+            PrintResponse<ThreeDSAuth>(threeDSAuth);
 
             Assert.IsNotNull(threeDSAuth.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), threeDSAuth.Status);

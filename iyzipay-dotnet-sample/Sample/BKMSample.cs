@@ -3,7 +3,7 @@ using Iyzipay.Request;
 using Iyzipay.Model;
 using System.Collections.Generic;
 
-namespace iyzipay_dotnet_sample.Sample
+namespace IyzipaySample.Sample
 {
     [TestClass]
     public class BKMSample : Sample
@@ -25,6 +25,8 @@ namespace iyzipay_dotnet_sample.Sample
 
             BKMInitialize bkmInitialize = BKMInitialize.Create(request, options);
 
+            PrintResponse<BKMInitialize>(bkmInitialize);
+
             Assert.IsNotNull(bkmInitialize.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), bkmInitialize.Status);
             Assert.AreEqual(Locale.TR.GetName(), bkmInitialize.Locale);
@@ -41,6 +43,8 @@ namespace iyzipay_dotnet_sample.Sample
             request.Token = "mockToken1453382198111";
 
             BKMAuth bkmAuth = BKMAuth.Retrieve(request, options);
+
+            PrintResponse<BKMAuth>(bkmAuth);
 
             Assert.IsNotNull(bkmAuth.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), bkmAuth.Status);

@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Iyzipay.Request;
 using Iyzipay.Model;
 
-namespace iyzipay_dotnet_sample.Sample
+namespace IyzipaySample.Sample
 {
     [TestClass]
     public class ConnectCancelSample : Sample
@@ -18,6 +18,8 @@ namespace iyzipay_dotnet_sample.Sample
             request.Ip="127.0.0.1";
 
             ConnectCancel connectCancel = ConnectCancel.Create(request, options);
+
+            PrintResponse<ConnectCancel>(connectCancel);
 
             Assert.IsNotNull(connectCancel.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), connectCancel.Status);

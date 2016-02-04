@@ -2,7 +2,7 @@
 using Iyzipay.Request;
 using Iyzipay.Model;
 
-namespace iyzipay_dotnet_sample.Sample
+namespace IyzipaySample.Sample
 {
     [TestClass]
     public class PostAuthSample : Sample
@@ -11,12 +11,15 @@ namespace iyzipay_dotnet_sample.Sample
         public void Should_Post_Auth()
         {
             CreatePaymentPostAuthRequest request = new CreatePaymentPostAuthRequest();
-            request.ConversationId = "123456";
+            request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.PaymentId = "1";
             request.Ip = "127.0.0.1";
 
             PaymentPostAuth paymentPostAuth = PaymentPostAuth.Create(request, options);
+
+            PrintResponse<PaymentPostAuth>(paymentPostAuth);
+
             Assert.IsNotNull(paymentPostAuth.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), paymentPostAuth.Status);
             Assert.AreEqual(Locale.TR.GetName(), paymentPostAuth.Locale);

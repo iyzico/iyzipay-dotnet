@@ -2,7 +2,7 @@
 using Iyzipay.Model;
 using Iyzipay.Request;
 
-namespace iyzipay_dotnet_sample.Sample
+namespace IyzipaySample.Sample
 {
     [TestClass]
     public class CardStorageSample : Sample
@@ -25,6 +25,8 @@ namespace iyzipay_dotnet_sample.Sample
             request.Card = cardInformation;
 
             Card card = Card.Create(request, options);
+
+            PrintResponse<Card>(card);
 
             Assert.IsNotNull(card.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), card.Status);
@@ -50,6 +52,8 @@ namespace iyzipay_dotnet_sample.Sample
 
             Card card = Card.Create(request, options);
 
+            PrintResponse<Card>(card);
+
             Assert.IsNotNull(card.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), card.Status);
             Assert.AreEqual(Locale.TR.GetName(), card.Locale);
@@ -67,6 +71,8 @@ namespace iyzipay_dotnet_sample.Sample
 
             Card card = Card.Delete(request, options);
 
+            PrintResponse<Card>(card);
+
             Assert.IsNotNull(card.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), card.Status);
             Assert.AreEqual(Locale.TR.GetName(), card.Locale);
@@ -82,6 +88,8 @@ namespace iyzipay_dotnet_sample.Sample
             request.CardUserKey = "myCardUserKey";
 
             CardList cardList = CardList.Retrieve(request, options);
+
+            PrintResponse<CardList>(cardList);
 
             Assert.IsNotNull(cardList.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), cardList.Status);

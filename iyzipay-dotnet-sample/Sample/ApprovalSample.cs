@@ -1,12 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Iyzipay.Request;
 using Iyzipay.Model;
-using System;
-using System.Diagnostics;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
-namespace iyzipay_dotnet_sample.Sample
+namespace IyzipaySample.Sample
 {
     [TestClass]
     public class ApprovalSample : Sample

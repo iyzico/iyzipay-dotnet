@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Iyzipay.Request;
 using Iyzipay.Model;
 
-namespace iyzipay_dotnet_sample.Sample
+namespace IyzipaySample.Sample
 {
     [TestClass]
     public class ConnectPaymentAuthSample : Sample
@@ -32,6 +32,9 @@ namespace iyzipay_dotnet_sample.Sample
             request.PaymentCard = paymentCard;
 
             ConnectPaymentAuth connectPaymentAuth = ConnectPaymentAuth.Create(request, options);
+
+            PrintResponse<ConnectPaymentAuth>(connectPaymentAuth);
+
             Assert.IsNotNull(connectPaymentAuth.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), connectPaymentAuth.Status);
             Assert.AreEqual(Locale.TR.GetName(), connectPaymentAuth.Locale);
@@ -58,6 +61,8 @@ namespace iyzipay_dotnet_sample.Sample
             request.PaymentCard = paymentCard;
 
             ConnectPaymentAuth connectPaymentAuth = ConnectPaymentAuth.Create(request, options);
+
+            PrintResponse<ConnectPaymentAuth>(connectPaymentAuth);
 
             Assert.IsNotNull(connectPaymentAuth.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), connectPaymentAuth.Status);

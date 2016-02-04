@@ -2,7 +2,7 @@
 using Iyzipay.Request;
 using Iyzipay.Model;
 
-namespace iyzipay_dotnet_sample.Sample
+namespace IyzipaySample.Sample
 {
     [TestClass]
     public class ConnectThreeDSSample : Sample
@@ -33,6 +33,8 @@ namespace iyzipay_dotnet_sample.Sample
 
             ConnectThreeDSInitialize connectThreeDSInitialize = ConnectThreeDSInitialize.Create(request, options);
 
+            PrintResponse<ConnectThreeDSInitialize>(connectThreeDSInitialize);
+
             Assert.IsNotNull(connectThreeDSInitialize.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), connectThreeDSInitialize.Status);
             Assert.AreEqual(Locale.TR.GetName(), connectThreeDSInitialize.Locale);
@@ -61,6 +63,8 @@ namespace iyzipay_dotnet_sample.Sample
 
             ConnectThreeDSInitialize connectThreeDSInitialize = ConnectThreeDSInitialize.Create(request, options);
 
+            PrintResponse<ConnectThreeDSInitialize>(connectThreeDSInitialize);
+
             Assert.IsNotNull(connectThreeDSInitialize.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), connectThreeDSInitialize.Status);
             Assert.AreEqual(Locale.TR.GetName(), connectThreeDSInitialize.Locale);
@@ -76,6 +80,8 @@ namespace iyzipay_dotnet_sample.Sample
             request.PaymentId = "12345";
 
             ConnectThreeDSAuth connectThreeDSAuth = ConnectThreeDSAuth.Create(request, options);
+
+            PrintResponse<ConnectThreeDSAuth>(connectThreeDSAuth);
 
             Assert.IsNotNull(connectThreeDSAuth.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), connectThreeDSAuth.Status);

@@ -2,7 +2,7 @@
 using Iyzipay.Request;
 using Iyzipay.Model;
 
-namespace iyzipay_dotnet_sample.Sample
+namespace IyzipaySample.Sample
 {
     [TestClass]
     public class ConnectRefundSample : Sample
@@ -18,6 +18,8 @@ namespace iyzipay_dotnet_sample.Sample
             request.Ip = "127.0.0.1";
 
             ConnectRefund connectRefund = ConnectRefund.Create(request, options);
+
+            PrintResponse<ConnectRefund>(connectRefund);
 
             Assert.IsNotNull(connectRefund.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), connectRefund.Status);

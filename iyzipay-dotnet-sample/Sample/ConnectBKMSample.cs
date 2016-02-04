@@ -3,7 +3,7 @@ using Iyzipay.Request;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
-namespace iyzipay_dotnet_sample.Sample
+namespace IyzipaySample.Sample
 {
     [TestClass]
     public class ConnectBKMSample : Sample
@@ -14,7 +14,7 @@ namespace iyzipay_dotnet_sample.Sample
             CreateConnectBKMInitializeRequest request = new CreateConnectBKMInitializeRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
-            request.Price = "1";
+            request.Price = "3.2";
             request.CallbackUrl = "https://www.merchant.com/callbackUrl";
             //prepare buyer
             request.BuyerId = "100";
@@ -25,6 +25,8 @@ namespace iyzipay_dotnet_sample.Sample
             request.InstallmentDetails = prepareInstallmentDetails();
 
             ConnectBKMInitialize connectBKMInitialize = ConnectBKMInitialize.Create(request, options);
+
+            PrintResponse<ConnectBKMInitialize>(connectBKMInitialize);
 
             Assert.IsNotNull(connectBKMInitialize.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), connectBKMInitialize.Status);

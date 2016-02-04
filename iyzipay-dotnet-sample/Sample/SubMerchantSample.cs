@@ -2,7 +2,7 @@
 using Iyzipay.Request;
 using Iyzipay.Model;
 
-namespace iyzipay_dotnet_sample.Sample
+namespace IyzipaySample.Sample
 {
     [TestClass]
     public class SubMerchantSample : Sample
@@ -25,6 +25,8 @@ namespace iyzipay_dotnet_sample.Sample
             request.IdentityNumber = "1234567890";
 
             SubMerchant subMerchant = SubMerchant.Create(request, options);
+
+            PrintResponse<SubMerchant>(subMerchant);
 
             Assert.IsNotNull(subMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);
@@ -51,6 +53,8 @@ namespace iyzipay_dotnet_sample.Sample
 
             SubMerchant subMerchant = SubMerchant.Create(request, options);
 
+            PrintResponse<SubMerchant>(subMerchant);
+            
             Assert.IsNotNull(subMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);
             Assert.AreEqual(Locale.TR.GetName(), subMerchant.Locale);
@@ -76,6 +80,8 @@ namespace iyzipay_dotnet_sample.Sample
 
             SubMerchant subMerchant = SubMerchant.Create(request, options);
 
+            PrintResponse<SubMerchant>(subMerchant);
+
             Assert.IsNotNull(subMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);
             Assert.AreEqual(Locale.TR.GetName(), subMerchant.Locale);
@@ -88,7 +94,7 @@ namespace iyzipay_dotnet_sample.Sample
             UpdateSubMerchantRequest request = new UpdateSubMerchantRequest();
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
-            request.SubMerchantKey = "y3XZJBW9Sx2h2UZXgL6VMJbPCZY=";
+            request.SubMerchantKey = "sub merchant key";
             request.Address = "Nidakule Göztepe İş Merkezi Merdivenköy Mah. Bora Sok. No:1 Kat:19 Bağımsız 70/73 Göztepe Kadıköy 34732";
             request.ContactName = "Hakan";
             request.ContactSurname = "Erdoğan";
@@ -99,6 +105,8 @@ namespace iyzipay_dotnet_sample.Sample
             request.IdentityNumber = "31300864726";
 
             SubMerchant subMerchant = SubMerchant.Update(request, options);
+
+            PrintResponse<SubMerchant>(subMerchant);
 
             Assert.IsNotNull(subMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);
@@ -124,6 +132,8 @@ namespace iyzipay_dotnet_sample.Sample
 
             SubMerchant subMerchant = SubMerchant.Update(request, options);
 
+            PrintResponse<SubMerchant>(subMerchant);
+
             Assert.IsNotNull(subMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);
             Assert.AreEqual(Locale.TR.GetName(), subMerchant.Locale);
@@ -136,7 +146,7 @@ namespace iyzipay_dotnet_sample.Sample
             UpdateSubMerchantRequest request = new UpdateSubMerchantRequest();
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
-            request.SubMerchantKey = "B7PfwgaGY/pdNVZBRrfArqxHjUQ=";
+            request.SubMerchantKey = "sub merchant key";
             request.Address = "Nidakule Göztepe İş Merkezi Merdivenköy Mah. Bora Sok. No:1 Kat:19 Bağımsız 70/73 Göztepe Kadıköy 34732";
             request.TaxOffice = "Kadıköy V.D.";
             request.TaxNumber = "9261877";
@@ -146,6 +156,8 @@ namespace iyzipay_dotnet_sample.Sample
             request.Iban = "TR180006200119000006672315";
 
             SubMerchant subMerchant = SubMerchant.Update(request, options);
+
+            PrintResponse<SubMerchant>(subMerchant);
 
             Assert.IsNotNull(subMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);
@@ -162,6 +174,8 @@ namespace iyzipay_dotnet_sample.Sample
             request.SubMerchantExternalId = "AS49224";
 
             SubMerchant subMerchant = SubMerchant.Retrieve(request, options);
+
+            PrintResponse<SubMerchant>(subMerchant);
 
             Assert.IsNotNull(subMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);

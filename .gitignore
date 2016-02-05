@@ -7,7 +7,7 @@
 *.userosscache
 *.sln.docstates
 *.v12.suo
-*.sln
+
 .vs
 packages
 *packages.config

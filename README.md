@@ -14,6 +14,8 @@ For now you'll need to install following libraries:
 ```
       Install-Package iyzipay-dotnet
 ```
+ Or you can download the latest .dll from:  https://github.com/iyzico/iyzipay-dotnet/releases/latest
+ 
 * Newtonsoft.Json 8.0.2 from http://www.newtonsoft.com/json#
 
 

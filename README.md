@@ -1,14 +1,12 @@
-# iyzipay-dotnet
+# iyzipay-dotnet [![Build Status](https://travis-ci.org/iyzico/iyzipay-dotnet.svg?branch=master)](https://travis-ci.org/iyzico/iyzipay-dotnet)
 
 You can sign up for an iyzico account at https://iyzico.com
 
 # Requirements
 
-.NET Framewrok 4.5.2 or newer
+.NET Framework 4.5.2 or newer
 
 # Installation
-
-
 
 For now you'll need to install following libraries:
 

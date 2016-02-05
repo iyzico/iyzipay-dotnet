@@ -8,7 +8,7 @@ You can sign up for an iyzico account at https://iyzico.com
 
 # Installation
 
-Fro now you'll need to install following libraries:
+For now you'll need to install following libraries:
 * Newtonsoft.Json 8.0.2 from http://www.newtonsoft.com/json#
 
 # Usage

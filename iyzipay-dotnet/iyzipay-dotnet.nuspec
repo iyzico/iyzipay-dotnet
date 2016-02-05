@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>iyzipay-dotnet</id>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
     <title>Iyzipay.Api.Client</title>
     <authors>Iyzico Ödeme Hizmetleri A.Ş.</authors>
     <owners>iyzico</owners>

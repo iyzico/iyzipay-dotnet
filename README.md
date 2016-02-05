@@ -8,8 +8,16 @@ You can sign up for an iyzico account at https://iyzico.com
 
 # Installation
 
+
+
 For now you'll need to install following libraries:
+
+* To install Iyzipay.Api.Client, run the following command in the Package Manager Console
+```
+      Install-Package iyzipay-dotnet
+```
 * Newtonsoft.Json 8.0.2 from http://www.newtonsoft.com/json#
+
 
 # Usage
 

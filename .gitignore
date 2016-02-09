@@ -10,8 +10,6 @@
 
 .vs
 packages
-*packages.config
-*.csproj
 *.csproj.user
 *.DS_Store
 

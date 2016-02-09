@@ -1,5 +1,3 @@
-# iyzipay-dotnet [![Build Status](https://travis-ci.org/iyzico/iyzipay-dotnet.svg?branch=master)](https://travis-ci.org/iyzico/iyzipay-dotnet)
-
 You can sign up for an iyzico account at https://iyzico.com
 
 # Requirements

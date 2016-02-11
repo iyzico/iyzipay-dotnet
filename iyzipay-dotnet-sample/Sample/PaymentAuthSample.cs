@@ -176,8 +176,8 @@ namespace IyzipaySample.Sample
             basketItem2.Name = "Listeleme aboneliği";
             basketItem2.Category1 = "Abonelik";
             basketItem2.Category2 = "Listeleme";
-            basketItem1.ItemType = BasketItemType.VIRTUAL.ToString();
-            basketItem1.Price = "0.5";
+            basketItem2.ItemType = BasketItemType.VIRTUAL.ToString();
+            basketItem2.Price = "0.5";
             basketItems.Add(basketItem2);
 
             BasketItem basketItem3 = new BasketItem();
@@ -185,8 +185,8 @@ namespace IyzipaySample.Sample
             basketItem3.Name = "Servis aboneliği";
             basketItem3.Category1 = "Abonelik";
             basketItem3.Category2 = "Servis";
-            basketItem1.ItemType = BasketItemType.VIRTUAL.ToString();
-            basketItem1.Price = "0.2";
+            basketItem3.ItemType = BasketItemType.VIRTUAL.ToString();
+            basketItem3.Price = "0.2";
             basketItems.Add(basketItem3);
             request.BasketItems = basketItems;
 

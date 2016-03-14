@@ -17,7 +17,6 @@ namespace Iyzipay.Request
         public String IdentityNumber { get; set; }
         public String TaxNumber { get; set; }
        
-
         public override String ToPKIRequestString()
         {
             return ToStringRequestBuilder.NewInstance()

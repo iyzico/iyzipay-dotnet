@@ -56,27 +56,27 @@ namespace IyzipaySample.Sample
         {
             Buyer buyer = new Buyer();
             buyer.Id = "100";
-            buyer.Name = "Hakan";
-            buyer.Surname = "Erdoğan";
-            buyer.IdentityNumber = "16045258606";
+            buyer.Name = "John";
+            buyer.Surname = "Doe";
+            buyer.IdentityNumber = "74300864791";
             buyer.Email = "email@email.com";
-            buyer.GsmNumber = "0553456789";
+            buyer.GsmNumber = "+905350000000";
             buyer.RegistrationDate = "2011-02-17 12:00:00";
             buyer.LastLoginDate = "2015-04-20 12:00:00";
-            buyer.RegistrationAddress = "Maltepe";
+            buyer.RegistrationAddress = "Address";
             buyer.City = "Istanbul";
             buyer.Country = "Turkiye";
-            buyer.ZipCode = "34840";
-            buyer.Ip = "192.168.123.102";
+            buyer.ZipCode = "34732";
+            buyer.Ip = "85.34.78.12";
             return buyer;
         }
 
         private Address newShippingAddress()
         {
             Address address = new Address();
-            address.Description = "Malte Plaza No:56";
-            address.ZipCode = "34840";
-            address.ContactName = "Hakan";
+            address.Description = "Address";
+            address.ZipCode = "34742";
+            address.ContactName = "Jane Doe";
             address.City = "Istanbul";
             address.Country = "Turkiye";
             return address;
@@ -85,9 +85,9 @@ namespace IyzipaySample.Sample
         private Address newBillingAddress()
         {
             Address address = new Address();
-            address.Description = "Malte Plaza No:56";
-            address.ZipCode = "34840";
-            address.ContactName = "Hakan";
+            address.Description = "Address";
+            address.ZipCode = "34742";
+            address.ContactName = "Jane Doe";
             address.City = "Istanbul";
             address.Country = "Turkiye";
             return address;
@@ -95,42 +95,42 @@ namespace IyzipaySample.Sample
 
         private List<BasketItem> newBasketItems()
         {
-            List<BasketItem> paymentBasketItemDtoList = new List<BasketItem>();
+            List<BasketItem> basketItems = new List<BasketItem>();
 
             BasketItem firstBasketItem = new BasketItem();
             firstBasketItem.Id = "BI101";
-            firstBasketItem.Name = "ABC Marka Kolye";
-            firstBasketItem.Category1 = "Giyim";
-            firstBasketItem.Category2 = "Aksesuar";
+            firstBasketItem.Name = "Binocular";
+            firstBasketItem.Category1 = "Collectibles";
+            firstBasketItem.Category2 = "Accessories";
             firstBasketItem.ItemType = BasketItemType.PHYSICAL.ToString();
             firstBasketItem.Price = "0.3";
-            firstBasketItem.SubMerchantKey = "subMerchantKey";
+            firstBasketItem.SubMerchantKey = "sub merchant key";
             firstBasketItem.SubMerchantPrice = "0.27";
+            basketItems.Add(firstBasketItem);
 
             BasketItem secondBasketItem = new BasketItem();
             secondBasketItem.Id = "BI102";
-            secondBasketItem.Name = "XYZ Oyun Kodu";
-            secondBasketItem.Category1 = "Oyun";
-            secondBasketItem.Category2 = "Online Oyun Kodlari";
+            secondBasketItem.Name = "Game code";
+            secondBasketItem.Category1 = "Game";
+            secondBasketItem.Category2 = "Online Game Items";
             secondBasketItem.ItemType = BasketItemType.VIRTUAL.ToString();
             secondBasketItem.Price = "0.5";
-            secondBasketItem.SubMerchantKey = "subMerchantKey";
+            secondBasketItem.SubMerchantKey = "sub merchant key";
             secondBasketItem.SubMerchantPrice = "0.42";
+            basketItems.Add(secondBasketItem);
 
             BasketItem thirdBasketItem = new BasketItem();
             thirdBasketItem.Id = "BI103";
-            thirdBasketItem.Name = "EDC Marka Usb";
-            thirdBasketItem.Category1 = "Elektronik";
+            thirdBasketItem.Name = "Usb";
+            thirdBasketItem.Category1 = "Electronics";
             thirdBasketItem.Category2 = "Usb / Cable";
             thirdBasketItem.ItemType = BasketItemType.PHYSICAL.ToString();
             thirdBasketItem.Price = "0.2";
-            thirdBasketItem.SubMerchantKey = "subMerchantKey";
+            thirdBasketItem.SubMerchantKey = "sub merchant key";
             thirdBasketItem.SubMerchantPrice = "0.18";
+            basketItems.Add(thirdBasketItem);
 
-            paymentBasketItemDtoList.Add(firstBasketItem);
-            paymentBasketItemDtoList.Add(secondBasketItem);
-            paymentBasketItemDtoList.Add(thirdBasketItem);
-            return paymentBasketItemDtoList;
+            return basketItems;
         }
     }
 }

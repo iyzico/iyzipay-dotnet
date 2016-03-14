@@ -10,6 +10,7 @@ namespace Iyzipay.Model
         public String PaidPrice { get; set; }
         public int? Installment { get; set; }
         public String PaymentId { get; set; }
+        public String PaymentStatus { get; set; }
         public int? FraudStatus { get; set; }
         public String MerchantCommissionRate { get; set; }
         public String MerchantCommissionRateAmount { get; set; }

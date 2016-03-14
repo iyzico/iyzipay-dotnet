@@ -61,6 +61,7 @@
     <Compile Include="Sample\ApprovalSample.cs" />
     <Compile Include="Sample\BinNumberSample.cs" />
     <Compile Include="Sample\BKMSample.cs" />
+    <Compile Include="Sample\ConnectPaymentPreAuthSample.cs" />
     <Compile Include="Sample\RetrieveTransactionsSample.cs" />
     <Compile Include="Sample\RefundSample.cs" />
     <Compile Include="Sample\PostAuthSample.cs" />

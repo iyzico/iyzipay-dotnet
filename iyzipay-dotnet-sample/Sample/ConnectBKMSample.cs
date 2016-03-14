@@ -21,7 +21,7 @@ namespace IyzipaySample.Sample
             request.BuyerEmail = "email@email.com";
             request.BuyerIp = "192.168.123.102";
             //default pos
-            request.ConnectorName = "ISBANK";
+            request.ConnectorName = "connector name";
             request.InstallmentDetails = prepareInstallmentDetails();
 
             ConnectBKMInitialize connectBKMInitialize = ConnectBKMInitialize.Create(request, options);
@@ -32,6 +32,24 @@ namespace IyzipaySample.Sample
             Assert.AreEqual(Status.SUCCESS.ToString(), connectBKMInitialize.Status);
             Assert.AreEqual(Locale.TR.GetName(), connectBKMInitialize.Locale);
             Assert.AreEqual("123456789", connectBKMInitialize.ConversationId);
+        }
+
+        [TestMethod]
+        public void Should_Retrieve_Bkm_Auth()
+        {
+            RetrieveBKMAuthRequest request = new RetrieveBKMAuthRequest();
+            request.Locale = Locale.TR.GetName();
+            request.ConversationId = "123456789";
+            request.Token = "token";
+
+            ConnectBKMAuth connectBkmAuth = ConnectBKMAuth.Retrieve(request, options);
+
+            PrintResponse<ConnectBKMAuth>(connectBkmAuth);
+
+            Assert.IsNotNull(connectBkmAuth.SystemTime);
+            Assert.AreEqual(Status.SUCCESS.ToString(), connectBkmAuth.Status);
+            Assert.AreEqual(Locale.TR.GetName(), connectBkmAuth.Locale);
+            Assert.AreEqual("123456789", connectBkmAuth.ConversationId);
         }
 
         private List<BKMInstallment> prepareInstallmentDetails()
@@ -47,8 +65,7 @@ namespace IyzipaySample.Sample
 
             return installmentDetails;
         }
-
-        //is bankasi installment details
+   
         private BKMInstallment isbankInstallmentDetails()
         {
             BKMInstallment installmentDetail = new BKMInstallment();
@@ -86,8 +103,7 @@ namespace IyzipaySample.Sample
 
             return installmentDetail;
         }
-
-        //finansbank installment details
+       
         private BKMInstallment finansbankInstallmentDetails()
         {
             BKMInstallment installmentDetail = new BKMInstallment();
@@ -125,8 +141,7 @@ namespace IyzipaySample.Sample
 
             return installmentDetail;
         }
-
-        //akbank installment details
+      
         private BKMInstallment akbankInstallmentDetails()
         {
             BKMInstallment installmentDetail = new BKMInstallment();
@@ -165,7 +180,6 @@ namespace IyzipaySample.Sample
             return installmentDetail;
         }
 
-        //yapikredi installment details
         private BKMInstallment ykbInstallmentDetails()
         {
             BKMInstallment installmentDetail = new BKMInstallment();
@@ -204,7 +218,6 @@ namespace IyzipaySample.Sample
             return installmentDetail;
         }
 
-        //denizbank installment details
         private BKMInstallment denizbankInstallmentDetails()
         {
             BKMInstallment installmentDetail = new BKMInstallment();
@@ -243,7 +256,6 @@ namespace IyzipaySample.Sample
             return installmentDetail;
         }
 
-        //halkbank installment details
         private BKMInstallment halkbankInstallmentDetails()
         {
             BKMInstallment installmentDetail = new BKMInstallment();

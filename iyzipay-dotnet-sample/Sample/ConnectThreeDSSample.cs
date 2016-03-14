@@ -16,7 +16,7 @@ namespace IyzipaySample.Sample
             request.BuyerEmail = "email@email.com";
             request.BuyerId = "B2323";
             request.BuyerIp = "127.0.0.1";
-            request.ConnectorName = "ISBANK";
+            request.ConnectorName = "connector name";
             request.Installment = 1;
             request.PaidPrice = "1.0";
             request.Price = "1.0";

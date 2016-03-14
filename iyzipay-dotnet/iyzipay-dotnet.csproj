@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Model\InstallmentInfo.cs" />
     <Compile Include="Request\RetrieveInstallmentInfoRequest.cs" />
+    <Compile Include="Request\RetrievePaymentRequest.cs" />
     <Compile Include="RestHttpClient.cs" />
     <Compile Include="DigestHelper.cs" />
     <Compile Include="HashGenerator.cs" />

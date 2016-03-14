@@ -8,5 +8,10 @@ namespace Iyzipay.Model
         {
             return RestHttpClient.Create().Post<PaymentAuth>(options.BaseUrl + "/payment/iyzipos/auth/ecom", GetHttpHeaders(request, options), request);
         }
+
+        public static PaymentAuth Retrieve(RetrievePaymentRequest request, Options options)
+        {
+            return RestHttpClient.Create().Post<PaymentAuth>(options.BaseUrl + "/payment/detail/", GetHttpHeaders(request, options), request);
+        }
     }
 }

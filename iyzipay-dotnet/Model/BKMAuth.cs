@@ -6,8 +6,7 @@ namespace Iyzipay.Model
     public class BKMAuth : Payment
     {
         public String Token { get; set; }
-        public String CallbackUrl { get; set; }
-        public String PaymentStatus { get; set; }
+        public String CallbackUrl { get; set; }     
 
         public static BKMAuth Retrieve(RetrieveBKMAuthRequest request, Options options)
         {

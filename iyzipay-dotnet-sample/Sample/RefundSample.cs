@@ -25,7 +25,6 @@ namespace IyzipaySample.Sample
             Assert.AreEqual(Status.SUCCESS.ToString(), refund.Status);
             Assert.AreEqual(Locale.TR.GetName(), refund.Locale);
             Assert.AreEqual("123456789", refund.ConversationId);
-            Assert.AreEqual("41", refund.PaymentTransactionId);
         }
 
         [TestMethod]

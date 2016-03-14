@@ -6,8 +6,7 @@ namespace Iyzipay.Model
     public class CheckoutFormAuth : Payment
     {
         public String Token { get; set; }
-        public String CallbackUrl { get; set; }
-        public String PaymentStatus { get; set; }
+        public String CallbackUrl { get; set; }      
 
         public static CheckoutFormAuth Retrieve(RetrieveCheckoutFormAuthRequest request, Options options)
         {

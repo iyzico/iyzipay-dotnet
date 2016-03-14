@@ -11,16 +11,16 @@ namespace IyzipaySample.Sample
         public void Should_Create_Personal_Sub_Merchant()
         {
             CreateSubMerchantRequest request = new CreateSubMerchantRequest();
-            request.ConversationId = "123456";
+            request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.SubMerchantExternalId = "B49224";
             request.SubMerchantType = SubMerchantType.PERSONAL.ToString();
-            request.Address = "Nidakule Göztepe İş Merkezi Merdivenköy Mah. Bora Sok. No:1 Kat:19 Bağımsız 70/73 Göztepe Kadıköy 34732";
-            request.ContactName = "Sabri Onur";
-            request.ContactSurname = "Tüzün";
+            request.Address = "Address";
+            request.ContactName = "John";
+            request.ContactSurname = "Doe";
             request.Email = "email@submerchantemail.com";
             request.GsmNumber = "+905350000000";
-            request.Name = "Sabri Onur'un mağazası";
+            request.Name = "John's market";
             request.Iban = "TR180006200119000006672315";
             request.IdentityNumber = "1234567890";
 
@@ -42,12 +42,12 @@ namespace IyzipaySample.Sample
             request.Locale = Locale.TR.GetName();
             request.SubMerchantExternalId = "S49222";
             request.SubMerchantType = SubMerchantType.PRIVATE_COMPANY.ToString();
-            request.Address = "Nidakule Göztepe İş Merkezi Merdivenköy Mah. Bora Sok. No:1 Kat:19 Bağımsız 70/73 Göztepe Kadıköy 34732";
-            request.TaxOffice = "Kadıköy V.D.";
-            request.LegalCompanyTitle = "Sabri Onur Tüzün Bilişim Hizmetleri";
+            request.Address = "Address";
+            request.TaxOffice = "Tax office";
+            request.LegalCompanyTitle = "John Doe inc";
             request.Email = "email@submerchantemail.com";
             request.GsmNumber = "+905350000000";
-            request.Name = "Sabri Onur'un mağazası";
+            request.Name = "John's market";
             request.Iban = "TR180006200119000006672315";
             request.IdentityNumber = "31300864726";
 
@@ -69,13 +69,13 @@ namespace IyzipaySample.Sample
             request.Locale = Locale.TR.GetName();
             request.SubMerchantExternalId = "AS49224";
             request.SubMerchantType = SubMerchantType.LIMITED_OR_JOINT_STOCK_COMPANY.ToString();
-            request.Address = "Nidakule Göztepe İş Merkezi Merdivenköy Mah. Bora Sok. No:1 Kat:19 Bağımsız 70/73 Göztepe Kadıköy 34732";
-            request.TaxOffice = "Kadıköy V.D.";
+            request.Address = "Address";
+            request.TaxOffice = "Tax office";
             request.TaxNumber = "9261877";
-            request.LegalCompanyTitle = "XYZ Bilişim Hizmetleri A.Ş.";
+            request.LegalCompanyTitle = "XYZ inc";
             request.Email = "email@submerchantemail.com";
             request.GsmNumber = "+905350000000";
-            request.Name = "Sabri Onur'un mağazası";
+            request.Name = "John's market";
             request.Iban = "TR180006200119000006672315";
 
             SubMerchant subMerchant = SubMerchant.Create(request, options);
@@ -95,12 +95,12 @@ namespace IyzipaySample.Sample
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.SubMerchantKey = "sub merchant key";
-            request.Address = "Nidakule Göztepe İş Merkezi Merdivenköy Mah. Bora Sok. No:1 Kat:19 Bağımsız 70/73 Göztepe Kadıköy 34732";
-            request.ContactName = "Hakan";
-            request.ContactSurname = "Erdoğan";
+            request.Address = "Address";
+            request.ContactName = "Jane";
+            request.ContactSurname = "Doe";
             request.Email = "email@submerchantemail.com";
             request.GsmNumber = "+905350000000";
-            request.Name = "Hakan Erdoğan'ın mağazası";
+            request.Name = "Jane's market";
             request.Iban = "TR630006200027700006678204";
             request.IdentityNumber = "31300864726";
 
@@ -121,12 +121,12 @@ namespace IyzipaySample.Sample
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.SubMerchantKey = "sub merchant key";
-            request.Address = "Nidakule Göztepe İş Merkezi Merdivenköy Mah. Bora Sok. No:1 Kat:19 Bağımsız 70/73 Göztepe Kadıköy 34732";
-            request.TaxOffice = "Kadıköy V.D.";
-            request.LegalCompanyTitle = "Hakan Erdoğan Bilişim Hizmetleri";
+            request.Address = "Address";
+            request.TaxOffice = "Tax office";
+            request.LegalCompanyTitle = "Jane Doe inc";
             request.Email = "email@submerchantemail.com";
             request.GsmNumber = "+905350000000";
-            request.Name = "Hakan Erdoğan'ın mağazası";
+            request.Name = "Jane's market";
             request.Iban = "TR180006200119000006672315";
             request.IdentityNumber = "31300864726";
 
@@ -147,12 +147,13 @@ namespace IyzipaySample.Sample
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.SubMerchantKey = "sub merchant key";
-            request.Address = "Nidakule Göztepe İş Merkezi Merdivenköy Mah. Bora Sok. No:1 Kat:19 Bağımsız 70/73 Göztepe Kadıköy 34732";
-            request.TaxOffice = "Kadıköy V.D.";
+            request.Address = "Address";
+            request.TaxOffice = "Tax office";
             request.TaxNumber = "9261877";
+            request.LegalCompanyTitle = "ABC inc";
             request.Email = "email@submerchantemail.com";
             request.GsmNumber = "+905350000000";
-            request.Name = "Hakan Erdoğan'ın mağazası";
+            request.Name = "Jane's market";
             request.Iban = "TR180006200119000006672315";
 
             SubMerchant subMerchant = SubMerchant.Update(request, options);

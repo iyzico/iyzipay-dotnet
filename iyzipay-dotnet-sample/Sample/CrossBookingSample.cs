@@ -13,7 +13,7 @@ namespace IyzipaySample.Sample
             CreateCrossBookingRequest request = new CreateCrossBookingRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
-            request.SubMerchantKey = "subMerchantKey";
+            request.SubMerchantKey = "sub merchant key";
             request.Price = "1";
             request.Reason = "reason text";
 
@@ -33,7 +33,7 @@ namespace IyzipaySample.Sample
             CreateCrossBookingRequest request = new CreateCrossBookingRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
-            request.SubMerchantKey = "subMerchantKey";
+            request.SubMerchantKey = "sub merchant key";
             request.Price = "1";
             request.Reason = "reason text";
 

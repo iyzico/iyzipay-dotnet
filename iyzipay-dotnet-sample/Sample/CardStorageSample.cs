@@ -11,7 +11,7 @@ namespace IyzipaySample.Sample
         public void Should_Create_User_And_Add_Card()
         {
             CardInformation cardInformation = new CardInformation();
-            cardInformation.CardAlias = "myAlias";
+            cardInformation.CardAlias = "card alias";
             cardInformation.CardHolderName = "John Doe";
             cardInformation.CardNumber = "5528790000000008";
             cardInformation.ExpireMonth = "12";
@@ -38,7 +38,7 @@ namespace IyzipaySample.Sample
         public void Should_Create_Card()
         {
             CardInformation cardInformation = new CardInformation();
-            cardInformation.CardAlias = "myAlias";
+            cardInformation.CardAlias = "card alias";
             cardInformation.CardHolderName = "John Doe";
             cardInformation.CardNumber = "5528790000000008";
             cardInformation.ExpireMonth = "12";
@@ -47,7 +47,7 @@ namespace IyzipaySample.Sample
             CreateCardRequest request = new CreateCardRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
-            request.CardUserKey = "myCardUserKey";
+            request.CardUserKey = "card user key";
             request.Card = cardInformation;
 
             Card card = Card.Create(request, options);
@@ -66,8 +66,8 @@ namespace IyzipaySample.Sample
             DeleteCardRequest request = new DeleteCardRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
-            request.CardToken = "myCardToken";
-            request.CardUserKey = "myCardUserKey";
+            request.CardToken = "card token";
+            request.CardUserKey = "card user key";
 
             Card card = Card.Delete(request, options);
 
@@ -85,7 +85,7 @@ namespace IyzipaySample.Sample
             RetrieveCardListRequest request = new RetrieveCardListRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
-            request.CardUserKey = "myCardUserKey";
+            request.CardUserKey = "card user key";
 
             CardList cardList = CardList.Retrieve(request, options);
 

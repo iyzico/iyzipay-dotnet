@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>iyzipay-dotnet</id>
-    <version>1.0.2</version>
-    <title>Iyzipay.Api.Client</title>
+    <id>Iyzipay</id>
+    <version>1.0.4</version>
+    <title>Iyzipay</title>
     <authors>Iyzico Ödeme Hizmetleri A.Ş.</authors>
     <owners>iyzico</owners>
     <licenseUrl>https://github.com/iyzico/iyzipay-dotnet/blob/master/LICENSE.md</licenseUrl>
@@ -11,7 +11,7 @@
     <iconUrl>https://en.gravatar.com/userimage/100711999/40aab086bed8dabfb387c0772a73ea7e.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Iyzipay Api Client</description>
-    <releaseNotes>First Release</releaseNotes>
+    <releaseNotes></releaseNotes>
     <copyright>Copyright 2016</copyright>
     <dependencies>
       <dependency id="Newtonsoft.Json" version="8.0.2" />

@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Iyzipay</RootNamespace>
-    <AssemblyName>iyzipay-dotnet</AssemblyName>
+    <AssemblyName>Iyzipay</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Model\InstallmentInfo.cs" />
     <Compile Include="Request\RetrieveInstallmentInfoRequest.cs" />
+    <Compile Include="Request\RetrievePaymentRequest.cs" />
     <Compile Include="RestHttpClient.cs" />
     <Compile Include="DigestHelper.cs" />
     <Compile Include="HashGenerator.cs" />

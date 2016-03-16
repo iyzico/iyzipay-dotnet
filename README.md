@@ -55,7 +55,7 @@ public static void Main(string[] args)
 	buyer.IdentityNumber = "74300864791";
 	buyer.LastLoginDate = "2015-10-05 12:43:35";
 	buyer.RegistrationDate = "2013-04-21 15:12:09";
-	buyer.RegistrationAddress = "Address";
+	buyer.RegistrationAddress = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
 	buyer.Ip = "85.34.78.112";
 	buyer.City = "İstanbul";
 	buyer.Country = "Türkiye";
@@ -66,7 +66,7 @@ public static void Main(string[] args)
 	shippingAddress.ContactName = "Jane Doe";
 	shippingAddress.City = "İstanbul";
 	shippingAddress.Country = "Türkiye";
-	shippingAddress.Description = "Address";
+	shippingAddress.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
 	shippingAddress.ZipCode = "34742";
 	request.ShippingAddress = shippingAddress;
 
@@ -74,7 +74,7 @@ public static void Main(string[] args)
 	billingAddress.ContactName = "Jane Doe";
 	billingAddress.City = "İstanbul";
 	billingAddress.Country = "Türkiye";
-	billingAddress.Description = "Address";
+	billingAddress.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
 	billingAddress.ZipCode = "34742";
 	request.BillingAddress = billingAddress;
 
@@ -86,6 +86,8 @@ public static void Main(string[] args)
 	firstBasketItem.Category2 = "Accessories";
 	firstBasketItem.ItemType = BasketItemType.PHYSICAL.ToString();
 	firstBasketItem.Price = "0.3";
+	firstBasketItem.SubMerchantKey = "sub merchant key";
+	firstBasketItem.SubMerchantPrice = "0.27";
 	basketItems.Add(firstBasketItem);
 
 	BasketItem secondBasketItem = new BasketItem();
@@ -95,6 +97,8 @@ public static void Main(string[] args)
 	secondBasketItem.Category2 = "Online Game Items";
 	secondBasketItem.ItemType = BasketItemType.VIRTUAL.ToString();
 	secondBasketItem.Price = "0.5";
+	secondBasketItem.SubMerchantKey = "sub merchant key";
+	secondBasketItem.SubMerchantPrice = "0.42";
 	basketItems.Add(secondBasketItem);
 
 	BasketItem thirdBasketItem = new BasketItem();
@@ -104,6 +108,8 @@ public static void Main(string[] args)
 	thirdBasketItem.Category2 = "Usb / Cable";
 	thirdBasketItem.ItemType = BasketItemType.PHYSICAL.ToString();
 	thirdBasketItem.Price = "0.2";
+	thirdBasketItem.SubMerchantKey = "sub merchant key";
+	thirdBasketItem.SubMerchantPrice = "0.18";
 	basketItems.Add(thirdBasketItem);
 	request.BasketItems = basketItems;
 

@@ -62,7 +62,7 @@ namespace IyzipaySample.Sample
             buyer.GsmNumber = "+905350000000";
             buyer.RegistrationDate = "2013-04-21 15:12:09";
             buyer.LastLoginDate = "2015-10-05 12:43:35";
-            buyer.RegistrationAddress = "Address";
+            buyer.RegistrationAddress = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             buyer.City = "Istanbul";
             buyer.Country = "Turkiye";
             buyer.ZipCode = "34732";
@@ -73,7 +73,7 @@ namespace IyzipaySample.Sample
         private Address newShippingAddress()
         {
             Address address = new Address();
-            address.Description = "Address";
+            address.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             address.ZipCode = "34742";
             address.ContactName = "Jane Doe";
             address.City = "Istanbul";
@@ -84,7 +84,7 @@ namespace IyzipaySample.Sample
         private Address newBillingAddress()
         {
             Address address = new Address();
-            address.Description = "Address";
+            address.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             address.ZipCode = "34742";
             address.ContactName = "Jane Doe";
             address.City = "Istanbul";

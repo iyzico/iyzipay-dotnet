@@ -15,7 +15,7 @@ namespace IyzipaySample.Sample
             request.Locale = Locale.TR.GetName();
             request.SubMerchantExternalId = "B49224";
             request.SubMerchantType = SubMerchantType.PERSONAL.ToString();
-            request.Address = "Address";
+            request.Address = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             request.ContactName = "John";
             request.ContactSurname = "Doe";
             request.Email = "email@submerchantemail.com";
@@ -42,7 +42,7 @@ namespace IyzipaySample.Sample
             request.Locale = Locale.TR.GetName();
             request.SubMerchantExternalId = "S49222";
             request.SubMerchantType = SubMerchantType.PRIVATE_COMPANY.ToString();
-            request.Address = "Address";
+            request.Address = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             request.TaxOffice = "Tax office";
             request.LegalCompanyTitle = "John Doe inc";
             request.Email = "email@submerchantemail.com";
@@ -69,7 +69,7 @@ namespace IyzipaySample.Sample
             request.Locale = Locale.TR.GetName();
             request.SubMerchantExternalId = "AS49224";
             request.SubMerchantType = SubMerchantType.LIMITED_OR_JOINT_STOCK_COMPANY.ToString();
-            request.Address = "Address";
+            request.Address = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             request.TaxOffice = "Tax office";
             request.TaxNumber = "9261877";
             request.LegalCompanyTitle = "XYZ inc";
@@ -95,7 +95,7 @@ namespace IyzipaySample.Sample
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.SubMerchantKey = "sub merchant key";
-            request.Address = "Address";
+            request.Address = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             request.ContactName = "Jane";
             request.ContactSurname = "Doe";
             request.Email = "email@submerchantemail.com";
@@ -121,7 +121,7 @@ namespace IyzipaySample.Sample
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.SubMerchantKey = "sub merchant key";
-            request.Address = "Address";
+            request.Address = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             request.TaxOffice = "Tax office";
             request.LegalCompanyTitle = "Jane Doe inc";
             request.Email = "email@submerchantemail.com";
@@ -147,7 +147,7 @@ namespace IyzipaySample.Sample
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.SubMerchantKey = "sub merchant key";
-            request.Address = "Address";
+            request.Address = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             request.TaxOffice = "Tax office";
             request.TaxNumber = "9261877";
             request.LegalCompanyTitle = "ABC inc";

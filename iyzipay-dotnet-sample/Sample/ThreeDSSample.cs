@@ -42,7 +42,7 @@ namespace IyzipaySample.Sample
             buyer.IdentityNumber = "74300864791";
             buyer.LastLoginDate = "2015-10-05 12:43:35";
             buyer.RegistrationDate = "2013-04-21 15:12:09";
-            buyer.RegistrationAddress = "Address";
+            buyer.RegistrationAddress = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             buyer.Ip = "85.34.78.112";
             buyer.City = "İstanbul";
             buyer.Country = "Türkiye";
@@ -53,7 +53,7 @@ namespace IyzipaySample.Sample
             shippingAddress.ContactName = "Jane Doe";
             shippingAddress.City = "İstanbul";
             shippingAddress.Country = "Türkiye";
-            shippingAddress.Description = "Address";
+            shippingAddress.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             shippingAddress.ZipCode = "34742";
             request.ShippingAddress = shippingAddress;
 
@@ -61,7 +61,7 @@ namespace IyzipaySample.Sample
             billingAddress.ContactName = "Jane Doe";
             billingAddress.City = "İstanbul";
             billingAddress.Country = "Türkiye";
-            billingAddress.Description = "Address";
+            billingAddress.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             billingAddress.ZipCode = "34742";
             request.BillingAddress = billingAddress;
 
@@ -143,7 +143,7 @@ namespace IyzipaySample.Sample
             buyer.IdentityNumber = "74300864791";
             buyer.LastLoginDate = "2015-10-05 12:43:35";
             buyer.RegistrationDate = "2013-04-21 15:12:09";
-            buyer.RegistrationAddress = "Address";
+            buyer.RegistrationAddress = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             buyer.Ip = "85.34.78.112";
             buyer.City = "İstanbul";
             buyer.Country = "Türkiye";
@@ -154,7 +154,7 @@ namespace IyzipaySample.Sample
             shippingAddress.ContactName = "Jane Doe";
             shippingAddress.City = "İstanbul";
             shippingAddress.Country = "Türkiye";
-            shippingAddress.Description = "Address";
+            shippingAddress.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             shippingAddress.ZipCode = "34742";
             request.ShippingAddress = shippingAddress;
 
@@ -162,7 +162,7 @@ namespace IyzipaySample.Sample
             billingAddress.ContactName = "Jane Doe";
             billingAddress.City = "İstanbul";
             billingAddress.Country = "Türkiye";
-            billingAddress.Description = "Address";
+            billingAddress.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             billingAddress.ZipCode = "34742";
             request.BillingAddress = billingAddress;
 

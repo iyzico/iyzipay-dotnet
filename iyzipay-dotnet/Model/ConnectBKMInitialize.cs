@@ -6,6 +6,7 @@ namespace Iyzipay.Model
     public class ConnectBKMInitialize : IyzipayResource
     {
         public String HtmlContent { get; set; }
+        public String Token { get; set; }
 
         public static ConnectBKMInitialize Create(CreateConnectBKMInitializeRequest request, Options options)
         {

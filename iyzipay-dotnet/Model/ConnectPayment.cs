@@ -18,6 +18,7 @@ namespace Iyzipay.Model
         public String CardUserKey { get; set; }
         public String BinNumber { get; set; }
         public String PaymentTransactionId { get; set; }
+        public String AuthCode { get; set; }
         public String ConnectorName { get; set; }
     }
 }

@@ -24,6 +24,6 @@ namespace Iyzipay.Model
         public String BinNumber { get; set; }
         public String BasketId { get; set; }
         [JsonProperty(PropertyName = "itemTransactions")]
-        private List<PaymentItem> PaymentItems { get; set; }
+        public List<PaymentItem> PaymentItems { get; set; }
     }
 }

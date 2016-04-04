@@ -7,7 +7,8 @@ namespace Iyzipay.Model
     public class BKMInitialize : IyzipayResource
     {
         public String HtmlContent { get; set; }
-
+        public String Token { get; set; }
+        
         public static BKMInitialize Create(CreateBKMInitializeRequest request, Options options)
         {
             BKMInitialize response = RestHttpClient.Create().Post<BKMInitialize>(options.BaseUrl + "/payment/iyzipos/bkm/initialize/ecom", GetHttpHeaders(request, options), request);

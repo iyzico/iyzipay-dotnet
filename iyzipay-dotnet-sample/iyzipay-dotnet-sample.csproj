@@ -62,6 +62,7 @@
     <Compile Include="Sample\BinNumberSample.cs" />
     <Compile Include="Sample\BKMSample.cs" />
     <Compile Include="Sample\ConnectPaymentPreAuthSample.cs" />
+    <Compile Include="Sample\ConnectThreeDSPreAuthSample.cs" />
     <Compile Include="Sample\RetrieveTransactionsSample.cs" />
     <Compile Include="Sample\RefundSample.cs" />
     <Compile Include="Sample\PostAuthSample.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Sample\PaymentAuthSample.cs" />
     <Compile Include="Sample\Sample.cs" />
     <Compile Include="Sample\SubMerchantSample.cs" />
+    <Compile Include="Sample\ThreeDSPreAuthSample.cs" />
     <Compile Include="Sample\ThreeDSSample.cs" />
   </ItemGroup>
   <ItemGroup>

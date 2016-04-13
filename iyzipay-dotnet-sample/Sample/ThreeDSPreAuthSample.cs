@@ -7,10 +7,10 @@ using System.Collections.Generic;
 namespace IyzipaySample.Sample
 {
     [TestClass]
-    public class ThreeDSSample : Sample
+    public class ThreeDSPreAuthSample : Sample
     {
         [TestMethod]
-        public void Should_Initialize_Three_DS_Payment_With_Physical_And_Virtual_Item_For_Standard_Merchant()
+        public void Should_Initialize_Threeds_Payment_With_Physical_And_Virtual_Item_For_Standard_Merchant()
         {
             CreateThreeDSInitializeRequest request = new CreateThreeDSInitializeRequest();
 
@@ -94,18 +94,18 @@ namespace IyzipaySample.Sample
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
-            ThreeDSInitialize threeDSInitialize = ThreeDSInitialize.Create(request, options);
+            ThreeDSInitializePreAuth threeDSInitializePreAuth = ThreeDSInitializePreAuth.Create(request, options);
 
-            PrintResponse<ThreeDSInitialize>(threeDSInitialize);
+            PrintResponse<ThreeDSInitializePreAuth>(threeDSInitializePreAuth);
 
-            Assert.IsNotNull(threeDSInitialize.SystemTime);
-            Assert.AreEqual(Status.SUCCESS.ToString(), threeDSInitialize.Status);
-            Assert.AreEqual(Locale.TR.GetName(), threeDSInitialize.Locale);
-            Assert.AreEqual("123456789", threeDSInitialize.ConversationId);
+            Assert.IsNotNull(threeDSInitializePreAuth.SystemTime);
+            Assert.AreEqual(Status.SUCCESS.ToString(), threeDSInitializePreAuth.Status);
+            Assert.AreEqual(Locale.TR.GetName(), threeDSInitializePreAuth.Locale);
+            Assert.AreEqual("123456789", threeDSInitializePreAuth.ConversationId);
         }
 
         [TestMethod]
-        public void Should_Initialize_Three_DS_Payment_With_Physical_And_Virtual_Item_For_Market_Place()
+        public void Should_Initialize_Threeds_Payment_With_Physical_And_Virtual_Item_For_Market_Place()
         {
             CreateThreeDSInitializeRequest request = new CreateThreeDSInitializeRequest();
 
@@ -195,14 +195,14 @@ namespace IyzipaySample.Sample
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
-            ThreeDSInitialize threeDSInitialize = ThreeDSInitialize.Create(request, options);
+            ThreeDSInitializePreAuth threeDSInitializePreAuth = ThreeDSInitializePreAuth.Create(request, options);
 
-            PrintResponse<ThreeDSInitialize>(threeDSInitialize);
+            PrintResponse<ThreeDSInitializePreAuth>(threeDSInitializePreAuth);
 
-            Assert.IsNotNull(threeDSInitialize.SystemTime);
-            Assert.AreEqual(Status.SUCCESS.ToString(), threeDSInitialize.Status);
-            Assert.AreEqual(Locale.TR.GetName(), threeDSInitialize.Locale);
-            Assert.AreEqual("123456789", threeDSInitialize.ConversationId);
+            Assert.IsNotNull(threeDSInitializePreAuth.SystemTime);
+            Assert.AreEqual(Status.SUCCESS.ToString(), threeDSInitializePreAuth.Status);
+            Assert.AreEqual(Locale.TR.GetName(), threeDSInitializePreAuth.Locale);
+            Assert.AreEqual("123456789", threeDSInitializePreAuth.ConversationId);
         }
 
         [TestMethod]
@@ -290,14 +290,14 @@ namespace IyzipaySample.Sample
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
-            ThreeDSInitialize threeDSInitialize = ThreeDSInitialize.Create(request, options);
+            ThreeDSInitializePreAuth threeDSInitializePreAuth = ThreeDSInitializePreAuth.Create(request, options);
 
-            PrintResponse<ThreeDSInitialize>(threeDSInitialize);
+            PrintResponse<ThreeDSInitializePreAuth>(threeDSInitializePreAuth);
 
-            Assert.IsNotNull(threeDSInitialize.SystemTime);
-            Assert.AreEqual(Status.SUCCESS.ToString(), threeDSInitialize.Status);
-            Assert.AreEqual(Locale.TR.GetName(), threeDSInitialize.Locale);
-            Assert.AreEqual("123456789", threeDSInitialize.ConversationId);
+            Assert.IsNotNull(threeDSInitializePreAuth.SystemTime);
+            Assert.AreEqual(Status.SUCCESS.ToString(), threeDSInitializePreAuth.Status);
+            Assert.AreEqual(Locale.TR.GetName(), threeDSInitializePreAuth.Locale);
+            Assert.AreEqual("123456789", threeDSInitializePreAuth.ConversationId);
         }
 
         [TestMethod]

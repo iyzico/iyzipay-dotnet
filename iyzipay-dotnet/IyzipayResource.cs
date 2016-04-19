@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -29,7 +30,7 @@ namespace Iyzipay
 
         protected static WebHeaderCollection GetHttpHeaders(BaseRequest request, Options options)
         {
-            string randomString = DateTime.Now.ToLongTimeString();
+            string randomString = DateTime.Now.ToString("ddMMyyyyhhmmssffff");
             WebHeaderCollection headers = new WebHeaderCollection();
             headers.Add("Accept", "application/json");
             headers.Add(RANDOM_HEADER_NAME, randomString);

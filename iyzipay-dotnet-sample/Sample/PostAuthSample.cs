@@ -14,8 +14,9 @@ namespace IyzipaySample.Sample
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.PaymentId = "1";
+            request.PaidPrice = "0.6";
             request.Ip = "127.0.0.1";
-
+            PrintResponse(request.ToPKIRequestString());
             PaymentPostAuth paymentPostAuth = PaymentPostAuth.Create(request, options);
 
             PrintResponse<PaymentPostAuth>(paymentPostAuth);
@@ -25,6 +26,7 @@ namespace IyzipaySample.Sample
             Assert.AreEqual(Locale.TR.GetName(), paymentPostAuth.Locale);
             Assert.AreEqual("123456789", paymentPostAuth.ConversationId);
             Assert.AreEqual("1", paymentPostAuth.PaymentId);
+            Assert.AreEqual("0.6", paymentPostAuth.PaidPrice);
         }
     }
 }

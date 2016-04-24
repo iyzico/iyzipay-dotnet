@@ -16,7 +16,7 @@ namespace IyzipaySample.Sample
             request.PaymentId = "1";
             request.PaidPrice = "0.6";
             request.Ip = "127.0.0.1";
-            PrintResponse(request.ToPKIRequestString());
+            
             PaymentPostAuth paymentPostAuth = PaymentPostAuth.Create(request, options);
 
             PrintResponse<PaymentPostAuth>(paymentPostAuth);

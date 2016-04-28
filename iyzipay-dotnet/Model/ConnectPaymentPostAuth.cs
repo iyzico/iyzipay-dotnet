@@ -3,12 +3,8 @@ using System;
 
 namespace Iyzipay.Model
 {
-    public class ConnectPaymentPostAuth : IyzipayResource
+    public class ConnectPaymentPostAuth : ConnectPayment
     {
-        public String PaymentId { get; set; }
-        public String Price { get; set; }
-        public String ConnectorName { get; set; }
-
         public static ConnectPaymentPostAuth Create(CreatePaymentPostAuthRequest request, Options options)
         {
             return RestHttpClient.Create().Post<ConnectPaymentPostAuth>(options.BaseUrl + "/payment/iyziconnect/postauth", GetHttpHeaders(request, options), request);

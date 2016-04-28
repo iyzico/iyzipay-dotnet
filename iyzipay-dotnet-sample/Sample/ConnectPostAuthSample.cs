@@ -5,7 +5,7 @@ using Iyzipay.Model;
 namespace IyzipaySample.Sample
 {
     [TestClass]
-    public class ConnectPaymentPostAuthSample : Sample
+    public class ConnectPostAuthSample : Sample
     {
         [TestMethod]
         public void Should_Post_Auth()
@@ -14,7 +14,7 @@ namespace IyzipaySample.Sample
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.PaymentId = "1";
-            request.PaidPrice = "0.6";
+            request.PaidPrice = "0.3";
             request.Ip = "127.0.0.1";
 
             ConnectPaymentPostAuth paymentPostAuth = ConnectPaymentPostAuth.Create(request, options);
@@ -26,7 +26,7 @@ namespace IyzipaySample.Sample
             Assert.AreEqual(Locale.TR.GetName(), paymentPostAuth.Locale);
             Assert.AreEqual("123456789", paymentPostAuth.ConversationId);
             Assert.AreEqual("1", paymentPostAuth.PaymentId);
-            Assert.AreEqual("0.6", paymentPostAuth.PaidPrice);
+            Assert.AreEqual("0.3", paymentPostAuth.PaidPrice);
         }
     }
 }

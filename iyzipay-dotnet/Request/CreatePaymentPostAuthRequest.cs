@@ -14,7 +14,7 @@ namespace Iyzipay.Request
                 .AppendSuper(base.ToPKIRequestString())
                 .Append("paymentId", PaymentId)                
                 .Append("ip", Ip)
-                .Append("paidPrice", PaidPrice)
+                .AppendPrice("paidPrice", PaidPrice)
                 .GetRequestString();
         }
     }

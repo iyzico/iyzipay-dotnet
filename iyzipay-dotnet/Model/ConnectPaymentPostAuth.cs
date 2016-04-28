@@ -3,7 +3,7 @@ using System;
 
 namespace Iyzipay.Model
 {
-    public class ConnectPaymentPostAuth : Payment
+    public class ConnectPaymentPostAuth : ConnectPayment
     {
         public static ConnectPaymentPostAuth Create(CreatePaymentPostAuthRequest request, Options options)
         {

@@ -23,6 +23,7 @@ namespace IyzipaySample.Sample
             request.PaymentChannel = PaymentChannel.WEB.ToString();
             request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
             request.CallbackUrl = "http://www.merchant.com/callbackUrl";
+            request.Currency = Currency.TRY.ToString();
 
             PaymentCard paymentCard = new PaymentCard();
             paymentCard.CardHolderName = "John Doe";
@@ -118,6 +119,7 @@ namespace IyzipaySample.Sample
             request.PaymentChannel = PaymentChannel.WEB.ToString();
             request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
             request.CallbackUrl = "http://www.merchant.com/callbackUrl";
+            request.Currency = Currency.TRY.ToString();
 
             PaymentCard paymentCard = new PaymentCard();
             paymentCard.CardHolderName = "John Doe";
@@ -219,6 +221,7 @@ namespace IyzipaySample.Sample
             request.PaymentChannel = PaymentChannel.WEB.ToString();
             request.PaymentGroup = PaymentGroup.LISTING.ToString();
             request.CallbackUrl = "https://www.merchant.com/callback";
+            request.Currency = Currency.TRY.ToString();
 
             PaymentCard paymentCard = new PaymentCard();
             paymentCard.CardHolderName = "John Doe";

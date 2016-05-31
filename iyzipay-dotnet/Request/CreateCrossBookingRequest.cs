@@ -7,6 +7,7 @@ namespace Iyzipay.Request
         public String SubMerchantKey { get; set; }
         public String Price { get; set; }
         public String Reason { get; set; }
+        public String Currency { get; set; }
 
         public override String ToPKIRequestString()
         {
@@ -15,6 +16,7 @@ namespace Iyzipay.Request
                 .Append("subMerchantKey", SubMerchantKey)
                 .AppendPrice("price", Price)
                 .Append("reason", Reason)
+                .Append("currency", Currency)
                 .GetRequestString();
         }
     }

@@ -8,5 +8,6 @@ namespace Iyzipay.Model
         public String PayoutAmount { get; set; }
         public String PayoutType { get; set; }
         public String SubMerchantKey { get; set; }
+        public String Currency { get; set; }
     }
 }

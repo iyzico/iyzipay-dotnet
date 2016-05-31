@@ -15,6 +15,7 @@ namespace Iyzipay.Request
         public String BuyerIp { get; set; }
         public String PosOrderId { get; set; }
         public PaymentCard PaymentCard { get; set; }
+        public String Currency { get; set; }
         public String ConnectorName { get; set; }
 
         public override String ToPKIRequestString()
@@ -29,6 +30,7 @@ namespace Iyzipay.Request
                 .Append("buyerIp", BuyerIp)
                 .Append("posOrderId", PosOrderId)
                 .Append("paymentCard", PaymentCard)
+                .Append("currency", Currency)
                 .Append("connectorName", ConnectorName)
                 .GetRequestString();
         }

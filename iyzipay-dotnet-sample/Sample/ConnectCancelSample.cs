@@ -15,7 +15,7 @@ namespace IyzipaySample.Sample
             request.Locale=Locale.TR.GetName();
             request.ConversationId="123456789";
             request.PaymentId="24";
-            request.Ip="127.0.0.1";
+            request.Ip="85.34.78.112";
 
             ConnectCancel connectCancel = ConnectCancel.Create(request, options);
 

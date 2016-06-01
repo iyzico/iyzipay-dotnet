@@ -11,6 +11,7 @@ namespace Iyzipay.Request
         public String BasketId { get; set; }
         public String PaymentGroup { get; set; }
         public String PaymentSource { get; set; }
+        public String Currency { get; set; }
         public Buyer Buyer { get; set; }
         public Address ShippingAddress { get; set; }
         public Address BillingAddress { get; set; }
@@ -33,6 +34,7 @@ namespace Iyzipay.Request
                 .AppendList("basketItems", BasketItems)
                 .Append("callbackUrl", CallbackUrl)
                 .Append("paymentSource", PaymentSource)
+                .Append("currency", Currency)
                 .Append("posOrderId", PosOrderId)
                 .AppendPrice("paidPrice", PaidPrice)
                 .Append("forceThreeDS", ForceThreeDS)

@@ -7,6 +7,7 @@ namespace Iyzipay.Model
     {
         public String PaymentId { get; set; }
         public String Price { get; set; }
+        public String Currency { get; set; }
 
         public static Cancel Create(CreateCancelRequest request, Options options)
         {

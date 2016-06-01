@@ -16,11 +16,12 @@ namespace IyzipaySample.Sample
             request.ConversationId = "123456789";
             request.BuyerEmail = "email@email.com";
             request.BuyerId = "B2323";
-            request.BuyerIp = "127.0.0.1";
+            request.BuyerIp = "85.34.78.112";
             request.ConnectorName = "connector name";
             request.Installment = 1;
             request.PaidPrice = "1.0";
             request.Price = "1.0";
+            request.Currency = Currency.TRY.ToString();
 
             PaymentCard paymentCard = new PaymentCard();
             paymentCard.CardHolderName = "John Doe";
@@ -49,11 +50,12 @@ namespace IyzipaySample.Sample
             request.ConversationId = "123456789";
             request.BuyerEmail = "email@email.com";
             request.BuyerId = "B2323";
-            request.BuyerIp = "127.0.0.1";
+            request.BuyerIp = "85.34.78.112";
             request.ConnectorName = "connector name";
             request.Installment = 1;
             request.PaidPrice = "1.0";
             request.Price = "1.0";
+            request.Currency = Currency.TRY.ToString();
 
             PaymentCard paymentCard = new PaymentCard();
             paymentCard.CardToken = "card token";

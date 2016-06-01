@@ -18,6 +18,7 @@ namespace Iyzipay.Request
         public Address ShippingAddress { get; set; }
         public Address BillingAddress { get; set; }
         public List<BasketItem> BasketItems { get; set; }
+        public String Currency { get; set; }
 
         public override String ToPKIRequestString()
         {
@@ -35,6 +36,7 @@ namespace Iyzipay.Request
                 .Append("billingAddress", BillingAddress)
                 .AppendList("basketItems", BasketItems)
                 .Append("paymentSource", PaymentSource)
+                .Append("currency", Currency)
                 .GetRequestString();
         }
     }

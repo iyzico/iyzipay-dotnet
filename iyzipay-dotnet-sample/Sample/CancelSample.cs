@@ -14,7 +14,7 @@ namespace IyzipaySample.Sample
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.PaymentId = "1";
-            request.Ip = "127.0.0.1";
+            request.Ip = "85.34.78.112";
 
             Cancel cancel = Cancel.Create(request, options);
 

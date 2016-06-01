@@ -25,7 +25,7 @@ public static void Main(string[] args)
 	Options options = new Options();
     options.ApiKey = "your api key";
     options.SecretKey = "your secret key";
-	options.BaseUrl = "https://stg.iyzipay.com";
+	options.BaseUrl = "https://sandbox-api.iyzipay.com";
 			
 	CreatePaymentRequest request = new CreatePaymentRequest();
 	request.Locale = Locale.TR.GetName();
@@ -36,6 +36,7 @@ public static void Main(string[] args)
 	request.BasketId = "B67832";
 	request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
 	request.PaymentChannel = PaymentChannel.WEB.ToString();
+	request.Currency = Currency.TRY.ToString();
 
 	PaymentCard paymentCard = new PaymentCard();
 	paymentCard.CardHolderName = "John Doe";

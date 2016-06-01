@@ -7,6 +7,7 @@ namespace Iyzipay.Request
         public String PaymentId { get; set; }
         public String PaidPrice { get; set; }
         public String Ip { get; set; }
+        public String Currency { get; set; }
 
         public override String ToPKIRequestString()
         {
@@ -15,6 +16,7 @@ namespace Iyzipay.Request
                 .Append("paymentId", PaymentId)                
                 .Append("ip", Ip)
                 .AppendPrice("paidPrice", PaidPrice)
+                .Append("currency", Currency)
                 .GetRequestString();
         }
     }

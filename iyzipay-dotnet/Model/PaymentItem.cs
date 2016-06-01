@@ -22,5 +22,6 @@ namespace Iyzipay.Model
         public String SubMerchantPayoutRate { get; set; }
         public String SubMerchantPayoutAmount { get; set; }
         public String MerchantPayoutAmount { get; set; }
+        public ConvertedPayout ConvertedPayout { get; set; }
     }
 }

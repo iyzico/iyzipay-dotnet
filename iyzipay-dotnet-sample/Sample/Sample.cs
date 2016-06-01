@@ -15,9 +15,9 @@ namespace IyzipaySample.Sample
         public void Initialize()
         {
             options = new Options();
-            options.ApiKey = "api key";
-            options.SecretKey = "secret key";
-            options.BaseUrl = "base url";
+            options.ApiKey = "apiKey";
+            options.SecretKey = "secretKey";
+            options.BaseUrl = "baseUrl";
         }
 
         protected void PrintResponse<T>(T resource)

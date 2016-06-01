@@ -165,7 +165,7 @@ namespace IyzipaySample.Sample
             firstBasketItem.Category2 = "Accessories";
             firstBasketItem.ItemType = BasketItemType.PHYSICAL.ToString();
             firstBasketItem.Price = "0.3";
-            firstBasketItem.SubMerchantKey = "nm57s4v5mk2652k87g5728cc56nh23";
+            firstBasketItem.SubMerchantKey = "sub merchant key";
             firstBasketItem.SubMerchantPrice = "0.27";
             basketItems.Add(firstBasketItem);
 
@@ -176,7 +176,7 @@ namespace IyzipaySample.Sample
             secondBasketItem.Category2 = "Online Game Items";
             secondBasketItem.ItemType = BasketItemType.VIRTUAL.ToString();
             secondBasketItem.Price = "0.5";
-            secondBasketItem.SubMerchantKey = "nm57s4v5mk2652k87g5728cc56nh23";
+            secondBasketItem.SubMerchantKey = "sub merchant key";
             secondBasketItem.SubMerchantPrice = "0.42";
             basketItems.Add(secondBasketItem);
 
@@ -187,7 +187,7 @@ namespace IyzipaySample.Sample
             thirdBasketItem.Category2 = "Usb / Cable";
             thirdBasketItem.ItemType = BasketItemType.PHYSICAL.ToString();
             thirdBasketItem.Price = "0.2";
-            thirdBasketItem.SubMerchantKey = "nm57s4v5mk2652k87g5728cc56nh23";
+            thirdBasketItem.SubMerchantKey = "sub merchant key";
             thirdBasketItem.SubMerchantPrice = "0.18";
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;

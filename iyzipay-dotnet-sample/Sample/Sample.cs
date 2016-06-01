@@ -15,9 +15,9 @@ namespace IyzipaySample.Sample
         public void Initialize()
         {
             options = new Options();
-            options.ApiKey = "mrI3mIMuNwGiIxanQslyJBRYa8nYrCU5";
-            options.SecretKey = "9lkVluNHBABPw0LIvyn50oYZcrSJ8oNo";
-            options.BaseUrl = "https://stg.iyzipay.com";
+            options.ApiKey = "api key";
+            options.SecretKey = "secret key";
+            options.BaseUrl = "base url";
         }
 
         protected void PrintResponse<T>(T resource)

@@ -39,7 +39,7 @@ namespace IyzipaySample.Sample
         public void Should_Create_Private_Sub_Merchant()
         {
             CreateSubMerchantRequest request = new CreateSubMerchantRequest();
-            request.ConversationId = "123456";
+            request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.SubMerchantExternalId = "S49222";
             request.SubMerchantType = SubMerchantType.PRIVATE_COMPANY.ToString();
@@ -67,7 +67,7 @@ namespace IyzipaySample.Sample
         public void Should_Create_Limited_Company_Sub_Merchant()
         {
             CreateSubMerchantRequest request = new CreateSubMerchantRequest();
-            request.ConversationId = "123456";
+            request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.SubMerchantExternalId = "AS49224";
             request.SubMerchantType = SubMerchantType.LIMITED_OR_JOINT_STOCK_COMPANY.ToString();

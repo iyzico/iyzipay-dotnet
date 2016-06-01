@@ -24,6 +24,7 @@ namespace IyzipaySample.Sample
             request.BillingAddress = newBillingAddress();
             request.BasketItems = newBasketItems();
             request.CallbackUrl = "https://www.merchant.com/callback";
+            request.Currency = Currency.TRY.ToString();
 
             CheckoutFormInitialize checkoutFormInitialize = CheckoutFormInitialize.Create(request, options);
 

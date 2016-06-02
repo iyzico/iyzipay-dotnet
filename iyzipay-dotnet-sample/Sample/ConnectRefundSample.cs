@@ -13,9 +13,10 @@ namespace IyzipaySample.Sample
             CreateRefundRequest request = new CreateRefundRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
-            request.PaymentTransactionId = "29";
+            request.PaymentTransactionId = "1";
             request.Price = "1.0";
-            request.Ip = "127.0.0.1";
+            request.Ip = "85.34.78.112";
+            request.Currency = Currency.TRY.ToString();
 
             ConnectRefund connectRefund = ConnectRefund.Create(request, options);
 

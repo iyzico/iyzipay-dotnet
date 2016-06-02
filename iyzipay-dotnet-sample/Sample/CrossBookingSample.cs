@@ -16,6 +16,7 @@ namespace IyzipaySample.Sample
             request.SubMerchantKey = "sub merchant key";
             request.Price = "1";
             request.Reason = "reason text";
+            request.Currency = Currency.TRY.ToString();
 
             CrossBookingToSubMerchant crossBookingToSubMerchant = CrossBookingToSubMerchant.Create(request, options);
 
@@ -36,6 +37,7 @@ namespace IyzipaySample.Sample
             request.SubMerchantKey = "sub merchant key";
             request.Price = "1";
             request.Reason = "reason text";
+            request.Currency = Currency.TRY.ToString();
 
             CrossBookingFromSubMerchant crossBookingFromSubMerchant = CrossBookingFromSubMerchant.Create(request, options);
 

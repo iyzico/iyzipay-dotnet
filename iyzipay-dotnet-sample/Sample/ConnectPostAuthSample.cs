@@ -15,7 +15,8 @@ namespace IyzipaySample.Sample
             request.Locale = Locale.TR.GetName();
             request.PaymentId = "1";
             request.PaidPrice = "0.3";
-            request.Ip = "127.0.0.1";
+            request.Ip = "85.34.78.112";
+            request.Currency = Currency.TRY.ToString();
 
             ConnectPaymentPostAuth paymentPostAuth = ConnectPaymentPostAuth.Create(request, options);
 

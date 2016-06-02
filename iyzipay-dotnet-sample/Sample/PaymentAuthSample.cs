@@ -20,6 +20,7 @@ namespace IyzipaySample.Sample
             request.BasketId = "B67832";
             request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
             request.PaymentChannel = PaymentChannel.WEB.ToString();
+            request.Currency = Currency.TRY.ToString();
 
             PaymentCard paymentCard = new PaymentCard();
             paymentCard.CardHolderName = "John Doe";
@@ -113,6 +114,7 @@ namespace IyzipaySample.Sample
             request.BasketId = "B67832";
             request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
             request.PaymentChannel = PaymentChannel.WEB.ToString();
+            request.Currency = Currency.TRY.ToString();
 
             PaymentCard paymentCard = new PaymentCard();
             paymentCard.CardHolderName = "John Doe";
@@ -212,6 +214,7 @@ namespace IyzipaySample.Sample
             request.BasketId = "B67832";
             request.PaymentGroup = PaymentGroup.SUBSCRIPTION.ToString();
             request.PaymentChannel = PaymentChannel.WEB.ToString();
+            request.Currency = Currency.TRY.ToString();
 
             PaymentCard paymentCard = new PaymentCard();
             paymentCard.CardHolderName = "John Doe";

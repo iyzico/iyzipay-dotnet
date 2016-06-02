@@ -55,6 +55,8 @@
   <ItemGroup>
     <Compile Include="Model\InstallmentInfo.cs" />
     <Compile Include="Model\ConnectThreeDSInitializePreAuth.cs" />
+    <Compile Include="Model\ConvertedPayout.cs" />
+    <Compile Include="Model\Currency.cs" />
     <Compile Include="Model\ThreeDSInitializePreAuth.cs" />
     <Compile Include="Request\RetrieveInstallmentInfoRequest.cs" />
     <Compile Include="Request\RetrievePaymentRequest.cs" />

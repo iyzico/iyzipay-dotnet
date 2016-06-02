@@ -16,7 +16,9 @@ namespace Iyzipay.Request
         public String SubMerchantKey { get; set; }
         public String IdentityNumber { get; set; }
         public String TaxNumber { get; set; }
-       
+        public String Currency { get; set; }
+        public String SwiftCode { get; set; }
+
         public override String ToPKIRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
@@ -30,6 +32,8 @@ namespace Iyzipay.Request
                 .Append("contactName", ContactName)
                 .Append("contactSurname", ContactSurname)
                 .Append("legalCompanyTitle", LegalCompanyTitle)
+                .Append("swiftCode", SwiftCode)
+                .Append("currency", Currency)
                 .Append("subMerchantKey", SubMerchantKey)
                 .Append("identityNumber", IdentityNumber)
                 .Append("taxNumber", TaxNumber)

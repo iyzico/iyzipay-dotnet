@@ -13,9 +13,10 @@ namespace IyzipaySample.Sample
             CreateRefundRequest request = new CreateRefundRequest();
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
-            request.PaymentTransactionId = "41";
+            request.PaymentTransactionId = "1";
             request.Price = "0.1";
-            request.Ip = "127.0.0.1";
+            request.Ip = "85.34.78.112";
+            request.Currency = Currency.TRY.ToString();
 
             Refund refund = Refund.Create(request, options);
 
@@ -33,9 +34,10 @@ namespace IyzipaySample.Sample
             CreateRefundRequest request = new CreateRefundRequest();
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
-            request.PaymentTransactionId = "41";
+            request.PaymentTransactionId = "1";
             request.Price = "0.1";
-            request.Ip = "127.0.0.1";
+            request.Ip = "85.34.78.112";
+            request.Currency = Currency.TRY.ToString();
 
             RefundChargedFromMerchant refundChargedFromMerchant = RefundChargedFromMerchant.Create(request, options);
 

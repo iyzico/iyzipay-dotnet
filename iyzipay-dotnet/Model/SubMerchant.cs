@@ -10,6 +10,8 @@ namespace Iyzipay.Model
         public String GsmNumber { get; set; }
         public String Address { get; set; }
         public String Iban { get; set; }
+        public String SwiftCode { get; set; }
+        public String Currency { get; set; }
         public String TaxOffice { get; set; }
         public String ContactName { get; set; }
         public String ContactSurname { get; set; }

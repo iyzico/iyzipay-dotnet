@@ -8,6 +8,7 @@ namespace Iyzipay.Model
         public String PaymentId { get; set; }
         public String PaymentTransactionId { get; set; }
         public String Price { get; set; }
+        public String Currency { get; set; }
 
         public static Refund Create(CreateRefundRequest request, Options options)
         {

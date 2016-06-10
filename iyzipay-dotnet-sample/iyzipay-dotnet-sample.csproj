@@ -80,8 +80,8 @@
     <Compile Include="Sample\PaymentSample.cs" />
     <Compile Include="Sample\Sample.cs" />
     <Compile Include="Sample\SubMerchantSample.cs" />
-    <Compile Include="Sample\ThreeDSPreAuthSample.cs" />
-    <Compile Include="Sample\ThreeDSSample.cs" />
+    <Compile Include="Sample\ThreedsPreAuthSample.cs" />
+    <Compile Include="Sample\ThreedsSample.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\iyzipay-dotnet\iyzipay-dotnet.csproj">

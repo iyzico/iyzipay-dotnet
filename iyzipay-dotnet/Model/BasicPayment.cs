@@ -6,7 +6,7 @@ namespace Iyzipay.Model
     {
         public static BasicPayment Create(CreateBasicPaymentRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<BasicPayment>(options.BaseUrl + "/payment/aut/basic", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Post<BasicPayment>(options.BaseUrl + "/payment/auth/basic", GetHttpHeaders(request, options), request);
         }
     }
 }

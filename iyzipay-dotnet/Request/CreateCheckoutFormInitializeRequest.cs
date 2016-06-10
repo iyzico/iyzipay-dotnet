@@ -40,7 +40,7 @@ namespace Iyzipay.Request
                 .AppendPrice("paidPrice", PaidPrice)
                 .Append("forceThreeDS", ForceThreeDS)
                 .Append("cardUserKey", CardUserKey)
-                .Append("enabledInstallments", EnabledInstallments)
+                .AppendList("enabledInstallments", EnabledInstallments)
                 .GetRequestString();
         }
     }

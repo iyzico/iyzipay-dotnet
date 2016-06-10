@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace IyzipaySample.Sample
 {
     [TestClass]
-    public class ThreeDSPreAuthSample : Sample
+    public class ThreedsPreAuthSample : Sample
     {
         [TestMethod]
         public void Should_Initialize_Threeds_Payment_With_Physical_And_Virtual_Item_For_Standard_Merchant()

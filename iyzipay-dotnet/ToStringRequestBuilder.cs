@@ -76,6 +76,20 @@ namespace Iyzipay
             return this;
         }
 
+        public ToStringRequestBuilder AppendList (String key, List<int> list = null)
+        {
+            if (list != null)
+            {
+                String appendedValue = "";
+                foreach (int value in list)
+                {
+                    appendedValue = appendedValue + value + ", ";
+                }
+                AppendKeyValueArray(key, appendedValue);
+            }
+            return this;
+        }
+
         private ToStringRequestBuilder AppendKeyValue(String key, String value)
         {
             if (value != null)

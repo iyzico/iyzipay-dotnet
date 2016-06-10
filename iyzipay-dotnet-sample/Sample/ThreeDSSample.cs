@@ -361,7 +361,6 @@ namespace IyzipaySample.Sample
 
             //iyziGate paramters
             request.ConnectorName = "isbank";
-            request.PosOrderId = "1";
 
             PaymentCard paymentCard = new PaymentCard();
             paymentCard.CardHolderName = "John Doe";
@@ -460,7 +459,6 @@ namespace IyzipaySample.Sample
 
             //iyziGate paramters
             request.ConnectorName = "isbank";
-            request.PosOrderId = "1";
 
             PaymentCard paymentCard = new PaymentCard();
             paymentCard.CardHolderName = "John Doe";

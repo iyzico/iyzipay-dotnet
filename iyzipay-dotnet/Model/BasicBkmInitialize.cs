@@ -4,14 +4,14 @@ using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    public class BkmInitialize : IyzipayResource
+    public class BasicBkmInitialize : IyzipayResource
     {
         public String HtmlContent { get; set; }
         public String Token { get; set; }
         
-        public static BkmInitialize Create(CreateBkmInitializeRequest request, Options options)
+        public static BasicBkmInitialize Create(CreateBasicBkmInitializeRequest request, Options options)
         {
-            BkmInitialize response = RestHttpClient.Create().Post<BkmInitialize>(options.BaseUrl + "/payment/bkm/initialize", GetHttpHeaders(request, options), request);
+            BasicBkmInitialize response = RestHttpClient.Create().Post<BasicBkmInitialize>(options.BaseUrl + "/payment/bkm/initialize/basic", GetHttpHeaders(request, options), request);
 
             if (response != null)
             {

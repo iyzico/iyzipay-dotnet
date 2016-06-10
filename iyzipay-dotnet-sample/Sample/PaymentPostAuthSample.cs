@@ -5,7 +5,7 @@ using Iyzipay.Model;
 namespace IyzipaySample.Sample
 {
     [TestClass]
-    public class PostAuthSample : Sample
+    public class PaymentPostAuthSample : Sample
     {
         [TestMethod]
         public void Should_Post_Auth()

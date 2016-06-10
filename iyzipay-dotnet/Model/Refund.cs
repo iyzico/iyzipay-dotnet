@@ -9,10 +9,11 @@ namespace Iyzipay.Model
         public String PaymentTransactionId { get; set; }
         public String Price { get; set; }
         public String Currency { get; set; }
+        public String ConnectorName { get; set; }
 
         public static Refund Create(CreateRefundRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<Refund>(options.BaseUrl + "/payment/iyzipos/refund", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Post<Refund>(options.BaseUrl + "/payment/refund", GetHttpHeaders(request, options), request);
         }
     }
 }

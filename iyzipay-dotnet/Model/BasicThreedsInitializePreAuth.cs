@@ -4,14 +4,14 @@ using Newtonsoft.Json;
 
 namespace Iyzipay.Model
 {
-    public class ConnectThreeDSInitialize : IyzipayResource
+    public class BasicThreedsInitializePreAuth : IyzipayResource
     {
         [JsonProperty(PropertyName = "threeDSHtmlContent")]
         public String HtmlContent { get; set; }
 
-        public static ConnectThreeDSInitialize Create(CreateConnectThreeDSInitializeRequest request, Options options)
+        public static BasicThreedsInitializePreAuth Create(CreateBasicPaymentRequest request, Options options)
         {
-            ConnectThreeDSInitialize response = RestHttpClient.Create().Post<ConnectThreeDSInitialize>(options.BaseUrl + "/payment/iyziconnect/initialize3ds", GetHttpHeaders(request, options), request);
+            BasicThreedsInitializePreAuth response = RestHttpClient.Create().Post<BasicThreedsInitializePreAuth>(options.BaseUrl + "/payment/3dsecure/initialize/preauth/basic", GetHttpHeaders(request, options), request);
 
             if (response != null)
             {

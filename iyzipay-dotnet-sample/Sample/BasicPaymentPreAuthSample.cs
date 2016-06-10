@@ -6,12 +6,12 @@ using Iyzipay.Model;
 namespace IyzipaySample.Sample
 {
     [TestClass]
-    public class ConnectPaymentPreAuthSample : Sample
+    public class BasicPaymentPreAuthSample : Sample
     {
         [TestMethod]
         public void Should_Pay_With_Card()
         {
-            CreateConnectPaymentRequest request = new CreateConnectPaymentRequest();
+            CreateBasicPaymentRequest request = new CreateBasicPaymentRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.BuyerEmail = "email@email.com";
@@ -32,20 +32,20 @@ namespace IyzipaySample.Sample
             paymentCard.RegisterCard = 0;
             request.PaymentCard = paymentCard;
 
-            ConnectPaymentPreAuth connectPaymentPreAuth = ConnectPaymentPreAuth.Create(request, options);
+            BasicPaymentPreAuth BasicPaymentPreAuth = BasicPaymentPreAuth.Create(request, options);
 
-            PrintResponse<ConnectPaymentPreAuth>(connectPaymentPreAuth);
+            PrintResponse<BasicPaymentPreAuth>(BasicPaymentPreAuth);
 
-            Assert.IsNotNull(connectPaymentPreAuth.SystemTime);
-            Assert.AreEqual(Status.SUCCESS.ToString(), connectPaymentPreAuth.Status);
-            Assert.AreEqual(Locale.TR.GetName(), connectPaymentPreAuth.Locale);
-            Assert.AreEqual("123456789", connectPaymentPreAuth.ConversationId);
+            Assert.IsNotNull(BasicPaymentPreAuth.SystemTime);
+            Assert.AreEqual(Status.SUCCESS.ToString(), BasicPaymentPreAuth.Status);
+            Assert.AreEqual(Locale.TR.GetName(), BasicPaymentPreAuth.Locale);
+            Assert.AreEqual("123456789", BasicPaymentPreAuth.ConversationId);
         }
 
         [TestMethod]
         public void Should_Pay_With_Card_token()
         {
-            CreateConnectPaymentRequest request = new CreateConnectPaymentRequest();
+            CreateBasicPaymentRequest request = new CreateBasicPaymentRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.BuyerEmail = "email@email.com";
@@ -62,14 +62,14 @@ namespace IyzipaySample.Sample
             paymentCard.CardUserKey = "card user key";
             request.PaymentCard = paymentCard;
 
-            ConnectPaymentPreAuth connectPaymentPreAuth = ConnectPaymentPreAuth.Create(request, options);
+            BasicPaymentPreAuth BasicPaymentPreAuth = BasicPaymentPreAuth.Create(request, options);
 
-            PrintResponse<ConnectPaymentPreAuth>(connectPaymentPreAuth);
+            PrintResponse<BasicPaymentPreAuth>(BasicPaymentPreAuth);
 
-            Assert.IsNotNull(connectPaymentPreAuth.SystemTime);
-            Assert.AreEqual(Status.SUCCESS.ToString(), connectPaymentPreAuth.Status);
-            Assert.AreEqual(Locale.TR.GetName(), connectPaymentPreAuth.Locale);
-            Assert.AreEqual("123456789", connectPaymentPreAuth.ConversationId);
+            Assert.IsNotNull(BasicPaymentPreAuth.SystemTime);
+            Assert.AreEqual(Status.SUCCESS.ToString(), BasicPaymentPreAuth.Status);
+            Assert.AreEqual(Locale.TR.GetName(), BasicPaymentPreAuth.Locale);
+            Assert.AreEqual("123456789", BasicPaymentPreAuth.ConversationId);
         }
     }
 }

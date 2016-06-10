@@ -2,7 +2,7 @@
 
 namespace Iyzipay.Model
 {
-  public  class BKMInstallmentPrice : RequestStringConvertible
+  public  class BkmInstallmentPrice : RequestStringConvertible
     {
         public int? InstallmentNumber { get; set; }
         public String TotalPrice { get; set; }

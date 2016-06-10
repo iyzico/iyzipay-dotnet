@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-   public class BKMInstallment : RequestStringConvertible
+   public class BkmInstallment : RequestStringConvertible
     {
-        public long BankId { get; set; }
-        public List<BKMInstallmentPrice> InstallmentPrices { get; set; }
+        public long? BankId { get; set; }
+        public List<BkmInstallmentPrice> InstallmentPrices { get; set; }
 
         public String ToPKIRequestString()
         {

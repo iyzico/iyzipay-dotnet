@@ -1,11 +1,12 @@
 ﻿using Iyzipay.Model;
 using System;
+using System.Collections.Generic;
 
 namespace Iyzipay.Request
 {
-    public class CreateConnectPaymentRequest : BaseRequest
+    public class CreateBasicPaymentRequest : BaseRequest
     {
-        public static readonly int SINGLE_INSTALLMENT = 1;
+        public static readonly int? SINGLE_INSTALLMENT = 1;
 
         public String Price { get; set; }
         public String PaidPrice { get; set; }
@@ -17,6 +18,12 @@ namespace Iyzipay.Request
         public PaymentCard PaymentCard { get; set; }
         public String Currency { get; set; }
         public String ConnectorName { get; set; }
+        public String CallbackUrl { get; set; }
+
+        public CreateBasicPaymentRequest()
+        {
+            this.Installment = SINGLE_INSTALLMENT;
+        }
 
         public override String ToPKIRequestString()
         {
@@ -28,12 +35,12 @@ namespace Iyzipay.Request
                 .Append("buyerEmail", BuyerEmail)
                 .Append("buyerId", BuyerId)
                 .Append("buyerIp", BuyerIp)
-                .Append("posOrderId", PosOrderId)
+                .Append("posOrderId", PosOrderId)               
                 .Append("paymentCard", PaymentCard)
                 .Append("currency", Currency)
                 .Append("connectorName", ConnectorName)
+                .Append("callbackUrl", CallbackUrl)
                 .GetRequestString();
         }
-
     }
 }

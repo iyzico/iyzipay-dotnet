@@ -20,6 +20,7 @@ namespace Iyzipay.Request
         public int? ForceThreeDS { get; set; }
         public String CardUserKey { get; set; }
         public String PosOrderId { get; set; }
+        public List<int> EnabledInstallments { get; set; }
 
         public override String ToPKIRequestString()
         {
@@ -39,6 +40,7 @@ namespace Iyzipay.Request
                 .AppendPrice("paidPrice", PaidPrice)
                 .Append("forceThreeDS", ForceThreeDS)
                 .Append("cardUserKey", CardUserKey)
+                .Append("enabledInstallments", EnabledInstallments)
                 .GetRequestString();
         }
     }

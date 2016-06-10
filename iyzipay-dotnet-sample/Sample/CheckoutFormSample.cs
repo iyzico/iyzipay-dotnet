@@ -20,11 +20,12 @@ namespace IyzipaySample.Sample
             request.BasketId = "B67832";
             request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
             request.Buyer = NewBuyer();
-            request.ShippingAddress = newShippingAddress();
-            request.BillingAddress = newBillingAddress();
-            request.BasketItems = newBasketItems();
+            request.ShippingAddress = NewShippingAddress();
+            request.BillingAddress = NewBillingAddress();
+            request.BasketItems = NewBasketItems();
             request.CallbackUrl = "https://www.merchant.com/callback";
             request.Currency = Currency.TRY.ToString();
+            request.EnabledInstallments = NewEnabledInstallments();
 
             CheckoutFormInitialize checkoutFormInitialize = CheckoutFormInitialize.Create(request, options);
 
@@ -39,13 +40,13 @@ namespace IyzipaySample.Sample
         [TestMethod]
         public void Should_Retrieve_Checkout_Form_Auth()
         {
-            RetrieveCheckoutFormAuthRequest request = new RetrieveCheckoutFormAuthRequest();
+            RetrieveCheckoutFormRequest request = new RetrieveCheckoutFormRequest();
             request.ConversationId = "123456789";
             request.Token = "token";
 
-            CheckoutFormAuth checkoutFormAuth = CheckoutFormAuth.Retrieve(request, options);
+            CheckoutForm checkoutFormAuth = CheckoutForm.Retrieve(request, options);
 
-            PrintResponse<CheckoutFormAuth>(checkoutFormAuth);
+            PrintResponse<CheckoutForm>(checkoutFormAuth);
 
             Assert.IsNotNull(checkoutFormAuth.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), checkoutFormAuth.Status);
@@ -71,7 +72,7 @@ namespace IyzipaySample.Sample
             return buyer;
         }
 
-        private Address newShippingAddress()
+        private Address NewShippingAddress()
         {
             Address address = new Address();
             address.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
@@ -82,7 +83,7 @@ namespace IyzipaySample.Sample
             return address;
         }
 
-        private Address newBillingAddress()
+        private Address NewBillingAddress()
         {
             Address address = new Address();
             address.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
@@ -93,7 +94,7 @@ namespace IyzipaySample.Sample
             return address;
         }
 
-        private List<BasketItem> newBasketItems()
+        private List<BasketItem> NewBasketItems()
         {
             List<BasketItem> basketItems = new List<BasketItem>();
 
@@ -131,6 +132,15 @@ namespace IyzipaySample.Sample
             basketItems.Add(thirdBasketItem);
 
             return basketItems;
+        }
+        private List<int> NewEnabledInstallments()
+        {
+            List<int> enabledInstallments = new List<int>();
+            enabledInstallments.Add(2);
+            enabledInstallments.Add(3);
+            enabledInstallments.Add(6);
+            enabledInstallments.Add(9);
+            return enabledInstallments;
         }
     }
 }

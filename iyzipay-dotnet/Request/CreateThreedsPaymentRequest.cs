@@ -2,7 +2,7 @@
 
 namespace Iyzipay.Request
 {
-    public class CreateConnectThreeDSAuthRequest : BaseRequest
+    public class CreateThreedsPaymentRequest : BaseRequest
     {
         public String PaymentId { get; set; }
         public String ConversationData { get; set; }

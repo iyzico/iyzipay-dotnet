@@ -5,12 +5,12 @@ using Iyzipay.Model;
 namespace IyzipaySample.Sample
 {
     [TestClass]
-    public class ConnectThreeDSPreAuthSample : Sample
+    public class BasicThreedsSample : Sample
     {
         [TestMethod]
         public void Should_Initialize_Threeds_With_Card()
         {
-            CreateConnectThreeDSInitializeRequest request = new CreateConnectThreeDSInitializeRequest();
+            CreateBasicPaymentRequest request = new CreateBasicPaymentRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.BuyerEmail = "email@email.com";
@@ -32,20 +32,20 @@ namespace IyzipaySample.Sample
             paymentCard.RegisterCard = 0;
             request.PaymentCard = paymentCard;
 
-            ConnectThreeDSInitializePreAuth connectThreeDSInitializePreAuth = ConnectThreeDSInitializePreAuth.Create(request, options);
+            BasicThreedsInitialize basicThreeDSInitialize = BasicThreedsInitialize.Create(request, options);
 
-            PrintResponse<ConnectThreeDSInitializePreAuth>(connectThreeDSInitializePreAuth);
+            PrintResponse<BasicThreedsInitialize>(basicThreeDSInitialize);
 
-            Assert.IsNotNull(connectThreeDSInitializePreAuth.SystemTime);
-            Assert.AreEqual(Status.SUCCESS.ToString(), connectThreeDSInitializePreAuth.Status);
-            Assert.AreEqual(Locale.TR.GetName(), connectThreeDSInitializePreAuth.Locale);
-            Assert.AreEqual("123456789", connectThreeDSInitializePreAuth.ConversationId);
+            Assert.IsNotNull(basicThreeDSInitialize.SystemTime);
+            Assert.AreEqual(Status.SUCCESS.ToString(), basicThreeDSInitialize.Status);
+            Assert.AreEqual(Locale.TR.GetName(), basicThreeDSInitialize.Locale);
+            Assert.AreEqual("123456789", basicThreeDSInitialize.ConversationId);
         }
 
         [TestMethod]
         public void Should_Initialize_Threeds_With_Card_Token()
         {
-            CreateConnectThreeDSInitializeRequest request = new CreateConnectThreeDSInitializeRequest();
+            CreateBasicPaymentRequest request = new CreateBasicPaymentRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.BuyerEmail = "email@email.com";
@@ -63,32 +63,32 @@ namespace IyzipaySample.Sample
             paymentCard.CardUserKey = "card user key";
             request.PaymentCard = paymentCard;
 
-            ConnectThreeDSInitializePreAuth connectThreeDSInitializePreAuth = ConnectThreeDSInitializePreAuth.Create(request, options);
+            BasicThreedsInitialize basicThreeDSInitialize = BasicThreedsInitialize.Create(request, options);
 
-            PrintResponse<ConnectThreeDSInitializePreAuth>(connectThreeDSInitializePreAuth);
+            PrintResponse<BasicThreedsInitialize>(basicThreeDSInitialize);
 
-            Assert.IsNotNull(connectThreeDSInitializePreAuth.SystemTime);
-            Assert.AreEqual(Status.SUCCESS.ToString(), connectThreeDSInitializePreAuth.Status);
-            Assert.AreEqual(Locale.TR.GetName(), connectThreeDSInitializePreAuth.Locale);
-            Assert.AreEqual("123456789", connectThreeDSInitializePreAuth.ConversationId);
+            Assert.IsNotNull(basicThreeDSInitialize.SystemTime);
+            Assert.AreEqual(Status.SUCCESS.ToString(), basicThreeDSInitialize.Status);
+            Assert.AreEqual(Locale.TR.GetName(), basicThreeDSInitialize.Locale);
+            Assert.AreEqual("123456789", basicThreeDSInitialize.ConversationId);
         }
 
         [TestMethod]
         public void Should_Auth_Threeds()
         {
-            CreateConnectThreeDSAuthRequest request = new CreateConnectThreeDSAuthRequest();
+            CreateThreedsPaymentRequest request = new CreateThreedsPaymentRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.PaymentId = "12345";
 
-            ConnectThreeDSAuth connectThreeDSAuth = ConnectThreeDSAuth.Create(request, options);
+            BasicThreedsPayment basicThreeDS = BasicThreedsPayment.Create(request, options);
 
-            PrintResponse<ConnectThreeDSAuth>(connectThreeDSAuth);
+            PrintResponse<BasicThreedsPayment>(basicThreeDS);
 
-            Assert.IsNotNull(connectThreeDSAuth.SystemTime);
-            Assert.AreEqual(Status.SUCCESS.ToString(), connectThreeDSAuth.Status);
-            Assert.AreEqual(Locale.TR.GetName(), connectThreeDSAuth.Locale);
-            Assert.AreEqual("123456789", connectThreeDSAuth.ConversationId);
+            Assert.IsNotNull(basicThreeDS.SystemTime);
+            Assert.AreEqual(Status.SUCCESS.ToString(), basicThreeDS.Status);
+            Assert.AreEqual(Locale.TR.GetName(), basicThreeDS.Locale);
+            Assert.AreEqual("123456789", basicThreeDS.ConversationId);
         }
     }
 }

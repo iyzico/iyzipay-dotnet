@@ -4,17 +4,17 @@ using System.Collections.Generic;
 
 namespace Iyzipay.Request
 {
-    public class CreateConnectBKMInitializeRequest : BaseRequest
+    public class CreateBasicBkmInitializeRequest : BaseRequest
     {
-        public String ConnectorName { set; get; }
-        public String Price { set; get; }
-        public String CallbackUrl { set; get; }
-        public String BuyerEmail {set;get;}
-        public String BuyerId { set; get; }
-        public String BuyerIp { set; get; }
-        public String PosOrderId { set; get; }
-        public List<BKMInstallment> InstallmentDetails { set; get; }
-
+        public String ConnectorName { get; set; }
+        public String Price { get; set; }
+        public String CallbackUrl { get; set; }
+        public String BuyerEmail { get; set; }
+        public String BuyerId { get; set; }
+        public String BuyerIp { get; set; }
+        public String PosOrderId { get; set; }
+        public List<BkmInstallment> InstallmentDetails { get; set; }
+        
         public override String ToPKIRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
@@ -22,7 +22,7 @@ namespace Iyzipay.Request
                 .Append("connectorName", ConnectorName)
                 .AppendPrice("price", Price)
                 .Append("callbackUrl", CallbackUrl)
-                .Append("buyerEmail", BuyerEmail )
+                .Append("buyerEmail", BuyerEmail)
                 .Append("buyerId", BuyerId)
                 .Append("buyerIp", BuyerIp)
                 .Append("posOrderId", PosOrderId)

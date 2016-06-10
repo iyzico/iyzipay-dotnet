@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Iyzipay.Request
 {
-    public class CreateBKMInitializeRequest : BaseRequest
+    public class CreateBkmInitializeRequest : BaseRequest
     {
         public String Price { get; set; }
         public String BasketId { get; set; }

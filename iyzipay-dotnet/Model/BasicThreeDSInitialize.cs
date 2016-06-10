@@ -4,14 +4,14 @@ using Newtonsoft.Json;
 
 namespace Iyzipay.Model
 {
-    public class ThreedsInitialize : IyzipayResource
+    public class BasicThreedsInitialize : IyzipayResource
     {
         [JsonProperty(PropertyName = "threeDSHtmlContent")]
         public String HtmlContent { get; set; }
 
-        public static ThreedsInitialize Create(CreatePaymentRequest request, Options options)
+        public static BasicThreedsInitialize Create(CreateBasicPaymentRequest request, Options options)
         {
-            ThreedsInitialize response = RestHttpClient.Create().Post<ThreedsInitialize>(options.BaseUrl + "/payment/3dsecure/initialize", GetHttpHeaders(request, options), request);
+            BasicThreedsInitialize response = RestHttpClient.Create().Post<BasicThreedsInitialize>(options.BaseUrl + "/payment/3dsecure/initialize/basic", GetHttpHeaders(request, options), request);
 
             if (response != null)
             {

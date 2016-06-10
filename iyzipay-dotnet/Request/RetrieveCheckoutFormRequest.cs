@@ -2,7 +2,7 @@
 
 namespace Iyzipay.Request
 {
-    public class RetrieveBKMAuthRequest : BaseRequest
+    public class RetrieveCheckoutFormRequest : BaseRequest
     {
         public String Token { set; get; }
 

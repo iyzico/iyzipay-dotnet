@@ -1,23 +1,37 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
-using Iyzipay.Model;
-
+﻿// <copyright file="ApprovalSample.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace IyzipaySample.Sample
 {
+    using Iyzipay.Model;
+    using Iyzipay.Request;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    /// <summary>
+    /// Approval sample
+    /// </summary>
+    /// <seealso cref="IyzipaySample.Sample.Sample" />
+    /// <summary>
+    /// ApprovalSample
+    /// </summary>
     [TestClass]
     public class ApprovalSample : Sample
     {
+        /// <summary>
+        /// Should approve payment item.
+        /// </summary>
         [TestMethod]
-        public void Should_Approve_Payment_Item()
+        public void ShouldApprovePaymentItem()
         {
-            CreateApprovalRequest request = new CreateApprovalRequest();
+            var request = new CreateApprovalRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.PaymentTransactionId = "2";
 
-            Approval approval = Approval.Create(request, options);
+            var approval = Approval.Create(request, Options);
 
-            PrintResponse<Approval>(approval);
+            this.PrintResponse<Approval>(approval);
 
             Assert.IsNotNull(approval.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), approval.Status);
@@ -26,17 +40,20 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("2", approval.PaymentTransactionId);
         }
 
+        /// <summary>
+        /// Should disapprove payment item.
+        /// </summary>
         [TestMethod]
-        public void Should_Disapprove_Payment_Item()
+        public void ShouldDisapprovePaymentItem()
         {
-            CreateApprovalRequest request = new CreateApprovalRequest();
+            var request = new CreateApprovalRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.PaymentTransactionId = "2";
 
-            Disapproval disapproval = Disapproval.Create(request, options);
+            var disapproval = Disapproval.Create(request, Options);
 
-            PrintResponse<Disapproval>(disapproval);
+            this.PrintResponse<Disapproval>(disapproval);
 
             Assert.IsNotNull(disapproval.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), disapproval.Status);

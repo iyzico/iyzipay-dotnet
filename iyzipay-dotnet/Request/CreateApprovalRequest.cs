@@ -1,16 +1,34 @@
-﻿using System;
-
+﻿// <copyright file="CreateApprovalRequest.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace Iyzipay.Request
 {
+    /// <summary>
+    /// Create approval request
+    /// </summary>
+    /// <seealso cref="Iyzipay.BaseRequest" />
     public class CreateApprovalRequest : BaseRequest
     {
-        public String PaymentTransactionId { get; set; }
+        /// <summary>
+        /// Gets or sets the payment transaction identifier.
+        /// </summary>
+        /// <value>
+        /// The payment transaction identifier.
+        /// </value>
+        public string PaymentTransactionId { get; set; }
 
-        public override String ToPKIRequestString()
+        /// <summary>
+        /// To PKI request string.
+        /// </summary>
+        /// <returns>
+        /// The request as a PKI string
+        /// </returns>
+        public override string ToPkiRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
-                .AppendSuper(base.ToPKIRequestString())
-                .Append("paymentTransactionId", PaymentTransactionId)
+                .AppendSuper(base.ToPkiRequestString())
+                .Append("paymentTransactionId", this.PaymentTransactionId)
                 .GetRequestString();
         }
     }

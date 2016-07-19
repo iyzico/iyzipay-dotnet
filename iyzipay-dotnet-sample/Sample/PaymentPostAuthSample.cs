@@ -1,16 +1,26 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
-using Iyzipay.Model;
-
+﻿// <copyright file="PaymentPostAuthSample.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace IyzipaySample.Sample
 {
+    using Iyzipay.Model;
+    using Iyzipay.Request;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    /// <summary>
+    /// Payment post authorization sample
+    /// </summary>
     [TestClass]
     public class PaymentPostAuthSample : Sample
     {
+        /// <summary>
+        /// Should post authentication.
+        /// </summary>
         [TestMethod]
-        public void Should_Post_Auth()
+        public void ShouldPostAuth()
         {
-            CreatePaymentPostAuthRequest request = new CreatePaymentPostAuthRequest();
+            var request = new CreatePaymentPostAuthRequest();
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.PaymentId = "1";
@@ -18,9 +28,9 @@ namespace IyzipaySample.Sample
             request.Ip = "85.34.78.112";
             request.Currency = Currency.TRY.ToString();
 
-            PaymentPostAuth paymentPostAuth = PaymentPostAuth.Create(request, options);
+            var paymentPostAuth = PaymentPostAuth.Create(request, Options);
 
-            PrintResponse<PaymentPostAuth>(paymentPostAuth);
+            this.PrintResponse<PaymentPostAuth>(paymentPostAuth);
 
             Assert.IsNotNull(paymentPostAuth.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), paymentPostAuth.Status);

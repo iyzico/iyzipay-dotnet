@@ -1,31 +1,41 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
-using Iyzipay.Model;
-using System.Collections.Generic;
-
+﻿// <copyright file="BkmSample.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace IyzipaySample.Sample
 {
+    using System.Collections.Generic;
+    using Iyzipay.Model;
+    using Iyzipay.Request;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    /// <summary>
+    /// BKM Sample
+    /// </summary>
     [TestClass]
     public class BkmSample : Sample
     {
+        /// <summary>
+        /// Should initialize BKM express.
+        /// </summary>
         [TestMethod]
-        public void Should_Initialize_Bkm_Express()
+        public void ShouldInitializeBkmExpress()
         {
-            CreateBkmInitializeRequest request = new CreateBkmInitializeRequest();
+            var request = new CreateBkmInitializeRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.Price = "1";
             request.BasketId = "B67832";
             request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
-            request.Buyer = NewBuyer();
-            request.ShippingAddress = newShippingAddress();
-            request.BillingAddress = newBillingAddress();
-            request.BasketItems = newBasketItems();
+            request.Buyer = this.NewBuyer();
+            request.ShippingAddress = this.NewShippingAddress();
+            request.BillingAddress = this.NewBillingAddress();
+            request.BasketItems = this.NewBasketItems();
             request.CallbackUrl = "https://www.merchant.com/callbackUrl";
 
-            BkmInitialize bkmInitialize = BkmInitialize.Create(request, options);
+            var bkmInitialize = BkmInitialize.Create(request, Options);
 
-            PrintResponse<BkmInitialize>(bkmInitialize);
+            this.PrintResponse<BkmInitialize>(bkmInitialize);
 
             Assert.IsNotNull(bkmInitialize.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), bkmInitialize.Status);
@@ -34,17 +44,20 @@ namespace IyzipaySample.Sample
             Assert.IsNotNull(bkmInitialize.HtmlContent);
         }
 
+        /// <summary>
+        /// Should retrieve BKM authentication.
+        /// </summary>
         [TestMethod]
-        public void Should_Retrieve_Bkm_Auth()
+        public void ShouldRetrieveBkmAuth()
         {
-            RetrieveBkmRequest request = new RetrieveBkmRequest();
+            var request = new RetrieveBkmRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.Token = "mockToken1453382198111";
 
-            Bkm bkmAuth = Bkm.Retrieve(request, options);
+            var bkmAuth = Bkm.Retrieve(request, Options);
 
-            PrintResponse<Bkm>(bkmAuth);
+            this.PrintResponse<Bkm>(bkmAuth);
 
             Assert.IsNotNull(bkmAuth.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), bkmAuth.Status);
@@ -52,9 +65,13 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", bkmAuth.ConversationId);
         }
 
+        /// <summary>
+        /// Creates a new buyer.
+        /// </summary>
+        /// <returns>The buyer</returns>
         private Buyer NewBuyer()
         {
-            Buyer buyer = new Buyer();
+            var buyer = new Buyer();
             buyer.Id = "BY789";
             buyer.Name = "John";
             buyer.Surname = "Doe";
@@ -71,9 +88,13 @@ namespace IyzipaySample.Sample
             return buyer;
         }
 
-        private Address newShippingAddress()
+        /// <summary>
+        /// Creates a new shipping address.
+        /// </summary>
+        /// <returns>The shipping address</returns>
+        private Address NewShippingAddress()
         {
-            Address address = new Address();
+            var address = new Address();
             address.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             address.ZipCode = "34742";
             address.ContactName = "Jane Doe";
@@ -82,9 +103,13 @@ namespace IyzipaySample.Sample
             return address;
         }
 
-        private Address newBillingAddress()
+        /// <summary>
+        /// Creates a new billing address.
+        /// </summary>
+        /// <returns>The billing address</returns>
+        private Address NewBillingAddress()
         {
-            Address address = new Address();
+            var address = new Address();
             address.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             address.ZipCode = "34742";
             address.ContactName = "Jane Doe";
@@ -93,11 +118,15 @@ namespace IyzipaySample.Sample
             return address;
         }
 
-        private List<BasketItem> newBasketItems()
+        /// <summary>
+        /// Creates new basket items.
+        /// </summary>
+        /// <returns>The basket items</returns>
+        private List<BasketItem> NewBasketItems()
         {
-            List<BasketItem> basketItems = new List<BasketItem>();
+            var basketItems = new List<BasketItem>();
 
-            BasketItem firstBasketItem = new BasketItem();
+            var firstBasketItem = new BasketItem();
             firstBasketItem.Id = "BI101";
             firstBasketItem.Name = "Binocular";
             firstBasketItem.Category1 = "Collectibles";
@@ -108,7 +137,7 @@ namespace IyzipaySample.Sample
             firstBasketItem.SubMerchantPrice = "0.27";
             basketItems.Add(firstBasketItem);
 
-            BasketItem secondBasketItem = new BasketItem();
+            var secondBasketItem = new BasketItem();
             secondBasketItem.Id = "BI102";
             secondBasketItem.Name = "Game code";
             secondBasketItem.Category1 = "Game";
@@ -119,7 +148,7 @@ namespace IyzipaySample.Sample
             secondBasketItem.SubMerchantPrice = "0.42";
             basketItems.Add(secondBasketItem);
 
-            BasketItem thirdBasketItem = new BasketItem();
+            var thirdBasketItem = new BasketItem();
             thirdBasketItem.Id = "BI103";
             thirdBasketItem.Name = "Usb";
             thirdBasketItem.Category1 = "Electronics";

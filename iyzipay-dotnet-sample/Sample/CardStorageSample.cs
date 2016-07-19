@@ -1,32 +1,42 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Model;
-using Iyzipay.Request;
-
+﻿// <copyright file="CardStorageSample.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace IyzipaySample.Sample
 {
+    using Iyzipay.Model;
+    using Iyzipay.Request;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    /// <summary>
+    /// Card storage sample
+    /// </summary>
     [TestClass]
     public class CardStorageSample : Sample
     {
+        /// <summary>
+        /// Should create user and add card.
+        /// </summary>
         [TestMethod]
-        public void Should_Create_User_And_Add_Card()
+        public void ShouldCreateUserAndAddCard()
         {
-            CardInformation cardInformation = new CardInformation();
+            var cardInformation = new CardInformation();
             cardInformation.CardAlias = "card alias";
             cardInformation.CardHolderName = "John Doe";
             cardInformation.CardNumber = "5528790000000008";
             cardInformation.ExpireMonth = "12";
             cardInformation.ExpireYear = "2030";
 
-            CreateCardRequest request = new CreateCardRequest();
+            var request = new CreateCardRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.Email = "email@email.com";
             request.ExternalId = "external id";
             request.Card = cardInformation;
 
-            Card card = Card.Create(request, options);
+            var card = Card.Create(request, Options);
 
-            PrintResponse<Card>(card);
+            this.PrintResponse<Card>(card);
 
             Assert.IsNotNull(card.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), card.Status);
@@ -34,25 +44,28 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", card.ConversationId);
         }
 
+        /// <summary>
+        /// Should create card.
+        /// </summary>
         [TestMethod]
-        public void Should_Create_Card()
+        public void ShouldCreateCard()
         {
-            CardInformation cardInformation = new CardInformation();
+            var cardInformation = new CardInformation();
             cardInformation.CardAlias = "card alias";
             cardInformation.CardHolderName = "John Doe";
             cardInformation.CardNumber = "5528790000000008";
             cardInformation.ExpireMonth = "12";
             cardInformation.ExpireYear = "2030";
 
-            CreateCardRequest request = new CreateCardRequest();
+            var request = new CreateCardRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.CardUserKey = "card user key";
             request.Card = cardInformation;
 
-            Card card = Card.Create(request, options);
+            var card = Card.Create(request, Options);
 
-            PrintResponse<Card>(card);
+            this.PrintResponse<Card>(card);
 
             Assert.IsNotNull(card.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), card.Status);
@@ -60,18 +73,21 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", card.ConversationId);
         }
 
+        /// <summary>
+        /// Should delete card.
+        /// </summary>
         [TestMethod]
-        public void Should_Delete_Card()
+        public void ShouldDeleteCard()
         {
-            DeleteCardRequest request = new DeleteCardRequest();
+            var request = new DeleteCardRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.CardToken = "card token";
             request.CardUserKey = "card user key";
 
-            Card card = Card.Delete(request, options);
+            var card = Card.Delete(request, Options);
 
-            PrintResponse<Card>(card);
+            this.PrintResponse<Card>(card);
 
             Assert.IsNotNull(card.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), card.Status);
@@ -79,17 +95,20 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", card.ConversationId);
         }
 
+        /// <summary>
+        /// Should retrieve cards.
+        /// </summary>
         [TestMethod]
-        public void Should_Retrieve_Cards()
+        public void ShouldRetrieveCards()
         {
-            RetrieveCardListRequest request = new RetrieveCardListRequest();
+            var request = new RetrieveCardListRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.CardUserKey = "card user key";
 
-            CardList cardList = CardList.Retrieve(request, options);
+            var cardList = CardList.Retrieve(request, Options);
 
-            PrintResponse<CardList>(cardList);
+            this.PrintResponse<CardList>(cardList);
 
             Assert.IsNotNull(cardList.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), cardList.Status);

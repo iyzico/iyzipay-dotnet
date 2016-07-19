@@ -1,17 +1,28 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Model;
-using Iyzipay.Request;
-using System.Collections.Generic;
-
+﻿// <copyright file="PaymentPreAuthSample.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace IyzipaySample.Sample
 {
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using Iyzipay.Model;
+    using Iyzipay.Request;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    /// <summary>
+    /// Payment pre authorization sample
+    /// </summary>
     [TestClass]
     public class PaymentPreAuthSample : Sample
     {
+        /// <summary>
+        /// Should create payment with physical and virtual item for standard merchant.
+        /// </summary>
         [TestMethod]
-        public void Should_Create_Payment_With_Physical_And_Virtual_Item_For_Standard_Merchant()
+        public void ShouldCreatePaymentWithPhysicalAndVirtualItemForStandardMerchant()
         {
-            CreatePaymentRequest request = new CreatePaymentRequest();
+            var request = new CreatePaymentRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.Price = "1";
@@ -22,7 +33,7 @@ namespace IyzipaySample.Sample
             request.PaymentChannel = PaymentChannel.WEB.ToString();
             request.Currency = Currency.TRY.ToString();
 
-            PaymentCard paymentCard = new PaymentCard();
+            var paymentCard = new PaymentCard();
             paymentCard.CardHolderName = "John Doe";
             paymentCard.CardNumber = "5528790000000008";
             paymentCard.RegisterCard = 0;
@@ -31,7 +42,7 @@ namespace IyzipaySample.Sample
             paymentCard.Cvc = "123";
             request.PaymentCard = paymentCard;
 
-            Buyer buyer = new Buyer();
+            var buyer = new Buyer();
             buyer.Id = "BY789";
             buyer.Name = "John";
             buyer.Surname = "Doe";
@@ -47,7 +58,7 @@ namespace IyzipaySample.Sample
             buyer.ZipCode = "34732";
             request.Buyer = buyer;
 
-            Address shippingAddress = new Address();
+            var shippingAddress = new Address();
             shippingAddress.ContactName = "Jane Doe";
             shippingAddress.City = "İstanbul";
             shippingAddress.Country = "Türkiye";
@@ -55,7 +66,7 @@ namespace IyzipaySample.Sample
             shippingAddress.ZipCode = "34742";
             request.ShippingAddress = shippingAddress;
 
-            Address billingAddress = new Address();
+            var billingAddress = new Address();
             billingAddress.ContactName = "Jane Doe";
             billingAddress.City = "İstanbul";
             billingAddress.Country = "Türkiye";
@@ -63,8 +74,8 @@ namespace IyzipaySample.Sample
             billingAddress.ZipCode = "34742";
             request.BillingAddress = billingAddress;
 
-            List<BasketItem> basketItems = new List<BasketItem>();
-            BasketItem firstBasketItem = new BasketItem();
+            var basketItems = new List<BasketItem>();
+            var firstBasketItem = new BasketItem();
             firstBasketItem.Id = "BI101";
             firstBasketItem.Name = "Binocular";
             firstBasketItem.Category1 = "Collectibles";
@@ -73,7 +84,7 @@ namespace IyzipaySample.Sample
             firstBasketItem.Price = "0.3";
             basketItems.Add(firstBasketItem);
 
-            BasketItem secondBasketItem = new BasketItem();
+            var secondBasketItem = new BasketItem();
             secondBasketItem.Id = "BI102";
             secondBasketItem.Name = "Game code";
             secondBasketItem.Category1 = "Game";
@@ -82,7 +93,7 @@ namespace IyzipaySample.Sample
             secondBasketItem.Price = "0.5";
             basketItems.Add(secondBasketItem);
 
-            BasketItem thirdBasketItem = new BasketItem();
+            var thirdBasketItem = new BasketItem();
             thirdBasketItem.Id = "BI103";
             thirdBasketItem.Name = "Usb";
             thirdBasketItem.Category1 = "Electronics";
@@ -92,9 +103,9 @@ namespace IyzipaySample.Sample
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
-            PaymentPreAuth paymentPreAuth = PaymentPreAuth.Create(request, options);
+            var paymentPreAuth = PaymentPreAuth.Create(request, Options);
 
-            PrintResponse<PaymentPreAuth>(paymentPreAuth);
+            this.PrintResponse<PaymentPreAuth>(paymentPreAuth);
 
             Assert.IsNotNull(paymentPreAuth.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), paymentPreAuth.Status);
@@ -102,10 +113,13 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", paymentPreAuth.ConversationId);
         }
 
+        /// <summary>
+        /// Should create payment with virtual product for market place.
+        /// </summary>
         [TestMethod]
-        public void Should_Create_Payment_With_Virtual_Product_For_Market_Place()
+        public void ShouldCreatePaymentWithVirtualProductForMarketPlace()
         {
-            CreatePaymentRequest request = new CreatePaymentRequest();
+            var request = new CreatePaymentRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.Price = "1";
@@ -116,7 +130,7 @@ namespace IyzipaySample.Sample
             request.PaymentChannel = PaymentChannel.WEB.ToString();
             request.Currency = Currency.TRY.ToString();
 
-            PaymentCard paymentCard = new PaymentCard();
+            var paymentCard = new PaymentCard();
             paymentCard.CardHolderName = "John Doe";
             paymentCard.CardNumber = "5528790000000008";
             paymentCard.RegisterCard = 0;
@@ -125,7 +139,7 @@ namespace IyzipaySample.Sample
             paymentCard.Cvc = "123";
             request.PaymentCard = paymentCard;
 
-            Buyer buyer = new Buyer();
+            var buyer = new Buyer();
             buyer.Id = "BY789";
             buyer.Name = "John";
             buyer.Surname = "Doe";
@@ -141,7 +155,7 @@ namespace IyzipaySample.Sample
             buyer.ZipCode = "34732";
             request.Buyer = buyer;
 
-            Address shippingAddress = new Address();
+            var shippingAddress = new Address();
             shippingAddress.ContactName = "Jane Doe";
             shippingAddress.City = "İstanbul";
             shippingAddress.Country = "Türkiye";
@@ -149,7 +163,7 @@ namespace IyzipaySample.Sample
             shippingAddress.ZipCode = "34742";
             request.ShippingAddress = shippingAddress;
 
-            Address billingAddress = new Address();
+            var billingAddress = new Address();
             billingAddress.ContactName = "Jane Doe";
             billingAddress.City = "İstanbul";
             billingAddress.Country = "Türkiye";
@@ -157,8 +171,8 @@ namespace IyzipaySample.Sample
             billingAddress.ZipCode = "34742";
             request.BillingAddress = billingAddress;
 
-            List<BasketItem> basketItems = new List<BasketItem>();
-            BasketItem firstBasketItem = new BasketItem();
+            var basketItems = new List<BasketItem>();
+            var firstBasketItem = new BasketItem();
             firstBasketItem.Id = "BI101";
             firstBasketItem.Name = "Binocular";
             firstBasketItem.Category1 = "Collectibles";
@@ -169,7 +183,7 @@ namespace IyzipaySample.Sample
             firstBasketItem.SubMerchantPrice = "0.27";
             basketItems.Add(firstBasketItem);
 
-            BasketItem secondBasketItem = new BasketItem();
+            var secondBasketItem = new BasketItem();
             secondBasketItem.Id = "BI102";
             secondBasketItem.Name = "Game code";
             secondBasketItem.Category1 = "Game";
@@ -180,7 +194,7 @@ namespace IyzipaySample.Sample
             secondBasketItem.SubMerchantPrice = "0.42";
             basketItems.Add(secondBasketItem);
 
-            BasketItem thirdBasketItem = new BasketItem();
+            var thirdBasketItem = new BasketItem();
             thirdBasketItem.Id = "BI103";
             thirdBasketItem.Name = "Usb";
             thirdBasketItem.Category1 = "Electronics";
@@ -192,9 +206,9 @@ namespace IyzipaySample.Sample
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
-            PaymentPreAuth paymentPreAuth = PaymentPreAuth.Create(request, options);
+            var paymentPreAuth = PaymentPreAuth.Create(request, Options);
 
-            PrintResponse<PaymentPreAuth>(paymentPreAuth);
+            this.PrintResponse<PaymentPreAuth>(paymentPreAuth);
 
             Assert.IsNotNull(paymentPreAuth.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), paymentPreAuth.Status);
@@ -202,10 +216,13 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", paymentPreAuth.ConversationId);
         }
 
+        /// <summary>
+        /// Should create physical and virtual listing or subscription payment.
+        /// </summary>
         [TestMethod]
-        public void Should_Create_Physical_And_Virtual_Listing_Or_Subscription_Payment()
+        public void ShouldCreatePhysicalAndVirtualListingOrSubscriptionPayment()
         {
-            CreatePaymentRequest request = new CreatePaymentRequest();
+            var request = new CreatePaymentRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.Price = "1";
@@ -216,7 +233,7 @@ namespace IyzipaySample.Sample
             request.PaymentChannel = PaymentChannel.WEB.ToString();
             request.Currency = Currency.TRY.ToString();
 
-            PaymentCard paymentCard = new PaymentCard();
+            var paymentCard = new PaymentCard();
             paymentCard.CardHolderName = "John Doe";
             paymentCard.CardNumber = "5528790000000008";
             paymentCard.RegisterCard = 0;
@@ -225,7 +242,7 @@ namespace IyzipaySample.Sample
             paymentCard.Cvc = "123";
             request.PaymentCard = paymentCard;
 
-            Buyer buyer = new Buyer();
+            var buyer = new Buyer();
             buyer.Id = "BY789";
             buyer.Name = "John";
             buyer.Surname = "Doe";
@@ -241,7 +258,7 @@ namespace IyzipaySample.Sample
             buyer.ZipCode = "34732";
             request.Buyer = buyer;
 
-            Address shippingAddress = new Address();
+            var shippingAddress = new Address();
             shippingAddress.ContactName = "Jane Doe";
             shippingAddress.City = "İstanbul";
             shippingAddress.Country = "Türkiye";
@@ -249,7 +266,7 @@ namespace IyzipaySample.Sample
             shippingAddress.ZipCode = "34742";
             request.ShippingAddress = shippingAddress;
 
-            Address billingAddress = new Address();
+            var billingAddress = new Address();
             billingAddress.ContactName = "Jane Doe";
             billingAddress.City = "İstanbul";
             billingAddress.Country = "Türkiye";
@@ -257,8 +274,8 @@ namespace IyzipaySample.Sample
             billingAddress.ZipCode = "34742";
             request.BillingAddress = billingAddress;
 
-            List<BasketItem> basketItems = new List<BasketItem>();
-            BasketItem firstBasketItem = new BasketItem();
+            var basketItems = new List<BasketItem>();
+            var firstBasketItem = new BasketItem();
             firstBasketItem.Id = "BI101";
             firstBasketItem.Name = "Binocular";
             firstBasketItem.Category1 = "Collectibles";
@@ -267,7 +284,7 @@ namespace IyzipaySample.Sample
             firstBasketItem.Price = "0.3";
             basketItems.Add(firstBasketItem);
 
-            BasketItem secondBasketItem = new BasketItem();
+            var secondBasketItem = new BasketItem();
             secondBasketItem.Id = "BI102";
             secondBasketItem.Name = "Game code";
             secondBasketItem.Category1 = "Game";
@@ -276,7 +293,7 @@ namespace IyzipaySample.Sample
             secondBasketItem.Price = "0.5";
             basketItems.Add(secondBasketItem);
 
-            BasketItem thirdBasketItem = new BasketItem();
+            var thirdBasketItem = new BasketItem();
             thirdBasketItem.Id = "BI103";
             thirdBasketItem.Name = "Usb";
             thirdBasketItem.Category1 = "Electronics";
@@ -286,9 +303,9 @@ namespace IyzipaySample.Sample
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
-            PaymentPreAuth paymentPreAuth = PaymentPreAuth.Create(request, options);
+            var paymentPreAuth = PaymentPreAuth.Create(request, Options);
 
-            PrintResponse<PaymentPreAuth>(paymentPreAuth);
+            this.PrintResponse<PaymentPreAuth>(paymentPreAuth);
 
             Assert.IsNotNull(paymentPreAuth.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), paymentPreAuth.Status);
@@ -296,18 +313,21 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", paymentPreAuth.ConversationId);
         }
 
+        /// <summary>
+        /// Should retrieve payment.
+        /// </summary>
         [TestMethod]
-        public void Should_Retrieve_Payment()
+        public void ShouldRetrievePayment()
         {
-            RetrievePaymentRequest request = new RetrievePaymentRequest();
+            var request = new RetrievePaymentRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.PaymentId = "1";
             request.PaymentConversationId = "123456789";
 
-            PaymentPreAuth paymentPreAuth = PaymentPreAuth.Retrieve(request, options);
+            var paymentPreAuth = PaymentPreAuth.Retrieve(request, Options);
 
-            PrintResponse<PaymentPreAuth>(paymentPreAuth);
+            this.PrintResponse<PaymentPreAuth>(paymentPreAuth);
 
             Assert.IsNotNull(paymentPreAuth.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), paymentPreAuth.Status);
@@ -315,12 +335,14 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", paymentPreAuth.ConversationId);
         }
 
-        // iyzi Gate Services:
-
+        /// <summary>
+        /// Should create iyzi gate payment with physical and virtual item.
+        /// </summary>
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed.")]
         [TestMethod]
-        public void Should_Create_IyziGate_Payment_With_Physical_And_Virtual_Item()
+        public void ShouldCreateIyziGatePaymentWithPhysicalAndVirtualItem()
         {
-            CreatePaymentRequest request = new CreatePaymentRequest();
+            var request = new CreatePaymentRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.Price = "1";
@@ -331,11 +353,11 @@ namespace IyzipaySample.Sample
             request.PaymentChannel = PaymentChannel.WEB.ToString();
             request.Currency = Currency.TRY.ToString();
 
-            //iyziGate Parameters
+            // iyziGate Parameters
             request.ConnectorName = "isbank";
             request.PosOrderId = "1";
 
-            PaymentCard paymentCard = new PaymentCard();
+            var paymentCard = new PaymentCard();
             paymentCard.CardHolderName = "John Doe";
             paymentCard.CardNumber = "5528790000000008";
             paymentCard.RegisterCard = 0;
@@ -344,7 +366,7 @@ namespace IyzipaySample.Sample
             paymentCard.Cvc = "123";
             request.PaymentCard = paymentCard;
 
-            Buyer buyer = new Buyer();
+            var buyer = new Buyer();
             buyer.Id = "BY789";
             buyer.Name = "John";
             buyer.Surname = "Doe";
@@ -360,7 +382,7 @@ namespace IyzipaySample.Sample
             buyer.ZipCode = "34732";
             request.Buyer = buyer;
 
-            Address shippingAddress = new Address();
+            var shippingAddress = new Address();
             shippingAddress.ContactName = "Jane Doe";
             shippingAddress.City = "İstanbul";
             shippingAddress.Country = "Türkiye";
@@ -368,7 +390,7 @@ namespace IyzipaySample.Sample
             shippingAddress.ZipCode = "34742";
             request.ShippingAddress = shippingAddress;
 
-            Address billingAddress = new Address();
+            var billingAddress = new Address();
             billingAddress.ContactName = "Jane Doe";
             billingAddress.City = "İstanbul";
             billingAddress.Country = "Türkiye";
@@ -376,8 +398,8 @@ namespace IyzipaySample.Sample
             billingAddress.ZipCode = "34742";
             request.BillingAddress = billingAddress;
 
-            List<BasketItem> basketItems = new List<BasketItem>();
-            BasketItem firstBasketItem = new BasketItem();
+            var basketItems = new List<BasketItem>();
+            var firstBasketItem = new BasketItem();
             firstBasketItem.Id = "BI101";
             firstBasketItem.Name = "Binocular";
             firstBasketItem.Category1 = "Collectibles";
@@ -386,7 +408,7 @@ namespace IyzipaySample.Sample
             firstBasketItem.Price = "0.3";
             basketItems.Add(firstBasketItem);
 
-            BasketItem secondBasketItem = new BasketItem();
+            var secondBasketItem = new BasketItem();
             secondBasketItem.Id = "BI102";
             secondBasketItem.Name = "Game code";
             secondBasketItem.Category1 = "Game";
@@ -395,7 +417,7 @@ namespace IyzipaySample.Sample
             secondBasketItem.Price = "0.5";
             basketItems.Add(secondBasketItem);
 
-            BasketItem thirdBasketItem = new BasketItem();
+            var thirdBasketItem = new BasketItem();
             thirdBasketItem.Id = "BI103";
             thirdBasketItem.Name = "Usb";
             thirdBasketItem.Category1 = "Electronics";
@@ -405,9 +427,9 @@ namespace IyzipaySample.Sample
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
-            PaymentPreAuth paymentPreAuth = PaymentPreAuth.Create(request, options);
+            var paymentPreAuth = PaymentPreAuth.Create(request, Options);
 
-            PrintResponse<PaymentPreAuth>(paymentPreAuth);
+            this.PrintResponse<PaymentPreAuth>(paymentPreAuth);
 
             Assert.IsNotNull(paymentPreAuth.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), paymentPreAuth.Status);
@@ -415,10 +437,14 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", paymentPreAuth.ConversationId);
         }
 
+        /// <summary>
+        /// Should create iyzi gate payment with physical and virtual item for listing or subscription.
+        /// </summary>
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed.")]
         [TestMethod]
-        public void Should_Create_IyziGate_Payment_With_Physical_And_Virtual_Item_For_Listing_Or_Subscription()
+        public void ShouldCreateIyziGatePaymentWithPhysicalAndVirtualItemForListingOrSubscription()
         {
-            CreatePaymentRequest request = new CreatePaymentRequest();
+            var request = new CreatePaymentRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.Price = "1";
@@ -429,11 +455,11 @@ namespace IyzipaySample.Sample
             request.PaymentChannel = PaymentChannel.WEB.ToString();
             request.Currency = Currency.TRY.ToString();
 
-            //iyziGate Parameters
+            // iyziGate Parameters
             request.ConnectorName = "isbank";
             request.PosOrderId = "1";
 
-            PaymentCard paymentCard = new PaymentCard();
+            var paymentCard = new PaymentCard();
             paymentCard.CardHolderName = "John Doe";
             paymentCard.CardNumber = "5528790000000008";
             paymentCard.RegisterCard = 0;
@@ -442,7 +468,7 @@ namespace IyzipaySample.Sample
             paymentCard.Cvc = "123";
             request.PaymentCard = paymentCard;
 
-            Buyer buyer = new Buyer();
+            var buyer = new Buyer();
             buyer.Id = "BY789";
             buyer.Name = "John";
             buyer.Surname = "Doe";
@@ -458,7 +484,7 @@ namespace IyzipaySample.Sample
             buyer.ZipCode = "34732";
             request.Buyer = buyer;
 
-            Address shippingAddress = new Address();
+            var shippingAddress = new Address();
             shippingAddress.ContactName = "Jane Doe";
             shippingAddress.City = "İstanbul";
             shippingAddress.Country = "Türkiye";
@@ -466,7 +492,7 @@ namespace IyzipaySample.Sample
             shippingAddress.ZipCode = "34742";
             request.ShippingAddress = shippingAddress;
 
-            Address billingAddress = new Address();
+            var billingAddress = new Address();
             billingAddress.ContactName = "Jane Doe";
             billingAddress.City = "İstanbul";
             billingAddress.Country = "Türkiye";
@@ -474,8 +500,8 @@ namespace IyzipaySample.Sample
             billingAddress.ZipCode = "34742";
             request.BillingAddress = billingAddress;
 
-            List<BasketItem> basketItems = new List<BasketItem>();
-            BasketItem firstBasketItem = new BasketItem();
+            var basketItems = new List<BasketItem>();
+            var firstBasketItem = new BasketItem();
             firstBasketItem.Id = "BI101";
             firstBasketItem.Name = "Binocular";
             firstBasketItem.Category1 = "Collectibles";
@@ -484,7 +510,7 @@ namespace IyzipaySample.Sample
             firstBasketItem.Price = "0.3";
             basketItems.Add(firstBasketItem);
 
-            BasketItem secondBasketItem = new BasketItem();
+            var secondBasketItem = new BasketItem();
             secondBasketItem.Id = "BI102";
             secondBasketItem.Name = "Game code";
             secondBasketItem.Category1 = "Game";
@@ -493,7 +519,7 @@ namespace IyzipaySample.Sample
             secondBasketItem.Price = "0.5";
             basketItems.Add(secondBasketItem);
 
-            BasketItem thirdBasketItem = new BasketItem();
+            var thirdBasketItem = new BasketItem();
             thirdBasketItem.Id = "BI103";
             thirdBasketItem.Name = "Usb";
             thirdBasketItem.Category1 = "Electronics";
@@ -503,9 +529,9 @@ namespace IyzipaySample.Sample
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
-            PaymentPreAuth paymentPreAuth = PaymentPreAuth.Create(request, options);
+            var paymentPreAuth = PaymentPreAuth.Create(request, Options);
 
-            PrintResponse<PaymentPreAuth>(paymentPreAuth);
+            this.PrintResponse<PaymentPreAuth>(paymentPreAuth);
 
             Assert.IsNotNull(paymentPreAuth.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), paymentPreAuth.Status);

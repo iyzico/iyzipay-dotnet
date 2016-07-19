@@ -1,17 +1,30 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
-using Iyzipay.Model;
-
+﻿// <copyright file="BasicPaymentSample.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace IyzipaySample.Sample
 {
+    using Iyzipay.Model;
+    using Iyzipay.Request;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    /// <summary>
+    /// Basic payment sample
+    /// </summary>
+    /// <seealso cref="IyzipaySample.Sample.Sample" />
+    /// <summary>
+    /// BasicPaymentSample
+    /// </summary>
     [TestClass]
     public class BasicPaymentSample : Sample
     {
+        /// <summary>
+        /// Should pay with card.
+        /// </summary>
         [TestMethod]
-        public void Should_Pay_With_Card()
+        public void ShouldPayWithCard()
         {
-            CreateBasicPaymentRequest request = new CreateBasicPaymentRequest();
+            var request = new CreateBasicPaymentRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.BuyerEmail = "email@email.com";
@@ -23,7 +36,7 @@ namespace IyzipaySample.Sample
             request.Price = "1.0";
             request.Currency = Currency.TRY.ToString();
 
-            PaymentCard paymentCard = new PaymentCard();
+            var paymentCard = new PaymentCard();
             paymentCard.CardHolderName = "John Doe";
             paymentCard.CardNumber = "5528790000000008";
             paymentCard.ExpireMonth = "12";
@@ -32,9 +45,9 @@ namespace IyzipaySample.Sample
             paymentCard.RegisterCard = 0;
             request.PaymentCard = paymentCard;
 
-            BasicPayment basicPaymentAuth = BasicPayment.Create(request, options);
+            var basicPaymentAuth = BasicPayment.Create(request, Options);
 
-            PrintResponse<BasicPayment>(basicPaymentAuth);
+            this.PrintResponse<BasicPayment>(basicPaymentAuth);
 
             Assert.IsNotNull(basicPaymentAuth.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), basicPaymentAuth.Status);
@@ -42,10 +55,13 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", basicPaymentAuth.ConversationId);
         }
 
+        /// <summary>
+        /// Should pay with card token
+        /// </summary>
         [TestMethod]
-        public void Should_Pay_With_Card_token()
+        public void ShouldPayWithCardtoken()
         {
-            CreateBasicPaymentRequest request = new CreateBasicPaymentRequest();
+            var request = new CreateBasicPaymentRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.BuyerEmail = "email@email.com";
@@ -57,14 +73,14 @@ namespace IyzipaySample.Sample
             request.Price = "1.0";
             request.Currency = Currency.TRY.ToString();
 
-            PaymentCard paymentCard = new PaymentCard();
+            var paymentCard = new PaymentCard();
             paymentCard.CardToken = "card token";
             paymentCard.CardUserKey = "card user key";
             request.PaymentCard = paymentCard;
 
-            BasicPayment basicPaymentAuth = BasicPayment.Create(request, options);
+            var basicPaymentAuth = BasicPayment.Create(request, Options);
 
-            PrintResponse<BasicPayment>(basicPaymentAuth);
+            this.PrintResponse<BasicPayment>(basicPaymentAuth);
 
             Assert.IsNotNull(basicPaymentAuth.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), basicPaymentAuth.Status);

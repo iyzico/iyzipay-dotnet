@@ -1,16 +1,26 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
-using Iyzipay.Model;
-
+﻿// <copyright file="RefundSample.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace IyzipaySample.Sample
 {
+    using Iyzipay.Model;
+    using Iyzipay.Request;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    /// <summary>
+    /// Refund sample
+    /// </summary>
     [TestClass]
     public class RefundSample : Sample
     {
+        /// <summary>
+        /// Should refund.
+        /// </summary>
         [TestMethod]
-        public void Should_Refund()
+        public void ShouldRefund()
         {
-            CreateRefundRequest request = new CreateRefundRequest();
+            var request = new CreateRefundRequest();
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.PaymentTransactionId = "1";
@@ -18,9 +28,9 @@ namespace IyzipaySample.Sample
             request.Ip = "85.34.78.112";
             request.Currency = Currency.TRY.ToString();
 
-            Refund refund = Refund.Create(request, options);
+            var refund = Refund.Create(request, Options);
 
-            PrintResponse<Refund>(refund);
+            this.PrintResponse<Refund>(refund);
 
             Assert.IsNotNull(refund.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), refund.Status);
@@ -28,10 +38,13 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", refund.ConversationId);
         }
 
+        /// <summary>
+        /// Should refund charged from merchant.
+        /// </summary>
         [TestMethod]
-        public void Should_Refund_Charged_From_Merchant()
+        public void ShouldRefundChargedFromMerchant()
         {
-            CreateRefundRequest request = new CreateRefundRequest();
+            var request = new CreateRefundRequest();
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.PaymentTransactionId = "1";
@@ -39,9 +52,9 @@ namespace IyzipaySample.Sample
             request.Ip = "85.34.78.112";
             request.Currency = Currency.TRY.ToString();
 
-            RefundChargedFromMerchant refundChargedFromMerchant = RefundChargedFromMerchant.Create(request, options);
+            var refundChargedFromMerchant = RefundChargedFromMerchant.Create(request, Options);
 
-            PrintResponse<RefundChargedFromMerchant>(refundChargedFromMerchant);
+            this.PrintResponse<RefundChargedFromMerchant>(refundChargedFromMerchant);
 
             Assert.IsNotNull(refundChargedFromMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), refundChargedFromMerchant.Status);

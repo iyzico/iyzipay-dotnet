@@ -1,12 +1,24 @@
-﻿using System;
-
+﻿// <copyright file="StringHelper.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace Iyzipay
 {
-    class StringHelper
+    using System;
+
+    /// <summary>
+    /// String helper
+    /// </summary>
+    public static class StringHelper
     {
-        public static string Reverse(string s)
+        /// <summary>
+        /// Reverses the specified string
+        /// </summary>
+        /// <param name="s">The string to reverse</param>
+        /// <returns>The reversed string</returns>
+        public static string Reverse(this string s)
         {
-            char[] charArray = s.ToCharArray();
+            var charArray = s.ToCharArray();
             Array.Reverse(charArray);
             return new string(charArray);
         }

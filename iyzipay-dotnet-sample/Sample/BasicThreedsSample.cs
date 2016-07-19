@@ -1,16 +1,30 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
-using Iyzipay.Model;
-
+﻿// <copyright file="BasicThreedsSample.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace IyzipaySample.Sample
 {
+    using Iyzipay.Model;
+    using Iyzipay.Request;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    /// <summary>
+    /// Basic 3D-secure sample
+    /// </summary>
+    /// <seealso cref="IyzipaySample.Sample.Sample" />
+    /// <summary>
+    /// BasicThreedsSample
+    /// </summary>
     [TestClass]
     public class BasicThreedsSample : Sample
     {
+        /// <summary>
+        /// Initializes 3D-secure with card
+        /// </summary>
         [TestMethod]
-        public void Should_Initialize_Threeds_With_Card()
+        public void ShouldInitializeThreedsWithCard()
         {
-            CreateBasicPaymentRequest request = new CreateBasicPaymentRequest();
+            var request = new CreateBasicPaymentRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.BuyerEmail = "email@email.com";
@@ -23,7 +37,7 @@ namespace IyzipaySample.Sample
             request.CallbackUrl = "https://www.merchant.com/callbackUrl";
             request.Currency = Currency.TRY.ToString();
 
-            PaymentCard paymentCard = new PaymentCard();
+            var paymentCard = new PaymentCard();
             paymentCard.CardHolderName = "John Doe";
             paymentCard.CardNumber = "5528790000000008";
             paymentCard.ExpireMonth = "12";
@@ -32,9 +46,9 @@ namespace IyzipaySample.Sample
             paymentCard.RegisterCard = 0;
             request.PaymentCard = paymentCard;
 
-            BasicThreedsInitialize basicThreeDSInitialize = BasicThreedsInitialize.Create(request, options);
+            var basicThreeDSInitialize = BasicThreedsInitialize.Create(request, Options);
 
-            PrintResponse<BasicThreedsInitialize>(basicThreeDSInitialize);
+            this.PrintResponse<BasicThreedsInitialize>(basicThreeDSInitialize);
 
             Assert.IsNotNull(basicThreeDSInitialize.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), basicThreeDSInitialize.Status);
@@ -42,10 +56,13 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", basicThreeDSInitialize.ConversationId);
         }
 
+        /// <summary>
+        /// Should initialize 3D-secure with card token.
+        /// </summary>
         [TestMethod]
-        public void Should_Initialize_Threeds_With_Card_Token()
+        public void ShouldInitializeThreedsWithCardToken()
         {
-            CreateBasicPaymentRequest request = new CreateBasicPaymentRequest();
+            var request = new CreateBasicPaymentRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.BuyerEmail = "email@email.com";
@@ -58,14 +75,14 @@ namespace IyzipaySample.Sample
             request.CallbackUrl = "https://www.merchant.com/callbackUrl";
             request.Currency = Currency.TRY.ToString();
 
-            PaymentCard paymentCard = new PaymentCard();
+            var paymentCard = new PaymentCard();
             paymentCard.CardToken = "card token";
             paymentCard.CardUserKey = "card user key";
             request.PaymentCard = paymentCard;
 
-            BasicThreedsInitialize basicThreeDSInitialize = BasicThreedsInitialize.Create(request, options);
+            var basicThreeDSInitialize = BasicThreedsInitialize.Create(request, Options);
 
-            PrintResponse<BasicThreedsInitialize>(basicThreeDSInitialize);
+            this.PrintResponse<BasicThreedsInitialize>(basicThreeDSInitialize);
 
             Assert.IsNotNull(basicThreeDSInitialize.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), basicThreeDSInitialize.Status);
@@ -73,17 +90,20 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", basicThreeDSInitialize.ConversationId);
         }
 
+        /// <summary>
+        /// Should authorize 3D-secure.
+        /// </summary>
         [TestMethod]
-        public void Should_Auth_Threeds()
+        public void ShouldAuthThreeds()
         {
-            CreateThreedsPaymentRequest request = new CreateThreedsPaymentRequest();
+            var request = new CreateThreedsPaymentRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.PaymentId = "12345";
 
-            BasicThreedsPayment basicThreeDS = BasicThreedsPayment.Create(request, options);
+            var basicThreeDS = BasicThreedsPayment.Create(request, Options);
 
-            PrintResponse<BasicThreedsPayment>(basicThreeDS);
+            this.PrintResponse<BasicThreedsPayment>(basicThreeDS);
 
             Assert.IsNotNull(basicThreeDS.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), basicThreeDS.Status);

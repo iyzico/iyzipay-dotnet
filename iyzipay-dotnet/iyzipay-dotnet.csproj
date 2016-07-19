@@ -121,7 +121,7 @@
     <Compile Include="IyzipayResource.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="BaseRequest.cs" />
-    <Compile Include="RequestStringConvertible.cs" />
+    <Compile Include="IRequestStringConvertible.cs" />
     <Compile Include="RequestFormatter.cs" />
     <Compile Include="Request\CreateThreedsPaymentRequest.cs" />
     <Compile Include="Request\RetrieveSubMerchantRequest.cs" />
@@ -138,7 +138,7 @@
     <Compile Include="Request\DeleteCardRequest.cs" />
     <Compile Include="Request\CreateCheckoutFormInitializeRequest.cs" />
     <Compile Include="Request\RetrieveCheckoutFormRequest.cs" />
-    <Compile Include="Request\RetrieveBkmRequest .cs" />
+    <Compile Include="Request\RetrieveBkmRequest.cs" />
     <Compile Include="Request\RetrieveBinNumberRequest.cs" />
     <Compile Include="Request\RetrieveCardListRequest.cs" />
     <Compile Include="Request\RetrieveTransactionsRequest.cs" />
@@ -148,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="iyzipay-dotnet.licenseheader" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

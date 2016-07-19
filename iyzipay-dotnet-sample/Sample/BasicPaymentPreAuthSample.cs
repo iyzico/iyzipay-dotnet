@@ -1,17 +1,30 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
-using Iyzipay.Model;
-
+﻿// <copyright file="BasicPaymentPreAuthSample.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace IyzipaySample.Sample
 {
+    using Iyzipay.Model;
+    using Iyzipay.Request;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    /// <summary>
+    /// Basic payment pre authorization sample
+    /// </summary>
+    /// <seealso cref="IyzipaySample.Sample.Sample" />
+    /// <summary>
+    /// BasicPaymentPreAuthSample
+    /// </summary>
     [TestClass]
     public class BasicPaymentPreAuthSample : Sample
     {
+        /// <summary>
+        /// Should pay with card.
+        /// </summary>
         [TestMethod]
-        public void Should_Pay_With_Card()
+        public void ShouldPayWithCard()
         {
-            CreateBasicPaymentRequest request = new CreateBasicPaymentRequest();
+            var request = new CreateBasicPaymentRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.BuyerEmail = "email@email.com";
@@ -23,7 +36,7 @@ namespace IyzipaySample.Sample
             request.Price = "1.0";
             request.Currency = Currency.TRY.ToString();
 
-            PaymentCard paymentCard = new PaymentCard();
+            var paymentCard = new PaymentCard();
             paymentCard.CardHolderName = "John Doe";
             paymentCard.CardNumber = "5528790000000008";
             paymentCard.ExpireMonth = "12";
@@ -32,20 +45,23 @@ namespace IyzipaySample.Sample
             paymentCard.RegisterCard = 0;
             request.PaymentCard = paymentCard;
 
-            BasicPaymentPreAuth BasicPaymentPreAuth = BasicPaymentPreAuth.Create(request, options);
+            var basicPaymentPreAuth = BasicPaymentPreAuth.Create(request, Options);
 
-            PrintResponse<BasicPaymentPreAuth>(BasicPaymentPreAuth);
+            this.PrintResponse<BasicPaymentPreAuth>(basicPaymentPreAuth);
 
-            Assert.IsNotNull(BasicPaymentPreAuth.SystemTime);
-            Assert.AreEqual(Status.SUCCESS.ToString(), BasicPaymentPreAuth.Status);
-            Assert.AreEqual(Locale.TR.GetName(), BasicPaymentPreAuth.Locale);
-            Assert.AreEqual("123456789", BasicPaymentPreAuth.ConversationId);
+            Assert.IsNotNull(basicPaymentPreAuth.SystemTime);
+            Assert.AreEqual(Status.SUCCESS.ToString(), basicPaymentPreAuth.Status);
+            Assert.AreEqual(Locale.TR.GetName(), basicPaymentPreAuth.Locale);
+            Assert.AreEqual("123456789", basicPaymentPreAuth.ConversationId);
         }
 
+        /// <summary>
+        /// Should  pay with card token.
+        /// </summary>
         [TestMethod]
-        public void Should_Pay_With_Card_token()
+        public void ShouldPayWithCardtoken()
         {
-            CreateBasicPaymentRequest request = new CreateBasicPaymentRequest();
+            var request = new CreateBasicPaymentRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.BuyerEmail = "email@email.com";
@@ -57,19 +73,19 @@ namespace IyzipaySample.Sample
             request.Price = "1.0";
             request.Currency = Currency.TRY.ToString();
 
-            PaymentCard paymentCard = new PaymentCard();
+            var paymentCard = new PaymentCard();
             paymentCard.CardToken = "card token";
             paymentCard.CardUserKey = "card user key";
             request.PaymentCard = paymentCard;
 
-            BasicPaymentPreAuth BasicPaymentPreAuth = BasicPaymentPreAuth.Create(request, options);
+            var basicPaymentPreAuth = BasicPaymentPreAuth.Create(request, Options);
 
-            PrintResponse<BasicPaymentPreAuth>(BasicPaymentPreAuth);
+            this.PrintResponse<BasicPaymentPreAuth>(basicPaymentPreAuth);
 
-            Assert.IsNotNull(BasicPaymentPreAuth.SystemTime);
-            Assert.AreEqual(Status.SUCCESS.ToString(), BasicPaymentPreAuth.Status);
-            Assert.AreEqual(Locale.TR.GetName(), BasicPaymentPreAuth.Locale);
-            Assert.AreEqual("123456789", BasicPaymentPreAuth.ConversationId);
+            Assert.IsNotNull(basicPaymentPreAuth.SystemTime);
+            Assert.AreEqual(Status.SUCCESS.ToString(), basicPaymentPreAuth.Status);
+            Assert.AreEqual(Locale.TR.GetName(), basicPaymentPreAuth.Locale);
+            Assert.AreEqual("123456789", basicPaymentPreAuth.ConversationId);
         }
     }
 }

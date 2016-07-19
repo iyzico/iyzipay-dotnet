@@ -1,4 +1,8 @@
-﻿using System.Reflection;
+﻿// <copyright file="AssemblyInfo.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 

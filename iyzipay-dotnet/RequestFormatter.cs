@@ -1,34 +1,23 @@
-﻿using System;
-
+﻿// <copyright file="RequestFormatter.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace Iyzipay
 {
-    class RequestFormatter
+    /// <summary>
+    /// Request Formatter class
+    /// </summary>
+    public class RequestFormatter
     {
-        public static String FormatPrice(String price)
+        /// <summary>
+        /// Formats the price.
+        /// </summary>
+        /// <param name="price">The price.</param>
+        /// <returns>The formatted price</returns>
+        public static string FormatPrice(string price)
         {
-            if (!price.Contains("."))
-            {
-                return price + ".0";
-            }
-            int subStrIndex = 0;
-            String priceReversed = StringHelper.Reverse(price);
-            for (int i = 0; i < priceReversed.Length; i++)
-            {
-                if (priceReversed[i].Equals('0'))
-                {
-                    subStrIndex = i + 1;
-                }
-                else if (priceReversed[i].Equals('.'))
-                {
-                    priceReversed = "0" + priceReversed;
-                    break;
-                }
-                else
-                {
-                    break;
-                }
-            }
-            return StringHelper.Reverse(priceReversed.Substring(subStrIndex));
+            var invariantCulture = System.Globalization.CultureInfo.InvariantCulture;
+            return decimal.Parse(price, invariantCulture).ToString("N1", invariantCulture);
         }
     }
 }

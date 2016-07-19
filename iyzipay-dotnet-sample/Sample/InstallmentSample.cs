@@ -1,24 +1,34 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
-using Iyzipay.Model;
-
+﻿// <copyright file="InstallmentSample.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace IyzipaySample.Sample
 {
+    using Iyzipay.Model;
+    using Iyzipay.Request;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    /// <summary>
+    /// Installment sample
+    /// </summary>
     [TestClass]
     public class InstallmentSample : Sample
     {
+        /// <summary>
+        /// Should retrieve installment information.
+        /// </summary>
         [TestMethod]
-        public void Should_Retrieve_Installment_Info()
+        public void ShouldRetrieveInstallmentInfo()
         {
-            RetrieveInstallmentInfoRequest request = new RetrieveInstallmentInfoRequest();
+            var request = new RetrieveInstallmentInfoRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.BinNumber = "454671";
             request.Price = "1";
 
-            InstallmentInfo installmentInfo = InstallmentInfo.Retrieve(request, options);
+            var installmentInfo = InstallmentInfo.Retrieve(request, Options);
 
-            PrintResponse<InstallmentInfo>(installmentInfo);
+            this.PrintResponse<InstallmentInfo>(installmentInfo);
 
             Assert.IsNotNull(installmentInfo.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), installmentInfo.Status);
@@ -26,17 +36,20 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", installmentInfo.ConversationId);
         }
 
+        /// <summary>
+        /// Should retrieve installment information for all banks.
+        /// </summary>
         [TestMethod]
-        public void Should_Retrieve_Installment_Info_For_All_Banks()
+        public void ShouldRetrieveInstallmentInfoForAllBanks()
         {
-            RetrieveInstallmentInfoRequest request = new RetrieveInstallmentInfoRequest();
+            var request = new RetrieveInstallmentInfoRequest();
             request.Locale = Locale.TR.GetName();
-            request.ConversationId = "123456789";        
+            request.ConversationId = "123456789";
             request.Price = "1";
 
-            InstallmentInfo installmentInfo = InstallmentInfo.Retrieve(request, options);
+            var installmentInfo = InstallmentInfo.Retrieve(request, Options);
 
-            PrintResponse<InstallmentInfo>(installmentInfo);
+            this.PrintResponse<InstallmentInfo>(installmentInfo);
 
             Assert.IsNotNull(installmentInfo.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), installmentInfo.Status);

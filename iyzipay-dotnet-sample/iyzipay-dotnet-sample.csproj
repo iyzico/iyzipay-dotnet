@@ -90,6 +90,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="iyzipay-dotnet-sample.licenseheader" />
     <None Include="packages.config" />
   </ItemGroup>
   <Choose>

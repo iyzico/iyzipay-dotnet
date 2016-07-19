@@ -1,22 +1,22 @@
-﻿// <copyright file="RetrieveBinNumberRequest.cs" company="Iyzico">
+﻿// <copyright file="RetrieveBkmRequest.cs" company="Iyzico">
 // Copyright (c) 2016 All Rights Reserved
 // </copyright>
 // <summary></summary>
 namespace Iyzipay.Request
 {
     /// <summary>
-    /// Retrieve BIN number request
+    /// Retrieve BKM request
     /// </summary>
     /// <seealso cref="Iyzipay.BaseRequest" />
-    public class RetrieveBinNumberRequest : BaseRequest
+    public class RetrieveBkmRequest : BaseRequest
     {
         /// <summary>
-        /// Gets or sets the BIN number.
+        /// Gets or sets the token.
         /// </summary>
         /// <value>
-        /// The BIN number.
+        /// The token.
         /// </value>
-        public string BinNumber { get; set; }
+        public string Token { get; set; }
 
         /// <summary>
         /// To PKI request string.
@@ -28,7 +28,7 @@ namespace Iyzipay.Request
         {
             return ToStringRequestBuilder.NewInstance()
                 .AppendSuper(base.ToPkiRequestString())
-                .Append("binNumber", this.BinNumber)
+                .Append("token", this.Token)
                 .GetRequestString();
         }
     }

@@ -1,23 +1,33 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
-using Iyzipay.Model;
-
+﻿// <copyright file="RetrieveTransactionsSample.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace IyzipaySample.Sample
 {
+    using Iyzipay.Model;
+    using Iyzipay.Request;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    /// <summary>
+    /// Retrieve transactions sample
+    /// </summary>
     [TestClass]
     public class RetrieveTransactionsSample : Sample
     {
+        /// <summary>
+        /// Should retrieve payout completed transactions.
+        /// </summary>
         [TestMethod]
-        public void Should_Retrieve_Payout_Completed_Transactions()
+        public void ShouldRetrievePayoutCompletedTransactions()
         {
-            RetrieveTransactionsRequest request = new RetrieveTransactionsRequest();
+            var request = new RetrieveTransactionsRequest();
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.Date = "2015-01-22 19:13:00";
 
-            PayoutCompletedTransactionList payoutCompletedTransactionList = PayoutCompletedTransactionList.Retrieve(request, options);
+            var payoutCompletedTransactionList = PayoutCompletedTransactionList.Retrieve(request, Options);
 
-            PrintResponse<PayoutCompletedTransactionList>(payoutCompletedTransactionList);
+            this.PrintResponse<PayoutCompletedTransactionList>(payoutCompletedTransactionList);
 
             Assert.IsNotNull(payoutCompletedTransactionList.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), payoutCompletedTransactionList.Status);
@@ -25,17 +35,20 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", payoutCompletedTransactionList.ConversationId);
         }
 
+        /// <summary>
+        /// Should retrieve bounced bank transfers.
+        /// </summary>
         [TestMethod]
-        public void Should_Retrieve_Bounced_Bank_Transfers()
+        public void ShouldRetrieveBouncedBankTransfers()
         {
-            RetrieveTransactionsRequest request = new RetrieveTransactionsRequest();
+            var request = new RetrieveTransactionsRequest();
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.Date = "2015-06-02 19:13:00";
 
-            BouncedBankTransferList bouncedBankTransferList = BouncedBankTransferList.Retrieve(request, options);
+            var bouncedBankTransferList = BouncedBankTransferList.Retrieve(request, Options);
 
-            PrintResponse<BouncedBankTransferList>(bouncedBankTransferList);
+            this.PrintResponse<BouncedBankTransferList>(bouncedBankTransferList);
 
             Assert.IsNotNull(bouncedBankTransferList.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), bouncedBankTransferList.Status);

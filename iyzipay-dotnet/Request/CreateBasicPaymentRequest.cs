@@ -1,45 +1,140 @@
-﻿using Iyzipay.Model;
-using System;
-using System.Collections.Generic;
-
+﻿// <copyright file="CreateBasicPaymentRequest.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace Iyzipay.Request
 {
+    using System;
+    using Iyzipay.Model;
+
+    /// <summary>
+    /// Create basic payment request
+    /// </summary>
+    /// <seealso cref="Iyzipay.BaseRequest" />
     public class CreateBasicPaymentRequest : BaseRequest
     {
-        public static readonly int? SINGLE_INSTALLMENT = 1;
+        /// <summary>
+        /// The single installment constant
+        /// </summary>
+        public const int SingleInstallment = 1;
 
-        public String Price { get; set; }
-        public String PaidPrice { get; set; }
-        public int? Installment { get; set; }
-        public String BuyerEmail { get; set; }
-        public String BuyerId { get; set; }
-        public String BuyerIp { get; set; }
-        public String PosOrderId { get; set; }
-        public PaymentCard PaymentCard { get; set; }
-        public String Currency { get; set; }
-        public String ConnectorName { get; set; }
-        public String CallbackUrl { get; set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreateBasicPaymentRequest"/> class.
+        /// </summary>
         public CreateBasicPaymentRequest()
         {
-            this.Installment = SINGLE_INSTALLMENT;
+            this.Installment = SingleInstallment;
         }
 
-        public override String ToPKIRequestString()
+        /// <summary>
+        /// Gets or sets the price.
+        /// </summary>
+        /// <value>
+        /// The price.
+        /// </value>
+        public string Price { get; set; }
+
+        /// <summary>
+        /// Gets or sets the paid price.
+        /// </summary>
+        /// <value>
+        /// The paid price.
+        /// </value>
+        public string PaidPrice { get; set; }
+
+        /// <summary>
+        /// Gets or sets the installment.
+        /// </summary>
+        /// <value>
+        /// The installment.
+        /// </value>
+        public int? Installment { get; set; }
+
+        /// <summary>
+        /// Gets or sets the buyer email.
+        /// </summary>
+        /// <value>
+        /// The buyer email.
+        /// </value>
+        public string BuyerEmail { get; set; }
+
+        /// <summary>
+        /// Gets or sets the buyer identifier.
+        /// </summary>
+        /// <value>
+        /// The buyer identifier.
+        /// </value>
+        public string BuyerId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the buyer IP.
+        /// </summary>
+        /// <value>
+        /// The buyer IP.
+        /// </value>
+        public string BuyerIp { get; set; }
+
+        /// <summary>
+        /// Gets or sets the position order identifier.
+        /// </summary>
+        /// <value>
+        /// The position order identifier.
+        /// </value>
+        public string PosOrderId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the payment card.
+        /// </summary>
+        /// <value>
+        /// The payment card.
+        /// </value>
+        public PaymentCard PaymentCard { get; set; }
+
+        /// <summary>
+        /// Gets or sets the currency.
+        /// </summary>
+        /// <value>
+        /// The currency.
+        /// </value>
+        public string Currency { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the connector.
+        /// </summary>
+        /// <value>
+        /// The name of the connector.
+        /// </value>
+        public string ConnectorName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the callback URL.
+        /// </summary>
+        /// <value>
+        /// The callback URL.
+        /// </value>
+        public string CallbackUrl { get; set; }
+
+        /// <summary>
+        /// To PKI request string.
+        /// </summary>
+        /// <returns>
+        /// The request as a PKI string
+        /// </returns>
+        public override string ToPkiRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
-                .AppendSuper(base.ToPKIRequestString())
-                .AppendPrice("price", Price)
-                .AppendPrice("paidPrice", PaidPrice)
-                .Append("installment", Installment)
-                .Append("buyerEmail", BuyerEmail)
-                .Append("buyerId", BuyerId)
-                .Append("buyerIp", BuyerIp)
-                .Append("posOrderId", PosOrderId)               
-                .Append("paymentCard", PaymentCard)
-                .Append("currency", Currency)
-                .Append("connectorName", ConnectorName)
-                .Append("callbackUrl", CallbackUrl)
+                .AppendSuper(base.ToPkiRequestString())
+                .AppendPrice("price", this.Price)
+                .AppendPrice("paidPrice", this.PaidPrice)
+                .Append("installment", this.Installment)
+                .Append("buyerEmail", this.BuyerEmail)
+                .Append("buyerId", this.BuyerId)
+                .Append("buyerIp", this.BuyerIp)
+                .Append("posOrderId", this.PosOrderId)
+                .Append("paymentCard", this.PaymentCard)
+                .Append("currency", this.Currency)
+                .Append("connectorName", this.ConnectorName)
+                .Append("callbackUrl", this.CallbackUrl)
                 .GetRequestString();
         }
     }

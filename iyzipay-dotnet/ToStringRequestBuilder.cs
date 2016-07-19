@@ -1,28 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿// <copyright file="ToStringRequestBuilder.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace Iyzipay
 {
+    using System;
+    using System.Collections.Generic;
+
+    /// <summary>
+    /// Request builder
+    /// </summary>
     public class ToStringRequestBuilder
     {
-        private String _requestString;
+        /// <summary>
+        /// The _request string
+        /// </summary>
+        private string requestString;
 
-        private ToStringRequestBuilder(String requestString)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ToStringRequestBuilder"/> class.
+        /// </summary>
+        /// <param name="requestString">The request string.</param>
+        private ToStringRequestBuilder(string requestString)
         {
-            this._requestString = requestString;
+            this.requestString = requestString;
         }
 
+        /// <summary>
+        /// News the instance.
+        /// </summary>
+        /// <returns>The new instance</returns>
         public static ToStringRequestBuilder NewInstance()
         {
-            return new ToStringRequestBuilder("");
+            return new ToStringRequestBuilder(string.Empty);
         }
 
-        public static ToStringRequestBuilder NewInstance(String requestString)
+        /// <summary>
+        /// Creates a new instance
+        /// </summary>
+        /// <param name="requestString">The request string</param>
+        /// <returns>A new instance</returns>
+        public static ToStringRequestBuilder NewInstance(string requestString)
         {
             return new ToStringRequestBuilder(requestString);
         }
 
-        public ToStringRequestBuilder AppendSuper(String superRequestString)
+        /// <summary>
+        /// Appends the super.
+        /// </summary>
+        /// <param name="superRequestString">The super request string.</param>
+        /// <returns>The instance</returns>
+        public ToStringRequestBuilder AppendSuper(string superRequestString)
         {
             if (superRequestString != null)
             {
@@ -31,104 +59,163 @@ namespace Iyzipay
 
                 if (superRequestString.Length > 0)
                 {
-                    this._requestString = this._requestString + superRequestString + ",";
+                    this.requestString = this.requestString + superRequestString + ",";
                 }
             }
+
             return this;
         }
 
-        public ToStringRequestBuilder Append(String key, Object value = null)
+        /// <summary>
+        /// Appends the specified key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <returns>The instance</returns>
+        public ToStringRequestBuilder Append(string key, object value = null)
         {
             if (value != null)
             {
-                if (value is RequestStringConvertible)
+                if (value is IRequestStringConvertible)
                 {
-                    AppendKeyValue(key, ((RequestStringConvertible)value).ToPKIRequestString());
+                    this.AppendKeyValue(key, ((IRequestStringConvertible)value).ToPkiRequestString());
                 }
                 else
                 {
-                    AppendKeyValue(key, value.ToString());
+                    this.AppendKeyValue(key, value.ToString());
                 }
             }
+
             return this;
         }
 
-        public ToStringRequestBuilder AppendPrice(String key, String value)
+        /// <summary>
+        /// Appends the price.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <returns>The instance</returns>
+        public ToStringRequestBuilder AppendPrice(string key, string value)
         {
             if (value != null)
             {
-                AppendKeyValue(key, RequestFormatter.FormatPrice(value));
+                this.AppendKeyValue(key, RequestFormatter.FormatPrice(value));
             }
+
             return this;
         }
 
-        public ToStringRequestBuilder AppendList<T>(String key, List<T> list = null) where T : RequestStringConvertible
+        /// <summary>
+        /// Appends the list.
+        /// </summary>
+        /// <typeparam name="T">Type of the list</typeparam>
+        /// <param name="key">The key.</param>
+        /// <param name="list">The list.</param>
+        /// <returns>The instance</returns>
+        public ToStringRequestBuilder AppendList<T>(string key, List<T> list = null) where T : IRequestStringConvertible
         {
             if (list != null)
             {
-                String appendedValue = "";
-                foreach (RequestStringConvertible value in list)
+                var appendedValue = string.Empty;
+                foreach (IRequestStringConvertible value in list)
                 {
-                    appendedValue = appendedValue + value.ToPKIRequestString() + ", ";
+                    appendedValue = appendedValue + value.ToPkiRequestString() + ", ";
                 }
-                AppendKeyValueArray(key, appendedValue);
+
+                this.AppendKeyValueArray(key, appendedValue);
             }
+
             return this;
         }
 
-        public ToStringRequestBuilder AppendList (String key, List<int> list = null)
+        /// <summary>
+        /// Appends the list.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="list">The list.</param>
+        /// <returns>The instance</returns>
+        public ToStringRequestBuilder AppendList(string key, List<int> list = null)
         {
             if (list != null)
             {
-                String appendedValue = "";
+                var appendedValue = string.Empty;
                 foreach (int value in list)
                 {
                     appendedValue = appendedValue + value + ", ";
                 }
-                AppendKeyValueArray(key, appendedValue);
+
+                this.AppendKeyValueArray(key, appendedValue);
             }
+
             return this;
         }
 
-        private ToStringRequestBuilder AppendKeyValue(String key, String value)
+        /// <summary>
+        /// Gets the request string.
+        /// </summary>
+        /// <returns>The request string</returns>
+        public string GetRequestString()
+        {
+            this.RemoveTrailingComma();
+            this.AppendPrefix();
+            return this.requestString;
+        }
+
+        /// <summary>
+        /// Appends the key value.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <returns>The instance</returns>
+        private ToStringRequestBuilder AppendKeyValue(string key, string value)
         {
             if (value != null)
             {
-                this._requestString = this._requestString + key + "=" + value + ",";
+                this.requestString = this.requestString + key + "=" + value + ",";
             }
+
             return this;
         }
 
-        private ToStringRequestBuilder AppendKeyValueArray(String key, String value)
+        /// <summary>
+        /// Appends the key value array.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <returns>The instance</returns>
+        private ToStringRequestBuilder AppendKeyValueArray(string key, string value)
         {
             if (value != null)
             {
                 value = value.Substring(0, value.Length - 2);
-                this._requestString = this._requestString + key + "=[" + value + "],";
+                this.requestString = this.requestString + key + "=[" + value + "],";
             }
+
             return this;
         }
 
+        /// <summary>
+        /// Appends the prefix.
+        /// </summary>
+        /// <returns>The instance</returns>
         private ToStringRequestBuilder AppendPrefix()
         {
-            this._requestString = "[" + this._requestString + "]";
+            this.requestString = "[" + this.requestString + "]";
             return this;
         }
 
+        /// <summary>
+        /// Removes the trailing comma.
+        /// </summary>
+        /// <returns>The instance</returns>
         private ToStringRequestBuilder RemoveTrailingComma()
         {
-            if (!string.IsNullOrEmpty(this._requestString))
+            if (!string.IsNullOrEmpty(this.requestString))
             {
-                this._requestString = this._requestString.Substring(0, this._requestString.Length - 1);
+                this.requestString = this.requestString.Substring(0, this.requestString.Length - 1);
             }
-            return this;
-        }
 
-        public String GetRequestString()
-        {
-            RemoveTrailingComma();
-            AppendPrefix();
-            return _requestString;
+            return this;
         }
     }
 }

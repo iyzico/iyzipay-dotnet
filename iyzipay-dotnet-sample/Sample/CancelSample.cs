@@ -1,24 +1,34 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
-using Iyzipay.Model;
-
+﻿// <copyright file="CancelSample.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace IyzipaySample.Sample
 {
+    using Iyzipay.Model;
+    using Iyzipay.Request;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    /// <summary>
+    /// Cancel sample
+    /// </summary>
     [TestClass]
     public class CancelSample : Sample
     {
+        /// <summary>
+        /// Should cancel payment.
+        /// </summary>
         [TestMethod]
-        public void Should_Cancel_Payment()
+        public void ShouldCancelPayment()
         {
-            CreateCancelRequest request = new CreateCancelRequest();
+            var request = new CreateCancelRequest();
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.PaymentId = "1";
             request.Ip = "85.34.78.112";
 
-            Cancel cancel = Cancel.Create(request, options);
+            var cancel = Cancel.Create(request, Options);
 
-            PrintResponse<Cancel>(cancel);
+            this.PrintResponse<Cancel>(cancel);
 
             Assert.IsNotNull(cancel.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), cancel.Status);

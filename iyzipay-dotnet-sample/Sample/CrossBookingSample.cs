@@ -1,16 +1,26 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
-using Iyzipay.Model;
-
+﻿// <copyright file="CrossBookingSample.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace IyzipaySample.Sample
 {
+    using Iyzipay.Model;
+    using Iyzipay.Request;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    /// <summary>
+    /// Cross-booking sample
+    /// </summary>
     [TestClass]
     public class CrossBookingSample : Sample
     {
+        /// <summary>
+        /// Should send money to sub merchant.
+        /// </summary>
         [TestMethod]
-        public void Should_Send_Money_To_Sub_Merchant()
+        public void ShouldSendMoneyToSubMerchant()
         {
-            CreateCrossBookingRequest request = new CreateCrossBookingRequest();
+            var request = new CreateCrossBookingRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.SubMerchantKey = "sub merchant key";
@@ -18,9 +28,9 @@ namespace IyzipaySample.Sample
             request.Reason = "reason text";
             request.Currency = Currency.TRY.ToString();
 
-            CrossBookingToSubMerchant crossBookingToSubMerchant = CrossBookingToSubMerchant.Create(request, options);
+            var crossBookingToSubMerchant = CrossBookingToSubMerchant.Create(request, Options);
 
-            PrintResponse<CrossBookingToSubMerchant>(crossBookingToSubMerchant);
+            this.PrintResponse<CrossBookingToSubMerchant>(crossBookingToSubMerchant);
 
             Assert.IsNotNull(crossBookingToSubMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), crossBookingToSubMerchant.Status);
@@ -28,10 +38,13 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", crossBookingToSubMerchant.ConversationId);
         }
 
+        /// <summary>
+        /// Should receive money from sub merchant.
+        /// </summary>
         [TestMethod]
-        public void Should_Receive_Money_From_Sub_Merchant()
+        public void ShouldReceiveMoneyFromSubMerchant()
         {
-            CreateCrossBookingRequest request = new CreateCrossBookingRequest();
+            var request = new CreateCrossBookingRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.SubMerchantKey = "sub merchant key";
@@ -39,9 +52,9 @@ namespace IyzipaySample.Sample
             request.Reason = "reason text";
             request.Currency = Currency.TRY.ToString();
 
-            CrossBookingFromSubMerchant crossBookingFromSubMerchant = CrossBookingFromSubMerchant.Create(request, options);
+            var crossBookingFromSubMerchant = CrossBookingFromSubMerchant.Create(request, Options);
 
-            PrintResponse<CrossBookingFromSubMerchant>(crossBookingFromSubMerchant);
+            this.PrintResponse<CrossBookingFromSubMerchant>(crossBookingFromSubMerchant);
 
             Assert.IsNotNull(crossBookingFromSubMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), crossBookingFromSubMerchant.Status);

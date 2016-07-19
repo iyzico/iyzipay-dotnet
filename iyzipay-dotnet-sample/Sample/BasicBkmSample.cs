@@ -1,21 +1,36 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
-using Iyzipay.Model;
-using System.Collections.Generic;
-
+﻿// <copyright file="BasicBkmSample.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace IyzipaySample.Sample
 {
+    using System.Collections.Generic;
+    using Iyzipay.Model;
+    using Iyzipay.Request;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    /// <summary>
+    /// Basic BKM sample
+    /// </summary>
+    /// <seealso cref="IyzipaySample.Sample.Sample" />
+    /// <summary>
+    /// BasicBkmSample
+    /// </summary>
     [TestClass]
     public class BasicBkmSample : Sample
     {
+        /// <summary>
+        /// Should initialize BKM express.
+        /// </summary>
         [TestMethod]
-        public void Should_Initialize_Bkm_Express()
+        public void ShouldInitializeBkmExpress()
         {
-            CreateBasicBkmInitializeRequest request = new CreateBasicBkmInitializeRequest();
+            var request = new CreateBasicBkmInitializeRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.Price = "1";
             request.CallbackUrl = "https://www.merchant.com/callbackUrl";
+
             // prepare buyer
             request.BuyerId = "100";
             request.BuyerEmail = "email@email.com";
@@ -23,10 +38,10 @@ namespace IyzipaySample.Sample
 
             // default pos
             request.ConnectorName = "connector name";
-            request.InstallmentDetails = prepareInstallmentDetails();
-            BasicBkmInitialize bkmInitialize = BasicBkmInitialize.Create(request, options);
+            request.InstallmentDetails = this.PrepareInstallmentDetails();
+            var bkmInitialize = BasicBkmInitialize.Create(request, Options);
 
-            PrintResponse<BasicBkmInitialize>(bkmInitialize);
+            this.PrintResponse<BasicBkmInitialize>(bkmInitialize);
 
             Assert.IsNotNull(bkmInitialize.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), bkmInitialize.Status);
@@ -35,17 +50,20 @@ namespace IyzipaySample.Sample
             Assert.IsNotNull(bkmInitialize.HtmlContent);
         }
 
+        /// <summary>
+        /// Should retrieve BKM authentication.
+        /// </summary>
         [TestMethod]
-        public void Should_Retrieve_Bkm_Auth()
+        public void ShouldRetrieveBkmAuth()
         {
-            RetrieveBkmRequest request = new RetrieveBkmRequest();
+            var request = new RetrieveBkmRequest();
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.Token = "token";
 
-            BasicBkm basicBkm = BasicBkm.Retrieve(request, options);
+            var basicBkm = BasicBkm.Retrieve(request, Options);
 
-            PrintResponse<BasicBkm>(basicBkm);
+            this.PrintResponse<BasicBkm>(basicBkm);
 
             Assert.IsNotNull(basicBkm.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), basicBkm.Status);
@@ -53,42 +71,50 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", basicBkm.ConversationId);
         }
 
-        private List<BkmInstallment> prepareInstallmentDetails()
+        /// <summary>
+        /// Prepares the installment details.
+        /// </summary>
+        /// <returns>The installment details</returns>
+        private List<BkmInstallment> PrepareInstallmentDetails()
         {
-            List<BkmInstallment> installmentDetails = new List<BkmInstallment>();
-            installmentDetails.Add(isbankInstallmentDetails());
-            installmentDetails.Add(finansbankInstallmentDetails());
-            installmentDetails.Add(akbankInstallmentDetails());
-            installmentDetails.Add(ykbInstallmentDetails());
-            installmentDetails.Add(denizbankInstallmentDetails());
-            installmentDetails.Add(halkbankInstallmentDetails());
+            var installmentDetails = new List<BkmInstallment>();
+            installmentDetails.Add(this.IsBankInstallmentDetails());
+            installmentDetails.Add(this.FinansBankInstallmentDetails());
+            installmentDetails.Add(this.AkBankInstallmentDetails());
+            installmentDetails.Add(this.YkbInstallmentDetails());
+            installmentDetails.Add(this.DenizBankInstallmentDetails());
+            installmentDetails.Add(this.HalkBankInstallmentDetails());
             return installmentDetails;
         }
 
-        private BkmInstallment isbankInstallmentDetails () 
+        /// <summary>
+        /// Determines whether [is bank installment details].
+        /// </summary>
+        /// <returns>The installment details</returns>
+        private BkmInstallment IsBankInstallmentDetails()
         {
-            BkmInstallment installmentDetail = new BkmInstallment();
+            var installmentDetail = new BkmInstallment();
             installmentDetail.BankId = 64L;
 
-            List<BkmInstallmentPrice> installmentPrices = new List<BkmInstallmentPrice>() ;
+            var installmentPrices = new List<BkmInstallmentPrice>();
 
-            BkmInstallmentPrice singleInstallment = new BkmInstallmentPrice();
+            var singleInstallment = new BkmInstallmentPrice();
             singleInstallment.InstallmentNumber = 1;
             singleInstallment.TotalPrice = "1";
 
-            BkmInstallmentPrice twoInstallments = new BkmInstallmentPrice();
+            var twoInstallments = new BkmInstallmentPrice();
             twoInstallments.InstallmentNumber = 2;
             twoInstallments.TotalPrice = "1.1";
 
-            BkmInstallmentPrice threeInstallments = new BkmInstallmentPrice();
+            var threeInstallments = new BkmInstallmentPrice();
             threeInstallments.InstallmentNumber = 3;
             threeInstallments.TotalPrice = "1.1";
 
-            BkmInstallmentPrice sixInstallments = new BkmInstallmentPrice();
+            var sixInstallments = new BkmInstallmentPrice();
             sixInstallments.InstallmentNumber = 6;
             sixInstallments.TotalPrice = "1.2";
 
-            BkmInstallmentPrice nineInstallments = new BkmInstallmentPrice();
+            var nineInstallments = new BkmInstallmentPrice();
             nineInstallments.InstallmentNumber = 9;
             nineInstallments.TotalPrice = "1.4";
 
@@ -102,30 +128,34 @@ namespace IyzipaySample.Sample
             return installmentDetail;
         }
 
-        private BkmInstallment finansbankInstallmentDetails()
+        /// <summary>
+        /// FINANS bank installment details.
+        /// </summary>
+        /// <returns>The installment details</returns>
+        private BkmInstallment FinansBankInstallmentDetails()
         {
-            BkmInstallment installmentDetail = new BkmInstallment();
+            var installmentDetail = new BkmInstallment();
             installmentDetail.BankId = 111L;
 
-            List<BkmInstallmentPrice> installmentPrices = new List<BkmInstallmentPrice>();
+            var installmentPrices = new List<BkmInstallmentPrice>();
 
-            BkmInstallmentPrice singleInstallment = new BkmInstallmentPrice();
+            var singleInstallment = new BkmInstallmentPrice();
             singleInstallment.InstallmentNumber = 1;
             singleInstallment.TotalPrice = "1";
 
-            BkmInstallmentPrice twoInstallments = new BkmInstallmentPrice();
+            var twoInstallments = new BkmInstallmentPrice();
             twoInstallments.InstallmentNumber = 2;
             twoInstallments.TotalPrice = "1.1";
 
-            BkmInstallmentPrice threeInstallments = new BkmInstallmentPrice();
+            var threeInstallments = new BkmInstallmentPrice();
             threeInstallments.InstallmentNumber = 3;
             threeInstallments.TotalPrice = "1.1";
 
-            BkmInstallmentPrice sixInstallments = new BkmInstallmentPrice();
+            var sixInstallments = new BkmInstallmentPrice();
             sixInstallments.InstallmentNumber = 6;
             sixInstallments.TotalPrice = "1.2";
 
-            BkmInstallmentPrice nineInstallments = new BkmInstallmentPrice();
+            var nineInstallments = new BkmInstallmentPrice();
             nineInstallments.InstallmentNumber = 9;
             nineInstallments.TotalPrice = "1.4";
 
@@ -139,30 +169,34 @@ namespace IyzipaySample.Sample
             return installmentDetail;
         }
 
-        private BkmInstallment akbankInstallmentDetails() 
+        /// <summary>
+        /// AKS bank installment details.
+        /// </summary>
+        /// <returns>The installment details</returns>
+        private BkmInstallment AkBankInstallmentDetails()
         {
-            BkmInstallment installmentDetail = new BkmInstallment();
+            var installmentDetail = new BkmInstallment();
             installmentDetail.BankId = 46L;
 
-            List<BkmInstallmentPrice> installmentPrices = new List<BkmInstallmentPrice>();
+            var installmentPrices = new List<BkmInstallmentPrice>();
 
-            BkmInstallmentPrice singleInstallment = new BkmInstallmentPrice();
+            var singleInstallment = new BkmInstallmentPrice();
             singleInstallment.InstallmentNumber = 1;
             singleInstallment.TotalPrice = "1";
 
-            BkmInstallmentPrice twoInstallments = new BkmInstallmentPrice();
+            var twoInstallments = new BkmInstallmentPrice();
             twoInstallments.InstallmentNumber = 2;
             twoInstallments.TotalPrice = "1.1";
 
-            BkmInstallmentPrice threeInstallments = new BkmInstallmentPrice();
+            var threeInstallments = new BkmInstallmentPrice();
             threeInstallments.InstallmentNumber = 3;
             threeInstallments.TotalPrice = "1.1";
 
-            BkmInstallmentPrice sixInstallments = new BkmInstallmentPrice();
+            var sixInstallments = new BkmInstallmentPrice();
             sixInstallments.InstallmentNumber = 6;
             sixInstallments.TotalPrice = "1.2";
 
-            BkmInstallmentPrice nineInstallments = new BkmInstallmentPrice();
+            var nineInstallments = new BkmInstallmentPrice();
             nineInstallments.InstallmentNumber = 9;
             nineInstallments.TotalPrice = "1.4";
 
@@ -176,30 +210,34 @@ namespace IyzipaySample.Sample
             return installmentDetail;
         }
 
-        private BkmInstallment ykbInstallmentDetails()
+        /// <summary>
+        /// YKBS the installment details.
+        /// </summary>
+        /// <returns>The installment details</returns>
+        private BkmInstallment YkbInstallmentDetails()
         {
-            BkmInstallment installmentDetail = new BkmInstallment();
+            var installmentDetail = new BkmInstallment();
             installmentDetail.BankId = 67L;
 
-            List<BkmInstallmentPrice> installmentPrices = new List<BkmInstallmentPrice>();
+            var installmentPrices = new List<BkmInstallmentPrice>();
 
-            BkmInstallmentPrice singleInstallment = new BkmInstallmentPrice();
+            var singleInstallment = new BkmInstallmentPrice();
             singleInstallment.InstallmentNumber = 1;
             singleInstallment.TotalPrice = "1";
 
-            BkmInstallmentPrice twoInstallments = new BkmInstallmentPrice();
+            var twoInstallments = new BkmInstallmentPrice();
             twoInstallments.InstallmentNumber = 2;
             twoInstallments.TotalPrice = "1.1";
 
-            BkmInstallmentPrice threeInstallments = new BkmInstallmentPrice();
+            var threeInstallments = new BkmInstallmentPrice();
             threeInstallments.InstallmentNumber = 3;
             threeInstallments.TotalPrice = "1.1";
 
-            BkmInstallmentPrice sixInstallments = new BkmInstallmentPrice();
+            var sixInstallments = new BkmInstallmentPrice();
             sixInstallments.InstallmentNumber = 6;
             sixInstallments.TotalPrice = "1.2";
 
-            BkmInstallmentPrice nineInstallments = new BkmInstallmentPrice();
+            var nineInstallments = new BkmInstallmentPrice();
             nineInstallments.InstallmentNumber = 9;
             nineInstallments.TotalPrice = "1.4";
 
@@ -213,30 +251,34 @@ namespace IyzipaySample.Sample
             return installmentDetail;
         }
 
-        private BkmInstallment denizbankInstallmentDetails() 
+        /// <summary>
+        /// DENIZ bank installment details.
+        /// </summary>
+        /// <returns>The installment details</returns>
+        private BkmInstallment DenizBankInstallmentDetails()
         {
-            BkmInstallment installmentDetail = new BkmInstallment();
+            var installmentDetail = new BkmInstallment();
             installmentDetail.BankId = 134L;
 
-            List<BkmInstallmentPrice> installmentPrices = new List<BkmInstallmentPrice>();
+            var installmentPrices = new List<BkmInstallmentPrice>();
 
-            BkmInstallmentPrice singleInstallment = new BkmInstallmentPrice();
+            var singleInstallment = new BkmInstallmentPrice();
             singleInstallment.InstallmentNumber = 1;
             singleInstallment.TotalPrice = "1";
 
-            BkmInstallmentPrice twoInstallments = new BkmInstallmentPrice();
+            var twoInstallments = new BkmInstallmentPrice();
             twoInstallments.InstallmentNumber = 2;
             twoInstallments.TotalPrice = "1.1";
 
-            BkmInstallmentPrice threeInstallments = new BkmInstallmentPrice();
+            var threeInstallments = new BkmInstallmentPrice();
             threeInstallments.InstallmentNumber = 3;
             threeInstallments.TotalPrice = "1.1";
 
-            BkmInstallmentPrice sixInstallments = new BkmInstallmentPrice();
+            var sixInstallments = new BkmInstallmentPrice();
             sixInstallments.InstallmentNumber = 6;
             sixInstallments.TotalPrice = "1.2";
 
-            BkmInstallmentPrice nineInstallments = new BkmInstallmentPrice();
+            var nineInstallments = new BkmInstallmentPrice();
             nineInstallments.InstallmentNumber = 9;
             nineInstallments.TotalPrice = "1.4";
 
@@ -250,30 +292,34 @@ namespace IyzipaySample.Sample
             return installmentDetail;
         }
 
-        private BkmInstallment halkbankInstallmentDetails()
+        /// <summary>
+        /// HALK bank installment details.
+        /// </summary>
+        /// <returns>The installment details</returns>
+        private BkmInstallment HalkBankInstallmentDetails()
         {
-            BkmInstallment installmentDetail = new BkmInstallment();
+            var installmentDetail = new BkmInstallment();
             installmentDetail.BankId = 12L;
 
-            List<BkmInstallmentPrice> installmentPrices = new List<BkmInstallmentPrice>();
+            var installmentPrices = new List<BkmInstallmentPrice>();
 
-            BkmInstallmentPrice singleInstallment = new BkmInstallmentPrice();
+            var singleInstallment = new BkmInstallmentPrice();
             singleInstallment.InstallmentNumber = 1;
             singleInstallment.TotalPrice = "1";
 
-            BkmInstallmentPrice twoInstallments = new BkmInstallmentPrice();
+            var twoInstallments = new BkmInstallmentPrice();
             twoInstallments.InstallmentNumber = 2;
             twoInstallments.TotalPrice = "1.1";
 
-            BkmInstallmentPrice threeInstallments = new BkmInstallmentPrice();
+            var threeInstallments = new BkmInstallmentPrice();
             threeInstallments.InstallmentNumber = 3;
             threeInstallments.TotalPrice = "1.1";
 
-            BkmInstallmentPrice sixInstallments = new BkmInstallmentPrice();
+            var sixInstallments = new BkmInstallmentPrice();
             sixInstallments.InstallmentNumber = 6;
             sixInstallments.TotalPrice = "1.2";
 
-            BkmInstallmentPrice nineInstallments = new BkmInstallmentPrice();
+            var nineInstallments = new BkmInstallmentPrice();
             nineInstallments.InstallmentNumber = 9;
             nineInstallments.TotalPrice = "1.4";
 

@@ -1,16 +1,26 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
-using Iyzipay.Model;
-
+﻿// <copyright file="SubMerchantSample.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace IyzipaySample.Sample
 {
+    using Iyzipay.Model;
+    using Iyzipay.Request;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    /// <summary>
+    /// Sub-merchant sample
+    /// </summary>
     [TestClass]
     public class SubMerchantSample : Sample
     {
+        /// <summary>
+        /// Should create personal sub merchant.
+        /// </summary>
         [TestMethod]
-        public void Should_Create_Personal_Sub_Merchant()
+        public void ShouldCreatePersonalSubMerchant()
         {
-            CreateSubMerchantRequest request = new CreateSubMerchantRequest();
+            var request = new CreateSubMerchantRequest();
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.SubMerchantExternalId = "B49224";
@@ -25,9 +35,9 @@ namespace IyzipaySample.Sample
             request.IdentityNumber = "1234567890";
             request.Currency = Currency.TRY.ToString();
 
-            SubMerchant subMerchant = SubMerchant.Create(request, options);
+            var subMerchant = SubMerchant.Create(request, Options);
 
-            PrintResponse<SubMerchant>(subMerchant);
+            this.PrintResponse<SubMerchant>(subMerchant);
 
             Assert.IsNotNull(subMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);
@@ -35,10 +45,13 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", subMerchant.ConversationId);
         }
 
+        /// <summary>
+        /// Should create private sub merchant.
+        /// </summary>
         [TestMethod]
-        public void Should_Create_Private_Sub_Merchant()
+        public void ShouldCreatePrivateSubMerchant()
         {
-            CreateSubMerchantRequest request = new CreateSubMerchantRequest();
+            var request = new CreateSubMerchantRequest();
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.SubMerchantExternalId = "S49222";
@@ -53,20 +66,23 @@ namespace IyzipaySample.Sample
             request.IdentityNumber = "31300864726";
             request.Currency = Currency.TRY.ToString();
 
-            SubMerchant subMerchant = SubMerchant.Create(request, options);
+            var subMerchant = SubMerchant.Create(request, Options);
 
-            PrintResponse<SubMerchant>(subMerchant);
-            
+            this.PrintResponse<SubMerchant>(subMerchant);
+
             Assert.IsNotNull(subMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);
             Assert.AreEqual(Locale.TR.GetName(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
         }
 
+        /// <summary>
+        /// Should create limited company sub merchant.
+        /// </summary>
         [TestMethod]
-        public void Should_Create_Limited_Company_Sub_Merchant()
+        public void ShouldCreateLimitedCompanySubMerchant()
         {
-            CreateSubMerchantRequest request = new CreateSubMerchantRequest();
+            var request = new CreateSubMerchantRequest();
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.SubMerchantExternalId = "AS49224";
@@ -81,9 +97,9 @@ namespace IyzipaySample.Sample
             request.Iban = "TR180006200119000006672315";
             request.Currency = Currency.TRY.ToString();
 
-            SubMerchant subMerchant = SubMerchant.Create(request, options);
+            var subMerchant = SubMerchant.Create(request, Options);
 
-            PrintResponse<SubMerchant>(subMerchant);
+            this.PrintResponse<SubMerchant>(subMerchant);
 
             Assert.IsNotNull(subMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);
@@ -91,10 +107,13 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", subMerchant.ConversationId);
         }
 
+        /// <summary>
+        /// Should update personal sub merchant.
+        /// </summary>
         [TestMethod]
-        public void Should_Update_Personal_Sub_Merchant()
+        public void ShouldUpdatePersonalSubMerchant()
         {
-            UpdateSubMerchantRequest request = new UpdateSubMerchantRequest();
+            var request = new UpdateSubMerchantRequest();
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.SubMerchantKey = "sub merchant key";
@@ -108,9 +127,9 @@ namespace IyzipaySample.Sample
             request.IdentityNumber = "31300864726";
             request.Currency = Currency.TRY.ToString();
 
-            SubMerchant subMerchant = SubMerchant.Update(request, options);
+            var subMerchant = SubMerchant.Update(request, Options);
 
-            PrintResponse<SubMerchant>(subMerchant);
+            this.PrintResponse<SubMerchant>(subMerchant);
 
             Assert.IsNotNull(subMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);
@@ -118,10 +137,13 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", subMerchant.ConversationId);
         }
 
+        /// <summary>
+        /// Should update private sub merchant.
+        /// </summary>
         [TestMethod]
-        public void Should_Update_Private_Sub_Merchant()
+        public void ShouldUpdatePrivateSubMerchant()
         {
-            UpdateSubMerchantRequest request = new UpdateSubMerchantRequest();
+            var request = new UpdateSubMerchantRequest();
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.SubMerchantKey = "sub merchant key";
@@ -135,9 +157,9 @@ namespace IyzipaySample.Sample
             request.IdentityNumber = "31300864726";
             request.Currency = Currency.TRY.ToString();
 
-            SubMerchant subMerchant = SubMerchant.Update(request, options);
+            var subMerchant = SubMerchant.Update(request, Options);
 
-            PrintResponse<SubMerchant>(subMerchant);
+            this.PrintResponse<SubMerchant>(subMerchant);
 
             Assert.IsNotNull(subMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);
@@ -145,10 +167,13 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", subMerchant.ConversationId);
         }
 
+        /// <summary>
+        /// Should update limited company sub merchant.
+        /// </summary>
         [TestMethod]
-        public void Should_Update_Limited_Company_Sub_Merchant()
+        public void ShouldUpdateLimitedCompanySubMerchant()
         {
-            UpdateSubMerchantRequest request = new UpdateSubMerchantRequest();
+            var request = new UpdateSubMerchantRequest();
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.SubMerchantKey = "sub merchant key";
@@ -162,9 +187,9 @@ namespace IyzipaySample.Sample
             request.Iban = "TR180006200119000006672315";
             request.Currency = Currency.TRY.ToString();
 
-            SubMerchant subMerchant = SubMerchant.Update(request, options);
+            var subMerchant = SubMerchant.Update(request, Options);
 
-            PrintResponse<SubMerchant>(subMerchant);
+            this.PrintResponse<SubMerchant>(subMerchant);
 
             Assert.IsNotNull(subMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);
@@ -172,17 +197,20 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", subMerchant.ConversationId);
         }
 
+        /// <summary>
+        /// Should retrieve sub merchant.
+        /// </summary>
         [TestMethod]
-        public void Should_Retrieve_Sub_Merchant()
+        public void ShouldRetrieveSubMerchant()
         {
-            RetrieveSubMerchantRequest request = new RetrieveSubMerchantRequest();
+            var request = new RetrieveSubMerchantRequest();
             request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
             request.SubMerchantExternalId = "AS49224";
 
-            SubMerchant subMerchant = SubMerchant.Retrieve(request, options);
+            var subMerchant = SubMerchant.Retrieve(request, Options);
 
-            PrintResponse<SubMerchant>(subMerchant);
+            this.PrintResponse<SubMerchant>(subMerchant);
 
             Assert.IsNotNull(subMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);

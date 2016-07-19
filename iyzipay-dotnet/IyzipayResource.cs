@@ -1,47 +1,129 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Security.Cryptography;
-using System.Text;
-
+﻿// <copyright file="IyzipayResource.cs" company="Iyzico">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <summary></summary>
 namespace Iyzipay
 {
+    using System;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Net;
+
+    /// <summary>
+    /// Iyzipay resource
+    /// </summary>
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed.")]
     public class IyzipayResource
     {
-        private static readonly String AUTHORIZATION = "Authorization";
-        private static readonly String RANDOM_HEADER_NAME = "x-iyzi-rnd";
-        private static readonly String IYZIWS_HEADER_NAME = "IYZWS ";
-        private static readonly String COLON = ":";
+        /// <summary>
+        /// The authorization
+        /// </summary>
+        private static readonly string Authorization = "Authorization";
 
-        public String Status { get; set; }
-        public String ErrorCode { get; set; }
-        public String ErrorMessage { get; set; }
-        public String ErrorGroup { get; set; }
-        public String Locale { get; set; }
-        public long SystemTime { get; set; }
-        public String ConversationId { get; set; }
+        /// <summary>
+        /// The random header name
+        /// </summary>
+        private static readonly string RandomHeaderName = "x-iyzi-rnd";
 
+        /// <summary>
+        /// The iyzi ws header name
+        /// </summary>
+        private static readonly string IyziWsHeaderName = "IYZWS ";
+
+        /// <summary>
+        /// The colon
+        /// </summary>
+        private static readonly string COLON = ":";
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IyzipayResource"/> class.
+        /// </summary>
         public IyzipayResource()
         {
         }
 
+        /// <summary>
+        /// Gets or sets the status.
+        /// </summary>
+        /// <value>
+        /// The status.
+        /// </value>
+        public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or sets the error code.
+        /// </summary>
+        /// <value>
+        /// The error code.
+        /// </value>
+        public string ErrorCode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the error message.
+        /// </summary>
+        /// <value>
+        /// The error message.
+        /// </value>
+        public string ErrorMessage { get; set; }
+
+        /// <summary>
+        /// Gets or sets the error group.
+        /// </summary>
+        /// <value>
+        /// The error group.
+        /// </value>
+        public string ErrorGroup { get; set; }
+
+        /// <summary>
+        /// Gets or sets the locale.
+        /// </summary>
+        /// <value>
+        /// The locale.
+        /// </value>
+        public string Locale { get; set; }
+
+        /// <summary>
+        /// Gets or sets the system time.
+        /// </summary>
+        /// <value>
+        /// The system time.
+        /// </value>
+        public long SystemTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the conversation identifier.
+        /// </summary>
+        /// <value>
+        /// The conversation identifier.
+        /// </value>
+        public string ConversationId { get; set; }
+
+        /// <summary>
+        /// Gets the HTTP headers.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="options">The options.</param>
+        /// <returns>The HTTP headers</returns>
         protected static WebHeaderCollection GetHttpHeaders(BaseRequest request, Options options)
         {
-            string randomString = DateTime.Now.ToString("ddMMyyyyhhmmssffff");
-            WebHeaderCollection headers = new WebHeaderCollection();
+            var randomString = DateTime.Now.ToString("ddMMyyyyhhmmssffff");
+            var headers = new WebHeaderCollection();
             headers.Add("Accept", "application/json");
-            headers.Add(RANDOM_HEADER_NAME, randomString);
-            headers.Add(AUTHORIZATION, PrepareAuthorizationString(request, randomString, options));
+            headers.Add(RandomHeaderName, randomString);
+            headers.Add(Authorization, PrepareAuthorizationString(request, randomString, options));
             return headers;
         }
 
-        private static String PrepareAuthorizationString(BaseRequest request, String randomString, Options options)
+        /// <summary>
+        /// Prepares the authorization string.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="randomString">The random string.</param>
+        /// <param name="options">The options.</param>
+        /// <returns>The authorization string</returns>
+        private static string PrepareAuthorizationString(BaseRequest request, string randomString, Options options)
         {
-            String hash = HashGenerator.generateHash(options.ApiKey, options.SecretKey, randomString, request);
-            return IYZIWS_HEADER_NAME + options.ApiKey + COLON + hash;
+            var hash = HashGenerator.GenerateHash(options.ApiKey, options.SecretKey, randomString, request);
+            return IyziWsHeaderName + options.ApiKey + COLON + hash;
         }
     }
 }

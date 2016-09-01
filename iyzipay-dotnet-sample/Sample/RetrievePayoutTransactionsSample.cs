@@ -1,13 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
+﻿using Iyzipay.Request;
 using Iyzipay.Model;
+using NUnit.Framework;
 
 namespace IyzipaySample.Sample
 {
-    [TestClass]
     public class RetrievePayoutTransactionsSample : Sample
     {
-        [TestMethod]
+        [Test]
         public void Should_Retrieve_Payout_Completed_Transactions()
         {
             RetrieveTransactionsRequest request = new RetrieveTransactionsRequest();
@@ -25,7 +24,7 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", payoutCompletedTransactionList.ConversationId);
         }
 
-        [TestMethod]
+        [Test]
         public void Should_Retrieve_Bounced_Bank_Transfers()
         {
             RetrieveTransactionsRequest request = new RetrieveTransactionsRequest();

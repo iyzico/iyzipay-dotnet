@@ -1,14 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
+﻿using Iyzipay.Request;
 using Iyzipay.Model;
 using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace IyzipaySample.Sample
 {
-    [TestClass]
     public class PeccoSample : Sample
     {
-        [TestMethod]
+        [Test]
         public void Should_Initialize_Pecco()
         {
             CreatePeccoInitializeRequest request = new CreatePeccoInitializeRequest();
@@ -93,7 +92,7 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", peccoInitialize.ConversationId);
         }
 
-        [TestMethod]
+        [Test]
         public void Should_Create_Pecco_Payment()
         {
             CreatePeccoPaymentRequest request = new CreatePeccoPaymentRequest();

@@ -1,13 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Model;
+﻿using Iyzipay.Model;
 using Iyzipay.Request;
+using NUnit.Framework;
 
 namespace IyzipaySample.Sample
 {
-    [TestClass]
     public class CardStorageSample : Sample
     {
-        [TestMethod]
+        [Test]
         public void Should_Create_User_And_Add_Card()
         {
             CardInformation cardInformation = new CardInformation();
@@ -34,7 +33,7 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", card.ConversationId);
         }
 
-        [TestMethod]
+        [Test]
         public void Should_Create_Card()
         {
             CardInformation cardInformation = new CardInformation();
@@ -60,7 +59,7 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", card.ConversationId);
         }
 
-        [TestMethod]
+        [Test]
         public void Should_Delete_Card()
         {
             DeleteCardRequest request = new DeleteCardRequest();
@@ -79,7 +78,7 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", card.ConversationId);
         }
 
-        [TestMethod]
+        [Test]
         public void Should_Retrieve_Cards()
         {
             RetrieveCardListRequest request = new RetrieveCardListRequest();

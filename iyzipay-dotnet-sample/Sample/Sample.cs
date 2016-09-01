@@ -1,17 +1,16 @@
 ﻿using Iyzipay;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using NUnit.Framework;
 using System.Diagnostics;
 
 namespace IyzipaySample.Sample
 {
-    [TestClass]
     public class Sample
     {
         protected Options options;
 
-        [TestInitialize()]
+        [SetUp]
         public void Initialize()
         {
             options = new Options();

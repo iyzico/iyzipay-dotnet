@@ -1,14 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
+﻿using Iyzipay.Request;
 using Iyzipay.Model;
 using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace IyzipaySample.Sample
 {
-    [TestClass]
     public class ThreedsSample : Sample
     {
-        [TestMethod]
+        [Test]
         public void Should_Initialize_Threeds()
         {
             CreatePaymentRequest request = new CreatePaymentRequest();
@@ -104,7 +103,7 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", threedsInitialize.ConversationId);
         }
 
-        [TestMethod]
+        [Test]
         public void Should_Create_Threeds_Payment()
         {
             CreateThreedsPaymentRequest request = new CreateThreedsPaymentRequest();

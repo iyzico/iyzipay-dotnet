@@ -1,13 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
+﻿using Iyzipay.Request;
 using Iyzipay.Model;
+using NUnit.Framework;
 
 namespace IyzipaySample.Sample
 {
-    [TestClass]
     public class SubMerchantSample : Sample
     {
-        [TestMethod]
+        [Test]
         public void Should_Create_Personal_Sub_Merchant()
         {
             CreateSubMerchantRequest request = new CreateSubMerchantRequest();
@@ -35,7 +34,7 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", subMerchant.ConversationId);
         }
 
-        [TestMethod]
+        [Test]
         public void Should_Create_Private_Sub_Merchant()
         {
             CreateSubMerchantRequest request = new CreateSubMerchantRequest();
@@ -63,7 +62,7 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", subMerchant.ConversationId);
         }
 
-        [TestMethod]
+        [Test]
         public void Should_Create_Limited_Company_Sub_Merchant()
         {
             CreateSubMerchantRequest request = new CreateSubMerchantRequest();
@@ -91,7 +90,7 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", subMerchant.ConversationId);
         }
 
-        [TestMethod]
+        [Test]
         public void Should_Update_Personal_Sub_Merchant()
         {
             UpdateSubMerchantRequest request = new UpdateSubMerchantRequest();
@@ -118,7 +117,7 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", subMerchant.ConversationId);
         }
 
-        [TestMethod]
+        [Test]
         public void Should_Update_Private_Sub_Merchant()
         {
             UpdateSubMerchantRequest request = new UpdateSubMerchantRequest();
@@ -145,7 +144,7 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", subMerchant.ConversationId);
         }
 
-        [TestMethod]
+        [Test]
         public void Should_Update_Limited_Company_Sub_Merchant()
         {
             UpdateSubMerchantRequest request = new UpdateSubMerchantRequest();
@@ -172,7 +171,7 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", subMerchant.ConversationId);
         }
 
-        [TestMethod]
+        [Test]
         public void Should_Retrieve_Sub_Merchant()
         {
             RetrieveSubMerchantRequest request = new RetrieveSubMerchantRequest();

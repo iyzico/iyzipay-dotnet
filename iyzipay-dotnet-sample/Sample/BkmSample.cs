@@ -1,14 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
+﻿using Iyzipay.Request;
 using Iyzipay.Model;
 using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace IyzipaySample.Sample
 {
-    [TestClass]
     public class BkmSample : Sample
     {
-        [TestMethod]
+        [Test]
         public void Should_Initialize_Bkm()
         {
             CreateBkmInitializeRequest request = new CreateBkmInitializeRequest();
@@ -34,7 +33,7 @@ namespace IyzipaySample.Sample
             Assert.IsNotNull(bkmInitialize.HtmlContent);
         }
 
-        [TestMethod]
+        [Test]
         public void Should_Retrieve_Bkm_Result()
         {
             RetrieveBkmRequest request = new RetrieveBkmRequest();

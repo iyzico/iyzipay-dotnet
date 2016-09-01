@@ -1,14 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Model;
+﻿using Iyzipay.Model;
 using Iyzipay.Request;
+using NUnit.Framework;
 using System.Collections.Generic;
 
 namespace IyzipaySample.Sample
 {
-    [TestClass]
     public class CheckoutFormSample : Sample
     {
-        [TestMethod]
+        [Test]
         public void Should_Initialize_Checkout_Form()
         {
             CreateCheckoutFormInitializeRequest request = new CreateCheckoutFormInitializeRequest();
@@ -36,7 +35,7 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", checkoutFormInitialize.ConversationId);
         }
 
-        [TestMethod]
+        [Test]
         public void Should_Retrieve_Checkout_Form_Result()
         {
             RetrieveCheckoutFormRequest request = new RetrieveCheckoutFormRequest();

@@ -1,13 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
+﻿using Iyzipay.Request;
 using Iyzipay.Model;
+using NUnit.Framework;
 
 namespace IyzipaySample.Sample
 {
-    [TestClass]
     public class BinNumberSample : Sample
     {
-        [TestMethod]
+        [Test]
         public void Should_Retrieve_Bin_Number()
         {
             RetrieveBinNumberRequest request = new RetrieveBinNumberRequest();

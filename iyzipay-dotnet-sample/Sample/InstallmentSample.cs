@@ -1,13 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
+﻿using Iyzipay.Request;
 using Iyzipay.Model;
+using NUnit.Framework;
 
 namespace IyzipaySample.Sample
 {
-    [TestClass]
     public class InstallmentSample : Sample
     {
-        [TestMethod]
+        [Test]
         public void Should_Retrieve_Installments()
         {
             RetrieveInstallmentInfoRequest request = new RetrieveInstallmentInfoRequest();

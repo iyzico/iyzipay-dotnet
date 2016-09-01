@@ -1,13 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Request;
+﻿using Iyzipay.Request;
 using Iyzipay.Model;
+using NUnit.Framework;
 
 namespace IyzipaySample.Sample
 {
-    [TestClass]
     public class DisapproveSample : Sample
     {
-        [TestMethod]
+        [Test]
         public void Should_Disapprove_Payment_Item()
         {
             CreateApprovalRequest request = new CreateApprovalRequest();

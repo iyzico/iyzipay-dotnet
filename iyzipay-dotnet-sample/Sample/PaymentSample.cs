@@ -1,14 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Iyzipay.Model;
+﻿using Iyzipay.Model;
 using Iyzipay.Request;
+using NUnit.Framework;
 using System.Collections.Generic;
 
 namespace IyzipaySample.Sample
 {
-    [TestClass]
     public class PaymentSample : Sample
     {
-        [TestMethod]
+        [Test]
         public void Should_Create_Payment()
         {
             CreatePaymentRequest request = new CreatePaymentRequest();
@@ -102,7 +101,7 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", payment.ConversationId);
         }
 
-        [TestMethod]
+        [Test]
         public void Should_Create_Marketplace_Payment()
         {
             CreatePaymentRequest request = new CreatePaymentRequest();
@@ -202,7 +201,7 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", payment.ConversationId);
         }
 
-        [TestMethod]
+        [Test]
         public void Should_Create_Payment_With_Registered_Card()
         {
             CreatePaymentRequest request = new CreatePaymentRequest();
@@ -292,7 +291,7 @@ namespace IyzipaySample.Sample
             Assert.AreEqual("123456789", payment.ConversationId);
         }
 
-        [TestMethod]
+        [Test]
         public void Should_Retrieve_Payment_Result()
         {
             RetrievePaymentRequest request = new RetrievePaymentRequest();

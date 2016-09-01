@@ -1,6 +1,5 @@
 ﻿using Iyzipay.Request;
 using System;
-using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {

@@ -1,9 +1,6 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
-
-namespace Iyzipay.Model
+﻿namespace Iyzipay.Model
 {
-   public class ApiTest : IyzipayResource
+    public class ApiTest : IyzipayResource
     {
         public static IyzipayResource Retrieve(Options options)
         {

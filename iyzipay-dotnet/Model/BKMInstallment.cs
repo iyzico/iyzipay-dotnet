@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.CodeDom;
 
 namespace Iyzipay.Model
 {
-   public class BkmInstallment : RequestStringConvertible
+    public class BkmInstallment : RequestStringConvertible
     {
         public long? BankId { get; set; }
         public List<BkmInstallmentPrice> InstallmentPrices { get; set; }

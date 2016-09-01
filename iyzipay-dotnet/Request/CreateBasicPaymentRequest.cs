@@ -1,6 +1,5 @@
 ﻿using Iyzipay.Model;
 using System;
-using System.Collections.Generic;
 
 namespace Iyzipay.Request
 {

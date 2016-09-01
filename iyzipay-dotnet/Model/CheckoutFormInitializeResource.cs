@@ -1,5 +1,4 @@
-﻿using Iyzipay.Request;
-using System;
+﻿using System;
 
 namespace Iyzipay.Model
 {

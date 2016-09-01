@@ -13,6 +13,7 @@ namespace Iyzipay.Model
         public int? Force3Ds { get; set; }
         public long? BankCode { get; set; }
         public String BankName { get; set; }
+        public int? ForceCvc { get; set; }
         public List<InstallmentPrice> InstallmentPrices { get; set; }
     }
 }

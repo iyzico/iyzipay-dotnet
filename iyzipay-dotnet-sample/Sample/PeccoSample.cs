@@ -7,32 +7,21 @@ using System.Collections.Generic;
 namespace IyzipaySample.Sample
 {
     [TestClass]
-    public class ThreedsSample : Sample
+    public class PeccoSample : Sample
     {
         [TestMethod]
-        public void Should_Initialize_Threeds()
+        public void Should_Initialize_Pecco()
         {
-            CreatePaymentRequest request = new CreatePaymentRequest();
+            CreatePeccoInitializeRequest request = new CreatePeccoInitializeRequest();
 
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
-            request.Price = "1";
-            request.PaidPrice = "1.1";
-            request.Installment = 1;
+            request.Price = "100000";
+            request.PaidPrice = "120000";
+            request.Currency = Currency.TRY.ToString();
             request.BasketId = "B67832";
-            request.PaymentChannel = PaymentChannel.WEB.ToString();
             request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
             request.CallbackUrl = "http://www.merchant.com/callbackUrl";
-            request.Currency = Currency.TRY.ToString();
-
-            PaymentCard paymentCard = new PaymentCard();
-            paymentCard.CardHolderName = "John Doe";
-            paymentCard.CardNumber = "5528790000000008";
-            paymentCard.ExpireMonth = "12";
-            paymentCard.ExpireYear = "2030";
-            paymentCard.Cvc = "123";
-            paymentCard.RegisterCard = 0;
-            request.PaymentCard = paymentCard;
 
             Buyer buyer = new Buyer();
             buyer.Id = "BY789";
@@ -73,7 +62,7 @@ namespace IyzipaySample.Sample
             firstBasketItem.Category1 = "Collectibles";
             firstBasketItem.Category2 = "Accessories";
             firstBasketItem.ItemType = BasketItemType.PHYSICAL.ToString();
-            firstBasketItem.Price = "0.3";
+            firstBasketItem.Price = "30000";
             basketItems.Add(firstBasketItem);
 
             BasketItem secondBasketItem = new BasketItem();
@@ -82,7 +71,7 @@ namespace IyzipaySample.Sample
             secondBasketItem.Category1 = "Game";
             secondBasketItem.Category2 = "Online Game Items";
             secondBasketItem.ItemType = BasketItemType.VIRTUAL.ToString();
-            secondBasketItem.Price = "0.5";
+            secondBasketItem.Price = "50000";
             basketItems.Add(secondBasketItem);
 
             BasketItem thirdBasketItem = new BasketItem();
@@ -91,38 +80,37 @@ namespace IyzipaySample.Sample
             thirdBasketItem.Category1 = "Electronics";
             thirdBasketItem.Category2 = "Usb / Cable";
             thirdBasketItem.ItemType = BasketItemType.PHYSICAL.ToString();
-            thirdBasketItem.Price = "0.2";
+            thirdBasketItem.Price = "20000";
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
-            ThreedsInitialize threedsInitialize = ThreedsInitialize.Create(request, options);
+            PeccoInitialize peccoInitialize = PeccoInitialize.Create(request, options);
 
-            PrintResponse<ThreedsInitialize>(threedsInitialize);
+            PrintResponse<PeccoInitialize>(peccoInitialize);
 
-            Assert.IsNotNull(threedsInitialize.SystemTime);
-            Assert.AreEqual(Status.SUCCESS.ToString(), threedsInitialize.Status);
-            Assert.AreEqual(Locale.TR.GetName(), threedsInitialize.Locale);
-            Assert.AreEqual("123456789", threedsInitialize.ConversationId);
+            Assert.IsNotNull(peccoInitialize.SystemTime);
+            Assert.AreEqual(Status.SUCCESS.ToString(), peccoInitialize.Status);
+            Assert.AreEqual(Locale.TR.GetName(), peccoInitialize.Locale);
+            Assert.AreEqual("123456789", peccoInitialize.ConversationId);
         }
 
         [TestMethod]
-        public void Should_Create_Threeds_Payment()
+        public void Should_Create_Pecco_Payment()
         {
-            CreateThreedsPaymentRequest request = new CreateThreedsPaymentRequest();
+            CreatePeccoPaymentRequest request = new CreatePeccoPaymentRequest();
 
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
-            request.PaymentId = "1";
-            request.ConversationData = "conversation data";
+            request.Token = "token";
 
-            ThreedsPayment threedsPayment = ThreedsPayment.Create(request, options);
+            PeccoPayment peccoPayment = PeccoPayment.Create(request, options);
 
-            PrintResponse<ThreedsPayment>(threedsPayment);
+            PrintResponse<PeccoPayment>(peccoPayment);
 
-            Assert.IsNotNull(threedsPayment.SystemTime);
-            Assert.AreEqual(Status.SUCCESS.ToString(), threedsPayment.Status);
-            Assert.AreEqual(Locale.TR.GetName(), threedsPayment.Locale);
-            Assert.AreEqual("123456789", threedsPayment.ConversationId);
+            Assert.IsNotNull(peccoPayment.SystemTime);
+            Assert.AreEqual(Status.SUCCESS.ToString(), peccoPayment.Status);
+            Assert.AreEqual(Locale.TR.GetName(), peccoPayment.Locale);
+            Assert.AreEqual("123456789", peccoPayment.ConversationId);
         }
     }
 }

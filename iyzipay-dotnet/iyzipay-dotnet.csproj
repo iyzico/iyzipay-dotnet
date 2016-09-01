@@ -55,6 +55,8 @@
   <ItemGroup>
     <Compile Include="Model\BasicBkm.cs" />
     <Compile Include="Model\BasicBkmInitialize.cs" />
+    <Compile Include="Model\PeccoPayment.cs" />
+    <Compile Include="Model\PeccoInitialize.cs" />
     <Compile Include="Model\CheckoutFormInitializePreAuth.cs" />
     <Compile Include="Model\CheckoutFormInitializeResource.cs" />
     <Compile Include="Model\InstallmentInfo.cs" />
@@ -70,6 +72,8 @@
     <Compile Include="Request\CreateBasicPaymentRequest.cs" />
     <Compile Include="Model\BasicThreedsPayment.cs" />
     <Compile Include="Request\CreateBasicBkmInitializeRequest.cs" />
+    <Compile Include="Request\CreatePeccoInitializeRequest.cs" />
+    <Compile Include="Request\CreatePeccoPaymentRequest.cs" />
     <Compile Include="Request\RetrieveInstallmentInfoRequest.cs" />
     <Compile Include="Request\RetrievePaymentRequest.cs" />
     <Compile Include="RestHttpClient.cs" />

@@ -38,19 +38,19 @@ namespace IyzipaySample.Sample
         }
 
         [TestMethod]
-        public void Should_Retrieve_Checkout_Form_Auth()
+        public void Should_Retrieve_Checkout_Form_Result()
         {
             RetrieveCheckoutFormRequest request = new RetrieveCheckoutFormRequest();
             request.ConversationId = "123456789";
             request.Token = "token";
 
-            CheckoutForm checkoutFormAuth = CheckoutForm.Retrieve(request, options);
+            CheckoutForm checkoutForm = CheckoutForm.Retrieve(request, options);
 
-            PrintResponse<CheckoutForm>(checkoutFormAuth);
+            PrintResponse<CheckoutForm>(checkoutForm);
 
-            Assert.IsNotNull(checkoutFormAuth.SystemTime);
-            Assert.AreEqual(Status.SUCCESS.ToString(), checkoutFormAuth.Status);
-            Assert.AreEqual("123456789", checkoutFormAuth.ConversationId);
+            Assert.IsNotNull(checkoutForm.SystemTime);
+            Assert.AreEqual(Status.SUCCESS.ToString(), checkoutForm.Status);
+            Assert.AreEqual("123456789", checkoutForm.ConversationId);
         }
 
         private Buyer NewBuyer()
@@ -105,8 +105,6 @@ namespace IyzipaySample.Sample
             firstBasketItem.Category2 = "Accessories";
             firstBasketItem.ItemType = BasketItemType.PHYSICAL.ToString();
             firstBasketItem.Price = "0.3";
-            firstBasketItem.SubMerchantKey = "sub merchant key";
-            firstBasketItem.SubMerchantPrice = "0.27";
             basketItems.Add(firstBasketItem);
 
             BasketItem secondBasketItem = new BasketItem();
@@ -116,8 +114,6 @@ namespace IyzipaySample.Sample
             secondBasketItem.Category2 = "Online Game Items";
             secondBasketItem.ItemType = BasketItemType.VIRTUAL.ToString();
             secondBasketItem.Price = "0.5";
-            secondBasketItem.SubMerchantKey = "sub merchant key";
-            secondBasketItem.SubMerchantPrice = "0.42";
             basketItems.Add(secondBasketItem);
 
             BasketItem thirdBasketItem = new BasketItem();
@@ -127,8 +123,6 @@ namespace IyzipaySample.Sample
             thirdBasketItem.Category2 = "Usb / Cable";
             thirdBasketItem.ItemType = BasketItemType.PHYSICAL.ToString();
             thirdBasketItem.Price = "0.2";
-            thirdBasketItem.SubMerchantKey = "sub merchant key";
-            thirdBasketItem.SubMerchantPrice = "0.18";
             basketItems.Add(thirdBasketItem);
 
             return basketItems;

@@ -5,7 +5,7 @@ using Iyzipay.Model;
 namespace IyzipaySample.Sample
 {
     [TestClass]
-    public class RetrieveTransactionsSample : Sample
+    public class RetrievePayoutTransactionsSample : Sample
     {
         [TestMethod]
         public void Should_Retrieve_Payout_Completed_Transactions()

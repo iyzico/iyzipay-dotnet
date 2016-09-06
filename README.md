@@ -2,7 +2,7 @@ You can sign up for an iyzico account at https://iyzico.com
 
 # Requirements
 
-.NET Framework 4.5.2 or newer
+.NET Framework 4.5 and later
 
 # Installation
 
@@ -10,7 +10,7 @@ For now you'll need to install following libraries:
 
 * To install Iyzipay, run the following command in the Package Manager Console
 ```
-      Install-Package Iyzipay
+Install-Package Iyzipay
 ```
  Or you can download the latest .dll from:  https://github.com/iyzico/iyzipay-dotnet/releases/latest
  
@@ -26,10 +26,10 @@ options.SecretKey = "your secret key";
 options.BaseUrl = "https://sandbox-api.iyzipay.com";
 		
 CreatePaymentRequest request = new CreatePaymentRequest();
-request.Locale = Locale.TR.GetName();
+request.Locale = Locale.TR.ToString();
 request.ConversationId = "123456789";
 request.Price = "1";
-request.PaidPrice = "1.1";
+request.PaidPrice = "1.2";
 request.Currency = Currency.TRY.ToString();
 request.Installment = 1;
 request.BasketId = "B67832";
@@ -56,23 +56,23 @@ buyer.LastLoginDate = "2015-10-05 12:43:35";
 buyer.RegistrationDate = "2013-04-21 15:12:09";
 buyer.RegistrationAddress = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
 buyer.Ip = "85.34.78.112";
-buyer.City = "İstanbul";
-buyer.Country = "Türkiye";
+buyer.City = "Istanbul";
+buyer.Country = "Turkey";
 buyer.ZipCode = "34732";
 request.Buyer = buyer;
 
 Address shippingAddress = new Address();
 shippingAddress.ContactName = "Jane Doe";
-shippingAddress.City = "İstanbul";
-shippingAddress.Country = "Türkiye";
+shippingAddress.City = "Istanbul";
+shippingAddress.Country = "Turkey";
 shippingAddress.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
 shippingAddress.ZipCode = "34742";
 request.ShippingAddress = shippingAddress;
 
 Address billingAddress = new Address();
 billingAddress.ContactName = "Jane Doe";
-billingAddress.City = "İstanbul";
-billingAddress.Country = "Türkiye";
+billingAddress.City = "Istanbul";
+billingAddress.Country = "Turkey";
 billingAddress.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
 billingAddress.ZipCode = "34742";
 request.BillingAddress = billingAddress;
@@ -123,9 +123,9 @@ Card Number      | Bank                       | Card Type
 5890040000000016 | Akbank                     | Master Card (Debit)  
 5526080000000006 | Akbank                     | Master Card (Credit)  
 4766620000000001 | Denizbank                  | Visa (Debit)  
-4603450000000000 | Denizbank                  | Visa (Credit)  
-4729150000000005 | Denizbank Bonus            | Visa (Credit)
-4987490000000002 | Finansbank                 | Visa (Debit)
+4603450000000000 | Denizbank                  | Visa (Credit)
+4729150000000005 | Denizbank Bonus            | Visa (Credit)  
+4987490000000002 | Finansbank                 | Visa (Debit)  
 5311570000000005 | Finansbank                 | Master Card (Credit)  
 9792020000000001 | Finansbank                 | Troy (Debit)  
 9792030000000000 | Finansbank                 | Troy (Credit)  
@@ -148,8 +148,8 @@ Card Number      | Bank                       | Card Type
 Card Number      | Country
 -----------      | -------
 4054180000000007 | Non-Turkish (Debit)
-5400010000000004 | Non-Turkish (Credit)
-6221060000000004 | Iran
+5400010000000004 | Non-Turkish (Credit)  
+6221060000000004 | Iran  
 
 Test cards to get specific *error* codes:
 

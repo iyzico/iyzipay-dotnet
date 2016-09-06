@@ -10,18 +10,21 @@ namespace IyzipaySample.Sample
         public void Should_Retrieve_Bin_Number()
         {
             RetrieveBinNumberRequest request = new RetrieveBinNumberRequest();
-            request.BinNumber = "554960";
-            request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
+            request.ConversationId = "123456789";
+            request.BinNumber = "554960";
 
             BinNumber binNumber = BinNumber.Retrieve(request, options);
 
             PrintResponse<BinNumber>(binNumber);
 
-            Assert.IsNotNull(binNumber.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), binNumber.Status);
-            Assert.AreEqual(Locale.TR.GetName(), binNumber.Locale);
+            Assert.AreEqual(Locale.TR.ToString(), binNumber.Locale);
             Assert.AreEqual("123456789", binNumber.ConversationId);
+            Assert.IsNotNull(binNumber.SystemTime);
+            Assert.IsNull(binNumber.ErrorCode);
+            Assert.IsNull(binNumber.ErrorMessage);
+            Assert.IsNull(binNumber.ErrorGroup);
             Assert.AreEqual("554960", binNumber.Bin);
             Assert.AreEqual("CREDIT_CARD", binNumber.CardType);
             Assert.AreEqual("MASTER_CARD", binNumber.CardAssociation);

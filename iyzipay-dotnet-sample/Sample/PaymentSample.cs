@@ -14,12 +14,12 @@ namespace IyzipaySample.Sample
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.Price = "1";
-            request.PaidPrice = "1.1";
+            request.PaidPrice = "1.2";
+            request.Currency = Currency.TRY.ToString();
             request.Installment = 1;
             request.BasketId = "B67832";
-            request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
             request.PaymentChannel = PaymentChannel.WEB.ToString();
-            request.Currency = Currency.TRY.ToString();
+            request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
 
             PaymentCard paymentCard = new PaymentCard();
             paymentCard.CardHolderName = "John Doe";
@@ -41,23 +41,23 @@ namespace IyzipaySample.Sample
             buyer.RegistrationDate = "2013-04-21 15:12:09";
             buyer.RegistrationAddress = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             buyer.Ip = "85.34.78.112";
-            buyer.City = "İstanbul";
-            buyer.Country = "Türkiye";
+            buyer.City = "Istanbul";
+            buyer.Country = "Turkey";
             buyer.ZipCode = "34732";
             request.Buyer = buyer;
 
             Address shippingAddress = new Address();
             shippingAddress.ContactName = "Jane Doe";
-            shippingAddress.City = "İstanbul";
-            shippingAddress.Country = "Türkiye";
+            shippingAddress.City = "Istanbul";
+            shippingAddress.Country = "Turkey";
             shippingAddress.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             shippingAddress.ZipCode = "34742";
             request.ShippingAddress = shippingAddress;
 
             Address billingAddress = new Address();
             billingAddress.ContactName = "Jane Doe";
-            billingAddress.City = "İstanbul";
-            billingAddress.Country = "Türkiye";
+            billingAddress.City = "Istanbul";
+            billingAddress.Country = "Turkey";
             billingAddress.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             billingAddress.ZipCode = "34742";
             request.BillingAddress = billingAddress;
@@ -95,10 +95,13 @@ namespace IyzipaySample.Sample
 
             PrintResponse<Payment>(payment);
 
-            Assert.IsNotNull(payment.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), payment.Status);
-            Assert.AreEqual(Locale.TR.GetName(), payment.Locale);
+            Assert.AreEqual(Locale.TR.ToString(), payment.Locale);
             Assert.AreEqual("123456789", payment.ConversationId);
+            Assert.IsNotNull(payment.SystemTime);
+            Assert.IsNull(payment.ErrorCode);
+            Assert.IsNull(payment.ErrorMessage);
+            Assert.IsNull(payment.ErrorGroup);
         }
 
         [Test]
@@ -108,12 +111,12 @@ namespace IyzipaySample.Sample
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.Price = "1";
-            request.PaidPrice = "1.1";
+            request.PaidPrice = "1.2";
+            request.Currency = Currency.TRY.ToString();
             request.Installment = 1;
             request.BasketId = "B67832";
-            request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
             request.PaymentChannel = PaymentChannel.WEB.ToString();
-            request.Currency = Currency.TRY.ToString();
+            request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
 
             PaymentCard paymentCard = new PaymentCard();
             paymentCard.CardHolderName = "John Doe";
@@ -135,23 +138,23 @@ namespace IyzipaySample.Sample
             buyer.RegistrationDate = "2013-04-21 15:12:09";
             buyer.RegistrationAddress = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             buyer.Ip = "85.34.78.112";
-            buyer.City = "İstanbul";
-            buyer.Country = "Türkiye";
+            buyer.City = "Istanbul";
+            buyer.Country = "Turkey";
             buyer.ZipCode = "34732";
             request.Buyer = buyer;
 
             Address shippingAddress = new Address();
             shippingAddress.ContactName = "Jane Doe";
-            shippingAddress.City = "İstanbul";
-            shippingAddress.Country = "Türkiye";
+            shippingAddress.City = "Istanbul";
+            shippingAddress.Country = "Turkey";
             shippingAddress.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             shippingAddress.ZipCode = "34742";
             request.ShippingAddress = shippingAddress;
 
             Address billingAddress = new Address();
             billingAddress.ContactName = "Jane Doe";
-            billingAddress.City = "İstanbul";
-            billingAddress.Country = "Türkiye";
+            billingAddress.City = "Istanbul";
+            billingAddress.Country = "Turkey";
             billingAddress.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             billingAddress.ZipCode = "34742";
             request.BillingAddress = billingAddress;
@@ -195,10 +198,13 @@ namespace IyzipaySample.Sample
 
             PrintResponse<Payment>(payment);
 
-            Assert.IsNotNull(payment.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), payment.Status);
-            Assert.AreEqual(Locale.TR.GetName(), payment.Locale);
+            Assert.AreEqual(Locale.TR.ToString(), payment.Locale);
             Assert.AreEqual("123456789", payment.ConversationId);
+            Assert.IsNotNull(payment.SystemTime);
+            Assert.IsNull(payment.ErrorCode);
+            Assert.IsNull(payment.ErrorMessage);
+            Assert.IsNull(payment.ErrorGroup);
         }
 
         [Test]
@@ -208,12 +214,12 @@ namespace IyzipaySample.Sample
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.Price = "1";
-            request.PaidPrice = "1.1";
+            request.PaidPrice = "1.2";
+            request.Currency = Currency.TRY.ToString();
             request.Installment = 1;
             request.BasketId = "B67832";
-            request.PaymentGroup = PaymentGroup.SUBSCRIPTION.ToString();
             request.PaymentChannel = PaymentChannel.WEB.ToString();
-            request.Currency = Currency.TRY.ToString();
+            request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
 
             PaymentCard paymentCard = new PaymentCard();
             paymentCard.CardUserKey = "card user key";
@@ -231,23 +237,23 @@ namespace IyzipaySample.Sample
             buyer.RegistrationDate = "2013-04-21 15:12:09";
             buyer.RegistrationAddress = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             buyer.Ip = "85.34.78.112";
-            buyer.City = "İstanbul";
-            buyer.Country = "Türkiye";
+            buyer.City = "Istanbul";
+            buyer.Country = "Turkey";
             buyer.ZipCode = "34732";
             request.Buyer = buyer;
 
             Address shippingAddress = new Address();
             shippingAddress.ContactName = "Jane Doe";
-            shippingAddress.City = "İstanbul";
-            shippingAddress.Country = "Türkiye";
+            shippingAddress.City = "Istanbul";
+            shippingAddress.Country = "Turkey";
             shippingAddress.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             shippingAddress.ZipCode = "34742";
             request.ShippingAddress = shippingAddress;
 
             Address billingAddress = new Address();
             billingAddress.ContactName = "Jane Doe";
-            billingAddress.City = "İstanbul";
-            billingAddress.Country = "Türkiye";
+            billingAddress.City = "Istanbul";
+            billingAddress.Country = "Turkey";
             billingAddress.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             billingAddress.ZipCode = "34742";
             request.BillingAddress = billingAddress;
@@ -285,10 +291,13 @@ namespace IyzipaySample.Sample
 
             PrintResponse<Payment>(payment);
 
-            Assert.IsNotNull(payment.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), payment.Status);
-            Assert.AreEqual(Locale.TR.GetName(), payment.Locale);
+            Assert.AreEqual(Locale.TR.ToString(), payment.Locale);
             Assert.AreEqual("123456789", payment.ConversationId);
+            Assert.IsNotNull(payment.SystemTime);
+            Assert.IsNull(payment.ErrorCode);
+            Assert.IsNull(payment.ErrorMessage);
+            Assert.IsNull(payment.ErrorGroup);
         }
 
         [Test]
@@ -304,10 +313,13 @@ namespace IyzipaySample.Sample
 
             PrintResponse<Payment>(payment);
 
-            Assert.IsNotNull(payment.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), payment.Status);
-            Assert.AreEqual(Locale.TR.GetName(), payment.Locale);
+            Assert.AreEqual(Locale.TR.ToString(), payment.Locale);
             Assert.AreEqual("123456789", payment.ConversationId);
+            Assert.IsNotNull(payment.SystemTime);
+            Assert.IsNull(payment.ErrorCode);
+            Assert.IsNull(payment.ErrorMessage);
+            Assert.IsNull(payment.ErrorGroup);
         }
     }
 }

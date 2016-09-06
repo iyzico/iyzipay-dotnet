@@ -10,8 +10,8 @@ namespace IyzipaySample.Sample
         public void Should_Create_Personal_Sub_Merchant()
         {
             CreateSubMerchantRequest request = new CreateSubMerchantRequest();
-            request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
+            request.ConversationId = "123456789";
             request.SubMerchantExternalId = "B49224";
             request.SubMerchantType = SubMerchantType.PERSONAL.ToString();
             request.Address = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
@@ -28,18 +28,21 @@ namespace IyzipaySample.Sample
 
             PrintResponse<SubMerchant>(subMerchant);
 
-            Assert.IsNotNull(subMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);
-            Assert.AreEqual(Locale.TR.GetName(), subMerchant.Locale);
+            Assert.AreEqual(Locale.TR.ToString(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
+            Assert.IsNotNull(subMerchant.SystemTime);
+            Assert.IsNull(subMerchant.ErrorCode);
+            Assert.IsNull(subMerchant.ErrorMessage);
+            Assert.IsNull(subMerchant.ErrorGroup);
         }
 
         [Test]
         public void Should_Create_Private_Sub_Merchant()
         {
             CreateSubMerchantRequest request = new CreateSubMerchantRequest();
-            request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
+            request.ConversationId = "123456789";
             request.SubMerchantExternalId = "S49222";
             request.SubMerchantType = SubMerchantType.PRIVATE_COMPANY.ToString();
             request.Address = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
@@ -55,19 +58,22 @@ namespace IyzipaySample.Sample
             SubMerchant subMerchant = SubMerchant.Create(request, options);
 
             PrintResponse<SubMerchant>(subMerchant);
-            
-            Assert.IsNotNull(subMerchant.SystemTime);
+
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);
-            Assert.AreEqual(Locale.TR.GetName(), subMerchant.Locale);
+            Assert.AreEqual(Locale.TR.ToString(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
+            Assert.IsNotNull(subMerchant.SystemTime);
+            Assert.IsNull(subMerchant.ErrorCode);
+            Assert.IsNull(subMerchant.ErrorMessage);
+            Assert.IsNull(subMerchant.ErrorGroup);
         }
 
         [Test]
         public void Should_Create_Limited_Company_Sub_Merchant()
         {
             CreateSubMerchantRequest request = new CreateSubMerchantRequest();
-            request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
+            request.ConversationId = "123456789";
             request.SubMerchantExternalId = "AS49224";
             request.SubMerchantType = SubMerchantType.LIMITED_OR_JOINT_STOCK_COMPANY.ToString();
             request.Address = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
@@ -84,18 +90,21 @@ namespace IyzipaySample.Sample
 
             PrintResponse<SubMerchant>(subMerchant);
 
-            Assert.IsNotNull(subMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);
-            Assert.AreEqual(Locale.TR.GetName(), subMerchant.Locale);
+            Assert.AreEqual(Locale.TR.ToString(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
+            Assert.IsNotNull(subMerchant.SystemTime);
+            Assert.IsNull(subMerchant.ErrorCode);
+            Assert.IsNull(subMerchant.ErrorMessage);
+            Assert.IsNull(subMerchant.ErrorGroup);
         }
 
         [Test]
         public void Should_Update_Personal_Sub_Merchant()
         {
             UpdateSubMerchantRequest request = new UpdateSubMerchantRequest();
-            request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
+            request.ConversationId = "123456789";
             request.SubMerchantKey = "sub merchant key";
             request.Address = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             request.ContactName = "Jane";
@@ -111,18 +120,21 @@ namespace IyzipaySample.Sample
 
             PrintResponse<SubMerchant>(subMerchant);
 
-            Assert.IsNotNull(subMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);
-            Assert.AreEqual(Locale.TR.GetName(), subMerchant.Locale);
+            Assert.AreEqual(Locale.TR.ToString(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
+            Assert.IsNotNull(subMerchant.SystemTime);
+            Assert.IsNull(subMerchant.ErrorCode);
+            Assert.IsNull(subMerchant.ErrorMessage);
+            Assert.IsNull(subMerchant.ErrorGroup);
         }
 
         [Test]
         public void Should_Update_Private_Sub_Merchant()
         {
             UpdateSubMerchantRequest request = new UpdateSubMerchantRequest();
-            request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
+            request.ConversationId = "123456789";
             request.SubMerchantKey = "sub merchant key";
             request.Address = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             request.TaxOffice = "Tax office";
@@ -138,18 +150,21 @@ namespace IyzipaySample.Sample
 
             PrintResponse<SubMerchant>(subMerchant);
 
-            Assert.IsNotNull(subMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);
-            Assert.AreEqual(Locale.TR.GetName(), subMerchant.Locale);
+            Assert.AreEqual(Locale.TR.ToString(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
+            Assert.IsNotNull(subMerchant.SystemTime);
+            Assert.IsNull(subMerchant.ErrorCode);
+            Assert.IsNull(subMerchant.ErrorMessage);
+            Assert.IsNull(subMerchant.ErrorGroup);
         }
 
         [Test]
         public void Should_Update_Limited_Company_Sub_Merchant()
         {
             UpdateSubMerchantRequest request = new UpdateSubMerchantRequest();
-            request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
+            request.ConversationId = "123456789";
             request.SubMerchantKey = "sub merchant key";
             request.Address = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             request.TaxOffice = "Tax office";
@@ -165,28 +180,34 @@ namespace IyzipaySample.Sample
 
             PrintResponse<SubMerchant>(subMerchant);
 
-            Assert.IsNotNull(subMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);
-            Assert.AreEqual(Locale.TR.GetName(), subMerchant.Locale);
+            Assert.AreEqual(Locale.TR.ToString(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
+            Assert.IsNotNull(subMerchant.SystemTime);
+            Assert.IsNull(subMerchant.ErrorCode);
+            Assert.IsNull(subMerchant.ErrorMessage);
+            Assert.IsNull(subMerchant.ErrorGroup);
         }
 
         [Test]
         public void Should_Retrieve_Sub_Merchant()
         {
             RetrieveSubMerchantRequest request = new RetrieveSubMerchantRequest();
-            request.ConversationId = "123456789";
             request.Locale = Locale.TR.GetName();
+            request.ConversationId = "123456789";
             request.SubMerchantExternalId = "AS49224";
 
             SubMerchant subMerchant = SubMerchant.Retrieve(request, options);
 
             PrintResponse<SubMerchant>(subMerchant);
 
-            Assert.IsNotNull(subMerchant.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), subMerchant.Status);
-            Assert.AreEqual(Locale.TR.GetName(), subMerchant.Locale);
+            Assert.AreEqual(Locale.TR.ToString(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
+            Assert.IsNotNull(subMerchant.SystemTime);
+            Assert.IsNull(subMerchant.ErrorCode);
+            Assert.IsNull(subMerchant.ErrorMessage);
+            Assert.IsNull(subMerchant.ErrorGroup);
         }
     }
 }

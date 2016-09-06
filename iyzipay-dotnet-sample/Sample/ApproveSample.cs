@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace IyzipaySample.Sample
 {
-    public class ApprovalSample : Sample
+    public class ApproveSample : Sample
     {
         [Test]
         public void Should_Approve_Payment_Item()
@@ -18,11 +18,13 @@ namespace IyzipaySample.Sample
 
             PrintResponse<Approval>(approval);
 
-            Assert.IsNotNull(approval.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), approval.Status);
-            Assert.AreEqual(Locale.TR.GetName(), approval.Locale);
+            Assert.AreEqual(Locale.TR.ToString(), approval.Locale);
             Assert.AreEqual("123456789", approval.ConversationId);
-            Assert.AreEqual("1", approval.PaymentTransactionId);
+            Assert.IsNotNull(approval.SystemTime);
+            Assert.IsNull(approval.ErrorCode);
+            Assert.IsNull(approval.ErrorMessage);
+            Assert.IsNull(approval.ErrorGroup);
         }
     }
 }

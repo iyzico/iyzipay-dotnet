@@ -19,10 +19,15 @@ namespace IyzipaySample.Sample
 
             PrintResponse<InstallmentInfo>(installmentInfo);
 
-            Assert.IsNotNull(installmentInfo.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), installmentInfo.Status);
-            Assert.AreEqual(Locale.TR.GetName(), installmentInfo.Locale);
+            Assert.AreEqual(Locale.TR.ToString(), installmentInfo.Locale);
             Assert.AreEqual("123456789", installmentInfo.ConversationId);
+            Assert.IsNotNull(installmentInfo.SystemTime);
+            Assert.IsNull(installmentInfo.ErrorCode);
+            Assert.IsNull(installmentInfo.ErrorMessage);
+            Assert.IsNull(installmentInfo.ErrorGroup);
+            Assert.IsNotNull(installmentInfo.InstallmentDetails);
+            Assert.IsNotEmpty(installmentInfo.InstallmentDetails);
         }
     }
 }

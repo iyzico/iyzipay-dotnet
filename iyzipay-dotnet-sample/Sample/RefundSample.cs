@@ -21,10 +21,13 @@ namespace IyzipaySample.Sample
 
             PrintResponse<Refund>(refund);
 
-            Assert.IsNotNull(refund.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), refund.Status);
-            Assert.AreEqual(Locale.TR.GetName(), refund.Locale);
+            Assert.AreEqual(Locale.TR.ToString(), refund.Locale);
             Assert.AreEqual("123456789", refund.ConversationId);
+            Assert.IsNotNull(refund.SystemTime);
+            Assert.IsNull(refund.ErrorCode);
+            Assert.IsNull(refund.ErrorMessage);
+            Assert.IsNull(refund.ErrorGroup);
         }
     }
 }

@@ -15,87 +15,51 @@ namespace IyzipaySample.Sample
             request.ConversationId = "123456789";
             request.Price = "1";
             request.PaidPrice = "1.2";
+            request.Currency = Currency.TRY.ToString();
             request.BasketId = "B67832";
             request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
-            request.Buyer = NewBuyer();
-            request.ShippingAddress = NewShippingAddress();
-            request.BillingAddress = NewBillingAddress();
-            request.BasketItems = NewBasketItems();
-            request.CallbackUrl = "https://www.merchant.com/callback";
-            request.Currency = Currency.TRY.ToString();
-            request.EnabledInstallments = NewEnabledInstallments();
+            request.CallbackUrl = "https://www.merchant.com/callbackUrl";
 
-            CheckoutFormInitialize checkoutFormInitialize = CheckoutFormInitialize.Create(request, options);
+            List<int> enabledInstallments = new List<int>();
+            enabledInstallments.Add(2);
+            enabledInstallments.Add(3);
+            enabledInstallments.Add(6);
+            enabledInstallments.Add(9);
+            request.EnabledInstallments = enabledInstallments;
 
-            PrintResponse<CheckoutFormInitialize>(checkoutFormInitialize);
-
-            Assert.IsNotNull(checkoutFormInitialize.SystemTime);
-            Assert.AreEqual(Status.SUCCESS.ToString(), checkoutFormInitialize.Status);
-            Assert.AreEqual(Locale.TR.GetName(), checkoutFormInitialize.Locale);
-            Assert.AreEqual("123456789", checkoutFormInitialize.ConversationId);
-        }
-
-        [Test]
-        public void Should_Retrieve_Checkout_Form_Result()
-        {
-            RetrieveCheckoutFormRequest request = new RetrieveCheckoutFormRequest();
-            request.ConversationId = "123456789";
-            request.Token = "token";
-
-            CheckoutForm checkoutForm = CheckoutForm.Retrieve(request, options);
-
-            PrintResponse<CheckoutForm>(checkoutForm);
-
-            Assert.IsNotNull(checkoutForm.SystemTime);
-            Assert.AreEqual(Status.SUCCESS.ToString(), checkoutForm.Status);
-            Assert.AreEqual("123456789", checkoutForm.ConversationId);
-        }
-
-        private Buyer NewBuyer()
-        {
             Buyer buyer = new Buyer();
             buyer.Id = "BY789";
             buyer.Name = "John";
             buyer.Surname = "Doe";
-            buyer.IdentityNumber = "74300864791";
-            buyer.Email = "email@email.com";
             buyer.GsmNumber = "+905350000000";
-            buyer.RegistrationDate = "2013-04-21 15:12:09";
+            buyer.Email = "email@email.com";
+            buyer.IdentityNumber = "74300864791";
             buyer.LastLoginDate = "2015-10-05 12:43:35";
+            buyer.RegistrationDate = "2013-04-21 15:12:09";
             buyer.RegistrationAddress = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
-            buyer.City = "Istanbul";
-            buyer.Country = "Turkiye";
-            buyer.ZipCode = "34732";
             buyer.Ip = "85.34.78.112";
-            return buyer;
-        }
+            buyer.City = "Istanbul";
+            buyer.Country = "Turkey";
+            buyer.ZipCode = "34732";
+            request.Buyer = buyer;
 
-        private Address NewShippingAddress()
-        {
-            Address address = new Address();
-            address.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
-            address.ZipCode = "34742";
-            address.ContactName = "Jane Doe";
-            address.City = "Istanbul";
-            address.Country = "Turkiye";
-            return address;
-        }
+            Address shippingAddress = new Address();
+            shippingAddress.ContactName = "Jane Doe";
+            shippingAddress.City = "Istanbul";
+            shippingAddress.Country = "Turkey";
+            shippingAddress.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
+            shippingAddress.ZipCode = "34742";
+            request.ShippingAddress = shippingAddress;
 
-        private Address NewBillingAddress()
-        {
-            Address address = new Address();
-            address.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
-            address.ZipCode = "34742";
-            address.ContactName = "Jane Doe";
-            address.City = "Istanbul";
-            address.Country = "Turkiye";
-            return address;
-        }
+            Address billingAddress = new Address();
+            billingAddress.ContactName = "Jane Doe";
+            billingAddress.City = "Istanbul";
+            billingAddress.Country = "Turkey";
+            billingAddress.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
+            billingAddress.ZipCode = "34742";
+            request.BillingAddress = billingAddress;
 
-        private List<BasketItem> NewBasketItems()
-        {
             List<BasketItem> basketItems = new List<BasketItem>();
-
             BasketItem firstBasketItem = new BasketItem();
             firstBasketItem.Id = "BI101";
             firstBasketItem.Name = "Binocular";
@@ -122,17 +86,41 @@ namespace IyzipaySample.Sample
             thirdBasketItem.ItemType = BasketItemType.PHYSICAL.ToString();
             thirdBasketItem.Price = "0.2";
             basketItems.Add(thirdBasketItem);
+            request.BasketItems = basketItems;
 
-            return basketItems;
+            CheckoutFormInitialize checkoutFormInitialize = CheckoutFormInitialize.Create(request, options);
+
+            PrintResponse<CheckoutFormInitialize>(checkoutFormInitialize);
+
+            Assert.AreEqual(Status.SUCCESS.ToString(), checkoutFormInitialize.Status);
+            Assert.AreEqual(Locale.TR.ToString(), checkoutFormInitialize.Locale);
+            Assert.AreEqual("123456789", checkoutFormInitialize.ConversationId);
+            Assert.IsNotNull(checkoutFormInitialize.SystemTime);
+            Assert.IsNull(checkoutFormInitialize.ErrorCode);
+            Assert.IsNull(checkoutFormInitialize.ErrorMessage);
+            Assert.IsNull(checkoutFormInitialize.ErrorGroup);
+            Assert.IsNotNull(checkoutFormInitialize.CheckoutFormContent);
+            Assert.IsNotNull(checkoutFormInitialize.PaymentPageUrl);
         }
-        private List<int> NewEnabledInstallments()
+
+        [Test]
+        public void Should_Retrieve_Checkout_Form_Result()
         {
-            List<int> enabledInstallments = new List<int>();
-            enabledInstallments.Add(2);
-            enabledInstallments.Add(3);
-            enabledInstallments.Add(6);
-            enabledInstallments.Add(9);
-            return enabledInstallments;
+            RetrieveCheckoutFormRequest request = new RetrieveCheckoutFormRequest();
+            request.ConversationId = "123456789";
+            request.Token = "token";
+
+            CheckoutForm checkoutForm = CheckoutForm.Retrieve(request, options);
+
+            PrintResponse<CheckoutForm>(checkoutForm);
+
+            Assert.AreEqual(Status.SUCCESS.ToString(), checkoutForm.Status);
+            Assert.AreEqual(Locale.TR.ToString(), checkoutForm.Locale);
+            Assert.AreEqual("123456789", checkoutForm.ConversationId);
+            Assert.IsNotNull(checkoutForm.SystemTime);
+            Assert.IsNull(checkoutForm.ErrorCode);
+            Assert.IsNull(checkoutForm.ErrorMessage);
+            Assert.IsNull(checkoutForm.ErrorGroup);
         }
     }
 }

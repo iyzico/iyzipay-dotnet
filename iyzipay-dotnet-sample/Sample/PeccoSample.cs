@@ -11,16 +11,15 @@ namespace IyzipaySample.Sample
         public void Should_Initialize_Pecco()
         {
             CreatePeccoInitializeRequest request = new CreatePeccoInitializeRequest();
-
             request.Locale = Locale.TR.GetName();
             request.ConversationId = "123456789";
             request.Price = "100000";
             request.PaidPrice = "120000";
-            request.Currency = Currency.TRY.ToString();
+            request.Currency = Currency.IRR.ToString();
             request.BasketId = "B67832";
             request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
-            request.CallbackUrl = "http://www.merchant.com/callbackUrl";
-
+            request.CallbackUrl = "https://www.merchant.com/callbackUrl";
+            
             Buyer buyer = new Buyer();
             buyer.Id = "BY789";
             buyer.Name = "John";
@@ -32,23 +31,23 @@ namespace IyzipaySample.Sample
             buyer.RegistrationDate = "2013-04-21 15:12:09";
             buyer.RegistrationAddress = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             buyer.Ip = "85.34.78.112";
-            buyer.City = "İstanbul";
-            buyer.Country = "Türkiye";
+            buyer.City = "Istanbul";
+            buyer.Country = "Turkey";
             buyer.ZipCode = "34732";
             request.Buyer = buyer;
 
             Address shippingAddress = new Address();
             shippingAddress.ContactName = "Jane Doe";
-            shippingAddress.City = "İstanbul";
-            shippingAddress.Country = "Türkiye";
+            shippingAddress.City = "Istanbul";
+            shippingAddress.Country = "Turkey";
             shippingAddress.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             shippingAddress.ZipCode = "34742";
             request.ShippingAddress = shippingAddress;
 
             Address billingAddress = new Address();
             billingAddress.ContactName = "Jane Doe";
-            billingAddress.City = "İstanbul";
-            billingAddress.Country = "Türkiye";
+            billingAddress.City = "Istanbul";
+            billingAddress.Country = "Turkey";
             billingAddress.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             billingAddress.ZipCode = "34742";
             request.BillingAddress = billingAddress;
@@ -60,7 +59,7 @@ namespace IyzipaySample.Sample
             firstBasketItem.Category1 = "Collectibles";
             firstBasketItem.Category2 = "Accessories";
             firstBasketItem.ItemType = BasketItemType.PHYSICAL.ToString();
-            firstBasketItem.Price = "30000";
+            firstBasketItem.Price = "0.3";
             basketItems.Add(firstBasketItem);
 
             BasketItem secondBasketItem = new BasketItem();
@@ -69,7 +68,7 @@ namespace IyzipaySample.Sample
             secondBasketItem.Category1 = "Game";
             secondBasketItem.Category2 = "Online Game Items";
             secondBasketItem.ItemType = BasketItemType.VIRTUAL.ToString();
-            secondBasketItem.Price = "50000";
+            secondBasketItem.Price = "0.5";
             basketItems.Add(secondBasketItem);
 
             BasketItem thirdBasketItem = new BasketItem();
@@ -78,7 +77,7 @@ namespace IyzipaySample.Sample
             thirdBasketItem.Category1 = "Electronics";
             thirdBasketItem.Category2 = "Usb / Cable";
             thirdBasketItem.ItemType = BasketItemType.PHYSICAL.ToString();
-            thirdBasketItem.Price = "20000";
+            thirdBasketItem.Price = "0.2";
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
@@ -86,10 +85,14 @@ namespace IyzipaySample.Sample
 
             PrintResponse<PeccoInitialize>(peccoInitialize);
 
-            Assert.IsNotNull(peccoInitialize.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), peccoInitialize.Status);
-            Assert.AreEqual(Locale.TR.GetName(), peccoInitialize.Locale);
+            Assert.AreEqual(Locale.TR.ToString(), peccoInitialize.Locale);
             Assert.AreEqual("123456789", peccoInitialize.ConversationId);
+            Assert.IsNotNull(peccoInitialize.SystemTime);
+            Assert.IsNull(peccoInitialize.ErrorCode);
+            Assert.IsNull(peccoInitialize.ErrorMessage);
+            Assert.IsNull(peccoInitialize.ErrorGroup);
+            Assert.IsNotNull(peccoInitialize.HtmlContent);
         }
 
         [Test]
@@ -105,10 +108,13 @@ namespace IyzipaySample.Sample
 
             PrintResponse<PeccoPayment>(peccoPayment);
 
-            Assert.IsNotNull(peccoPayment.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), peccoPayment.Status);
-            Assert.AreEqual(Locale.TR.GetName(), peccoPayment.Locale);
+            Assert.AreEqual(Locale.TR.ToString(), peccoPayment.Locale);
             Assert.AreEqual("123456789", peccoPayment.ConversationId);
+            Assert.IsNotNull(peccoPayment.SystemTime);
+            Assert.IsNull(peccoPayment.ErrorCode);
+            Assert.IsNull(peccoPayment.ErrorMessage);
+            Assert.IsNull(peccoPayment.ErrorGroup);
         }
     }
 }

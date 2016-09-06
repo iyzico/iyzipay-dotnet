@@ -13,8 +13,12 @@ namespace IyzipaySample.Sample
 
             PrintResponse<IyzipayResource>(iyzipayResource);
 
-            Assert.IsNotNull(iyzipayResource.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), iyzipayResource.Status);
+            Assert.AreEqual(Locale.TR.ToString(), iyzipayResource.Locale);
+            Assert.IsNotNull(iyzipayResource.SystemTime);
+            Assert.IsNull(iyzipayResource.ErrorCode);
+            Assert.IsNull(iyzipayResource.ErrorMessage);
+            Assert.IsNull(iyzipayResource.ErrorGroup);
         }
     }
 }

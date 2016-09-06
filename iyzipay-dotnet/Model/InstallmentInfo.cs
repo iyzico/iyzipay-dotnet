@@ -5,7 +5,7 @@ namespace Iyzipay.Model
 {
     public class InstallmentInfo : IyzipayResource
     {
-        public List<InstallmentDetail> installmentDetails { get; set; }
+        public List<InstallmentDetail> InstallmentDetails { get; set; }
 
         public static InstallmentInfo Retrieve(RetrieveInstallmentInfoRequest request, Options options)
         {

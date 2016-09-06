@@ -19,11 +19,13 @@ namespace IyzipaySample.Sample
 
             PrintResponse<Cancel>(cancel);
 
-            Assert.IsNotNull(cancel.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), cancel.Status);
-            Assert.AreEqual(Locale.TR.GetName(), cancel.Locale);
+            Assert.AreEqual(Locale.TR.ToString(), cancel.Locale);
             Assert.AreEqual("123456789", cancel.ConversationId);
-            Assert.AreEqual("1", cancel.PaymentId);
+            Assert.IsNotNull(cancel.SystemTime);
+            Assert.IsNull(cancel.ErrorCode);
+            Assert.IsNull(cancel.ErrorMessage);
+            Assert.IsNull(cancel.ErrorGroup);
         }
     }
 }

@@ -6,8 +6,8 @@ namespace Iyzipay.Model
 {
     public class CardList : IyzipayResource
     {
-        public String cardUserKey { get; set; }
-        public List<Card> cardDetails { get; set; }
+        public String CardUserKey { get; set; }
+        public List<Card> CardDetails { get; set; }
 
         public static CardList Retrieve(RetrieveCardListRequest request, Options options)
         {

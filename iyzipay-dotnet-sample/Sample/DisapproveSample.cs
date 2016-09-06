@@ -18,11 +18,13 @@ namespace IyzipaySample.Sample
 
             PrintResponse<Disapproval>(disapproval);
 
-            Assert.IsNotNull(disapproval.SystemTime);
             Assert.AreEqual(Status.SUCCESS.ToString(), disapproval.Status);
-            Assert.AreEqual(Locale.TR.GetName(), disapproval.Locale);
+            Assert.AreEqual(Locale.TR.ToString(), disapproval.Locale);
             Assert.AreEqual("123456789", disapproval.ConversationId);
-            Assert.AreEqual("1", disapproval.PaymentTransactionId);
+            Assert.IsNotNull(disapproval.SystemTime);
+            Assert.IsNull(disapproval.ErrorCode);
+            Assert.IsNull(disapproval.ErrorMessage);
+            Assert.IsNull(disapproval.ErrorGroup);
         }
     }
 }

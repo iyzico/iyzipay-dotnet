@@ -10,7 +10,7 @@ namespace IyzipaySample.Sample
         public void Should_Retrieve_Bin_Number()
         {
             RetrieveBinNumberRequest request = new RetrieveBinNumberRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.BinNumber = "554960";
 

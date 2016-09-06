@@ -10,7 +10,7 @@ namespace IyzipaySample.Sample
         public void Should_Create_Personal_Sub_Merchant()
         {
             CreateSubMerchantRequest request = new CreateSubMerchantRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.SubMerchantExternalId = "B49224";
             request.SubMerchantType = SubMerchantType.PERSONAL.ToString();
@@ -41,7 +41,7 @@ namespace IyzipaySample.Sample
         public void Should_Create_Private_Sub_Merchant()
         {
             CreateSubMerchantRequest request = new CreateSubMerchantRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.SubMerchantExternalId = "S49222";
             request.SubMerchantType = SubMerchantType.PRIVATE_COMPANY.ToString();
@@ -72,7 +72,7 @@ namespace IyzipaySample.Sample
         public void Should_Create_Limited_Company_Sub_Merchant()
         {
             CreateSubMerchantRequest request = new CreateSubMerchantRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.SubMerchantExternalId = "AS49224";
             request.SubMerchantType = SubMerchantType.LIMITED_OR_JOINT_STOCK_COMPANY.ToString();
@@ -103,7 +103,7 @@ namespace IyzipaySample.Sample
         public void Should_Update_Personal_Sub_Merchant()
         {
             UpdateSubMerchantRequest request = new UpdateSubMerchantRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.SubMerchantKey = "sub merchant key";
             request.Address = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
@@ -133,7 +133,7 @@ namespace IyzipaySample.Sample
         public void Should_Update_Private_Sub_Merchant()
         {
             UpdateSubMerchantRequest request = new UpdateSubMerchantRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.SubMerchantKey = "sub merchant key";
             request.Address = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
@@ -163,7 +163,7 @@ namespace IyzipaySample.Sample
         public void Should_Update_Limited_Company_Sub_Merchant()
         {
             UpdateSubMerchantRequest request = new UpdateSubMerchantRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.SubMerchantKey = "sub merchant key";
             request.Address = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
@@ -193,7 +193,7 @@ namespace IyzipaySample.Sample
         public void Should_Retrieve_Sub_Merchant()
         {
             RetrieveSubMerchantRequest request = new RetrieveSubMerchantRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.SubMerchantExternalId = "AS49224";
 

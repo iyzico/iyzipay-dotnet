@@ -10,7 +10,7 @@ namespace IyzipaySample.Sample
         public void Should_Retrieve_Payout_Completed_Transactions()
         {
             RetrieveTransactionsRequest request = new RetrieveTransactionsRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.Date = "2015-01-22 19:13:00";
 
@@ -31,7 +31,7 @@ namespace IyzipaySample.Sample
         public void Should_Retrieve_Bounced_Bank_Transfers()
         {
             RetrieveTransactionsRequest request = new RetrieveTransactionsRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.Date = "2015-06-02 19:13:00";
 

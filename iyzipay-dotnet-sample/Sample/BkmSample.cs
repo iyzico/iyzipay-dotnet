@@ -11,7 +11,7 @@ namespace IyzipaySample.Sample
         public void Should_Initialize_Bkm()
         {
             CreateBkmInitializeRequest request = new CreateBkmInitializeRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.Price = "1";
             request.BasketId = "B67832";
@@ -97,7 +97,7 @@ namespace IyzipaySample.Sample
         public void Should_Retrieve_Bkm_Result()
         {
             RetrieveBkmRequest request = new RetrieveBkmRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.Token = "token";
 

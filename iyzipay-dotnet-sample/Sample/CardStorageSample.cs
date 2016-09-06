@@ -10,7 +10,7 @@ namespace IyzipaySample.Sample
         public void Should_Create_User_And_Add_Card()
         {
             CreateCardRequest request = new CreateCardRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.Email = "email@email.com";
             request.ExternalId = "external id";
@@ -51,7 +51,7 @@ namespace IyzipaySample.Sample
         public void Should_Create_Card()
         {
             CreateCardRequest request = new CreateCardRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.CardUserKey = "card user key";
 
@@ -91,7 +91,7 @@ namespace IyzipaySample.Sample
         public void Should_Delete_Card()
         {
             DeleteCardRequest request = new DeleteCardRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.CardToken = "card token";
             request.CardUserKey = "card user key";
@@ -124,7 +124,7 @@ namespace IyzipaySample.Sample
         public void Should_Retrieve_Cards()
         {
             RetrieveCardListRequest request = new RetrieveCardListRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.CardUserKey = "card user key";
 

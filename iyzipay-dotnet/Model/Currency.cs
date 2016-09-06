@@ -23,6 +23,5 @@ namespace Iyzipay.Model
         {
             return name;
         }
-
     }
 }

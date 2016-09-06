@@ -16,10 +16,9 @@ namespace Iyzipay.Model
             this.value = value;
         }
 
-        public String GetName()
+        public override String ToString()
         {
             return name;
         }
-
     }
 }

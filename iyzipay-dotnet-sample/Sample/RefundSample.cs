@@ -11,7 +11,7 @@ namespace IyzipaySample.Sample
         {
             CreateRefundRequest request = new CreateRefundRequest();
             request.ConversationId = "123456789";
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.PaymentTransactionId = "1";
             request.Price = "0.5";
             request.Ip = "85.34.78.112";

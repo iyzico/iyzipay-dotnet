@@ -11,7 +11,7 @@ namespace IyzipaySample.Sample
         public void Should_Create_Payment()
         {
             CreatePaymentRequest request = new CreatePaymentRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.Price = "1";
             request.PaidPrice = "1.2";
@@ -108,7 +108,7 @@ namespace IyzipaySample.Sample
         public void Should_Create_Marketplace_Payment()
         {
             CreatePaymentRequest request = new CreatePaymentRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.Price = "1";
             request.PaidPrice = "1.2";
@@ -211,7 +211,7 @@ namespace IyzipaySample.Sample
         public void Should_Create_Payment_With_Registered_Card()
         {
             CreatePaymentRequest request = new CreatePaymentRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.Price = "1";
             request.PaidPrice = "1.2";
@@ -304,7 +304,7 @@ namespace IyzipaySample.Sample
         public void Should_Retrieve_Payment_Result()
         {
             RetrievePaymentRequest request = new RetrievePaymentRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.PaymentId = "1";
             request.PaymentConversationId = "123456789";

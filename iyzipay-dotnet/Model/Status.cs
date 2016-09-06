@@ -19,7 +19,6 @@ namespace Iyzipay.Model
         public override String ToString()
         {
             return name;
-        }
-
+        } 
     }
 }

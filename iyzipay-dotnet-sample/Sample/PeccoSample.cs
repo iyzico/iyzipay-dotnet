@@ -11,7 +11,7 @@ namespace IyzipaySample.Sample
         public void Should_Initialize_Pecco()
         {
             CreatePeccoInitializeRequest request = new CreatePeccoInitializeRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.Price = "100000";
             request.PaidPrice = "120000";
@@ -99,8 +99,7 @@ namespace IyzipaySample.Sample
         public void Should_Create_Pecco_Payment()
         {
             CreatePeccoPaymentRequest request = new CreatePeccoPaymentRequest();
-
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.Token = "token";
 

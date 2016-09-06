@@ -10,7 +10,7 @@ namespace IyzipaySample.Sample
         public void Should_Disapprove_Payment_Item()
         {
             CreateApprovalRequest request = new CreateApprovalRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.PaymentTransactionId = "1";
 

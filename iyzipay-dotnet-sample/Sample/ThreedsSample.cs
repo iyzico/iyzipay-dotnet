@@ -11,7 +11,7 @@ namespace IyzipaySample.Sample
         public void Should_Initialize_Threeds()
         {
             CreatePaymentRequest request = new CreatePaymentRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.Price = "1";
             request.PaidPrice = "1.2";
@@ -109,7 +109,7 @@ namespace IyzipaySample.Sample
         public void Should_Create_Threeds_Payment()
         {
             CreateThreedsPaymentRequest request = new CreateThreedsPaymentRequest();
-            request.Locale = Locale.TR.GetName();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.PaymentId = "1";
             request.ConversationData = "conversation data";

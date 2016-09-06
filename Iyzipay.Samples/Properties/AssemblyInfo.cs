@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("iyzipay-dotnet")]
+[assembly: AssemblyTitle("Iyzipay.Samples")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("iyzipay-dotnet")]
+[assembly: AssemblyProduct("Iyzipay.Samples")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("5011814a-01e4-4e5f-82fa-5282ff01da5d")]
+[assembly: Guid("5d8ced86-1b92-412f-951c-b3bb1151affa")]
 
 // Version information for an assembly consists of the following four values:
 //

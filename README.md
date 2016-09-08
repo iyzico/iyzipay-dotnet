@@ -113,11 +113,11 @@ request.BasketItems = basketItems;
 
 Payment payment = Payment.Create(request, options);
 ```
-See other samples under iyzipay-dotnet-sample/Sample/ package.
+See other samples under Iyzipay.Samples project.
 
 # Testing
 
-You can run particular sample by passing your credential info to "iyzipay-dotnet-sample/Sample/Sample.cs"
+You can run particular sample by passing your credential info to "Iyzipay.Samples/Sample.cs"
 
 ### Mock test cards
 

@@ -16,7 +16,7 @@ namespace Iyzipay.Samples
             request.Price = "1";
             request.BasketId = "B67832";
             request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
-            request.CallbackUrl = "https://www.merchant.com/callbackUrl";
+            request.CallbackUrl = "https://www.merchant.com/callback";
 
             Buyer buyer = new Buyer();
             buyer.Id = "BY789";

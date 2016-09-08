@@ -4,24 +4,22 @@ namespace Iyzipay.Model
 {
     public sealed class Currency
     {
-        private readonly String name;
-        private readonly int value;
+        private readonly String value;
 
-        public static readonly Currency TRY = new Currency(1, "TRY");
-        public static readonly Currency EUR = new Currency(2, "EUR");
-        public static readonly Currency USD = new Currency(3, "USD");
-        public static readonly Currency GBP = new Currency(4, "GBP");
-        public static readonly Currency IRR = new Currency(5, "IRR");
+        public static readonly Currency TRY = new Currency("TRY");
+        public static readonly Currency EUR = new Currency("EUR");
+        public static readonly Currency USD = new Currency("USD");
+        public static readonly Currency GBP = new Currency("GBP");
+        public static readonly Currency IRR = new Currency("IRR");
 
-        private Currency(int value, String name)
+        private Currency(String value)
         {
-            this.name = name;
             this.value = value;
         }
 
         public override String ToString()
         {
-            return name;
+            return value;
         }
     }
 }

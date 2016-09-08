@@ -4,21 +4,19 @@ namespace Iyzipay.Model
 {
     public sealed class Status
     {
-        private readonly String name;
-        private readonly int value;
+        private readonly String value;
 
-        public static readonly Status SUCCESS = new Status(1, "success");
-        public static readonly Status FAILURE = new Status(2, "failure");
+        public static readonly Status SUCCESS = new Status("success");
+        public static readonly Status FAILURE = new Status("failure");
 
-        private Status(int value, String name)
+        private Status(String value)
         {
-            this.name = name;
             this.value = value;
         }
 
         public override String ToString()
         {
-            return name;
+            return value;
         } 
     }
 }

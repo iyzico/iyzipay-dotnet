@@ -20,6 +20,7 @@ namespace Iyzipay.Samples
             request.BasketId = "B67832";
             request.PaymentChannel = PaymentChannel.WEB.ToString();
             request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
+            request.CallbackUrl = "https://www.merchant.com/callbackUrl";
 
             PaymentCard paymentCard = new PaymentCard();
             paymentCard.CardHolderName = "John Doe";

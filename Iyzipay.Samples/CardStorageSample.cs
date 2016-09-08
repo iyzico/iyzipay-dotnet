@@ -2,7 +2,7 @@
 using Iyzipay.Request;
 using NUnit.Framework;
 
-namespace IyzipaySample.Sample
+namespace Iyzipay.Samples
 {
     public class CardStorageSample : Sample
     {

@@ -1,34 +1,31 @@
-﻿using Iyzipay.Request;
-using Iyzipay.Model;
-using System.Collections.Generic;
+﻿using Iyzipay.Model;
+using Iyzipay.Request;
 using NUnit.Framework;
+using System.Collections.Generic;
 
-namespace IyzipaySample.Sample
+namespace Iyzipay.Samples
 {
-    public class ThreedsSample : Sample
+    public class CheckoutFormSample : Sample
     {
         [Test]
-        public void Should_Initialize_Threeds()
+        public void Should_Initialize_Checkout_Form()
         {
-            CreatePaymentRequest request = new CreatePaymentRequest();
+            CreateCheckoutFormInitializeRequest request = new CreateCheckoutFormInitializeRequest();
             request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.Price = "1";
             request.PaidPrice = "1.2";
             request.Currency = Currency.TRY.ToString();
-            request.Installment = 1;
             request.BasketId = "B67832";
-            request.PaymentChannel = PaymentChannel.WEB.ToString();
             request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
+            request.CallbackUrl = "https://www.merchant.com/callbackUrl";
 
-            PaymentCard paymentCard = new PaymentCard();
-            paymentCard.CardHolderName = "John Doe";
-            paymentCard.CardNumber = "5528790000000008";
-            paymentCard.ExpireMonth = "12";
-            paymentCard.ExpireYear = "2030";
-            paymentCard.Cvc = "123";
-            paymentCard.RegisterCard = 0;
-            request.PaymentCard = paymentCard;
+            List<int> enabledInstallments = new List<int>();
+            enabledInstallments.Add(2);
+            enabledInstallments.Add(3);
+            enabledInstallments.Add(6);
+            enabledInstallments.Add(9);
+            request.EnabledInstallments = enabledInstallments;
 
             Buyer buyer = new Buyer();
             buyer.Id = "BY789";
@@ -91,40 +88,39 @@ namespace IyzipaySample.Sample
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
-            ThreedsInitialize threedsInitialize = ThreedsInitialize.Create(request, options);
+            CheckoutFormInitialize checkoutFormInitialize = CheckoutFormInitialize.Create(request, options);
 
-            PrintResponse<ThreedsInitialize>(threedsInitialize);
+            PrintResponse<CheckoutFormInitialize>(checkoutFormInitialize);
 
-            Assert.AreEqual(Status.SUCCESS.ToString(), threedsInitialize.Status);
-            Assert.AreEqual(Locale.TR.ToString(), threedsInitialize.Locale);
-            Assert.AreEqual("123456789", threedsInitialize.ConversationId);
-            Assert.IsNotNull(threedsInitialize.SystemTime);
-            Assert.IsNull(threedsInitialize.ErrorCode);
-            Assert.IsNull(threedsInitialize.ErrorMessage);
-            Assert.IsNull(threedsInitialize.ErrorGroup);
-            Assert.IsNotNull(threedsInitialize.HtmlContent);
+            Assert.AreEqual(Status.SUCCESS.ToString(), checkoutFormInitialize.Status);
+            Assert.AreEqual(Locale.TR.ToString(), checkoutFormInitialize.Locale);
+            Assert.AreEqual("123456789", checkoutFormInitialize.ConversationId);
+            Assert.IsNotNull(checkoutFormInitialize.SystemTime);
+            Assert.IsNull(checkoutFormInitialize.ErrorCode);
+            Assert.IsNull(checkoutFormInitialize.ErrorMessage);
+            Assert.IsNull(checkoutFormInitialize.ErrorGroup);
+            Assert.IsNotNull(checkoutFormInitialize.CheckoutFormContent);
+            Assert.IsNotNull(checkoutFormInitialize.PaymentPageUrl);
         }
 
         [Test]
-        public void Should_Create_Threeds_Payment()
+        public void Should_Retrieve_Checkout_Form_Result()
         {
-            CreateThreedsPaymentRequest request = new CreateThreedsPaymentRequest();
-            request.Locale = Locale.TR.ToString();
+            RetrieveCheckoutFormRequest request = new RetrieveCheckoutFormRequest();
             request.ConversationId = "123456789";
-            request.PaymentId = "1";
-            request.ConversationData = "conversation data";
+            request.Token = "token";
 
-            ThreedsPayment threedsPayment = ThreedsPayment.Create(request, options);
+            CheckoutForm checkoutForm = CheckoutForm.Retrieve(request, options);
 
-            PrintResponse<ThreedsPayment>(threedsPayment);
+            PrintResponse<CheckoutForm>(checkoutForm);
 
-            Assert.AreEqual(Status.SUCCESS.ToString(), threedsPayment.Status);
-            Assert.AreEqual(Locale.TR.ToString(), threedsPayment.Locale);
-            Assert.AreEqual("123456789", threedsPayment.ConversationId);
-            Assert.IsNotNull(threedsPayment.SystemTime);
-            Assert.IsNull(threedsPayment.ErrorCode);
-            Assert.IsNull(threedsPayment.ErrorMessage);
-            Assert.IsNull(threedsPayment.ErrorGroup);
+            Assert.AreEqual(Status.SUCCESS.ToString(), checkoutForm.Status);
+            Assert.AreEqual(Locale.TR.ToString(), checkoutForm.Locale);
+            Assert.AreEqual("123456789", checkoutForm.ConversationId);
+            Assert.IsNotNull(checkoutForm.SystemTime);
+            Assert.IsNull(checkoutForm.ErrorCode);
+            Assert.IsNull(checkoutForm.ErrorMessage);
+            Assert.IsNull(checkoutForm.ErrorGroup);
         }
     }
 }

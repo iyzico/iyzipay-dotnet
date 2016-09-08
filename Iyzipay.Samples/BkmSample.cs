@@ -1,31 +1,22 @@
-﻿using Iyzipay.Model;
-using Iyzipay.Request;
-using NUnit.Framework;
+﻿using Iyzipay.Request;
+using Iyzipay.Model;
 using System.Collections.Generic;
+using NUnit.Framework;
 
-namespace IyzipaySample.Sample
+namespace Iyzipay.Samples
 {
-    public class CheckoutFormSample : Sample
+    public class BkmSample : Sample
     {
         [Test]
-        public void Should_Initialize_Checkout_Form()
+        public void Should_Initialize_Bkm()
         {
-            CreateCheckoutFormInitializeRequest request = new CreateCheckoutFormInitializeRequest();
+            CreateBkmInitializeRequest request = new CreateBkmInitializeRequest();
             request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.Price = "1";
-            request.PaidPrice = "1.2";
-            request.Currency = Currency.TRY.ToString();
             request.BasketId = "B67832";
             request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
             request.CallbackUrl = "https://www.merchant.com/callbackUrl";
-
-            List<int> enabledInstallments = new List<int>();
-            enabledInstallments.Add(2);
-            enabledInstallments.Add(3);
-            enabledInstallments.Add(6);
-            enabledInstallments.Add(9);
-            request.EnabledInstallments = enabledInstallments;
 
             Buyer buyer = new Buyer();
             buyer.Id = "BY789";
@@ -88,39 +79,39 @@ namespace IyzipaySample.Sample
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
-            CheckoutFormInitialize checkoutFormInitialize = CheckoutFormInitialize.Create(request, options);
+            BkmInitialize bkmInitialize = BkmInitialize.Create(request, options);
 
-            PrintResponse<CheckoutFormInitialize>(checkoutFormInitialize);
+            PrintResponse<BkmInitialize>(bkmInitialize);
 
-            Assert.AreEqual(Status.SUCCESS.ToString(), checkoutFormInitialize.Status);
-            Assert.AreEqual(Locale.TR.ToString(), checkoutFormInitialize.Locale);
-            Assert.AreEqual("123456789", checkoutFormInitialize.ConversationId);
-            Assert.IsNotNull(checkoutFormInitialize.SystemTime);
-            Assert.IsNull(checkoutFormInitialize.ErrorCode);
-            Assert.IsNull(checkoutFormInitialize.ErrorMessage);
-            Assert.IsNull(checkoutFormInitialize.ErrorGroup);
-            Assert.IsNotNull(checkoutFormInitialize.CheckoutFormContent);
-            Assert.IsNotNull(checkoutFormInitialize.PaymentPageUrl);
+            Assert.AreEqual(Status.SUCCESS.ToString(), bkmInitialize.Status);
+            Assert.AreEqual(Locale.TR.ToString(), bkmInitialize.Locale);
+            Assert.AreEqual("123456789", bkmInitialize.ConversationId);
+            Assert.IsNotNull(bkmInitialize.SystemTime);
+            Assert.IsNull(bkmInitialize.ErrorCode);
+            Assert.IsNull(bkmInitialize.ErrorMessage);
+            Assert.IsNull(bkmInitialize.ErrorGroup);
+            Assert.IsNotNull(bkmInitialize.HtmlContent);
         }
 
         [Test]
-        public void Should_Retrieve_Checkout_Form_Result()
+        public void Should_Retrieve_Bkm_Result()
         {
-            RetrieveCheckoutFormRequest request = new RetrieveCheckoutFormRequest();
+            RetrieveBkmRequest request = new RetrieveBkmRequest();
+            request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.Token = "token";
 
-            CheckoutForm checkoutForm = CheckoutForm.Retrieve(request, options);
+            Bkm bkm = Bkm.Retrieve(request, options);
 
-            PrintResponse<CheckoutForm>(checkoutForm);
+            PrintResponse<Bkm>(bkm);
 
-            Assert.AreEqual(Status.SUCCESS.ToString(), checkoutForm.Status);
-            Assert.AreEqual(Locale.TR.ToString(), checkoutForm.Locale);
-            Assert.AreEqual("123456789", checkoutForm.ConversationId);
-            Assert.IsNotNull(checkoutForm.SystemTime);
-            Assert.IsNull(checkoutForm.ErrorCode);
-            Assert.IsNull(checkoutForm.ErrorMessage);
-            Assert.IsNull(checkoutForm.ErrorGroup);
+            Assert.AreEqual(Status.SUCCESS.ToString(), bkm.Status);
+            Assert.AreEqual(Locale.TR.ToString(), bkm.Locale);
+            Assert.AreEqual("123456789", bkm.ConversationId);
+            Assert.IsNotNull(bkm.SystemTime);
+            Assert.IsNull(bkm.ErrorCode);
+            Assert.IsNull(bkm.ErrorMessage);
+            Assert.IsNull(bkm.ErrorGroup);
         }
     }
 }

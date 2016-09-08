@@ -3,7 +3,7 @@ using Iyzipay.Request;
 using NUnit.Framework;
 using System.Collections.Generic;
 
-namespace IyzipaySample.Sample
+namespace Iyzipay.Samples
 {
     public class PaymentSample : Sample
     {

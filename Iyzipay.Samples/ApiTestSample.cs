@@ -1,8 +1,7 @@
-﻿using Iyzipay;
-using Iyzipay.Model;
+﻿using Iyzipay.Model;
 using NUnit.Framework;
 
-namespace IyzipaySample.Sample
+namespace Iyzipay.Samples
 {
     public class ApiTestSample : Sample
     {

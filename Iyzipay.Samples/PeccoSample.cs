@@ -3,7 +3,7 @@ using Iyzipay.Model;
 using System.Collections.Generic;
 using NUnit.Framework;
 
-namespace IyzipaySample.Sample
+namespace Iyzipay.Samples
 {
     public class PeccoSample : Sample
     {

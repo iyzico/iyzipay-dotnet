@@ -6,7 +6,7 @@
     <ProjectGuid>{5D8CED86-1B92-412F-951C-B3BB1151AFFA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IyzipaySample</RootNamespace>
+    <RootNamespace>Iyzipay.Samples</RootNamespace>
     <AssemblyName>Iyzipay.Samples</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -58,22 +58,22 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sample\ApiTestSample.cs" />
-    <Compile Include="Sample\DisapproveSample.cs" />
-    <Compile Include="Sample\ApproveSample.cs" />
-    <Compile Include="Sample\BinNumberSample.cs" />
-    <Compile Include="Sample\BkmSample.cs" />
-    <Compile Include="Sample\RetrievePayoutTransactionsSample.cs" />
-    <Compile Include="Sample\RefundSample.cs" />
-    <Compile Include="Sample\CancelSample.cs" />
-    <Compile Include="Sample\CardStorageSample.cs" />
-    <Compile Include="Sample\CheckoutFormSample.cs" />
-    <Compile Include="Sample\InstallmentSample.cs" />
-    <Compile Include="Sample\PaymentSample.cs" />
-    <Compile Include="Sample\Sample.cs" />
-    <Compile Include="Sample\SubMerchantSample.cs" />
-    <Compile Include="Sample\PeccoSample.cs" />
-    <Compile Include="Sample\ThreedsSample.cs" />
+    <Compile Include="ApiTestSample.cs" />
+    <Compile Include="DisapproveSample.cs" />
+    <Compile Include="ApproveSample.cs" />
+    <Compile Include="BinNumberSample.cs" />
+    <Compile Include="BkmSample.cs" />
+    <Compile Include="RetrievePayoutTransactionsSample.cs" />
+    <Compile Include="RefundSample.cs" />
+    <Compile Include="CancelSample.cs" />
+    <Compile Include="CardStorageSample.cs" />
+    <Compile Include="CheckoutFormSample.cs" />
+    <Compile Include="InstallmentSample.cs" />
+    <Compile Include="PaymentSample.cs" />
+    <Compile Include="Sample.cs" />
+    <Compile Include="SubMerchantSample.cs" />
+    <Compile Include="PeccoSample.cs" />
+    <Compile Include="ThreedsSample.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Iyzipay\Iyzipay.csproj">

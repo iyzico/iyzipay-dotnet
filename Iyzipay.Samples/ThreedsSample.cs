@@ -3,20 +3,32 @@ using Iyzipay.Model;
 using System.Collections.Generic;
 using NUnit.Framework;
 
-namespace IyzipaySample.Sample
+namespace Iyzipay.Samples
 {
-    public class BkmSample : Sample
+    public class ThreedsSample : Sample
     {
         [Test]
-        public void Should_Initialize_Bkm()
+        public void Should_Initialize_Threeds()
         {
-            CreateBkmInitializeRequest request = new CreateBkmInitializeRequest();
+            CreatePaymentRequest request = new CreatePaymentRequest();
             request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.Price = "1";
+            request.PaidPrice = "1.2";
+            request.Currency = Currency.TRY.ToString();
+            request.Installment = 1;
             request.BasketId = "B67832";
+            request.PaymentChannel = PaymentChannel.WEB.ToString();
             request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
-            request.CallbackUrl = "https://www.merchant.com/callbackUrl";
+
+            PaymentCard paymentCard = new PaymentCard();
+            paymentCard.CardHolderName = "John Doe";
+            paymentCard.CardNumber = "5528790000000008";
+            paymentCard.ExpireMonth = "12";
+            paymentCard.ExpireYear = "2030";
+            paymentCard.Cvc = "123";
+            paymentCard.RegisterCard = 0;
+            request.PaymentCard = paymentCard;
 
             Buyer buyer = new Buyer();
             buyer.Id = "BY789";
@@ -79,39 +91,40 @@ namespace IyzipaySample.Sample
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
-            BkmInitialize bkmInitialize = BkmInitialize.Create(request, options);
+            ThreedsInitialize threedsInitialize = ThreedsInitialize.Create(request, options);
 
-            PrintResponse<BkmInitialize>(bkmInitialize);
+            PrintResponse<ThreedsInitialize>(threedsInitialize);
 
-            Assert.AreEqual(Status.SUCCESS.ToString(), bkmInitialize.Status);
-            Assert.AreEqual(Locale.TR.ToString(), bkmInitialize.Locale);
-            Assert.AreEqual("123456789", bkmInitialize.ConversationId);
-            Assert.IsNotNull(bkmInitialize.SystemTime);
-            Assert.IsNull(bkmInitialize.ErrorCode);
-            Assert.IsNull(bkmInitialize.ErrorMessage);
-            Assert.IsNull(bkmInitialize.ErrorGroup);
-            Assert.IsNotNull(bkmInitialize.HtmlContent);
+            Assert.AreEqual(Status.SUCCESS.ToString(), threedsInitialize.Status);
+            Assert.AreEqual(Locale.TR.ToString(), threedsInitialize.Locale);
+            Assert.AreEqual("123456789", threedsInitialize.ConversationId);
+            Assert.IsNotNull(threedsInitialize.SystemTime);
+            Assert.IsNull(threedsInitialize.ErrorCode);
+            Assert.IsNull(threedsInitialize.ErrorMessage);
+            Assert.IsNull(threedsInitialize.ErrorGroup);
+            Assert.IsNotNull(threedsInitialize.HtmlContent);
         }
 
         [Test]
-        public void Should_Retrieve_Bkm_Result()
+        public void Should_Create_Threeds_Payment()
         {
-            RetrieveBkmRequest request = new RetrieveBkmRequest();
+            CreateThreedsPaymentRequest request = new CreateThreedsPaymentRequest();
             request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
-            request.Token = "token";
+            request.PaymentId = "1";
+            request.ConversationData = "conversation data";
 
-            Bkm bkm = Bkm.Retrieve(request, options);
+            ThreedsPayment threedsPayment = ThreedsPayment.Create(request, options);
 
-            PrintResponse<Bkm>(bkm);
+            PrintResponse<ThreedsPayment>(threedsPayment);
 
-            Assert.AreEqual(Status.SUCCESS.ToString(), bkm.Status);
-            Assert.AreEqual(Locale.TR.ToString(), bkm.Locale);
-            Assert.AreEqual("123456789", bkm.ConversationId);
-            Assert.IsNotNull(bkm.SystemTime);
-            Assert.IsNull(bkm.ErrorCode);
-            Assert.IsNull(bkm.ErrorMessage);
-            Assert.IsNull(bkm.ErrorGroup);
+            Assert.AreEqual(Status.SUCCESS.ToString(), threedsPayment.Status);
+            Assert.AreEqual(Locale.TR.ToString(), threedsPayment.Locale);
+            Assert.AreEqual("123456789", threedsPayment.ConversationId);
+            Assert.IsNotNull(threedsPayment.SystemTime);
+            Assert.IsNull(threedsPayment.ErrorCode);
+            Assert.IsNull(threedsPayment.ErrorMessage);
+            Assert.IsNull(threedsPayment.ErrorGroup);
         }
     }
 }

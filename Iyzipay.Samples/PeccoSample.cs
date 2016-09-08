@@ -18,7 +18,7 @@ namespace Iyzipay.Samples
             request.Currency = Currency.IRR.ToString();
             request.BasketId = "B67832";
             request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
-            request.CallbackUrl = "https://www.merchant.com/callbackUrl";
+            request.CallbackUrl = "https://www.merchant.com/callback";
             
             Buyer buyer = new Buyer();
             buyer.Id = "BY789";
@@ -59,7 +59,7 @@ namespace Iyzipay.Samples
             firstBasketItem.Category1 = "Collectibles";
             firstBasketItem.Category2 = "Accessories";
             firstBasketItem.ItemType = BasketItemType.PHYSICAL.ToString();
-            firstBasketItem.Price = "0.3";
+            firstBasketItem.Price = "30000";
             basketItems.Add(firstBasketItem);
 
             BasketItem secondBasketItem = new BasketItem();
@@ -68,7 +68,7 @@ namespace Iyzipay.Samples
             secondBasketItem.Category1 = "Game";
             secondBasketItem.Category2 = "Online Game Items";
             secondBasketItem.ItemType = BasketItemType.VIRTUAL.ToString();
-            secondBasketItem.Price = "0.5";
+            secondBasketItem.Price = "50000";
             basketItems.Add(secondBasketItem);
 
             BasketItem thirdBasketItem = new BasketItem();
@@ -77,7 +77,7 @@ namespace Iyzipay.Samples
             thirdBasketItem.Category1 = "Electronics";
             thirdBasketItem.Category2 = "Usb / Cable";
             thirdBasketItem.ItemType = BasketItemType.PHYSICAL.ToString();
-            thirdBasketItem.Price = "0.2";
+            thirdBasketItem.Price = "20000";
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 

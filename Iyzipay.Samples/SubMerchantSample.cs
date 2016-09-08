@@ -21,7 +21,7 @@ namespace Iyzipay.Samples
             request.GsmNumber = "+905350000000";
             request.Name = "John's market";
             request.Iban = "TR180006200119000006672315";
-            request.IdentityNumber = "1234567890";
+            request.IdentityNumber = "31300864726";
             request.Currency = Currency.TRY.ToString();
 
             SubMerchant subMerchant = SubMerchant.Create(request, options);
@@ -106,13 +106,13 @@ namespace Iyzipay.Samples
             request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.SubMerchantKey = "sub merchant key";
+            request.Iban = "TR630006200027700006678204";
             request.Address = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             request.ContactName = "Jane";
             request.ContactSurname = "Doe";
             request.Email = "email@submerchantemail.com";
             request.GsmNumber = "+905350000000";
             request.Name = "Jane's market";
-            request.Iban = "TR630006200027700006678204";
             request.IdentityNumber = "31300864726";
             request.Currency = Currency.TRY.ToString();
 

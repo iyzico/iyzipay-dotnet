@@ -24,7 +24,7 @@ Install-Package Iyzipay
 
 # Usage
 
-```.NET
+```csharp
 Options options = new Options();
 options.ApiKey = "your api key";
 options.SecretKey = "your secret key";

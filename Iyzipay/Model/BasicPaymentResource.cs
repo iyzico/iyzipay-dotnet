@@ -21,5 +21,6 @@ namespace Iyzipay.Model
         public String PaymentTransactionId { get; set; }
         public String AuthCode { get; set; }
         public String ConnectorName { get; set; }
+        public String Phase { get; set; }
     }
 }

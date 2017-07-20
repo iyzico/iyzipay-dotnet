@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iyzipay", "Iyzipay\Iyzipay.csproj", "{5011814A-01E4-4E5F-82FA-5282FF01DA5D}"
 EndProject
@@ -19,7 +19,6 @@ Global
 		{5011814A-01E4-4E5F-82FA-5282FF01DA5D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5D8CED86-1B92-412F-951C-B3BB1151AFFA}.Debug|Any CPU.ActiveCfg = Release|Any CPU
 		{5D8CED86-1B92-412F-951C-B3BB1151AFFA}.Debug|Any CPU.Build.0 = Release|Any CPU
-		{5D8CED86-1B92-412F-951C-B3BB1151AFFA}.Debug|Any CPU.Deploy.0 = Release|Any CPU
 		{5D8CED86-1B92-412F-951C-B3BB1151AFFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D8CED86-1B92-412F-951C-B3BB1151AFFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection

@@ -25,6 +25,7 @@ namespace Iyzipay.Samples
             request.MerchantNotificationUrl= "https://www.merchant.com/notification";
             request.ApmType = ApmType.SOFORT.ToString();
             
+
             Buyer buyer = new Buyer();
             buyer.Id = "BY789";
             buyer.Name = "John";

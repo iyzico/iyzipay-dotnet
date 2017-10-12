@@ -7,6 +7,11 @@ namespace Iyzipay
 {
     public class RestHttpClient
     {
+        static RestHttpClient()
+        {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+        }
+
         public static RestHttpClient Create()
         {
             return new RestHttpClient();

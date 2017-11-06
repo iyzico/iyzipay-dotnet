@@ -36,7 +36,7 @@ namespace Iyzipay
 
         private static String PrepareAuthorizationString(BaseRequest request, String randomString, Options options)
         {
-            String hash = HashGenerator.generateHash(options.ApiKey, options.SecretKey, randomString, request);
+            String hash = HashGenerator.GenerateHash(options.ApiKey, options.SecretKey, randomString, request);
             return IYZIWS_HEADER_NAME + options.ApiKey + COLON + hash;
         }
     }

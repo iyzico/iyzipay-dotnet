@@ -9,7 +9,7 @@ namespace Iyzipay
         {
         }
 
-        public static String decodeString(String content)
+        public static String DecodeString(String content)
         {
             return (!String.IsNullOrEmpty(content)) ? Encoding.UTF8.GetString(Convert.FromBase64String(content)) : null;
         }

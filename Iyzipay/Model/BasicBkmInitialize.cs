@@ -14,7 +14,7 @@ namespace Iyzipay.Model
 
             if (response != null)
             {
-                response.HtmlContent = DigestHelper.decodeString(response.HtmlContent);
+                response.HtmlContent = DigestHelper.DecodeString(response.HtmlContent);
             }
             return response;
         }

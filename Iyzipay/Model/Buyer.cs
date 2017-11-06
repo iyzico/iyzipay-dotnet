@@ -18,7 +18,7 @@ namespace Iyzipay.Model
         public String ZipCode { get; set; }
         public String Ip { get; set; }
 
-        public  String ToPKIRequestString()
+        public String ToPKIRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
                 .Append("id", Id)

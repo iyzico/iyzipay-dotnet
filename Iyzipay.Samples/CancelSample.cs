@@ -36,7 +36,7 @@ namespace Iyzipay.Samples
             request.Locale = Locale.TR.ToString();
             request.PaymentId = "1";
             request.Ip = "85.34.78.112";
-            request.Reason = "other";
+            request.Reason = RefundReason.OTHER.ToString();
             request.Description = "customer requested for default sample";
 
             Cancel cancel = Cancel.Create(request, options);

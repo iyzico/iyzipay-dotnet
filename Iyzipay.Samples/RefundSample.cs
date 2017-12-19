@@ -39,7 +39,7 @@ namespace Iyzipay.Samples
             request.Price = "0.5";
             request.Ip = "85.34.78.112";
             request.Currency = Currency.TRY.ToString();
-            request.Reason = "other";
+            request.Reason = RefundReason.OTHER.ToString();
             request.Description = "customer requested for default sample";
 
             Refund refund = Refund.Create(request, options);

@@ -6,6 +6,8 @@ namespace Iyzipay.Request
     {
         public String PaymentId { get; set; }
         public String Ip { get; set; }
+        public String Reason { get; set; }
+        public String Description { get; set; }
 
         public override String ToPKIRequestString()
         {
@@ -13,6 +15,8 @@ namespace Iyzipay.Request
                 .AppendSuper(base.ToPKIRequestString())
                 .Append("paymentId", PaymentId)
                 .Append("ip", Ip)
+                .Append("reason", Reason)
+                .Append("description", Description)
                 .GetRequestString();
         }
     }

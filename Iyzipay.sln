@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iyzipay", "Iyzipay\Iyzipay.csproj", "{5011814A-01E4-4E5F-82FA-5282FF01DA5D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iyzipay.Samples", "Iyzipay.Samples\Iyzipay.Samples.csproj", "{5D8CED86-1B92-412F-951C-B3BB1151AFFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iyzpay.NetCore", "Iyzpay.NetCore\Iyzpay.NetCore.csproj", "{D0AEC16D-485E-46C6-A27F-6AF815C0A51D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iyzipay.NetCore.Tests", "Iyzipay.NetCore.Tests\Iyzipay.NetCore.Tests.csproj", "{87D29D82-DC90-4C02-B50E-6778DB6D38DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +25,19 @@ Global
 		{5D8CED86-1B92-412F-951C-B3BB1151AFFA}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{5D8CED86-1B92-412F-951C-B3BB1151AFFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D8CED86-1B92-412F-951C-B3BB1151AFFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0AEC16D-485E-46C6-A27F-6AF815C0A51D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0AEC16D-485E-46C6-A27F-6AF815C0A51D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0AEC16D-485E-46C6-A27F-6AF815C0A51D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0AEC16D-485E-46C6-A27F-6AF815C0A51D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87D29D82-DC90-4C02-B50E-6778DB6D38DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87D29D82-DC90-4C02-B50E-6778DB6D38DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87D29D82-DC90-4C02-B50E-6778DB6D38DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87D29D82-DC90-4C02-B50E-6778DB6D38DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C41D18C6-55E0-4034-A463-317D4C5B2314}
 	EndGlobalSection
 EndGlobal

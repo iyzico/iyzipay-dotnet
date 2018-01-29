@@ -1,2 +1,21 @@
 language: csharp
 solution: Iyzipay.sln
+dotnet: 2.0.0
+mono: none
+os:
+  - linux
+
+branches:  
+  only:
+    - master
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
+
+before_script:
+  - dotnet restore
+
+script:
+  - dotnet build ./Iyzipay.sln

@@ -18,6 +18,7 @@ namespace Iyzipay.Request
         public String TaxNumber { get; set; }
         public String SubMerchantType { get; set; }
         public String Currency { get; set; }
+        public String SettlementDescriptionTemplate { get; set; }
         public String SwiftCode { get; set; }
 
         public override String ToPKIRequestString()
@@ -35,6 +36,7 @@ namespace Iyzipay.Request
                 .Append("legalCompanyTitle", LegalCompanyTitle)
                 .Append("swiftCode", SwiftCode)
                 .Append("currency", Currency)
+                .Append("settlementDescriptionTemplate", SettlementDescriptionTemplate)
                 .Append("subMerchantExternalId", SubMerchantExternalId)
                 .Append("identityNumber", IdentityNumber)
                 .Append("taxNumber", TaxNumber)

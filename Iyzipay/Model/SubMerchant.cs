@@ -21,6 +21,7 @@ namespace Iyzipay.Model
         public String TaxNumber { get; set; }
         public String SubMerchantType { get; set; }
         public String SubMerchantKey { get; set; }
+        public String SettlementDescriptionTemplate { get; set; }
 
         public static SubMerchant Create(CreateSubMerchantRequest request, Options options)
         {

@@ -1,5 +1,6 @@
 ﻿using Iyzipay.Request;
 using System;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
@@ -13,7 +14,12 @@ namespace Iyzipay.Model
 
         public static Refund Create(CreateRefundRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<Refund>(options.BaseUrl + "/payment/refund", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create(options.BaseUrl).Post<Refund>("payment/refund", GetHttpHeaders(request, options), request);
+        }
+
+        public async static Task<Refund> CreateAsync(CreateRefundRequest request, Options options)
+        {
+            return await RestHttpClient.Create(options.BaseUrl).PostAsync<Refund>("payment/refund", GetHttpHeaders(request, options), request);
         }
     }
 }

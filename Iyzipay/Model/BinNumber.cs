@@ -1,6 +1,7 @@
 ﻿using Iyzipay.Request;
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
@@ -14,9 +15,15 @@ namespace Iyzipay.Model
         public String BankName { get; set; }
         public long BankCode { get; set; }
 
+        private const string RetrieveUrl = "payment/bin/check";
+        public async static Task<BinNumber> RetrieveAsync(RetrieveBinNumberRequest request, Options options)
+        {
+            return await RestHttpClient.Create(options.BaseUrl).PostAsync<BinNumber>(RetrieveUrl, GetHttpHeaders(request, options), request);
+        }
+
         public static BinNumber Retrieve(RetrieveBinNumberRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<BinNumber>(options.BaseUrl + "/payment/bin/check", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create(options.BaseUrl).Post<BinNumber>(RetrieveUrl, GetHttpHeaders(request, options), request);
         }
     }
 }

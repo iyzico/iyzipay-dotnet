@@ -1,5 +1,6 @@
 ﻿using Iyzipay.Request;
 using System;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
@@ -10,9 +11,14 @@ namespace Iyzipay.Model
         public String Currency { get; set; }
         public String ConnectorName { get; set; }
 
+        public async static Task<Cancel> CreateAsync(CreateCancelRequest request, Options options)
+        {
+            return await RestHttpClient.Create(options.BaseUrl).PostAsync<Cancel>("payment/cancel", GetHttpHeaders(request, options), request);
+        }
+
         public static Cancel Create(CreateCancelRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<Cancel>(options.BaseUrl + "/payment/cancel", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create(options.BaseUrl).Post<Cancel>("payment/cancel", GetHttpHeaders(request, options), request);
         }
     }
 }

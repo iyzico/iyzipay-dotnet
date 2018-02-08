@@ -1,5 +1,6 @@
 ﻿using Iyzipay.Request;
 using System;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
@@ -11,7 +12,12 @@ namespace Iyzipay.Model
 
         public static RefundChargedFromMerchant Create(CreateRefundRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<RefundChargedFromMerchant>(options.BaseUrl + "/payment/iyzipos/refund/merchant/charge", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create(options.BaseUrl).Post<RefundChargedFromMerchant>("payment/iyzipos/refund/merchant/charge", GetHttpHeaders(request, options), request);
+        }
+
+        public async static Task<RefundChargedFromMerchant> CreateAsync(CreateRefundRequest request, Options options)
+        {
+            return await RestHttpClient.Create(options.BaseUrl).PostAsync<RefundChargedFromMerchant>("payment/iyzipos/refund/merchant/charge", GetHttpHeaders(request, options), request);
         }
     }
 }

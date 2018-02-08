@@ -1,5 +1,6 @@
 ﻿using Iyzipay.Request;
 using System;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
@@ -25,17 +26,33 @@ namespace Iyzipay.Model
 
         public static SubMerchant Create(CreateSubMerchantRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<SubMerchant>(options.BaseUrl + "/onboarding/submerchant", GetHttpHeaders(request, options), request);
+            return  RestHttpClient.Create(options.BaseUrl).Post<SubMerchant>("onboarding/submerchant", GetHttpHeaders(request, options), request);
         }
 
         public static SubMerchant Update(UpdateSubMerchantRequest request, Options options)
         {
-            return RestHttpClient.Create().Put<SubMerchant>(options.BaseUrl + "/onboarding/submerchant", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create(options.BaseUrl).Put<SubMerchant>("onboarding/submerchant", GetHttpHeaders(request, options), request);
         }
 
         public static SubMerchant Retrieve(RetrieveSubMerchantRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<SubMerchant>(options.BaseUrl + "/onboarding/submerchant/detail", GetHttpHeaders(request, options), request);
+            return  RestHttpClient.Create(options.BaseUrl).Post<SubMerchant>("onboarding/submerchant/detail", GetHttpHeaders(request, options), request);
+        }
+
+
+        public async static Task<SubMerchant> CreateAsync(CreateSubMerchantRequest request, Options options)
+        {
+            return await RestHttpClient.Create(options.BaseUrl).PostAsync<SubMerchant>("onboarding/submerchant", GetHttpHeaders(request, options), request);
+        }
+
+        public async static Task<SubMerchant> UpdateAsync(UpdateSubMerchantRequest request, Options options)
+        {
+            return await RestHttpClient.Create(options.BaseUrl).PutAsync<SubMerchant>("onboarding/submerchant", GetHttpHeaders(request, options), request);
+        }
+
+        public async static Task<SubMerchant> RetrieveAsync(RetrieveSubMerchantRequest request, Options options)
+        {
+            return await RestHttpClient.Create(options.BaseUrl).PostAsync<SubMerchant>("onboarding/submerchant/detail", GetHttpHeaders(request, options), request);
         }
     }
 }

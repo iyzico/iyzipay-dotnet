@@ -8,7 +8,7 @@ namespace Iyzipay.Model
         private const string CreateUrl = "payment/postauth/basic";
         public async static Task<BasicPaymentPostAuth> CreateAsync(CreatePaymentPostAuthRequest request, Options options)
         {
-            return await RestHttpClient.Create(options.BaseUrl).PostAsync<BasicPaymentPostAuth>(CreateUrl, GetHttpHeaders(request, options), request);
+            return await RestHttpClient.Create(options.BaseUrl).PostAsync<BasicPaymentPostAuth>(CreateUrl, GetHttpHeaders(request, options), request).ConfigureAwait(false);
         }
 
         public static BasicPaymentPostAuth Create(CreatePaymentPostAuthRequest request, Options options)

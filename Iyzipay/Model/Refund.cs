@@ -12,14 +12,15 @@ namespace Iyzipay.Model
         public String Currency { get; set; }
         public String ConnectorName { get; set; }
 
+        private const string CreateUrl = "payment/refund";
         public static Refund Create(CreateRefundRequest request, Options options)
         {
-            return RestHttpClient.Create(options.BaseUrl).Post<Refund>("payment/refund", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create(options.BaseUrl).Post<Refund>(CreateUrl, GetHttpHeaders(request, options), request);
         }
 
         public async static Task<Refund> CreateAsync(CreateRefundRequest request, Options options)
         {
-            return await RestHttpClient.Create(options.BaseUrl).PostAsync<Refund>("payment/refund", GetHttpHeaders(request, options), request);
+            return await RestHttpClient.Create(options.BaseUrl).PostAsync<Refund>(CreateUrl, GetHttpHeaders(request, options), request).ConfigureAwait(false);
         }
     }
 }

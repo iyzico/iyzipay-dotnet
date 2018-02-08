@@ -8,7 +8,7 @@ namespace Iyzipay.Model
 
         public async static Task<IyzipayResource> RetrieveAsync(Options options)
         {
-            return await RestHttpClient.Create(options.BaseUrl).GetAsync<IyzipayResource>(RetrieveUrl);
+            return await RestHttpClient.Create(options.BaseUrl).GetAsync<IyzipayResource>(RetrieveUrl).ConfigureAwait(false);
         }
 
         public static IyzipayResource Retrieve(Options options)

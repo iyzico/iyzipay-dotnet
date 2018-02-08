@@ -16,7 +16,7 @@ namespace Iyzipay.Model
 
         public async static Task<Approval> CreateAsync(CreateApprovalRequest request, Options options)
         {
-            return await RestHttpClient.Create(options.BaseUrl).PostAsync<Approval>(CreateUrl, GetHttpHeaders(request, options), request);
+            return await RestHttpClient.Create(options.BaseUrl).PostAsync<Approval>(CreateUrl, GetHttpHeaders(request, options), request).ConfigureAwait(false);
         }
     }
 }

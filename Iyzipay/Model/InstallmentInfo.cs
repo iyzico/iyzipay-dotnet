@@ -11,7 +11,7 @@ namespace Iyzipay.Model
         private const string RetrieveUrl = "payment/iyzipos/installment";
         public async static Task<InstallmentInfo> RetrieveAsync(RetrieveInstallmentInfoRequest request, Options options)
         {
-            return await RestHttpClient.Create(options.BaseUrl).PostAsync<InstallmentInfo>(RetrieveUrl, GetHttpHeaders(request, options), request);
+            return await RestHttpClient.Create(options.BaseUrl).PostAsync<InstallmentInfo>(RetrieveUrl, GetHttpHeaders(request, options), request).ConfigureAwait(false);
         }
 
         public static InstallmentInfo Retrieve(RetrieveInstallmentInfoRequest request, Options options)

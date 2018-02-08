@@ -8,10 +8,11 @@ namespace Iyzipay.Model
     {
         public String HtmlContent { get; set; }
         public String Token { get; set; }
-        
+
+        private const string CreateUrl = "payment/bkm/initialize";
         public async static Task<BkmInitialize> CreateAsync(CreateBkmInitializeRequest request, Options options)
         {
-            BkmInitialize response = await RestHttpClient.Create(options.BaseUrl).PostAsync<BkmInitialize>("payment/bkm/initialize", GetHttpHeaders(request, options), request);
+            BkmInitialize response = await RestHttpClient.Create(options.BaseUrl).PostAsync<BkmInitialize>(CreateUrl, GetHttpHeaders(request, options), request).ConfigureAwait(false);
 
             if (response != null)
             {
@@ -22,7 +23,7 @@ namespace Iyzipay.Model
 
         public static BkmInitialize Create(CreateBkmInitializeRequest request, Options options)
         {
-            BkmInitialize response = RestHttpClient.Create(options.BaseUrl).Post<BkmInitialize>("payment/bkm/initialize", GetHttpHeaders(request, options), request);
+            BkmInitialize response = RestHttpClient.Create(options.BaseUrl).Post<BkmInitialize>(CreateUrl, GetHttpHeaders(request, options), request);
 
             if (response != null)
             {

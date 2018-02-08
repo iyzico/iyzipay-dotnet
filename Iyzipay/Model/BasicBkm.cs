@@ -13,7 +13,7 @@ namespace Iyzipay.Model
         private const string RetrieveUrl = "payment/bkm/auth/detail/basic";
         public async static Task<BasicBkm> RetrieveAsync(RetrieveBkmRequest request, Options options)
         {
-            return await RestHttpClient.Create(options.BaseUrl).PostAsync<BasicBkm>(RetrieveUrl, GetHttpHeaders(request, options), request);
+            return await RestHttpClient.Create(options.BaseUrl).PostAsync<BasicBkm>(RetrieveUrl, GetHttpHeaders(request, options), request).ConfigureAwait(false);
         }
 
         public static BasicBkm Retrieve(RetrieveBkmRequest request, Options options)

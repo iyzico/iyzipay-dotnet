@@ -10,9 +10,10 @@ namespace Iyzipay.Model
         [JsonProperty(PropertyName = "threeDSHtmlContent")]
         public String HtmlContent { get; set; }
 
+        private const string CreateUrl = "payment/3dsecure/initialize";
         public static ThreedsInitialize Create(CreatePaymentRequest request, Options options)
         {
-            ThreedsInitialize response = RestHttpClient.Create(options.BaseUrl).Post<ThreedsInitialize>("payment/3dsecure/initialize", GetHttpHeaders(request, options), request);
+            ThreedsInitialize response = RestHttpClient.Create(options.BaseUrl).Post<ThreedsInitialize>(CreateUrl, GetHttpHeaders(request, options), request);
 
             if (response != null)
             {
@@ -23,7 +24,7 @@ namespace Iyzipay.Model
 
         public async static Task<ThreedsInitialize> CreateAsync(CreatePaymentRequest request, Options options)
         {
-            ThreedsInitialize response = await RestHttpClient.Create(options.BaseUrl).PostAsync<ThreedsInitialize>("payment/3dsecure/initialize", GetHttpHeaders(request, options), request);
+            ThreedsInitialize response = await RestHttpClient.Create(options.BaseUrl).PostAsync<ThreedsInitialize>(CreateUrl, GetHttpHeaders(request, options), request).ConfigureAwait(false);
 
             if (response != null)
             {

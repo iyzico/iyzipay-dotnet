@@ -9,12 +9,12 @@ namespace Iyzipay.Model
         private const string RetrieveUrl = "payment/apm/retrieve";
         public async static Task<Apm> CreateAsync(CreateApmInitializeRequest request, Options options)
         {
-            return await RestHttpClient.Create(options.BaseUrl).PostAsync<Apm>(CreateUrl, GetHttpHeaders(request, options), request);
+            return await RestHttpClient.Create(options.BaseUrl).PostAsync<Apm>(CreateUrl, GetHttpHeaders(request, options), request).ConfigureAwait(false);
         }
 
         public async static Task<Apm> RetrieveAsync(RetrieveApmRequest request, Options options)
         {
-            return await RestHttpClient.Create(options.BaseUrl).PostAsync<Apm>(RetrieveUrl, GetHttpHeaders(request, options), request);
+            return await RestHttpClient.Create(options.BaseUrl).PostAsync<Apm>(RetrieveUrl, GetHttpHeaders(request, options), request).ConfigureAwait(false);
         }
 
         public static Apm Create(CreateApmInitializeRequest request, Options options)

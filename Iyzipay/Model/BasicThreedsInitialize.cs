@@ -12,7 +12,7 @@ namespace Iyzipay.Model
 
         public async static Task<BasicThreedsInitialize> CreateAsync(CreateBasicPaymentRequest request, Options options)
         {
-            BasicThreedsInitialize response = await RestHttpClient.Create(options.BaseUrl).PostAsync<BasicThreedsInitialize>("payment/3dsecure/initialize/basic", GetHttpHeaders(request, options), request);
+            BasicThreedsInitialize response = await RestHttpClient.Create(options.BaseUrl).PostAsync<BasicThreedsInitialize>("payment/3dsecure/initialize/basic", GetHttpHeaders(request, options), request).ConfigureAwait(false);
 
             if (response != null)
             {

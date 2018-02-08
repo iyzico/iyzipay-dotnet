@@ -18,7 +18,7 @@ namespace Iyzipay.Model
         private const string RetrieveUrl = "payment/bin/check";
         public async static Task<BinNumber> RetrieveAsync(RetrieveBinNumberRequest request, Options options)
         {
-            return await RestHttpClient.Create(options.BaseUrl).PostAsync<BinNumber>(RetrieveUrl, GetHttpHeaders(request, options), request);
+            return await RestHttpClient.Create(options.BaseUrl).PostAsync<BinNumber>(RetrieveUrl, GetHttpHeaders(request, options), request).ConfigureAwait(false);
         }
 
         public static BinNumber Retrieve(RetrieveBinNumberRequest request, Options options)

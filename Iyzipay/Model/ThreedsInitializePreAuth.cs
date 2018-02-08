@@ -25,7 +25,7 @@ namespace Iyzipay.Model
 
         public async static Task<ThreedsInitializePreAuth> CreateAsync(CreatePaymentRequest request, Options options)
         {
-            ThreedsInitializePreAuth response = await RestHttpClient.Create(options.BaseUrl).PostAsync<ThreedsInitializePreAuth>(CreateUrl, GetHttpHeaders(request, options), request);
+            ThreedsInitializePreAuth response = await RestHttpClient.Create(options.BaseUrl).PostAsync<ThreedsInitializePreAuth>(CreateUrl, GetHttpHeaders(request, options), request).ConfigureAwait(false);
 
             if (response != null)
             {

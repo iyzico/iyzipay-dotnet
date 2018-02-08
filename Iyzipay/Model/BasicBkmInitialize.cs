@@ -12,7 +12,7 @@ namespace Iyzipay.Model
         private const string CreateUrl = "payment/bkm/initialize/basic";
         public async static Task<BasicBkmInitialize> CreateAsync(CreateBasicBkmInitializeRequest request, Options options)
         {
-            BasicBkmInitialize response = await RestHttpClient.Create(options.BaseUrl).PostAsync<BasicBkmInitialize>(CreateUrl, GetHttpHeaders(request, options), request);
+            BasicBkmInitialize response = await RestHttpClient.Create(options.BaseUrl).PostAsync<BasicBkmInitialize>(CreateUrl, GetHttpHeaders(request, options), request).ConfigureAwait(false);
 
             if (response != null)
             {

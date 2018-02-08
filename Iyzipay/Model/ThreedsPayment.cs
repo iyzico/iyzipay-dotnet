@@ -21,12 +21,12 @@ namespace Iyzipay.Model
 
         public async static Task<ThreedsPayment> CreateAsync(CreateThreedsPaymentRequest request, Options options)
         {
-            return await RestHttpClient.Create(options.BaseUrl).PostAsync<ThreedsPayment>(CreateUrl, GetHttpHeaders(request, options), request);
+            return await RestHttpClient.Create(options.BaseUrl).PostAsync<ThreedsPayment>(CreateUrl, GetHttpHeaders(request, options), request).ConfigureAwait(false);
         }
 
         public async static Task<ThreedsPayment> RetrieveAsync(RetrievePaymentRequest request, Options options)
         {
-            return await RestHttpClient.Create(options.BaseUrl).PostAsync<ThreedsPayment>(RetrieveUrl, GetHttpHeaders(request, options), request);
+            return await RestHttpClient.Create(options.BaseUrl).PostAsync<ThreedsPayment>(RetrieveUrl, GetHttpHeaders(request, options), request).ConfigureAwait(false);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Iyzipay.Model
     {
         public async static Task<BasicPaymentPreAuth> CreateAsync(CreateBasicPaymentRequest request, Options options)
         {
-            return await RestHttpClient.Create(options.BaseUrl).PostAsync<BasicPaymentPreAuth>("payment/preauth/basic", GetHttpHeaders(request, options), request);
+            return await RestHttpClient.Create(options.BaseUrl).PostAsync<BasicPaymentPreAuth>("payment/preauth/basic", GetHttpHeaders(request, options), request).ConfigureAwait(false);
         }
 
         public static BasicPaymentPreAuth Create(CreateBasicPaymentRequest request, Options options)

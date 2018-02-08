@@ -9,14 +9,15 @@ namespace Iyzipay.Model
         public String Token { get; set; }
         public String CallbackUrl { get; set; }
 
+        private const string RetrieveUrl = "payment/iyzipos/checkoutform/auth/ecom/detail";
         public static CheckoutForm Retrieve(RetrieveCheckoutFormRequest request, Options options)
         {
-            return RestHttpClient.Create(options.BaseUrl).Post<CheckoutForm>("payment/iyzipos/checkoutform/auth/ecom/detail", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create(options.BaseUrl).Post<CheckoutForm>(RetrieveUrl, GetHttpHeaders(request, options), request);
         }
 
         public async static Task<CheckoutForm> RetrieveAsync(RetrieveCheckoutFormRequest request, Options options)
         {
-            return await RestHttpClient.Create(options.BaseUrl).PostAsync<CheckoutForm>("payment/iyzipos/checkoutform/auth/ecom/detail", GetHttpHeaders(request, options), request);
+            return await RestHttpClient.Create(options.BaseUrl).PostAsync<CheckoutForm>(RetrieveUrl, GetHttpHeaders(request, options), request).ConfigureAwait(false);
         }
     }
 }

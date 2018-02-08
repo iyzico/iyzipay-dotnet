@@ -5,11 +5,14 @@ namespace Iyzipay
 {
     public class ToStringRequestBuilder
     {
-        private String _requestString;
+        private List<string> parameters = new List<string>();
 
         private ToStringRequestBuilder(String requestString)
         {
-            this._requestString = requestString;
+            if (!string.IsNullOrWhiteSpace(requestString))
+            {
+                parameters.Add(requestString);
+            }
         }
 
         public static ToStringRequestBuilder NewInstance()
@@ -31,7 +34,7 @@ namespace Iyzipay
 
                 if (superRequestString.Length > 0)
                 {
-                    this._requestString = this._requestString + superRequestString + ",";
+                    parameters.Add(superRequestString);
                 }
             }
             return this;
@@ -43,11 +46,12 @@ namespace Iyzipay
             {
                 if (value is RequestStringConvertible)
                 {
-                    AppendKeyValue(key, ((RequestStringConvertible)value).ToPKIRequestString());
+                    parameters.Add($"{key}={((RequestStringConvertible)value).ToPKIRequestString()}");
+
                 }
                 else
                 {
-                    AppendKeyValue(key, value.ToString());
+                    parameters.Add($"{key}={value}");
                 }
             }
             return this;
@@ -57,7 +61,7 @@ namespace Iyzipay
         {
             if (value != null)
             {
-                AppendKeyValue(key, RequestFormatter.FormatPrice(value));
+                parameters.Add($"{key}={RequestFormatter.FormatPrice(value)}");
             }
             return this;
         }
@@ -66,69 +70,30 @@ namespace Iyzipay
         {
             if (list != null)
             {
-                String appendedValue = "";
-                foreach (RequestStringConvertible value in list)
+                List<string> valueList = new List<string>();
+                foreach (RequestStringConvertible val in list)
                 {
-                    appendedValue = appendedValue + value.ToPKIRequestString() + ", ";
+                    valueList.Add(val.ToPKIRequestString());
                 }
-                AppendKeyValueArray(key, appendedValue);
+                parameters.Add($"{key}=[{string.Join(", ", valueList)}]");
             }
             return this;
         }
 
-        public ToStringRequestBuilder AppendList (String key, List<int> list = null)
+        public ToStringRequestBuilder AppendList(String key, List<int> list = null)
         {
             if (list != null)
             {
-                String appendedValue = "";
-                foreach (int value in list)
-                {
-                    appendedValue = appendedValue + value + ", ";
-                }
-                AppendKeyValueArray(key, appendedValue);
+                parameters.Add($"{key}=[{string.Join(", ", list)}]");
             }
             return this;
         }
 
-        private ToStringRequestBuilder AppendKeyValue(String key, String value)
-        {
-            if (value != null)
-            {
-                this._requestString = this._requestString + key + "=" + value + ",";
-            }
-            return this;
-        }
-
-        private ToStringRequestBuilder AppendKeyValueArray(String key, String value)
-        {
-            if (value != null)
-            {
-                value = value.Substring(0, value.Length - 2);
-                this._requestString = this._requestString + key + "=[" + value + "],";
-            }
-            return this;
-        }
-
-        private ToStringRequestBuilder AppendPrefix()
-        {
-            this._requestString = "[" + this._requestString + "]";
-            return this;
-        }
-
-        private ToStringRequestBuilder RemoveTrailingComma()
-        {
-            if (!string.IsNullOrEmpty(this._requestString))
-            {
-                this._requestString = this._requestString.Substring(0, this._requestString.Length - 1);
-            }
-            return this;
-        }
 
         public String GetRequestString()
         {
-            RemoveTrailingComma();
-            AppendPrefix();
-            return _requestString;
+            return $"[{string.Join(",", parameters)}]";
         }
     }
 }
+

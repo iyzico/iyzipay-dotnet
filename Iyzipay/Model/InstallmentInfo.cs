@@ -1,5 +1,6 @@
 ﻿using Iyzipay.Request;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
@@ -7,9 +8,15 @@ namespace Iyzipay.Model
     {
         public List<InstallmentDetail> InstallmentDetails { get; set; }
 
+        private const string RetrieveUrl = "payment/iyzipos/installment";
+        public async static Task<InstallmentInfo> RetrieveAsync(RetrieveInstallmentInfoRequest request, Options options)
+        {
+            return await RestHttpClient.Create(options.BaseUrl).PostAsync<InstallmentInfo>(RetrieveUrl, GetHttpHeaders(request, options), request).ConfigureAwait(false);
+        }
+
         public static InstallmentInfo Retrieve(RetrieveInstallmentInfoRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<InstallmentInfo>(options.BaseUrl + "/payment/iyzipos/installment", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create(options.BaseUrl).Post<InstallmentInfo>(RetrieveUrl, GetHttpHeaders(request, options), request);
         }
     }
 }

@@ -54,103 +54,48 @@ namespace Iyzipay
 
         public async Task<T> PostAsync<T>(String url, WebHeaderCollection headers, BaseRequest request)
         {
-            HttpRequestMessage requestMessage = new HttpRequestMessage
-            {
-                Content = JsonBuilder.ToJsonString(request),
-                Method = HttpMethod.Post,
-                RequestUri = new Uri(url, UriKind.Relative)
-            };
-            foreach (String key in headers.Keys)
-            {
-                requestMessage.Headers.Add(key, headers.Get(key));
-            }
-            HttpResponseMessage httpResponseMessage = await _httpClient.SendAsync(requestMessage).ConfigureAwait(false);
-            return JsonConvert.DeserializeObject<T>(await httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false));
+            return await SendHttpRequestAsync<T>(url, HttpMethod.Post, headers, request);
         }
 
         public T Post<T>(String url, WebHeaderCollection headers, BaseRequest request)
         {
-            HttpRequestMessage requestMessage = new HttpRequestMessage
-            {
-                Content = JsonBuilder.ToJsonString(request),
-                Method = HttpMethod.Post,
-                RequestUri = new Uri(url, UriKind.Relative)  
-            };
-            foreach (String key in headers.Keys)
-            {
-                requestMessage.Headers.Add(key, headers.Get(key));
-            }
-            
-            HttpResponseMessage httpResponseMessage = _httpClient.SendAsync(requestMessage).Result;
-            return JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+            return SendHttpRequestAsync<T>(url, HttpMethod.Post, headers, request).Result;
         }
 
         public async Task<T> DeleteAsync<T>(String url, WebHeaderCollection headers, BaseRequest request)
         {
-            HttpRequestMessage requestMessage = new HttpRequestMessage
-            {
-                Content = JsonBuilder.ToJsonString(request),
-                Method = HttpMethod.Delete,
-                RequestUri = new Uri(url, UriKind.Relative)
-            };
-            foreach (String key in headers.Keys)
-            {
-                requestMessage.Headers.Add(key, headers.Get(key));
-            }
-
-            HttpResponseMessage httpResponseMessage = await _httpClient.SendAsync(requestMessage).ConfigureAwait(false);
-            return JsonConvert.DeserializeObject<T>(await httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false));
+            return await SendHttpRequestAsync<T>(url, HttpMethod.Delete, headers, request);
         }
 
         public T Delete<T>(String url, WebHeaderCollection headers, BaseRequest request)
         {
-            HttpRequestMessage requestMessage = new HttpRequestMessage
-            {
-                Content = JsonBuilder.ToJsonString(request),
-                Method = HttpMethod.Delete,
-                RequestUri = new Uri(url, UriKind.Relative)
-            };
-            foreach (String key in headers.Keys)
-            {
-                requestMessage.Headers.Add(key, headers.Get(key));
-            }
-
-            HttpResponseMessage httpResponseMessage = _httpClient.SendAsync(requestMessage).Result;
-            return JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+            return SendHttpRequestAsync<T>(url, HttpMethod.Delete, headers, request).Result;
         }
 
         public async Task<T> PutAsync<T>(String url, WebHeaderCollection headers, BaseRequest request)
         {
-            HttpRequestMessage requestMessage = new HttpRequestMessage
-            {
-                Content = JsonBuilder.ToJsonString(request),
-                Method = HttpMethod.Put,
-                RequestUri = new Uri(url, UriKind.Relative)
-            };
-            foreach (String key in headers.Keys)
-            {
-                requestMessage.Headers.Add(key, headers.Get(key));
-            }
-
-            HttpResponseMessage httpResponseMessage = await _httpClient.SendAsync(requestMessage).ConfigureAwait(false);
-            return JsonConvert.DeserializeObject<T>(await httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false));
+            return await SendHttpRequestAsync<T>(url, HttpMethod.Put, headers, request);
         }
 
         public T Put<T>(String url, WebHeaderCollection headers, BaseRequest request)
         {
+            return SendHttpRequestAsync<T>(url, HttpMethod.Put, headers, request).Result;
+        }
+
+        public async Task<T> SendHttpRequestAsync<T>(string url, HttpMethod method, WebHeaderCollection headers, BaseRequest request)
+        {
             HttpRequestMessage requestMessage = new HttpRequestMessage
             {
                 Content = JsonBuilder.ToJsonString(request),
-                Method = HttpMethod.Put,
+                Method = method,
                 RequestUri = new Uri(url, UriKind.Relative)
             };
             foreach (String key in headers.Keys)
             {
                 requestMessage.Headers.Add(key, headers.Get(key));
             }
-
-            HttpResponseMessage httpResponseMessage = _httpClient.SendAsync(requestMessage).Result;
-            return JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+            HttpResponseMessage httpResponseMessage = await _httpClient.SendAsync(requestMessage).ConfigureAwait(false);
+            return JsonConvert.DeserializeObject<T>(await httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false));
         }
     }
 }

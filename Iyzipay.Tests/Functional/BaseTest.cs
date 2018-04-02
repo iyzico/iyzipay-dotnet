@@ -20,6 +20,10 @@ namespace Iyzipay.Tests.Functional
 
         protected void PrintResponse<T>(T resource)
         {
+#if RELEASE
+            return;
+#endif
+
 #if NETCORE1 || NETCORE2
             TraceListener consoleListener = new TextWriterTraceListener(System.Console.Out);
 #else

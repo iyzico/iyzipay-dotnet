@@ -1,2 +1,27 @@
-language: csharp
-solution: Iyzipay.sln
+language: csharp  
+sudo: required  
+dist: trusty  
+env:  
+  - CLI_VERSION=latest
+mono:  
+  - 5.10.0
+dotnet:  2.0.0
+os:  
+  - linux
+branches:  
+  only:
+    - master
+    - /.*/
+before_script:
+- chmod +x ./build.sh
+before_install:
+  - sudo apt install nuget
+script:  
+  - ./build.sh
+addons:
+  apt:
+    sources:
+    - sourceline: 'deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ trusty main'
+      key_url: 'https://apt-mo.trafficmanager.net/keys/microsoft.asc'
+    packages:
+    - dotnet-dev-1.1.4

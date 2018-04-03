@@ -27,16 +27,24 @@ namespace Iyzipay
         {
             string randomString = DateTime.Now.ToString("ddMMyyyyhhmmssffff");
             WebHeaderCollection headers = new WebHeaderCollection();
+
+#if NETSTANDARD
+            headers["Accept"] = "application/json";
+            headers[RANDOM_HEADER_NAME] = randomString;
+            headers[CLIENT_VERSION] = "iyzipay-dotnet-2.1.14";
+            headers[AUTHORIZATION] = PrepareAuthorizationString(request, randomString, options);
+#else
             headers.Add("Accept", "application/json");
             headers.Add(RANDOM_HEADER_NAME, randomString);
-            headers.Add(CLIENT_VERSION, "iyzipay-dotnet-2.1.13");
+            headers.Add(CLIENT_VERSION, "iyzipay-dotnet-2.1.14");
             headers.Add(AUTHORIZATION, PrepareAuthorizationString(request, randomString, options));
+#endif
             return headers;
         }
 
-        private static String PrepareAuthorizationString(BaseRequest request, String randomString, Options options)
+        private static string PrepareAuthorizationString(BaseRequest request, string randomString, Options options)
         {
-            String hash = HashGenerator.GenerateHash(options.ApiKey, options.SecretKey, randomString, request);
+            string hash = HashGenerator.GenerateHash(options.ApiKey, options.SecretKey, randomString, request);
             return IYZIWS_HEADER_NAME + options.ApiKey + COLON + hash;
         }
     }

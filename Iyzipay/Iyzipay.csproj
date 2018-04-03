@@ -1,50 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5011814A-01E4-4E5F-82FA-5282FF01DA5D}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Iyzipay</RootNamespace>
+    <TargetFrameworks>net45;netstandard2.0;netstandard1.3</TargetFrameworks>
     <AssemblyName>Iyzipay</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
+    <RootNamespace>Iyzipay</RootNamespace>
+
+    <Version>2.1.14</Version>
+    <Authors>Iyzico</Authors>
+    <Description>iyzipay api .net client</Description>
+    <PackageProjectUrl>https://github.com/iyzico/iyzipay-dotnet&lt;/projectUrl</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/iyzico/iyzipay-dotnet/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/iyzico/iyzipay-dotnet</RepositoryUrl>
+    <PackageIconUrl>https://en.gravatar.com/userimage/100711999/40aab086bed8dabfb387c0772a73ea7e.png</PackageIconUrl>
+    <Copyright>Copyright 2016</Copyright>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
-    </Reference>
+
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <Reference Include="System.Configuration" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -53,122 +26,25 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+
+    <PackageReference Include="Newtonsoft.Json" Version="8.0.2" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Model\BasicBkm.cs" />
-    <Compile Include="Model\BasicBkmInitialize.cs" />
-    <Compile Include="Model\ApmType.cs" />
-    <Compile Include="Model\ApmResource.cs" />
-    <Compile Include="Model\Apm.cs" />
-    <Compile Include="Model\PeccoPayment.cs" />
-    <Compile Include="Model\PeccoInitialize.cs" />
-    <Compile Include="Model\CheckoutFormInitializePreAuth.cs" />
-    <Compile Include="Model\CheckoutFormInitializeResource.cs" />
-    <Compile Include="Model\InstallmentInfo.cs" />
-    <Compile Include="Model\ConvertedPayout.cs" />
-    <Compile Include="Model\Currency.cs" />
-    <Compile Include="Model\BasicPaymentResource.cs" />
-    <Compile Include="Model\BasicPayment.cs" />
-    <Compile Include="Model\BasicPaymentPostAuth.cs" />
-    <Compile Include="Model\BasicPaymentPreAuth.cs" />
-    <Compile Include="Model\BasicThreedsInitialize.cs" />
-    <Compile Include="Model\BasicThreedsInitializePreAuth.cs" />
-    <Compile Include="Model\RefundReason.cs" />
-    <Compile Include="Model\ThreedsInitializePreAuth.cs" />
-    <Compile Include="Request\CreateApmInitializeRequest.cs" />
-    <Compile Include="Request\CreateBasicPaymentRequest.cs" />
-    <Compile Include="Model\BasicThreedsPayment.cs" />
-    <Compile Include="Request\CreateBasicBkmInitializeRequest.cs" />
-    <Compile Include="Request\CreatePeccoInitializeRequest.cs" />
-    <Compile Include="Request\CreatePeccoPaymentRequest.cs" />
-    <Compile Include="Request\RetrieveInstallmentInfoRequest.cs" />
-    <Compile Include="Request\RetrieveApmRequest.cs" />
-    <Compile Include="Request\RetrievePaymentRequest.cs" />
-    <Compile Include="RestHttpClient.cs" />
-    <Compile Include="DigestHelper.cs" />
-    <Compile Include="HashGenerator.cs" />
-    <Compile Include="JsonBuilder.cs" />
-    <Compile Include="Model\ApiTest.cs" />
-    <Compile Include="Model\ThreedsInitialize.cs" />
-    <Compile Include="Model\ThreedsPayment.cs" />
-    <Compile Include="Model\SubMerchantType.cs" />
-    <Compile Include="Model\SubMerchant.cs" />
-    <Compile Include="Model\Status.cs" />
-    <Compile Include="Model\RefundChargedFromMerchant.cs" />
-    <Compile Include="Model\Refund.cs" />
-    <Compile Include="Model\PayoutCompletedTransactionList.cs" />
-    <Compile Include="Model\PayoutCompletedTransaction.cs" />
-    <Compile Include="Model\PaymentPreAuth.cs" />
-    <Compile Include="Model\PaymentPostAuth.cs" />
-    <Compile Include="Model\PaymentGroup.cs" />
-    <Compile Include="Model\PaymentChannel.cs" />
-    <Compile Include="Model\Payment.cs" />
-    <Compile Include="Model\Locale.cs" />
-    <Compile Include="Model\InstallmentPrice.cs" />
-    <Compile Include="Model\InstallmentDetail.cs" />
-    <Compile Include="Model\Disapproval.cs" />
-    <Compile Include="Model\Approval.cs" />
-    <Compile Include="Model\BankTransfer.cs" />
-    <Compile Include="Model\BasketItem.cs" />
-    <Compile Include="Model\BasketItemType.cs" />
-    <Compile Include="Model\BinNumber.cs" />
-    <Compile Include="Model\Bkm.cs" />
-    <Compile Include="Model\BkmInitialize.cs" />
-    <Compile Include="Model\BkmInstallment.cs" />
-    <Compile Include="Model\BkmInstallmentPrice.cs" />
-    <Compile Include="Model\BouncedBankTransferList.cs" />
-    <Compile Include="Model\Buyer.cs" />
-    <Compile Include="Model\CrossBookingToSubMerchant.cs" />
-    <Compile Include="Model\CrossBookingFromSubMerchant.cs" />
-    <Compile Include="Model\Cancel.cs" />
-    <Compile Include="Model\Card.cs" />
-    <Compile Include="Model\CardInformation.cs" />
-    <Compile Include="Model\CardList.cs" />
-    <Compile Include="Model\CheckoutForm.cs" />
-    <Compile Include="Model\CheckoutFormInitialize.cs" />
-    <Compile Include="Model\PaymentResource.cs" />
-    <Compile Include="Model\PaymentCard.cs" />
-    <Compile Include="Model\PaymentItem.cs" />
-    <Compile Include="Options.cs" />
-    <Compile Include="IyzipayResource.cs" />
-    <Compile Include="Model\Address.cs" />
-    <Compile Include="BaseRequest.cs" />
-    <Compile Include="RequestStringConvertible.cs" />
-    <Compile Include="RequestFormatter.cs" />
-    <Compile Include="Request\CreateThreedsPaymentRequest.cs" />
-    <Compile Include="Request\RetrieveSubMerchantRequest.cs" />
-    <Compile Include="Request\UpdateSubMerchantRequest.cs" />
-    <Compile Include="Request\CreateSubMerchantRequest.cs" />
-    <Compile Include="Request\CreatePaymentRequest.cs" />
-    <Compile Include="Request\CreateCrossBookingRequest.cs" />
-    <Compile Include="Request\CreateRefundRequest.cs" />
-    <Compile Include="Request\CreatePaymentPostAuthRequest.cs" />
-    <Compile Include="Request\CreateApprovalRequest.cs" />
-    <Compile Include="Request\CreateBkmInitializeRequest.cs" />
-    <Compile Include="Request\CreateCancelRequest.cs" />
-    <Compile Include="Request\CreateCardRequest.cs" />
-    <Compile Include="Request\DeleteCardRequest.cs" />
-    <Compile Include="Request\CreateCheckoutFormInitializeRequest.cs" />
-    <Compile Include="Request\RetrieveCheckoutFormRequest.cs" />
-    <Compile Include="Request\RetrieveBkmRequest .cs" />
-    <Compile Include="Request\RetrieveBinNumberRequest.cs" />
-    <Compile Include="Request\RetrieveCardListRequest.cs" />
-    <Compile Include="Request\RetrieveTransactionsRequest.cs" />
-    <Compile Include="StringHelper.cs" />
-    <Compile Include="ToStringRequestBuilder.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="System.Net.WebHeaderCollection" Version="4.3.0" />
+    <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.0" /> 
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <DefineConstants>$(DefineConstants);NETSTANDARD2</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
+    <DefineConstants>$(DefineConstants);NETSTANDARD</DefineConstants>
+  </PropertyGroup>
 </Project>

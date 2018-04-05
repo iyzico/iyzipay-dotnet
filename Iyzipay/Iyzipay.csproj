@@ -76,6 +76,7 @@
     <Compile Include="Model\RefundReason.cs" />
     <Compile Include="Model\ThreedsInitializePreAuth.cs" />
     <Compile Include="Request\CreateApmInitializeRequest.cs" />
+    <Compile Include="Request\UpdatePaymentItemRequest.cs" />
     <Compile Include="Request\CreateBasicPaymentRequest.cs" />
     <Compile Include="Model\BasicThreedsPayment.cs" />
     <Compile Include="Request\CreateBasicBkmInitializeRequest.cs" />

@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Iyzipay.Request;
+using System;
 
 namespace Iyzipay.Model
 {
-    public class PaymentItem
+    public class PaymentItem : IyzipayResource
     {
         public String ItemId { get; set; }
         public String PaymentTransactionId { get; set; }
@@ -23,5 +24,10 @@ namespace Iyzipay.Model
         public String SubMerchantPayoutAmount { get; set; }
         public String MerchantPayoutAmount { get; set; }
         public ConvertedPayout ConvertedPayout { get; set; }
+
+        public static PaymentItem Update(UpdatePaymentItemRequest request, Options options)
+        {
+            return RestHttpClient.Create().Put<PaymentItem>(options.BaseUrl + "/payment/item", GetHttpHeaders(request, options), request);
+        }
     }
 }

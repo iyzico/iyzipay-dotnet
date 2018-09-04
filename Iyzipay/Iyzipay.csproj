@@ -55,6 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseRequestV2.cs" />
+    <Compile Include="HashGeneratorV2.cs" />
+    <Compile Include="IyzipayConstants.cs" />
+    <Compile Include="IyzipayResourceV2.cs" />
     <Compile Include="Model\BasicBkm.cs" />
     <Compile Include="Model\BasicBkmInitialize.cs" />
     <Compile Include="Model\ApmType.cs" />
@@ -75,7 +79,11 @@
     <Compile Include="Model\BasicThreedsInitializePreAuth.cs" />
     <Compile Include="Model\RefundReason.cs" />
     <Compile Include="Model\ThreedsInitializePreAuth.cs" />
+    <Compile Include="Model\V2\TransactionReport.cs" />
+    <Compile Include="Model\V2\TransactionReportItem.cs" />
+    <Compile Include="Model\V2\TransactionReportResource.cs" />
     <Compile Include="Request\CreateApmInitializeRequest.cs" />
+    <Compile Include="Request\V2\RetrieveTransactionReportRequest.cs" />
     <Compile Include="Request\UpdatePaymentItemRequest.cs" />
     <Compile Include="Request\CreateBasicPaymentRequest.cs" />
     <Compile Include="Model\BasicThreedsPayment.cs" />
@@ -155,6 +163,7 @@
     <Compile Include="Request\RetrieveBinNumberRequest.cs" />
     <Compile Include="Request\RetrieveCardListRequest.cs" />
     <Compile Include="Request\RetrieveTransactionsRequest.cs" />
+    <Compile Include="RestHttpClientV2.cs" />
     <Compile Include="StringHelper.cs" />
     <Compile Include="ToStringRequestBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

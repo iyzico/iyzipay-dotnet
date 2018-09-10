@@ -6,6 +6,6 @@ namespace Iyzipay.Model.V2
     {
         public int? CurrentPage { get; set; }
         public int? TotalPageCount { get; set; }
-        public List<TransactionReportItem> transactions { get; set; }
+        public List<TransactionReportItem> Transactions { get; set; }
     }
 }

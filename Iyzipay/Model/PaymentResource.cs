@@ -28,6 +28,7 @@ namespace Iyzipay.Model
         public List<PaymentItem> PaymentItems { get; set; }
         public String ConnectorName { get; set; }
         public String AuthCode { get; set; }
+        public String HostReference { get; set; }
         public String Phase { get; set; }
     }
 }

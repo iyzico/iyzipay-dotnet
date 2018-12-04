@@ -8,6 +8,8 @@ namespace Iyzipay.Model
         public String PaymentId { get; set; }
         public String PaymentTransactionId { get; set; }
         public String Price { get; set; }
+        public String AuthCode { get; set; }
+        public String HostReference { get; set; }
 
         public static RefundChargedFromMerchant Create(CreateRefundRequest request, Options options)
         {

@@ -37,5 +37,6 @@ namespace Iyzipay.Model.V2
         public String AuthCode { get; set; }
         public String HostReference { get; set; }
         public String BasketId { get; set; }
+        public int? TransactionStatus { get; set; }
     }
 }

@@ -66,6 +66,7 @@
     <Compile Include="BinNumberSample.cs" />
     <Compile Include="BkmSample.cs" />
     <Compile Include="RetrievePayoutTransactionsSample.cs" />
+    <Compile Include="RetrieveTransactionDetailSample.cs" />
     <Compile Include="RefundSample.cs" />
     <Compile Include="CancelSample.cs" />
     <Compile Include="CardStorageSample.cs" />

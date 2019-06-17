@@ -10,7 +10,6 @@ namespace Iyzipay.Model.V2
             String url = options.BaseUrl
                 + "/v2/reporting/payment/details?paymentConversationId="
                 + request.PaymentConversationId;
-
             return RestHttpClientV2.Create().Get<TransactionDetail>(url, GetHttpHeadersWithUrlParams(request, url, options));
         }
     }

@@ -3,7 +3,7 @@ using System;
 
 namespace Iyzipay.Model.V2
 {
-    public class TransactionDetail : TransactionReportResource
+    public class TransactionDetail : TransactionDetailResource
     {
         public static TransactionDetail Retrieve(RetrieveTransactionDetailRequest request, Options options)
         {

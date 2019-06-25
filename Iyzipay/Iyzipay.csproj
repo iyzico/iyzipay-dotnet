@@ -82,7 +82,10 @@
     <Compile Include="Model\V2\TransactionReportResource.cs" />
     <Compile Include="Model\V2\TransactionDetail.cs" />
     <Compile Include="Model\V2\TransactionDetailItem.cs" />
-    <Compile Include="Model\V2\TransactionDetailResource.cs" />    
+    <Compile Include="Model\V2\TransactionDetailResource.cs" />
+    <Compile Include="Model\V2\PaymentTxDetailItem.cs" />
+    <Compile Include="Model\V2\RefundDetailItem.cs" />
+    <Compile Include="Model\V2\TransactionDetailCancelItem.cs" />
     <Compile Include="Request\CreateApmInitializeRequest.cs" />
     <Compile Include="Request\V2\RetrieveTransactionReportRequest.cs" />
     <Compile Include="Request\V2\RetrieveTransactionDetailRequest.cs" />

@@ -62,12 +62,12 @@ namespace Iyzipay
 
         private static String PrepareAuthorizationStringWithRequestBody(BaseRequestV2 request, String url, Options options)
         {
-            String randomKey = GenerateRandomKey(); 
+            String randomKey = GenerateRandomKey();
             String uriPath = FindUriPath(url);
-            String payload = request != null ? uriPath + JsonBuilder.SerializeToJsonString(request) : uriPath;
-            String dataToEncrypt = randomKey + payload;
 
-            String hash = HashGeneratorV2.GenerateHash(options.ApiKey, options.SecretKey, randomKey, dataToEncrypt);
+            String payload = request != null ? uriPath + JsonBuilder.SerializeObjectToPrettyJson(request) : uriPath;
+            String dataToEncrypt = randomKey + payload;
+            String hash = HashGeneratorV2.GenerateHash(options.ApiKey, options.SecretKey, randomKey, dataToEncrypt); 
             return IYZIWS_V2_HEADER_NAME + hash;
         }
 

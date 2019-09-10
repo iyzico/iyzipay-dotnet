@@ -33,5 +33,19 @@ namespace Iyzipay
             response.AppendWithHttpResponseHeaders(httpResponseMessage);
             return response;
         }
+
+        public T Post<T>(String url, WebHeaderCollection headers, BaseRequestV2 request) where T : IyzipayResourceV2
+        {
+            HttpClient httpClient = new HttpClient();
+            foreach (String key in headers.Keys)
+            {
+                httpClient.DefaultRequestHeaders.Add(key, headers.Get(key));
+            }
+
+            HttpResponseMessage httpResponseMessage = httpClient.PostAsync(url, JsonBuilder.ToJsonString(request)).Result;
+            var response = JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+            response.AppendWithHttpResponseHeaders(httpResponseMessage);
+            return response;
+        }
     }
 }

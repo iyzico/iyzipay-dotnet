@@ -71,6 +71,7 @@
     <Compile Include="CancelSample.cs" />
     <Compile Include="CardStorageSample.cs" />
     <Compile Include="CheckoutFormSample.cs" />
+    <Compile Include="PayWithIyzicoSample.cs" />
     <Compile Include="InstallmentSample.cs" />
     <Compile Include="PaymentSample.cs" />
     <Compile Include="Sample.cs" />

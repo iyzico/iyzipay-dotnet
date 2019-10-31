@@ -138,6 +138,9 @@
     <Compile Include="Model\CardList.cs" />
     <Compile Include="Model\CheckoutForm.cs" />
     <Compile Include="Model\CheckoutFormInitialize.cs" />
+    <Compile Include="Model\PayWithIyzico.cs" />
+    <Compile Include="Model\PayWithIyzicoInitialize.cs" />
+    <Compile Include="Model\PayWithIyzicoInitializeResource.cs" />
     <Compile Include="Model\PaymentResource.cs" />
     <Compile Include="Model\PaymentCard.cs" />
     <Compile Include="Model\PaymentItem.cs" />
@@ -161,6 +164,8 @@
     <Compile Include="Request\CreateCardRequest.cs" />
     <Compile Include="Request\DeleteCardRequest.cs" />
     <Compile Include="Request\CreateCheckoutFormInitializeRequest.cs" />
+    <Compile Include="Request\CreatePayWithIyzicoInitializeRequest.cs" />
+    <Compile Include="Request\RetrievePayWithIyzicoRequest.cs" />
     <Compile Include="Request\RetrieveCheckoutFormRequest.cs" />
     <Compile Include="Request\RetrieveBkmRequest .cs" />
     <Compile Include="Request\RetrieveBinNumberRequest.cs" />

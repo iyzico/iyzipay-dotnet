@@ -13,8 +13,8 @@ namespace Iyzipay.Samples
         public void Initialize()
         {
             options = new Options();
-            options.ApiKey = "api key";
-            options.SecretKey = "secret key";
+            options.ApiKey = "sandbox-afXhZPW0MQlE4dCUUlHcEopnMBgXnAZI";
+            options.SecretKey = "sandbox-wbwpzKIiplZxI3hh5ALI4FJyAcZKL6kq";
             options.BaseUrl = "https://sandbox-api.iyzipay.com";
         }
 

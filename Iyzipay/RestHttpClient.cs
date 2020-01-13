@@ -68,7 +68,6 @@ namespace Iyzipay
             }
             
             HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result; 
-            HttpResponseMessage httpResponseMessage = HttpClient.DeleteAsync(requestMessage).Result; 
             return JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
         }
 

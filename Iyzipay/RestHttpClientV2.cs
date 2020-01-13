@@ -25,7 +25,7 @@ namespace Iyzipay
             return new RestHttpClientV2();
         }
 
-        public T Get<T>(String url, WebHeaderCollection headers) where T : IyzipayResourceV2
+        public T Get<T>(String url, Dictionary<string, string> headers) where T : IyzipayResourceV2
         {
             HttpRequestMessage requestMessage = new HttpRequestMessage
             {
@@ -33,10 +33,10 @@ namespace Iyzipay
                 RequestUri = new Uri(url)
 
             };
-            
-            foreach (String key in headers.AllKeys)
+
+            foreach (var header in headers)
             {
-                requestMessage.Headers.Add(key, headers[key]); 
+                requestMessage.Headers.Add(header.Key, header.Value);
             }
 
             HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
@@ -45,7 +45,7 @@ namespace Iyzipay
             return response;
         }
 
-        public T Post<T>(String url, WebHeaderCollection headers, BaseRequestV2 request) where T : IyzipayResourceV2
+        public T Post<T>(String url, Dictionary<string, string> headers, BaseRequestV2 request) where T : IyzipayResourceV2
         {
             HttpRequestMessage requestMessage = new HttpRequestMessage
             {
@@ -53,10 +53,10 @@ namespace Iyzipay
                 RequestUri = new Uri(url),
                 Content = JsonBuilder.ToJsonString(request)
             };
-            
-            foreach (String key in headers.AllKeys)
+
+            foreach (var header in headers)
             {
-                requestMessage.Headers.Add(key, headers[key]); 
+                requestMessage.Headers.Add(header.Key, header.Value);
             }
 
             HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;

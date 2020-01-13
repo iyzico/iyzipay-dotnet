@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -35,7 +36,7 @@ namespace Iyzipay
             return JsonConvert.DeserializeObject<T>(await httpResponseMessage.Content.ReadAsStringAsync());
         }
 
-        public T Post<T>(String url, WebHeaderCollection headers, BaseRequest request)
+        public T Post<T>(String url, Dictionary<string,string> headers, BaseRequest request)
         { 
             HttpRequestMessage requestMessage = new HttpRequestMessage
             {
@@ -43,35 +44,35 @@ namespace Iyzipay
                 RequestUri = new Uri(url), 
                 Content = JsonBuilder.ToJsonString(request)
             };
-            
-            foreach (String key in headers.AllKeys) 
+
+            foreach (var header in headers)
             {
-                requestMessage.Headers.Add(key, headers[key]); 
+                requestMessage.Headers.Add(header.Key, header.Value);
             }
-            
+
             HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
             return JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
         }
 
-        public T Delete<T>(String url, WebHeaderCollection headers, BaseRequest request)
+        public T Delete<T>(String url, Dictionary<string, string> headers, BaseRequest request)
         { 
             HttpRequestMessage requestMessage = new HttpRequestMessage
             {
                 Method = HttpMethod.Delete,
-                RequestUri = new Uri(url)
-
+                RequestUri = new Uri(url),
+                Content = JsonBuilder.ToJsonString(request)
             };
-            
-            foreach (String key in headers.AllKeys)
+
+            foreach (var header in headers)
             {
-                requestMessage.Headers.Add(key, headers[key]); 
+                requestMessage.Headers.Add(header.Key, header.Value);
             }
-            
+
             HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result; 
             return JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
         }
 
-        public T Put<T>(String url, WebHeaderCollection headers, BaseRequest request)
+        public T Put<T>(String url, Dictionary<string, string> headers, BaseRequest request)
         {
             HttpRequestMessage requestMessage = new HttpRequestMessage
             {
@@ -79,12 +80,12 @@ namespace Iyzipay
                 RequestUri = new Uri(url), 
                 Content = JsonBuilder.ToJsonString(request)
             };
-            
-            foreach (String key in headers.AllKeys) 
+
+            foreach (var header in headers)
             {
-                requestMessage.Headers.Add(key, headers[key]); 
+                requestMessage.Headers.Add(header.Key, header.Value);
             }
-            
+
             HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result; 
             return JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
         }

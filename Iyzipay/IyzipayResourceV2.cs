@@ -37,43 +37,26 @@ namespace Iyzipay
             }
         }
 
-        protected static WebHeaderCollection GetHttpHeadersWithRequestBody(BaseRequestV2 request, String url,  Options options)
+        protected static Dictionary<string, string> GetHttpHeadersWithRequestBody(BaseRequestV2 request, String url,  Options options)
         {
-            WebHeaderCollection headers = GetCommonHttpHeaders(request, url, options);
-            
-#if NETSTANDARD
-            headers[AUTHORIZATION] = PrepareAuthorizationStringWithRequestBody(request, url, options);
-#else
-        headers.Add(AUTHORIZATION, PrepareAuthorizationStringWithRequestBody(request, url, options));
-#endif
+            Dictionary<string, string> headers = GetCommonHttpHeaders(request, url, options);
+            headers.Add(AUTHORIZATION, PrepareAuthorizationStringWithRequestBody(request, url, options));
             return headers;
         }
 
-        protected static WebHeaderCollection GetHttpHeadersWithUrlParams(BaseRequestV2 request, String url, Options options)
+        protected static Dictionary<string, string> GetHttpHeadersWithUrlParams(BaseRequestV2 request, String url, Options options)
         {
-            WebHeaderCollection headers = GetCommonHttpHeaders(request, url, options);
-            
-#if NETSTANDARD
-            headers[AUTHORIZATION] = PrepareAuthorizationStringWithRequestBody(request, url, options);
-#else
-        headers.Add(AUTHORIZATION, PrepareAuthorizationStringWithRequestBody(request, url, options));
-#endif
+            Dictionary<string, string> headers = GetCommonHttpHeaders(request, url, options);
+            headers.Add(AUTHORIZATION, PrepareAuthorizationStringWithRequestBody(request, url, options));
             return headers;
         }
 
-        private static WebHeaderCollection GetCommonHttpHeaders(BaseRequestV2 request, String url, Options options)
+        private static Dictionary<string, string> GetCommonHttpHeaders(BaseRequestV2 request, String url, Options options)
         {
-            WebHeaderCollection headers = new WebHeaderCollection();
-            
-#if NETSTANDARD
-            headers["Accept"] = "application/json";
-            headers[CLIENT_VERSION_HEADER_NAME] = IyzipayConstants.CLIENT_VERSION;
-            headers[CONVERSATION_ID_HEADER_NAME] = request.ConversationId;
-#else
-        headers.Add("Accept", "application/json");
-        headers.Add(CLIENT_VERSION_HEADER_NAME, IyzipayConstants.CLIENT_VERSION);
-        headers.Add(CONVERSATION_ID_HEADER_NAME, request.ConversationId);
-#endif
+            Dictionary<string, string> headers = new Dictionary<string, string>();
+            headers.Add("Accept", "application/json");
+            headers.Add(CLIENT_VERSION_HEADER_NAME, IyzipayConstants.CLIENT_VERSION);
+            headers.Add(CONVERSATION_ID_HEADER_NAME, request.ConversationId);
             return headers;
         }
 

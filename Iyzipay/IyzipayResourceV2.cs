@@ -40,23 +40,40 @@ namespace Iyzipay
         protected static WebHeaderCollection GetHttpHeadersWithRequestBody(BaseRequestV2 request, String url,  Options options)
         {
             WebHeaderCollection headers = GetCommonHttpHeaders(request, url, options);
-            headers.Add(AUTHORIZATION, PrepareAuthorizationStringWithRequestBody(request, url, options));
+            
+#if NETSTANDARD
+            headers[AUTHORIZATION] = PrepareAuthorizationStringWithRequestBody(request, url, options);
+#else
+        headers.Add(AUTHORIZATION, PrepareAuthorizationStringWithRequestBody(request, url, options));
+#endif
             return headers;
         }
 
         protected static WebHeaderCollection GetHttpHeadersWithUrlParams(BaseRequestV2 request, String url, Options options)
         {
             WebHeaderCollection headers = GetCommonHttpHeaders(request, url, options);
-            headers.Add(AUTHORIZATION, PrepareAuthorizationStringWithUrlParam(request, url, options));
+            
+#if NETSTANDARD
+            headers[AUTHORIZATION] = PrepareAuthorizationStringWithRequestBody(request, url, options);
+#else
+        headers.Add(AUTHORIZATION, PrepareAuthorizationStringWithRequestBody(request, url, options));
+#endif
             return headers;
         }
 
         private static WebHeaderCollection GetCommonHttpHeaders(BaseRequestV2 request, String url, Options options)
         {
             WebHeaderCollection headers = new WebHeaderCollection();
-            headers.Add("Accept", "application/json");
-            headers.Add(CLIENT_VERSION_HEADER_NAME, IyzipayConstants.CLIENT_VERSION);
-            headers.Add(CONVERSATION_ID_HEADER_NAME, request.ConversationId);
+            
+#if NETSTANDARD
+            headers["Accept"] = "application/json";
+            headers[CLIENT_VERSION_HEADER_NAME] = IyzipayConstants.CLIENT_VERSION;
+            headers[CONVERSATION_ID_HEADER_NAME] = request.ConversationId;
+#else
+        headers.Add("Accept", "application/json");
+        headers.Add(CLIENT_VERSION_HEADER_NAME, IyzipayConstants.CLIENT_VERSION);
+        headers.Add(CONVERSATION_ID_HEADER_NAME, request.ConversationId);
+#endif
             return headers;
         }
 

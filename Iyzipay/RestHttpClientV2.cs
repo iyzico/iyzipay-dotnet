@@ -10,9 +10,14 @@ namespace Iyzipay
 {
     class RestHttpClientV2
     {
+        private static readonly HttpClient HttpClient;
         static RestHttpClientV2()
         {
+#if !NETSTANDARD
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+#endif
+            
+            HttpClient = new HttpClient();
         }
 
         public static RestHttpClientV2 Create()
@@ -22,13 +27,19 @@ namespace Iyzipay
 
         public T Get<T>(String url, WebHeaderCollection headers) where T : IyzipayResourceV2
         {
-            HttpClient httpClient = new HttpClient();
-            foreach (String key in headers.Keys)
+            HttpRequestMessage requestMessage = new HttpRequestMessage
             {
-                httpClient.DefaultRequestHeaders.Add(key, headers.Get(key));
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(url)
+
+            };
+            
+            foreach (String key in headers.AllKeys)
+            {
+                requestMessage.Headers.Add(key, headers[key]); 
             }
 
-            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(url).Result;
+            HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
             var response = JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
             response.AppendWithHttpResponseHeaders(httpResponseMessage);
             return response;
@@ -36,13 +47,19 @@ namespace Iyzipay
 
         public T Post<T>(String url, WebHeaderCollection headers, BaseRequestV2 request) where T : IyzipayResourceV2
         {
-            HttpClient httpClient = new HttpClient();
-            foreach (String key in headers.Keys)
+            HttpRequestMessage requestMessage = new HttpRequestMessage
             {
-                httpClient.DefaultRequestHeaders.Add(key, headers.Get(key));
+                Method = HttpMethod.Post,
+                RequestUri = new Uri(url),
+                Content = JsonBuilder.ToJsonString(request)
+            };
+            
+            foreach (String key in headers.AllKeys)
+            {
+                requestMessage.Headers.Add(key, headers[key]); 
             }
 
-            HttpResponseMessage httpResponseMessage = httpClient.PostAsync(url, JsonBuilder.ToJsonString(request)).Result;
+            HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
             var response = JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
             response.AppendWithHttpResponseHeaders(httpResponseMessage);
             return response;

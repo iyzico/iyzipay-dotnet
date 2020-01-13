@@ -31,7 +31,7 @@ namespace Iyzipay
 #if NETSTANDARD
             headers["Accept"] = "application/json";
             headers[RANDOM_HEADER_NAME] = randomString;
-            headers.Add(CLIENT_VERSION_HEADER_NAME, IyzipayConstants.CLIENT_VERSION);
+            //headers[CLIENT_VERSION_HEADER_NAME] = IyzipayConstants.CLIENT_VERSION;
             headers[AUTHORIZATION] = PrepareAuthorizationString(request, randomString, options);
 #else
             headers.Add("Accept", "application/json");

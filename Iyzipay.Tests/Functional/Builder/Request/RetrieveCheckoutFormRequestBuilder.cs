@@ -24,8 +24,8 @@ namespace Iyzipay.Tests.Functional.Builder.Request
         public RetrieveCheckoutFormRequest Build()
         {
             RetrieveCheckoutFormRequest retrieveCheckoutFormRequest = new RetrieveCheckoutFormRequest();
-            retrieveCheckoutFormRequest.Locale = Locale;
-            retrieveCheckoutFormRequest.ConversationId = ConversationId;
+            retrieveCheckoutFormRequest.Locale = _locale;
+            retrieveCheckoutFormRequest.ConversationId = _conversationId;
             retrieveCheckoutFormRequest.Token = _token;
             return retrieveCheckoutFormRequest;
         }

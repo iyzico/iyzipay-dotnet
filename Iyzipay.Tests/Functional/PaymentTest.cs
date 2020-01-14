@@ -16,7 +16,7 @@ namespace Iyzipay.Tests.Functional
                 .StandardListingPayment()
                 .Build();
 
-            Payment payment = Payment.Create(request, Options);
+            Payment payment = Payment.Create(request, _options);
 
             PrintResponse(payment);
 
@@ -44,12 +44,12 @@ namespace Iyzipay.Tests.Functional
                 .PersonalSubMerchantRequest()
                 .Build();
 
-            string subMerchantKey = SubMerchant.Create(createSubMerchantRequest, Options).SubMerchantKey;
+            string subMerchantKey = SubMerchant.Create(createSubMerchantRequest, _options).SubMerchantKey;
             CreatePaymentRequest request = CreatePaymentRequestBuilder.Create()
                 .MarketplacePayment(subMerchantKey)
                 .Build();
 
-            Payment payment = Payment.Create(request, Options);
+            Payment payment = Payment.Create(request, _options);
 
             PrintResponse(payment);
 
@@ -84,7 +84,7 @@ namespace Iyzipay.Tests.Functional
                 .Email("email@email.com")
                 .Build();
 
-            Card card = Card.Create(cardRequest, Options);
+            Card card = Card.Create(cardRequest, _options);
 
             PaymentCard paymentCard = PaymentCardBuilder.Create()
                 .CardUserKey(card.CardUserKey)
@@ -96,7 +96,7 @@ namespace Iyzipay.Tests.Functional
                 .PaymentCard(paymentCard)
                 .Build();
 
-            Payment payment = Payment.Create(request, Options);
+            Payment payment = Payment.Create(request, _options);
 
             PrintResponse(payment);
 
@@ -126,7 +126,7 @@ namespace Iyzipay.Tests.Functional
                 .StandardListingPayment()
                 .Build();
 
-            Payment createdPayment = Payment.Create(request, Options);
+            Payment createdPayment = Payment.Create(request, _options);
 
             PrintResponse(createdPayment);
 
@@ -135,7 +135,7 @@ namespace Iyzipay.Tests.Functional
             retrievePaymentRequest.ConversationId = "123456789";
             retrievePaymentRequest.PaymentId = createdPayment.PaymentId;
 
-            Payment payment = Payment.Retrieve(retrievePaymentRequest, Options);
+            Payment payment = Payment.Retrieve(retrievePaymentRequest, _options);
 
             Assert.AreEqual(Locale.TR.ToString(), payment.Locale);
             Assert.AreEqual(Status.SUCCESS.ToString(), payment.Status);

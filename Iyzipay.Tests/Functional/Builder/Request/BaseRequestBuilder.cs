@@ -2,7 +2,7 @@
 {
     public abstract class BaseRequestBuilder
     {
-        protected string Locale { get; set; } = Model.Locale.TR.ToString();
-        protected string ConversationId { get; set; } = "123456789";
+        protected string _locale { get; set; } = Model.Locale.TR.ToString();
+        protected string _conversationId { get; set; } = "123456789";
     }
 }

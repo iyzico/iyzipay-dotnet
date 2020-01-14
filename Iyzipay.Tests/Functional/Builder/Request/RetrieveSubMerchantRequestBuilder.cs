@@ -24,8 +24,8 @@ namespace Iyzipay.Tests.Functional.Builder.Request
         public RetrieveSubMerchantRequest Build()
         {
             RetrieveSubMerchantRequest retrieveSubMerchantRequest = new RetrieveSubMerchantRequest();
-            retrieveSubMerchantRequest.Locale = Locale;
-            retrieveSubMerchantRequest.ConversationId = ConversationId;
+            retrieveSubMerchantRequest.Locale = _locale;
+            retrieveSubMerchantRequest.ConversationId = _conversationId;
             retrieveSubMerchantRequest.SubMerchantExternalId = _subMerchantExternalId;
             return retrieveSubMerchantRequest;
         }

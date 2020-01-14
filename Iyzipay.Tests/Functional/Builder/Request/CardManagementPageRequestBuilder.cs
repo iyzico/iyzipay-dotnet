@@ -73,8 +73,8 @@ namespace Iyzipay.Tests.Functional.Builder.Request
             createCardManagementPageInitializeRequest.ValidateNewCard = _validateNewCard;
             createCardManagementPageInitializeRequest.ExternalId = _externalId;
             createCardManagementPageInitializeRequest.Email = _email;
-            createCardManagementPageInitializeRequest.ConversationId = ConversationId;
-            createCardManagementPageInitializeRequest.Locale = Locale;
+            createCardManagementPageInitializeRequest.ConversationId = _conversationId;
+            createCardManagementPageInitializeRequest.Locale = _locale;
             return createCardManagementPageInitializeRequest;
         }
     }

@@ -20,7 +20,7 @@ namespace Iyzipay.Tests.Functional
                 .SubMerchantExternalId(subMerchantExternalId)
                 .Build();
 
-            SubMerchant subMerchant = SubMerchant.Create(request, Options);
+            SubMerchant subMerchant = SubMerchant.Create(request, _options);
 
             PrintResponse(subMerchant);
 
@@ -45,7 +45,7 @@ namespace Iyzipay.Tests.Functional
                 .SubMerchantExternalId(subMerchantExternalId)
                 .Build();
 
-            SubMerchant subMerchant = SubMerchant.Create(request, Options);
+            SubMerchant subMerchant = SubMerchant.Create(request, _options);
 
             PrintResponse(subMerchant);
 
@@ -70,7 +70,7 @@ namespace Iyzipay.Tests.Functional
                 .LegalCompanyTitle("XYZ inc")
                 .Build();
 
-            SubMerchant subMerchant = SubMerchant.Create(request, Options);
+            SubMerchant subMerchant = SubMerchant.Create(request, _options);
 
             PrintResponse(subMerchant);
 
@@ -90,7 +90,7 @@ namespace Iyzipay.Tests.Functional
                 .PersonalSubMerchantRequest()
                 .Build();
 
-            string subMerchantKey = SubMerchant.Create(createPersonalSubMerchantRequest, Options).SubMerchantKey;
+            string subMerchantKey = SubMerchant.Create(createPersonalSubMerchantRequest, _options).SubMerchantKey;
 
             UpdateSubMerchantRequest updateSubMerchantRequest = UpdateSubMerchantRequestBuilder.Create()
                 .SubMerchantKey(subMerchantKey)
@@ -100,7 +100,7 @@ namespace Iyzipay.Tests.Functional
                 .Name("Jane's market")
                 .Build();
 
-            SubMerchant subMerchant = SubMerchant.Update(updateSubMerchantRequest, Options);
+            SubMerchant subMerchant = SubMerchant.Update(updateSubMerchantRequest, _options);
 
             PrintResponse(subMerchant);
 
@@ -120,7 +120,7 @@ namespace Iyzipay.Tests.Functional
                 .PrivateSubMerchantRequest()
                 .Build();
 
-            string subMerchantKey = SubMerchant.Create(createPrivateSubMerchantRequest, Options).SubMerchantKey;
+            string subMerchantKey = SubMerchant.Create(createPrivateSubMerchantRequest, _options).SubMerchantKey;
 
             UpdateSubMerchantRequest updateSubMerchantRequest = UpdateSubMerchantRequestBuilder.Create()
                 .SubMerchantKey(subMerchantKey)
@@ -129,7 +129,7 @@ namespace Iyzipay.Tests.Functional
                 .LegalCompanyTitle("Jane Doe inc")
                 .Build();
 
-            SubMerchant subMerchant = SubMerchant.Update(updateSubMerchantRequest, Options);
+            SubMerchant subMerchant = SubMerchant.Update(updateSubMerchantRequest, _options);
 
             PrintResponse(subMerchant);
 
@@ -149,7 +149,7 @@ namespace Iyzipay.Tests.Functional
                 .LimitedCompanySubMerchantRequest()
                 .Build();
 
-            string subMerchantKey = SubMerchant.Create(createLimitedCompanySubMerchantRequest, Options).SubMerchantKey;
+            string subMerchantKey = SubMerchant.Create(createLimitedCompanySubMerchantRequest, _options).SubMerchantKey;
 
             UpdateSubMerchantRequest updateSubMerchantRequest = UpdateSubMerchantRequestBuilder.Create()
                 .SubMerchantKey(subMerchantKey)
@@ -159,7 +159,7 @@ namespace Iyzipay.Tests.Functional
                 .LegalCompanyTitle("ABC inc")
                 .Build();
 
-            SubMerchant subMerchant = SubMerchant.Update(updateSubMerchantRequest, Options);
+            SubMerchant subMerchant = SubMerchant.Update(updateSubMerchantRequest, _options);
 
             PrintResponse(subMerchant);
 
@@ -181,13 +181,13 @@ namespace Iyzipay.Tests.Functional
                 .SubMerchantExternalId(subMerchantExternalId)
                 .Build();
 
-            SubMerchant.Create(createLimitedCompanySubMerchantRequest, Options);
+            SubMerchant.Create(createLimitedCompanySubMerchantRequest, _options);
 
             RetrieveSubMerchantRequest request = RetrieveSubMerchantRequestBuilder.Create()
                 .SubMerchantExternalId(subMerchantExternalId)
                 .Build();
 
-            SubMerchant subMerchant = SubMerchant.Retrieve(request, Options);
+            SubMerchant subMerchant = SubMerchant.Retrieve(request, _options);
 
             PrintResponse(subMerchant);
 

@@ -30,6 +30,23 @@ namespace Iyzipay
             return JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
         }
         
+        public T Get<T>(String url, Dictionary<string,string> headers)
+        {
+            HttpRequestMessage requestMessage = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get, 
+                RequestUri = new Uri(url)
+            };
+            
+            foreach (var header in headers)
+            {
+                requestMessage.Headers.Add(header.Key, header.Value);
+            }
+            
+            HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result; 
+            return JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+        }
+        
         public async Task<T> GetAsync<T>(String url)
         {
             HttpResponseMessage httpResponseMessage = await HttpClient.GetAsync(url);

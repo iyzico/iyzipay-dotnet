@@ -10,8 +10,8 @@ namespace Iyzipay.Tests.Functional
         [SetUp]
         public void SetUp()
         {
-            SetRequestString();
-            Options.BaseUrl = "https://sandbox-cm.iyzipay.com";
+            Initialize();
+            _options.BaseUrl = "https://sandbox-cm.iyzipay.com";
         }
 
 
@@ -20,7 +20,7 @@ namespace Iyzipay.Tests.Functional
         {
             CreateCardManagementPageInitializeRequest request = CardManagementPageRequestBuilder.Create().Build();
 
-            CardManagementPageInitialize cardManagementPageInitialize = CardManagementPageInitialize.Create(request, Options);
+            CardManagementPageInitialize cardManagementPageInitialize = CardManagementPageInitialize.Create(request, _options);
             PrintResponse(cardManagementPageInitialize);
 
             Assert.AreEqual(Locale.TR.ToString(), cardManagementPageInitialize.Locale);
@@ -39,7 +39,7 @@ namespace Iyzipay.Tests.Functional
         {
             CreateCardManagementPageInitializeRequest request = CardManagementPageRequestBuilder.Create().CallbackUrl("").Build();
             
-            CardManagementPageInitialize cardManagementPageInitialize = CardManagementPageInitialize.Create(request, Options);
+            CardManagementPageInitialize cardManagementPageInitialize = CardManagementPageInitialize.Create(request, _options);
             PrintResponse(cardManagementPageInitialize);
 
             Assert.AreEqual(Status.FAILURE.ToString(), cardManagementPageInitialize.Status);

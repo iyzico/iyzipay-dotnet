@@ -126,8 +126,8 @@ namespace Iyzipay.Tests.Functional.Builder.Request
         public CreateCheckoutFormInitializeRequest Build()
         {
             CreateCheckoutFormInitializeRequest createCheckoutFormInitializeRequest = new CreateCheckoutFormInitializeRequest();
-            createCheckoutFormInitializeRequest.Locale =  Locale;
-            createCheckoutFormInitializeRequest.ConversationId = ConversationId;
+            createCheckoutFormInitializeRequest.Locale =  _locale;
+            createCheckoutFormInitializeRequest.ConversationId = _conversationId;
             createCheckoutFormInitializeRequest.Price = _price;
             createCheckoutFormInitializeRequest.PaidPrice = _paidPrice;
             createCheckoutFormInitializeRequest.BasketId = _basketId;

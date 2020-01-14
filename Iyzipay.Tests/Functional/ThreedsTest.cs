@@ -15,7 +15,7 @@ namespace Iyzipay.Tests.Functional
                 .CallbackUrl("https://www.merchant.com/callback")
                 .Build();
 
-            ThreedsInitialize threedsInitialize = ThreedsInitialize.Create(createPaymentRequest, Options);
+            ThreedsInitialize threedsInitialize = ThreedsInitialize.Create(createPaymentRequest, _options);
 
             PrintResponse(threedsInitialize);
 
@@ -35,14 +35,14 @@ namespace Iyzipay.Tests.Functional
                 .PersonalSubMerchantRequest()
                 .Build();
 
-            SubMerchant subMerchant = SubMerchant.Create(createSubMerchantRequest, Options);
+            SubMerchant subMerchant = SubMerchant.Create(createSubMerchantRequest, _options);
 
             CreatePaymentRequest createPaymentRequest = CreatePaymentRequestBuilder.Create()
                 .MarketplacePayment(subMerchant.SubMerchantKey)
                 .CallbackUrl("https://www.merchant.com/callback")
                 .Build();
 
-            ThreedsInitialize threedsInitialize = ThreedsInitialize.Create(createPaymentRequest, Options);
+            ThreedsInitialize threedsInitialize = ThreedsInitialize.Create(createPaymentRequest, _options);
 
             PrintResponse(threedsInitialize);
 
@@ -67,7 +67,7 @@ namespace Iyzipay.Tests.Functional
             createThreedsPaymentRequest.Locale = Locale.TR.ToString();
             createThreedsPaymentRequest.ConversationId = "123456789";
 
-            ThreedsPayment threedsPayment = ThreedsPayment.Create(createThreedsPaymentRequest, Options);
+            ThreedsPayment threedsPayment = ThreedsPayment.Create(createThreedsPaymentRequest, _options);
 
             PrintResponse(threedsPayment);
         }

@@ -15,7 +15,7 @@ namespace Iyzipay.Tests.Functional
                 .StandardListingPayment()
                 .Build();
 
-            Payment payment = Payment.Create(paymentRequest, Options);
+            Payment payment = Payment.Create(paymentRequest, _options);
 
             CreateRefundRequest request = new CreateRefundRequest();
             request.Locale = Locale.TR.ToString();
@@ -25,7 +25,7 @@ namespace Iyzipay.Tests.Functional
             request.Currency = Currency.TRY.ToString();
             request.Ip = "85.34.78.112";
 
-            Refund refund = Refund.Create(request, Options);
+            Refund refund = Refund.Create(request, _options);
 
             PrintResponse(refund);
 
@@ -48,7 +48,7 @@ namespace Iyzipay.Tests.Functional
                 .StandardListingPayment()
                 .Build();
 
-            Payment payment = Payment.Create(paymentRequest, Options);
+            Payment payment = Payment.Create(paymentRequest, _options);
 
             CreateRefundRequest request = new CreateRefundRequest();
             request.Locale = Locale.TR.ToString();
@@ -60,7 +60,7 @@ namespace Iyzipay.Tests.Functional
             request.Reason = RefundReason.FRAUD.ToString();
             request.Description = "stolen card request with 11000 try payment for default sample";
 
-            Refund refund = Refund.Create(request, Options);
+            Refund refund = Refund.Create(request, _options);
 
             PrintResponse(refund);
 

@@ -27,7 +27,7 @@ namespace Iyzipay.Tests.Functional
                 .BasketItems(basketItems)
                 .Build();
 
-            CheckoutFormInitialize checkoutFormInitialize = CheckoutFormInitialize.Create(request, Options);
+            CheckoutFormInitialize checkoutFormInitialize = CheckoutFormInitialize.Create(request, _options);
 
             PrintResponse(request);
 
@@ -55,13 +55,13 @@ namespace Iyzipay.Tests.Functional
                 .BasketItems(basketItems)
                 .Build();
 
-            CheckoutFormInitialize checkoutFormInitialize = CheckoutFormInitialize.Create(request, Options);
+            CheckoutFormInitialize checkoutFormInitialize = CheckoutFormInitialize.Create(request, _options);
 
             RetrieveCheckoutFormRequest retrieveCheckoutFormRequest = RetrieveCheckoutFormRequestBuilder.Create()
                 .Token(checkoutFormInitialize.Token)
                 .Build();
 
-            CheckoutForm checkoutForm = CheckoutForm.Retrieve(retrieveCheckoutFormRequest, Options);
+            CheckoutForm checkoutForm = CheckoutForm.Retrieve(retrieveCheckoutFormRequest, _options);
 
             PrintResponse(checkoutForm);
 

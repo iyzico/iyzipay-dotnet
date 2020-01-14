@@ -34,13 +34,13 @@ namespace Iyzipay.Tests.Functional.Builder.Request
 
         public new CreatePaymentRequestBuilder Locale(string locale)
         {
-            base.Locale = locale;
+            base._locale = locale;
             return this;
         }
 
         public new CreatePaymentRequestBuilder ConversationId(string conversationId)
         {
-            base.ConversationId = conversationId;
+            base._conversationId = conversationId;
             return this;
         }
 
@@ -143,8 +143,8 @@ namespace Iyzipay.Tests.Functional.Builder.Request
         public CreatePaymentRequest Build()
         {
             CreatePaymentRequest createPaymentRequest = new CreatePaymentRequest();
-            createPaymentRequest.Locale = base.Locale;
-            createPaymentRequest.ConversationId = base.ConversationId;
+            createPaymentRequest.Locale = base._locale;
+            createPaymentRequest.ConversationId = base._conversationId;
             createPaymentRequest.Price = _price;
             createPaymentRequest.PaidPrice = _paidPrice;
             createPaymentRequest.Installment = _installment;

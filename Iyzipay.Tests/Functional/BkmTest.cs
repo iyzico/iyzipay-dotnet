@@ -15,7 +15,7 @@ namespace Iyzipay.Tests.Functional
                 .CallbackUrl("https://www.merchant.com/callback")
                 .Build();
 
-            BkmInitialize bkmInitialize = BkmInitialize.Create(request, Options);
+            BkmInitialize bkmInitialize = BkmInitialize.Create(request, _options);
 
             PrintResponse(request);
 

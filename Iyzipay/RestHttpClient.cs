@@ -46,12 +46,6 @@ namespace Iyzipay
             HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result; 
             return JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
         }
-        
-        public async Task<T> GetAsync<T>(String url)
-        {
-            HttpResponseMessage httpResponseMessage = await HttpClient.GetAsync(url);
-            return JsonConvert.DeserializeObject<T>(await httpResponseMessage.Content.ReadAsStringAsync());
-        }
 
         public T Post<T>(String url, Dictionary<string,string> headers, BaseRequest request)
         { 

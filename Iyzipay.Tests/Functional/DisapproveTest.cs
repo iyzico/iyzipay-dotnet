@@ -15,13 +15,13 @@ namespace Iyzipay.Tests.Functional
                 .PersonalSubMerchantRequest()
                 .Build();
 
-            SubMerchant subMerchant = SubMerchant.Create(request, Options);
+            SubMerchant subMerchant = SubMerchant.Create(request, _options);
 
             CreatePaymentRequest paymentRequest = CreatePaymentRequestBuilder.Create()
                 .MarketplacePayment(subMerchant.SubMerchantKey)
                 .Build();
 
-            Payment payment = Payment.Create(paymentRequest, Options);
+            Payment payment = Payment.Create(paymentRequest, _options);
 
             String paymentTransactionId = payment.PaymentItems[0].PaymentTransactionId;
 
@@ -29,9 +29,9 @@ namespace Iyzipay.Tests.Functional
                 .PaymentTransactionId(paymentTransactionId)
                 .Build();
 
-            Approval.Create(approvalRequest, Options);
+            Approval.Create(approvalRequest, _options);
 
-            Disapproval disapproval = Disapproval.Create(approvalRequest, Options);
+            Disapproval disapproval = Disapproval.Create(approvalRequest, _options);
 
             PrintResponse(disapproval);
 

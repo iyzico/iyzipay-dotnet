@@ -14,20 +14,20 @@ namespace Iyzipay.Tests.Functional
                 .PersonalSubMerchantRequest()
                 .Build();
 
-            SubMerchant subMerchant = SubMerchant.Create(request, Options);
+            SubMerchant subMerchant = SubMerchant.Create(request, _options);
 
             CreatePaymentRequest paymentRequest = CreatePaymentRequestBuilder.Create()
                 .MarketplacePayment(subMerchant.SubMerchantKey)
                 .Build();
 
-            Payment payment = Payment.Create(paymentRequest, Options);
+            Payment payment = Payment.Create(paymentRequest, _options);
             string paymentTransactionId = payment.PaymentItems[0].PaymentTransactionId;
 
             CreateApprovalRequest approvalRequest = CreateApprovalRequestBuilder.Create()
                 .PaymentTransactionId(paymentTransactionId)
                 .Build();
 
-            Approval approval = Approval.Create(approvalRequest, Options);
+            Approval approval = Approval.Create(approvalRequest, _options);
 
             Assert.AreEqual(paymentTransactionId, approval.PaymentTransactionId);
             Assert.AreEqual(Locale.TR.ToString(), payment.Locale);

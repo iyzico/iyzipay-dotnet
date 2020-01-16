@@ -15,7 +15,7 @@ namespace Iyzipay.Tests.Functional
             request.BinNumber = "554960";
             request.Price = "100";
 
-            InstallmentInfo installmentInfo = InstallmentInfo.Retrieve(request, Options);
+            InstallmentInfo installmentInfo = InstallmentInfo.Retrieve(request, _options);
 
             PrintResponse(installmentInfo);
 

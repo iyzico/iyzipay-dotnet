@@ -14,7 +14,7 @@ namespace Iyzipay.Tests.Functional
             request.ConversationId = "123456789";
             request.Date = "2016-01-22 19:13:00";
 
-            PayoutCompletedTransactionList payoutCompletedTransactionList = PayoutCompletedTransactionList.Retrieve(request, Options);
+            PayoutCompletedTransactionList payoutCompletedTransactionList = PayoutCompletedTransactionList.Retrieve(request, _options);
 
             PrintResponse(payoutCompletedTransactionList);
 
@@ -35,7 +35,7 @@ namespace Iyzipay.Tests.Functional
             request.ConversationId = "123456789";
             request.Date = "2016-01-22 19:13:00";
 
-            BouncedBankTransferList bouncedBankTransferList = BouncedBankTransferList.Retrieve(request, Options);
+            BouncedBankTransferList bouncedBankTransferList = BouncedBankTransferList.Retrieve(request, _options);
 
             PrintResponse(bouncedBankTransferList);
 

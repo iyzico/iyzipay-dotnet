@@ -24,8 +24,8 @@ namespace Iyzipay.Tests.Functional.Builder.Request
         public RetrieveBinNumberRequest Build()
         {
             RetrieveBinNumberRequest retrieveBinNumberRequest = new RetrieveBinNumberRequest();
-            retrieveBinNumberRequest.Locale = Locale;
-            retrieveBinNumberRequest.ConversationId = ConversationId;
+            retrieveBinNumberRequest.Locale = _locale;
+            retrieveBinNumberRequest.ConversationId = _conversationId;
             retrieveBinNumberRequest.BinNumber = _binNumber;
             return retrieveBinNumberRequest;
         }

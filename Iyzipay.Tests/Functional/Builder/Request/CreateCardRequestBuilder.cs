@@ -46,8 +46,8 @@ namespace Iyzipay.Tests.Functional.Builder.Request
         public CreateCardRequest Build()
         {
             CreateCardRequest createCardRequest = new CreateCardRequest();
-            createCardRequest.Locale = Locale;
-            createCardRequest.ConversationId = ConversationId;
+            createCardRequest.Locale = _locale;
+            createCardRequest.ConversationId = _conversationId;
             createCardRequest.ExternalId = _externalId;
             createCardRequest.Email = _email;
             createCardRequest.CardUserKey = _cardUserKey;

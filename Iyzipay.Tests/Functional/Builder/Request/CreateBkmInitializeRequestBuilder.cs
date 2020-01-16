@@ -83,8 +83,8 @@ namespace Iyzipay.Tests.Functional.Builder.Request
         public CreateBkmInitializeRequest Build()
         {
             CreateBkmInitializeRequest createBkmInitializeRequest = new CreateBkmInitializeRequest();
-            createBkmInitializeRequest.Locale = Locale;
-            createBkmInitializeRequest.ConversationId = ConversationId;
+            createBkmInitializeRequest.Locale = _locale;
+            createBkmInitializeRequest.ConversationId = _conversationId;
             createBkmInitializeRequest.Price = _price;
             createBkmInitializeRequest.BasketId = _basketId;
             createBkmInitializeRequest.PaymentGroup = _paymentGroup;

@@ -8,7 +8,7 @@ namespace Iyzipay.Tests.Functional
         [Test]
         public void Should_Test_Api()
         {
-            IyzipayResource iyzipayResource = Model.ApiTest.Retrieve(Options);
+            IyzipayResource iyzipayResource = Model.ApiTest.Retrieve(_options);
 
             PrintResponse(iyzipayResource);
 

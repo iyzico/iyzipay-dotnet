@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 
 namespace Iyzipay
@@ -23,22 +24,15 @@ namespace Iyzipay
         {
         }
 
-        protected static WebHeaderCollection GetHttpHeaders(BaseRequest request, Options options)
+        protected static Dictionary<string, string> GetHttpHeaders(BaseRequest request, Options options)
         {
             string randomString = DateTime.Now.ToString("ddMMyyyyhhmmssffff");
-            WebHeaderCollection headers = new WebHeaderCollection();
+            Dictionary<string, string> headers = new Dictionary<string, string>();
 
-#if NETSTANDARD
-            headers["Accept"] = "application/json";
-            headers[RANDOM_HEADER_NAME] = randomString;
-            headers[CLIENT_VERSION] = "iyzipay-dotnet-2.1.14";
-            headers[AUTHORIZATION] = PrepareAuthorizationString(request, randomString, options);
-#else
             headers.Add("Accept", "application/json");
             headers.Add(RANDOM_HEADER_NAME, randomString);
             headers.Add(CLIENT_VERSION_HEADER_NAME, IyzipayConstants.CLIENT_VERSION);
             headers.Add(AUTHORIZATION, PrepareAuthorizationString(request, randomString, options));
-#endif
             return headers;
         }
 

@@ -6,8 +6,10 @@
 You can sign up for an iyzico account at https://iyzico.com
 
 # Requirements
-
-.NET Framework 4.5 and later
+One of the runtime environment is required from below
+* .NET Framework 4.5
+* .NET Core 1.1
+* .NET Core 2.0
 
 # Installation
 
@@ -19,8 +21,34 @@ Install-Package Iyzipay
 ```
  Or you can download the latest .dll from:  https://github.com/iyzico/iyzipay-dotnet/releases/latest
  
+For .NET Framework:
 * Newtonsoft.Json 8.0.2 from http://www.newtonsoft.com/json#
 
+For .NET Standard 1.3:
+* Newtonsoft.Json 11.0.2 from http://www.newtonsoft.com/json#
+* System.Security.Cryptography.Algorithms 4.3.0
+
+For .NET Standard 2.0:
+* Newtonsoft.Json 11.0.2 from http://www.newtonsoft.com/json#
+
+
+# Note
+
+For .Net Framework usage, decimal deserialized to string with trim "0" operation from the end by newtonsoft library.
+
+```csharp
+// true for .net 45
+bool isEqual = payment.IyziCommissionRateAmount.Equals("0.028875")
+```
+
+For .Net Standard usage, decimal deserialized to string without trim operation by newtonsoft library.
+```csharp
+// false for .net standard
+bool isEqual = payment.IyziCommissionRateAmount.Equals("0.028875");
+
+// true for .net standard
+bool isEqual = payment.IyziCommissionRateAmount.Equals("0.02887500");
+```
 
 # Usage
 

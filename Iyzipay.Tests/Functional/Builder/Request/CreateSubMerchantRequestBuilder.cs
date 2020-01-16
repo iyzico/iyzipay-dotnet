@@ -123,8 +123,8 @@ namespace Iyzipay.Tests.Functional.Builder.Request
         public CreateSubMerchantRequest Build()
         {
             CreateSubMerchantRequest createSubMerchantRequest = new CreateSubMerchantRequest();
-            createSubMerchantRequest.Locale = Locale;
-            createSubMerchantRequest.ConversationId = ConversationId;
+            createSubMerchantRequest.Locale = _locale;
+            createSubMerchantRequest.ConversationId = _conversationId;
             createSubMerchantRequest.Name = _name;
             createSubMerchantRequest.Email = _email;
             createSubMerchantRequest.GsmNumber = _gsmNumber;

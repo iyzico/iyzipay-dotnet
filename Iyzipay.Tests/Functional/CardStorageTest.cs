@@ -23,7 +23,7 @@ namespace Iyzipay.Tests.Functional
                 .Email("email@email.com")
                 .Build();
 
-            Card card = Card.Create(createCardRequest, Options);
+            Card card = Card.Create(createCardRequest, _options);
 
             PrintResponse(card);
 
@@ -54,7 +54,7 @@ namespace Iyzipay.Tests.Functional
                 .Email("email@email.com")
                 .Build();
 
-            Card firstCard = Card.Create(cardRequest, Options);
+            Card firstCard = Card.Create(cardRequest, _options);
             string cardUserKey = firstCard.CardUserKey;
 
             CreateCardRequest request = CreateCardRequestBuilder.Create()
@@ -63,7 +63,7 @@ namespace Iyzipay.Tests.Functional
                 .ExternalId(externalUserId)
                 .Build();
 
-            Card card = Card.Create(request, Options);
+            Card card = Card.Create(request, _options);
 
             PrintResponse(card);
 
@@ -90,7 +90,7 @@ namespace Iyzipay.Tests.Functional
             deleteCardRequest.CardToken = card.CardToken;
             deleteCardRequest.CardUserKey = card.CardUserKey;
 
-            Card deletedCard = Card.Delete(deleteCardRequest, Options);
+            Card deletedCard = Card.Delete(deleteCardRequest, _options);
 
             PrintResponse(deletedCard);
 
@@ -123,7 +123,7 @@ namespace Iyzipay.Tests.Functional
             request.ConversationId = "123456789";
             request.CardUserKey = card.CardUserKey;
 
-            CardList cardList = CardList.Retrieve(request, Options);
+            CardList cardList = CardList.Retrieve(request, _options);
 
             PrintResponse(cardList);
 
@@ -149,7 +149,7 @@ namespace Iyzipay.Tests.Functional
                 .Email("email@email.com")
                 .Build();
 
-            return Card.Create(cardRequest, Options);
+            return Card.Create(cardRequest, _options);
         }
     }
 }

@@ -25,8 +25,8 @@ namespace Iyzipay.Tests.Functional.Builder.Request
         public CreateApprovalRequest Build()
         {
             CreateApprovalRequest createApprovalRequest = new CreateApprovalRequest();
-            createApprovalRequest.Locale = Locale;
-            createApprovalRequest.ConversationId =  ConversationId;
+            createApprovalRequest.Locale = _locale;
+            createApprovalRequest.ConversationId =  _conversationId;
             createApprovalRequest.PaymentTransactionId = _paymentTransactionId;
             return createApprovalRequest;
         }

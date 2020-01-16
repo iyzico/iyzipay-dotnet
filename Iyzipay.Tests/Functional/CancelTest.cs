@@ -15,13 +15,13 @@ namespace Iyzipay.Tests.Functional
                 .StandardListingPayment()
                 .Build();
 
-            Payment payment = Payment.Create(paymentRequest, Options);
+            Payment payment = Payment.Create(paymentRequest, _options);
 
             CreateCancelRequest cancelRequest = CreateCancelRequestBuilder.Create()
                 .PaymentId(payment.PaymentId)
                 .Build();
 
-            Cancel cancel = Cancel.Create(cancelRequest, Options);
+            Cancel cancel = Cancel.Create(cancelRequest, _options);
 
             PrintResponse(cancel);
 
@@ -43,7 +43,7 @@ namespace Iyzipay.Tests.Functional
                 .StandardListingPayment()
                 .Build();
 
-            Payment payment = Payment.Create(paymentRequest, Options);
+            Payment payment = Payment.Create(paymentRequest, _options);
 
             CreateCancelRequest cancelRequest = CreateCancelRequestBuilder.Create()
                 .PaymentId(payment.PaymentId)
@@ -52,7 +52,7 @@ namespace Iyzipay.Tests.Functional
             cancelRequest.Reason = RefundReason.FRAUD.ToString();
             cancelRequest.Description = "stolen card request with 11000 try payment for default sample";
 
-            Cancel cancel = Cancel.Create(cancelRequest, Options);
+            Cancel cancel = Cancel.Create(cancelRequest, _options);
 
             PrintResponse(cancel);
 

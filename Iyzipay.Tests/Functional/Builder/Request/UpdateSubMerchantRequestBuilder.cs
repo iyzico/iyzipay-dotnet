@@ -115,8 +115,8 @@ namespace Iyzipay.Tests.Functional.Builder.Request
         public UpdateSubMerchantRequest Build()
         {
             UpdateSubMerchantRequest updateSubMerchantRequest = new UpdateSubMerchantRequest();
-            updateSubMerchantRequest.Locale = Locale;
-            updateSubMerchantRequest.ConversationId = ConversationId;
+            updateSubMerchantRequest.Locale = _locale;
+            updateSubMerchantRequest.ConversationId = _conversationId;
             updateSubMerchantRequest.Name = _name;
             updateSubMerchantRequest.Email = _email;
             updateSubMerchantRequest.GsmNumber = _gsmNumber;

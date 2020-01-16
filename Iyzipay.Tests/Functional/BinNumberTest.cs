@@ -14,7 +14,7 @@ namespace Iyzipay.Tests.Functional
                 .BinNumber("554960")
                 .Build();
 
-            BinNumber binNumber = BinNumber.Retrieve(request, Options);
+            BinNumber binNumber = BinNumber.Retrieve(request, _options);
 
             PrintResponse(request);
 

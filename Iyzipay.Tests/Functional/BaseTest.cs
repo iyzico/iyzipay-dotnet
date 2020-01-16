@@ -7,15 +7,15 @@ namespace Iyzipay.Tests.Functional
 {
     public class BaseTest
     {
-        protected Options Options;
+        protected Options _options;
 
         [SetUp]
-        public void SetRequestString()
+        public void Initialize()
         {
-            Options = new Options();
-            Options.ApiKey = "sandbox-afXhZPW0MQlE4dCUUlHcEopnMBgXnAZI";
-            Options.SecretKey = "sandbox-wbwpzKIiplZxI3hh5ALI4FJyAcZKL6kq";
-            Options.BaseUrl = "https://sandbox-api.iyzipay.com";
+            _options = new Options();
+            _options.ApiKey = "sandbox-afXhZPW0MQlE4dCUUlHcEopnMBgXnAZI";
+            _options.SecretKey = "sandbox-wbwpzKIiplZxI3hh5ALI4FJyAcZKL6kq";
+            _options.BaseUrl = "https://sandbox-api.iyzipay.com";
         }
 
         protected void PrintResponse<T>(T resource)

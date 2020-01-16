@@ -19,6 +19,7 @@ namespace Iyzipay
         public String ErrorMessage { get; set; }
         public String ConversationId { get; set; }
         public long SystemTime { get; set; }
+        public String Locale { get; set; }
 
         public IyzipayResourceV2()
         {
@@ -47,7 +48,7 @@ namespace Iyzipay
         protected static Dictionary<string, string> GetHttpHeadersWithUrlParams(BaseRequestV2 request, String url, Options options)
         {
             Dictionary<string, string> headers = GetCommonHttpHeaders(request, url, options);
-            headers.Add(AUTHORIZATION, PrepareAuthorizationStringWithRequestBody(request, url, options));
+            headers.Add(AUTHORIZATION, PrepareAuthorizationStringWithRequestBody(null, url, options));
             return headers;
         }
 

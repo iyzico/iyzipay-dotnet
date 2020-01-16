@@ -2,7 +2,7 @@
 
 namespace Iyzipay.Request
 {
-    public class CreatePeccoPaymentRequest : BaseRequest
+    public class RetrievePayWithIyzicoRequest : BaseRequest
     {
         public String Token { set; get; }
 

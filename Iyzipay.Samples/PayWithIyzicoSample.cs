@@ -1,25 +1,33 @@
-﻿using Iyzipay.Request;
-using Iyzipay.Model;
-using System.Collections.Generic;
+﻿using Iyzipay.Model;
+using Iyzipay.Request;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace Iyzipay.Samples
 {
-    public class PeccoSample : Sample
+    public class PayWithIyzicoSample : Sample
     {
+        
         [Test]
-        public void Should_Initialize_Pecco()
+        public void Should_Initialize_PayWithIyzico()
         {
-            CreatePeccoInitializeRequest request = new CreatePeccoInitializeRequest();
+            CreatePayWithIyzicoInitializeRequest request = new CreatePayWithIyzicoInitializeRequest();
             request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
-            request.Price = "100000";
-            request.PaidPrice = "120000";
-            request.Currency = Currency.IRR.ToString();
+            request.Price = "1";
+            request.PaidPrice = "1.2";
+            request.Currency = Currency.TRY.ToString();
             request.BasketId = "B67832";
             request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
             request.CallbackUrl = "https://www.merchant.com/callback";
-            
+
+            List<int> enabledInstallments = new List<int>();
+            enabledInstallments.Add(2);
+            enabledInstallments.Add(3);
+            enabledInstallments.Add(6);
+            enabledInstallments.Add(9);
+            request.EnabledInstallments = enabledInstallments;
+
             Buyer buyer = new Buyer();
             buyer.Id = "BY789";
             buyer.Name = "John";
@@ -59,7 +67,7 @@ namespace Iyzipay.Samples
             firstBasketItem.Category1 = "Collectibles";
             firstBasketItem.Category2 = "Accessories";
             firstBasketItem.ItemType = BasketItemType.PHYSICAL.ToString();
-            firstBasketItem.Price = "30000";
+            firstBasketItem.Price = "0.3";
             basketItems.Add(firstBasketItem);
 
             BasketItem secondBasketItem = new BasketItem();
@@ -68,7 +76,7 @@ namespace Iyzipay.Samples
             secondBasketItem.Category1 = "Game";
             secondBasketItem.Category2 = "Online Game Items";
             secondBasketItem.ItemType = BasketItemType.VIRTUAL.ToString();
-            secondBasketItem.Price = "50000";
+            secondBasketItem.Price = "0.5";
             basketItems.Add(secondBasketItem);
 
             BasketItem thirdBasketItem = new BasketItem();
@@ -77,43 +85,43 @@ namespace Iyzipay.Samples
             thirdBasketItem.Category1 = "Electronics";
             thirdBasketItem.Category2 = "Usb / Cable";
             thirdBasketItem.ItemType = BasketItemType.PHYSICAL.ToString();
-            thirdBasketItem.Price = "20000";
+            thirdBasketItem.Price = "0.2";
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
-            PeccoInitialize peccoInitialize = PeccoInitialize.Create(request, options);
+            PayWithIyzicoInitialize payWithIyzicoInitialize = PayWithIyzicoInitialize.Create(request, options);
 
-            PrintResponse<PeccoInitialize>(peccoInitialize);
+            PrintResponse<PayWithIyzicoInitialize>(payWithIyzicoInitialize);
 
-            Assert.AreEqual(Status.SUCCESS.ToString(), peccoInitialize.Status);
-            Assert.AreEqual(Locale.TR.ToString(), peccoInitialize.Locale);
-            Assert.AreEqual("123456789", peccoInitialize.ConversationId);
-            Assert.IsNotNull(peccoInitialize.SystemTime);
-            Assert.IsNull(peccoInitialize.ErrorCode);
-            Assert.IsNull(peccoInitialize.ErrorMessage);
-            Assert.IsNull(peccoInitialize.ErrorGroup);
-            Assert.IsNotNull(peccoInitialize.HtmlContent);
+            Assert.AreEqual(Status.SUCCESS.ToString(), payWithIyzicoInitialize.Status);
+            Assert.AreEqual(Locale.TR.ToString(), payWithIyzicoInitialize.Locale);
+            Assert.AreEqual("123456789", payWithIyzicoInitialize.ConversationId);
+            Assert.IsNotNull(payWithIyzicoInitialize.SystemTime);
+            Assert.IsNull(payWithIyzicoInitialize.ErrorCode);
+            Assert.IsNull(payWithIyzicoInitialize.ErrorMessage);
+            Assert.IsNull(payWithIyzicoInitialize.ErrorGroup);
+            Assert.IsNotNull(payWithIyzicoInitialize.CheckoutFormContent);
+            Assert.IsNotNull(payWithIyzicoInitialize.PayWithIyzicoPageUrl);
         }
 
         [Test]
-        public void Should_Create_Pecco_Payment()
+        public void Should_Retrieve_PayWithIyzico_Result()
         {
-            CreatePeccoPaymentRequest request = new CreatePeccoPaymentRequest();
-            request.Locale = Locale.TR.ToString();
+            RetrievePayWithIyzicoRequest request = new RetrievePayWithIyzicoRequest();
             request.ConversationId = "123456789";
-            request.Token = "token";
+            request.Token = "cb3f2681-e397-473a-931c-2567fd235627";
 
-            PeccoPayment peccoPayment = PeccoPayment.Create(request, options);
+            PayWithIyzico payWithIyzicoResult = PayWithIyzico.Retrieve(request, options);
 
-            PrintResponse<PeccoPayment>(peccoPayment);
+            PrintResponse<PayWithIyzico>(payWithIyzicoResult);
 
-            Assert.AreEqual(Status.SUCCESS.ToString(), peccoPayment.Status);
-            Assert.AreEqual(Locale.TR.ToString(), peccoPayment.Locale);
-            Assert.AreEqual("123456789", peccoPayment.ConversationId);
-            Assert.IsNotNull(peccoPayment.SystemTime);
-            Assert.IsNull(peccoPayment.ErrorCode);
-            Assert.IsNull(peccoPayment.ErrorMessage);
-            Assert.IsNull(peccoPayment.ErrorGroup);
+            Assert.AreEqual(Status.SUCCESS.ToString(), payWithIyzicoResult.Status);
+            Assert.AreEqual(Locale.TR.ToString(), payWithIyzicoResult.Locale);
+            Assert.AreEqual("123456789", payWithIyzicoResult.ConversationId);
+            Assert.IsNotNull(payWithIyzicoResult.SystemTime);
+            Assert.IsNull(payWithIyzicoResult.ErrorCode);
+            Assert.IsNull(payWithIyzicoResult.ErrorMessage);
+            Assert.IsNull(payWithIyzicoResult.ErrorGroup);
         }
     }
 }

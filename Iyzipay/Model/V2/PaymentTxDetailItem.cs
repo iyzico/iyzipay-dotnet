@@ -1,9 +1,12 @@
-﻿using Iyzipay.Request;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Iyzipay.Model
+namespace Iyzipay.Model.V2
 {
-    public class PaymentItem : IyzipayResource
+    public class PaymentTxDetailItem
     {
         public String ItemId { get; set; }
         public String PaymentTransactionId { get; set; }
@@ -24,10 +27,6 @@ namespace Iyzipay.Model
         public String SubMerchantPayoutAmount { get; set; }
         public String MerchantPayoutAmount { get; set; }
         public ConvertedPayout ConvertedPayout { get; set; }
-
-        public static PaymentItem Update(UpdatePaymentItemRequest request, Options options)
-        {
-            return RestHttpClient.Create().Put<PaymentItem>(options.BaseUrl + "/payment/item", GetHttpHeaders(request, options), request);
-        }
+        public List<RefundDetailItem> Refunds { get; set; }
     }
 }

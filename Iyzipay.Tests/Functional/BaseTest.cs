@@ -1,27 +1,29 @@
-﻿using Newtonsoft.Json;
 ﻿using System.Diagnostics;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using NUnit.Framework;
-using System.Diagnostics;
 
-namespace Iyzipay.Samples
+namespace Iyzipay.Tests.Functional
 {
-    public class Sample
+    public class BaseTest
     {
-        protected Options options;
+        protected Options _options;
 
         [SetUp]
         public void Initialize()
         {
-            options = new Options();
-            options.ApiKey = "sandbox-afXhZPW0MQlE4dCUUlHcEopnMBgXnAZI";
-            options.SecretKey = "sandbox-wbwpzKIiplZxI3hh5ALI4FJyAcZKL6kq";
-            options.BaseUrl = "https://sandbox-api.iyzipay.com";
+            _options = new Options();
+            _options.ApiKey = "sandbox-afXhZPW0MQlE4dCUUlHcEopnMBgXnAZI";
+            _options.SecretKey = "sandbox-wbwpzKIiplZxI3hh5ALI4FJyAcZKL6kq";
+            _options.BaseUrl = "https://sandbox-api.iyzipay.com";
         }
 
         protected void PrintResponse<T>(T resource)
         {
+#if RELEASE
+            return;
+#endif
+
 #if NETCORE1 || NETCORE2
             TraceListener consoleListener = new TextWriterTraceListener(System.Console.Out);
 #else

@@ -2,7 +2,7 @@
 
 namespace Iyzipay
 {
-    class RequestFormatter
+    public class RequestFormatter
     {
         public static String FormatPrice(String price)
         {

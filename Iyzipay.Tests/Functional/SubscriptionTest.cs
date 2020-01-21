@@ -263,7 +263,7 @@ namespace Iyzipay.Tests.Functional
            Assert.Null(response.ErrorMessage);
         }
         
-        [Ignore("Test needs failed payment, but we can not supply this condition for test now.")]
+        [Ignore("Test needs failed payment (OrderStatus=Failed,SubscriptionStatus=Unpaid), but we can not supply this condition in test now.")]
         public void Should_Retry_Subscription()
         {
             string randomString = DateTime.Now.ToString("yyyyMMddHHmmssfff");
@@ -282,7 +282,6 @@ namespace Iyzipay.Tests.Functional
                 Locale = Locale.TR.ToString(),
                 Name = $"plan-name-{randomString}",
                 ConversationId = "123456789",
-                TrialPeriodDays = 3,
                 Price = "5.23",
                 CurrencyCode = Currency.TRY.ToString(),
                 PaymentInterval = PaymentInterval.WEEKLY.ToString(),
@@ -332,16 +331,24 @@ namespace Iyzipay.Tests.Functional
                 },
                 ConversationId = "123456789",
                 PricingPlanReferenceCode = planResource.ReferenceCode,
-                SubscriptionInitialStatus = SubscriptionStatus.PENDING.ToString()
+                SubscriptionInitialStatus = SubscriptionStatus.ACTIVE.ToString()
             };
             
            ResponseData<SubscriptionCreatedResource> initializeResponse = Subscription.Initialize(subscriptionInitializeRequest, _options);
+           
+           RetrieveSubscriptionRequest retrieveSubscriptionRequest = new RetrieveSubscriptionRequest
+           {
+               Locale = Locale.TR.ToString(),
+               ConversationId = "123456789",
+               SubscriptionReferenceCode = initializeResponse.Data.ReferenceCode
+           };
+           ResponseData<SubscriptionResource> subscriptionResponse = Subscription.Retrieve(retrieveSubscriptionRequest, _options);
 
            RetrySubscriptionRequest request = new RetrySubscriptionRequest()
            {
                Locale = Locale.TR.ToString(),
                ConversationId = "123456789",
-               ReferenceCode = initializeResponse.Data.ReferenceCode
+               SubscriptionOrderReferenceCode = subscriptionResponse.Data.SubscriptionOrders.FirstOrDefault()?.ReferenceCode
            };
            
            IyzipayResourceV2 response = Subscription.Retry(request, _options);

@@ -1,5 +1,6 @@
 using Iyzipay.Model;
 using Iyzipay.Request;
+using Iyzipay.Tests.Functional;
 using Iyzipay.Tests.Functional.Builder.Request;
 using NUnit.Framework;
 

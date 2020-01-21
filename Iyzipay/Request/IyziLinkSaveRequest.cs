@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Iyzipay.Request
 {
-    public class IyziLinkSaveRequest : BaseRequestV2,RequestStringConvertible
+    public class IyziLinkSaveRequest : BaseRequestV2
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -20,19 +20,5 @@ namespace Iyzipay.Request
         public int? SoldLimit { get; set; }
         public bool? InstallmentRequested { get; set; }
         
-        public String ToPKIRequestString()
-        {
-            return ToStringRequestBuilder.NewInstance()
-                .AppendSuper(base.ToPKIRequestString())
-                .Append("name", Name)           
-                .Append("description", Description)           
-                .Append("encodedImageFile", Base64EncodedImage)           
-                .Append("price", Price)           
-                .Append("currencyCode", Currency)           
-                .Append("addressIgnorable", AddressIgnorable)           
-                .Append("soldLimit", SoldLimit)           
-                .Append("installmentRequested", InstallmentRequested)           
-                .GetRequestString();
-        }
     }
 }

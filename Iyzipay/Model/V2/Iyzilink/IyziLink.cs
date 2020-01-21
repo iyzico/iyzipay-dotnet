@@ -1,25 +1,25 @@
 using System;
 using Iyzipay.Request;
 
-namespace Iyzipay.Model.Iyzilink
+namespace Iyzipay.Model.V2.Iyzilink
 {
     public class IyziLink : IyzipayResourceV2
     {
         private static string V2_IYZILINK_PRODUCTS = "/v2/iyzilink/products";
         
-        public static IyziLinkSaveResource Create(IyziLinkSaveRequest request, Options options)
+        public static ResponseData<IyziLinkSave> Create(IyziLinkSaveRequest request, Options options)
         {
             string uri = options.BaseUrl + V2_IYZILINK_PRODUCTS + GetQueryParams(request);
-            return RestHttpClientV2.Create().Post<IyziLinkSaveResource>(uri, GetHttpHeadersWithRequestBody(request, uri ,options), request);
+            return RestHttpClientV2.Create().Post<ResponseData<IyziLinkSave>>(uri, GetHttpHeadersWithRequestBody(request, uri ,options), request);
         }
         
-        public static IyziLinkSaveResource Update(string token, IyziLinkSaveRequest request, Options options)
+        public static ResponseData<IyziLinkSave> Update(string token, IyziLinkSaveRequest request, Options options)
         {
             string uri = options.BaseUrl + V2_IYZILINK_PRODUCTS + "/" + token + GetQueryParams(request);
-            return RestHttpClientV2.Create().Put<IyziLinkSaveResource>(uri, GetHttpHeadersWithRequestBody(request, uri ,options), request);
+            return RestHttpClientV2.Create().Put<ResponseData<IyziLinkSave>>(uri, GetHttpHeadersWithRequestBody(request, uri ,options), request);
         }
         
-        public static IyziLinkPagingResource RetrieveAll(PagingRequest request, Options options)
+        public static ResponsePagingData<IyziLinkItem> RetrieveAll(PagingRequest request, Options options)
         {
             string queryParams = GetQueryParams(request);
             string iyzilinkQueryParam = "productType=IYZILINK";
@@ -29,13 +29,13 @@ namespace Iyzipay.Model.Iyzilink
                 : queryParams + "&" + iyzilinkQueryParam;
             
             string uri = options.BaseUrl + V2_IYZILINK_PRODUCTS + queryParams;
-            return RestHttpClientV2.Create().Get<IyziLinkPagingResource>(uri, GetHttpHeadersWithUrlParams(request,uri ,options));
+            return RestHttpClientV2.Create().Get<ResponsePagingData<IyziLinkItem>>(uri, GetHttpHeadersWithUrlParams(request,uri ,options));
         }
         
-        public static IyziLinkResource Retrieve(string token, BaseRequestV2 request, Options options)
+        public static ResponseData<IyziLinkItem> Retrieve(string token, BaseRequestV2 request, Options options)
         {
             string uri = options.BaseUrl + V2_IYZILINK_PRODUCTS + "/" + token + GetQueryParams(request);
-            return RestHttpClientV2.Create().Get<IyziLinkResource>(uri, GetHttpHeadersWithUrlParams(request, uri ,options));
+            return RestHttpClientV2.Create().Get<ResponseData<IyziLinkItem>>(uri, GetHttpHeadersWithUrlParams(request, uri ,options));
         }
         
         public static IyzipayResourceV2 Delete(string token, BaseRequestV2 request, Options options)

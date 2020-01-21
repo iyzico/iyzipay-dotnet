@@ -1,4 +1,4 @@
-namespace Iyzipay.Model.Iyzilink
+namespace Iyzipay.Model.V2.Iyzilink
 {
     public enum IyziLinkStatus
     {

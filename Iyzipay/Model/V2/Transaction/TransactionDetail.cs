@@ -1,7 +1,7 @@
-﻿using Iyzipay.Request.V2;
-using System;
+﻿using System;
+using Iyzipay.Request.V2;
 
-namespace Iyzipay.Model.V2
+namespace Iyzipay.Model.V2.Transaction
 {
     public class TransactionDetail : TransactionDetailResource
     {

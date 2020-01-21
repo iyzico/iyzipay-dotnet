@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Iyzipay.Model.V2
+namespace Iyzipay.Model.V2.Transaction
 {
-    public class RefundDetailItem
+    public class TransactionDetailCancelItem
     {
-        public long RefundTxId { get; set; }
-        public String RefundConversationId { get; set; }
+        public long RefundId { get; set; }
+        public String CancelConversationId { get; set; }
         public String RefundPrice { get; set; }
         public String CurrencyCode { get; set; }
         public String HostReference { get; set; }

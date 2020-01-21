@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace Iyzipay.Model.Iyzilink
+namespace Iyzipay.Model.V2.Iyzilink
 {
     public class IyziLinkItem
     {

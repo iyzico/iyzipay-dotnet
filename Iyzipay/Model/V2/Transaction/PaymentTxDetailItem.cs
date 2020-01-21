@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Iyzipay.Model.V2
+namespace Iyzipay.Model.V2.Transaction
 {
     public class PaymentTxDetailItem
     {

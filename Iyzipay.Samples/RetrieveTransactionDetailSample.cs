@@ -1,5 +1,6 @@
 ﻿using Iyzipay.Model;
 using Iyzipay.Model.V2;
+using Iyzipay.Model.V2.Transaction;
 using Iyzipay.Request.V2;
 using NUnit.Framework;
 

@@ -143,7 +143,7 @@ namespace Iyzipay.Samples
             {
                 Locale = Locale.TR.ToString(),
                 ConversationId = "123456789",
-                ReferenceCode = "referenceCode"
+                SubscriptionOrderReferenceCode = "referenceCode"
             };
 
             IyzipayResourceV2 response = Subscription.Retry(request, options);

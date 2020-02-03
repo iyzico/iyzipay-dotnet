@@ -1,11 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using Newtonsoft.Json;
 
-namespace Iyzipay.Model.V2
+namespace Iyzipay.Model.V2.Transaction
 {
     public class TransactionReportItem
     {

@@ -1,11 +1,10 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 
 namespace Iyzipay
 {
     public class BaseRequestV2
     {
-        [JsonIgnore]
+        public String Locale { get; set; }
         public String ConversationId { get; set; }
     }
 }

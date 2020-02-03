@@ -4,7 +4,7 @@ using Iyzipay.Tests.Functional;
 using Iyzipay.Tests.Functional.Builder.Request;
 using NUnit.Framework;
 
-namespace Iyzipay.Tests
+namespace Iyzipay.Tests.Functional
 {
     public class CardManagementRetrieveCardTest : BaseTest
     {

@@ -4,6 +4,6 @@ namespace Iyzipay
 {
     public class IyzipayConstants
     {
-        public static readonly String CLIENT_VERSION = "iyzipay-dotnet-2.1.33";
+        public static readonly String CLIENT_VERSION = "iyzipay-dotnet-2.1.36";
     }
 }

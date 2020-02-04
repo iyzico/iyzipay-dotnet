@@ -4,6 +4,7 @@ using Iyzipay.Model;
 using Iyzipay.Model.V2;
 using Iyzipay.Model.V2.Subscription;
 using Iyzipay.Request.V2.Subscription;
+using Newtonsoft.Json;
 using NUnit.Framework;
 
 namespace Iyzipay.Tests.Functional
@@ -151,7 +152,8 @@ namespace Iyzipay.Tests.Functional
                     CardHolderName = "iyzico",
                     ExpireMonth = "12",
                     ExpireYear = "2029",
-                    Cvc = "123"
+                    Cvc = "123",
+                    RegisterConsumerCard = true
                 },
                 ConversationId = "123456789",
                 PricingPlanReferenceCode = planResource.ReferenceCode
@@ -239,7 +241,8 @@ namespace Iyzipay.Tests.Functional
                     CardHolderName = "iyzico",
                     ExpireMonth = "12",
                     ExpireYear = "2029",
-                    Cvc = "123"
+                    Cvc = "123",
+                    RegisterConsumerCard = true
                 },
                 ConversationId = "123456789",
                 PricingPlanReferenceCode = planResource.ReferenceCode,
@@ -424,7 +427,8 @@ namespace Iyzipay.Tests.Functional
                     CardHolderName = "iyzico",
                     ExpireMonth = "12",
                     ExpireYear = "2029",
-                    Cvc = "123"
+                    Cvc = "123",
+                    RegisterConsumerCard = true
                 },
                 ConversationId = "123456789",
                 PricingPlanReferenceCode = planResource.ReferenceCode,
@@ -534,7 +538,8 @@ namespace Iyzipay.Tests.Functional
                     CardHolderName = "iyzico",
                     ExpireMonth = "12",
                     ExpireYear = "2029",
-                    Cvc = "123"
+                    Cvc = "123",
+                    RegisterConsumerCard = true
                 },
                 ConversationId = "123456789",
                 PricingPlanReferenceCode = planResource.ReferenceCode,
@@ -623,7 +628,8 @@ namespace Iyzipay.Tests.Functional
                     CardHolderName = "iyzico",
                     ExpireMonth = "12",
                     ExpireYear = "2029",
-                    Cvc = "123"
+                    Cvc = "123",
+                    RegisterConsumerCard = true
                 },
                 ConversationId = "123456789",
                 PricingPlanReferenceCode = planResource.ReferenceCode,
@@ -721,7 +727,8 @@ namespace Iyzipay.Tests.Functional
                     CardHolderName = "iyzico",
                     ExpireMonth = "12",
                     ExpireYear = "2029",
-                    Cvc = "123"
+                    Cvc = "123",
+                    RegisterConsumerCard = true
                 },
                 ConversationId = "123456789",
                 PricingPlanReferenceCode = planResource.ReferenceCode,
@@ -825,7 +832,8 @@ namespace Iyzipay.Tests.Functional
                     CardHolderName = "iyzico",
                     ExpireMonth = "12",
                     ExpireYear = "2029",
-                    Cvc = "123"
+                    Cvc = "123",
+                    RegisterConsumerCard = true
                 },
                 ConversationId = "123456789",
                 PricingPlanReferenceCode = planResource.ReferenceCode,

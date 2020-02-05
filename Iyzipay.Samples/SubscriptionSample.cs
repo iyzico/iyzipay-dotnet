@@ -96,7 +96,8 @@ namespace Iyzipay.Samples
                     CardHolderName = "iyzico",
                     ExpireMonth = "12",
                     ExpireYear = "2029",
-                    Cvc = "123"
+                    Cvc = "123",
+                    RegisterConsumerCard = true
                 },
                 ConversationId = "123456789",
                 PricingPlanReferenceCode = "pricingPlanReferenceCode"

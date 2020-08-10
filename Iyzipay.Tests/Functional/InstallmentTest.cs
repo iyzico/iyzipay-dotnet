@@ -57,11 +57,11 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(Locale.TR.ToString(), installmentInfo.Locale);
             Assert.AreEqual("123456789", installmentInfo.ConversationId);
             Assert.NotNull(installmentInfo.InstallmentDetails[0]);
-            Assert.AreEqual("554960", installmentInfo.InstallmentDetails[0].BinNumber);
+            Assert.AreEqual("552659", installmentInfo.InstallmentDetails[0].BinNumber);
             Assert.AreEqual("100", installmentInfo.InstallmentDetails[0].Price);
             Assert.AreEqual("CREDIT_CARD", installmentInfo.InstallmentDetails[0].CardType);
             Assert.AreEqual("MASTER_CARD", installmentInfo.InstallmentDetails[0].CardAssociation);
-            Assert.AreEqual("Bonus", installmentInfo.InstallmentDetails[0].CardFamilyName);
+            Assert.AreEqual("World", installmentInfo.InstallmentDetails[0].CardFamilyName);
             Assert.AreEqual(1, installmentInfo.InstallmentDetails[0].Commercial);
             Assert.NotNull(installmentInfo.InstallmentDetails[0].InstallmentPrices[0].InstallmentNumber);
             Assert.NotNull(installmentInfo.InstallmentDetails[0].InstallmentPrices[0].Price);

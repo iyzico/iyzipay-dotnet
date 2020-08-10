@@ -13,6 +13,7 @@ namespace Iyzipay.Model
         public String CardFamily { get; set; }
         public String BankName { get; set; }
         public long BankCode { get; set; }
+        public int Commercial { get; set; }
 
         public static BinNumber Retrieve(RetrieveBinNumberRequest request, Options options)
         {

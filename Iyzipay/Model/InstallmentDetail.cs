@@ -6,6 +6,7 @@ namespace Iyzipay.Model
     public class InstallmentDetail
     {
         public String BinNumber { get; set; }
+        public int Commercial { get; set; }
         public String Price { get; set; }
         public String CardType { get; set; }
         public String CardAssociation { get; set; }

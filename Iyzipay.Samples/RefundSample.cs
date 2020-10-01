@@ -30,6 +30,31 @@ namespace Iyzipay.Samples
             Assert.IsNull(refund.ErrorGroup);
         }
 
+        [Test]
+        public void Should_Amount_Based_Refund()
+        {
+            CreateAmountBasedRefundRequest request = new CreateAmountBasedRefundRequest();
+            request.Locale = Locale.TR.ToString();
+            request.ConversationId = "--";
+            request.Ip = "85.34.78.112";
+            request.Price = "2";
+            request.PaymentId = "12425590";
+
+            Refund amountBasedRefund = Refund.CreateAmountBasedRefundRequest(request, options);
+
+            PrintResponse<Refund>(amountBasedRefund);
+
+            Assert.AreEqual(Status.SUCCESS.ToString(), amountBasedRefund.Status);
+            Assert.AreEqual("10", amountBasedRefund.Price);
+            Assert.AreEqual(Locale.TR.ToString(), amountBasedRefund.Locale);
+            Assert.AreEqual("--", amountBasedRefund.ConversationId);
+            Assert.IsNotNull(amountBasedRefund.SystemTime);
+            Assert.IsNull(amountBasedRefund.ErrorCode);
+            Assert.IsNull(amountBasedRefund.ErrorMessage);
+            Assert.IsNull(amountBasedRefund.ErrorGroup);
+        }
+
+
         public void Should_Refund_With_Reason_And_Description()
         {
             CreateRefundRequest request = new CreateRefundRequest();

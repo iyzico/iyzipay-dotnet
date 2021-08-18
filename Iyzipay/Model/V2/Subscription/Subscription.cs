@@ -11,6 +11,12 @@ namespace Iyzipay.Model.V2.Subscription
             return RestHttpClientV2.Create().Post<CheckoutFormResource>( uri, GetHttpHeadersWithRequestBody(request, uri ,options), request);
         }
         
+        public static SubscribeCheckoutFormResource RetrieveCheckoutFormResult(RetrieveCheckoutFormResultRequest request, Options options)
+        {
+            string uri = $"{options.BaseUrl}/v2/subscription/checkoutform/{request.Token}";
+            return RestHttpClientV2.Create().GetWithoutIyzipayResourceV2<SubscribeCheckoutFormResource>(uri, GetHttpHeadersWithUrlParams(request, uri ,options));
+        }
+        
         public static UpdateCardFormResource UpdateCard(UpdateCardRequest request, Options options)
         {
             string uri = $"{options.BaseUrl}/v2/subscription/card-update/checkoutform/initialize";

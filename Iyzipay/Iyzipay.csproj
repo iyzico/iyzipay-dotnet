@@ -4,7 +4,7 @@
     <TargetFrameworks>net45;netstandard2.0;netstandard1.3</TargetFrameworks>
     <AssemblyName>Iyzipay</AssemblyName>
     <RootNamespace>Iyzipay</RootNamespace>
-    <Version>2.1.39</Version>
+    <Version>2.1.40</Version>
     <Authors>Iyzico</Authors>
     <Description>iyzipay api .net client</Description>
     <PackageProjectUrl>https://github.com/iyzico/iyzipay-dotnet&lt;/projectUrl</PackageProjectUrl>
@@ -12,6 +12,7 @@
     <RepositoryUrl>https://github.com/iyzico/iyzipay-dotnet</RepositoryUrl>
     <PackageIconUrl>https://en.gravatar.com/userimage/100711999/40aab086bed8dabfb387c0772a73ea7e.png</PackageIconUrl>
     <Copyright>Copyright 2016</Copyright>
+    <PackageVersion>2.1.40</PackageVersion>
   </PropertyGroup>
 
 

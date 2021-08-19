@@ -1,6 +1,6 @@
 namespace Iyzipay.Model.V2.Subscription
 {
-    public class SubscriptionCreatedResource
+    public class SubscriptionCreatedResource: IyzipayResourceV2
     {
         public string ReferenceCode { get; set; }
         public string ParentReferenceCode { get; set; }

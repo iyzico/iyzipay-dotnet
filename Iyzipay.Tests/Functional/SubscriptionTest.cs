@@ -89,22 +89,83 @@ namespace Iyzipay.Tests.Functional
         [Test]
         public void Should_Get_CheckoutForm_With_Token()
         {
-            // TODO Token is required to get form result
-            string token = "1111111111111";
+            string randomString = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+            CreateProductRequest createProductRequest = new CreateProductRequest
+            {
+                Description = "product-description",
+                Locale = Locale.TR.ToString(),
+                Name = $"product-name-{randomString}",
+                ConversationId = "123456789"
+            };
+
+            ResponseData<ProductResource> createProductResponse = Product.Create(createProductRequest, _options);
+
+            CreatePlanRequest createPlanRequest = new CreatePlanRequest()
+            {
+                Locale = Locale.TR.ToString(),
+                Name = $"plan-name-{randomString}",
+                ConversationId = "123456789",
+                TrialPeriodDays = 3,
+                Price = "5.23",
+                CurrencyCode = Currency.TRY.ToString(),
+                PaymentInterval = PaymentInterval.WEEKLY.ToString(),
+                RecurrenceCount = 12,
+                PaymentIntervalCount = 1,
+                PlanPaymentType = PlanPaymentType.RECURRING.ToString(),
+                ProductReferenceCode = createProductResponse.Data.ReferenceCode
+            };
+
+            PlanResource planResource = Plan.Create(createPlanRequest, _options).Data;
+
+            InitializeCheckoutFormRequest request = new InitializeCheckoutFormRequest
+            {
+                Locale = Locale.TR.ToString(),
+                Customer = new CheckoutFormCustomer
+                {
+                    Email = $"iyzico-{randomString}@iyzico.com",
+                    Name = "customer-name",
+                    Surname = "customer-surname",
+                    BillingAddress = new Address
+                    {
+                        City = "İstanbul",
+                        Country = "Türkiye",
+                        Description = "billing-address-description",
+                        ContactName = "billing-contact-name",
+                        ZipCode = "010101"
+                    },
+                    ShippingAddress = new Address
+                    {
+                        City = "İstanbul",
+                        Country = "Türkiye",
+                        Description = "shipping-address-description",
+                        ContactName = "shipping-contact-name",
+                        ZipCode = "010102"
+                    },
+                    GsmNumber = "+905350000000",
+                    IdentityNumber = "55555555555",
+                },
+                CallbackUrl = "https://www.google.com",
+                ConversationId = "123456789",
+                PricingPlanReferenceCode = planResource.ReferenceCode,
+                SubscriptionInitialStatus = SubscriptionStatus.PENDING.ToString()
+            };
+
+            CheckoutFormResource checkoutForm = Subscription.InitializeCheckoutForm(request, _options);
+            
             RetrieveCheckoutFormResultRequest retrieveCheckoutFormResultRequest = new RetrieveCheckoutFormResultRequest
             {
                 Locale = Locale.TR.ToString(),
                 ConversationId = "123456789",
-                Token = token
+                Token = checkoutForm.Token
             };
 
             SubscribeCheckoutFormResource response =
                 Subscription.RetrieveCheckoutFormResult(retrieveCheckoutFormResultRequest, _options);
             
-            Assert.IsNotNull(response.ReferenceCode);
-            Assert.IsNotNull(response.SubscriptionStatus);
-            Assert.IsNotNull(response.ParentReferenceCode);
-            Assert.IsNotNull(response.PricingPlanReferenceCode);
+            Assert.IsNull(response.ParentReferenceCode);
+            Assert.AreEqual(response.Status, Status.FAILURE.ToString());
+            Assert.AreEqual(response.ErrorMessage, "Ödeme formu tamamlanmamış.");
+            Assert.AreEqual(response.StatusCode, 422);
         }
 
         [Test]

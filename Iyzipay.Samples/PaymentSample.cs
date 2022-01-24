@@ -90,6 +90,13 @@ namespace Iyzipay.Samples
             thirdBasketItem.Price = "0.2";
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
+            
+            Options options = new Options
+            {
+                ApiKey = "sandbox-XXXXXXXXXXXXXXXXXXX",
+                SecretKey = "sandbox-XXXXXXXXXXXXXXXXXXX",
+                BaseUrl = "https://sandbox-api.iyzipay.com"
+            };
 
             Payment payment = Payment.Create(request, options);
 
@@ -193,6 +200,13 @@ namespace Iyzipay.Samples
             thirdBasketItem.SubMerchantPrice = "0.18";
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
+            
+            Options options = new Options
+            {
+                ApiKey = "sandbox-XXXXXXXXXXXXXXXXXXX",
+                SecretKey = "sandbox-XXXXXXXXXXXXXXXXXXX",
+                BaseUrl = "https://sandbox-api.iyzipay.com"
+            };
 
             Payment payment = Payment.Create(request, options);
 
@@ -286,6 +300,13 @@ namespace Iyzipay.Samples
             thirdBasketItem.Price = "0.2";
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
+            
+            Options options = new Options
+            {
+                ApiKey = "sandbox-XXXXXXXXXXXXXXXXXXX",
+                SecretKey = "sandbox-XXXXXXXXXXXXXXXXXXX",
+                BaseUrl = "https://sandbox-api.iyzipay.com"
+            };
 
             Payment payment = Payment.Create(request, options);
 
@@ -308,6 +329,13 @@ namespace Iyzipay.Samples
             request.ConversationId = "123456789";
             request.PaymentId = "1";
             request.PaymentConversationId = "123456789";
+            
+            Options options = new Options
+            {
+                ApiKey = "sandbox-XXXXXXXXXXXXXXXXXXX",
+                SecretKey = "sandbox-XXXXXXXXXXXXXXXXXXX",
+                BaseUrl = "https://sandbox-api.iyzipay.com"
+            };
 
             Payment payment = Payment.Retrieve(request, options);
 

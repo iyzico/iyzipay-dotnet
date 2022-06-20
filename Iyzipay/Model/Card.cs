@@ -11,6 +11,7 @@ namespace Iyzipay.Model
         public String CardToken { get; set; }
         public String CardAlias { get; set; }
         public String BinNumber { get; set; }
+        public String LastFourDigits { get; set; }
         public String CardType { get; set; }
         public String CardAssociation { get; set; }
         public String CardFamily { get; set; }

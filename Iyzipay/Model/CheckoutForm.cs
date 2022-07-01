@@ -6,7 +6,7 @@ namespace Iyzipay.Model
     public class CheckoutForm : PaymentResource
     {
         public String Token { get; set; }
-        public String CallbackUrl { get; set; }      
+        public String CallbackUrl { get; set; }
 
         public static CheckoutForm Retrieve(RetrieveCheckoutFormRequest request, Options options)
         {

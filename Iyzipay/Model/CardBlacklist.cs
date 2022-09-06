@@ -21,7 +21,7 @@ namespace Iyzipay.Model
 
         public static CardBlacklist Retrieve(RetrieveCardBlacklistRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<CardBlacklist>(options.BaseUrl + "/cardstorage/blacklist/cards", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().Post<CardBlacklist>(options.BaseUrl + "/cardstorage/blacklist/card/retrieve", GetHttpHeaders(request, options), request);
         }
     }
 }

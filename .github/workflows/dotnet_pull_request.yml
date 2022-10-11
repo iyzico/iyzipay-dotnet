@@ -31,7 +31,7 @@ jobs:
         wget -q https://download.microsoft.com/download/D/7/A/D7A9E4E9-5D25-4F0C-B071-210CB8267943/dotnet-ubuntu-x64.1.1.2.tar.gz
         ls -l
         sudo mkdir -p $HOME/dotnet && sudo tar zxf dotnet-ubuntu-x64.1.1.2.tar.gz -C $HOME/dotnet
-        sudo export PATH=$PATH:$HOME/dotnet
+        export PATH=$PATH:$HOME/dotnet
         dotnet test -c Release Iyzipay.Tests -f netcoreapp1.1
     - name: NET45 Tests
       run: dotnet test -c Release Iyzipay.Tests -f net45

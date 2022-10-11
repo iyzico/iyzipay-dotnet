@@ -18,6 +18,7 @@ jobs:
     - name: Build
       run: |
         dotnet build -c Release Iyzipay
+        dotnet pack -c Release Iyzipay
         ls -l Iyzipay/bin/Release/*.nupkg
     - name: NET45 Tests
       run: dotnet test -c Release Iyzipay.Tests -f net45

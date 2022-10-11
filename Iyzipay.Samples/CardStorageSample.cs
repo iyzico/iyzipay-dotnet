@@ -34,7 +34,7 @@ namespace Iyzipay.Samples
             Assert.IsNull(card.ErrorCode);
             Assert.IsNull(card.ErrorMessage);
             Assert.IsNull(card.ErrorGroup);
-            Assert.AreEqual("552879", card.BinNumber);
+            Assert.AreEqual("55287900", card.BinNumber);
             Assert.AreEqual("card alias", card.CardAlias);
             Assert.AreEqual("CREDIT_CARD", card.CardType);
             Assert.AreEqual("MASTER_CARD", card.CardAssociation);
@@ -74,7 +74,7 @@ namespace Iyzipay.Samples
             Assert.IsNull(card.ErrorCode);
             Assert.IsNull(card.ErrorMessage);
             Assert.IsNull(card.ErrorGroup);
-            Assert.AreEqual("552879", card.BinNumber);
+            Assert.AreEqual("55287900", card.BinNumber);
             Assert.AreEqual("card alias", card.CardAlias);
             Assert.AreEqual("CREDIT_CARD", card.CardType);
             Assert.AreEqual("MASTER_CARD", card.CardAssociation);

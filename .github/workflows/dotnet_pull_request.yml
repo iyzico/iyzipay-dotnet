@@ -24,11 +24,12 @@ jobs:
         #sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
         #wget -nv https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
         #sudo dpkg -i packages-microsoft-prod.deb
-        sudo add-apt-repository universe
+        #sudo add-apt-repository universe
         #sudo apt-get install apt-transport-https
-        sudo apt-get update
+        #sudo apt-get update
         #sudo apt-get install dotnet-dev-1.1.14
-        
+        wget https://download.microsoft.com/download/D/7/A/D7A9E4E9-5D25-4F0C-B071-210CB8267943/dotnet-ubuntu-x64.1.1.2.tar.gz
+        ls -l
         dotnet test -c Release Iyzipay.Tests -f netcoreapp1.1
     - name: NET45 Tests
       run: dotnet test -c Release Iyzipay.Tests -f net45

@@ -17,11 +17,11 @@ jobs:
         dotnet-version: '2.1.x'
     - name: Build
       run: dotnet build -c Release Iyzipay
+    - name: NETCORE1 Tests
+      run: |
+        sudo apt-get install dotnet-dev-1.1.9
+        dotnet test -c Release Iyzipay.Tests -f netcoreapp1.1
     - name: NET45 Tests
       run: dotnet test -c Release Iyzipay.Tests -f net45
     - name: NETCORE2 Tests
       run: dotnet test -c Release Iyzipay.Tests -f netcoreapp2.0
-    - name: NETCORE1 Tests
-      run: |
-        sudo apt-get install dotnet-dev-1.1.2
-        dotnet test -c Release Iyzipay.Tests -f netcoreapp1.1

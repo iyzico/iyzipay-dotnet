@@ -28,9 +28,9 @@ jobs:
         #sudo apt-get install apt-transport-https
         #sudo apt-get update
         #sudo apt-get install dotnet-dev-1.1.14
-        wget -q https://aka.ms/dotnet-core-applaunch?framework=Microsoft.NETCore.App&framework_version=1.1.2&arch=x64&rid=ubuntu.18.04-x64
+        wget -q https://download.visualstudio.microsoft.com/download/pr/d3bbce9c-a15e-4224-a271-064546459e53/694a1c880d7140c80215acb5dceab3db/dotnet-ubuntu.18.04-x64.1.1.13.tar.gz
         ls -l
-        sudo mkdir -p $HOME/dotnet && sudo tar zxf dotnet-ubuntu-x64.1.1.2.tar.gz -C $HOME/dotnet
+        sudo mkdir -p $HOME/dotnet && sudo tar zxf dotnet-ubuntu.18.04-x64.1.1.13.tar.gz -C $HOME/dotnet
         export PATH=$PATH:$HOME/dotnet
         dotnet test -c Release Iyzipay.Tests -f netcoreapp1.1
     - name: NET45 Tests

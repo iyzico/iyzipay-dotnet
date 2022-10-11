@@ -1,0 +1,25 @@
+name: .NET for Test
+
+on:
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '2.1.400'
+    - name: Build
+      run: dotnet build -c Release Iyzipay
+    - name: NET45 Tests
+      run: dotnet test -c Release Iyzipay.Tests -f net45
+    - name: NETCORE2 Tests
+      run: dotnet test -c Release Iyzipay.Tests -f netcoreapp2.0
+    - name: NETCORE1 Tests
+      run: dotnet test -c Release Iyzipay.Tests -f netcoreapp1.1

@@ -19,6 +19,7 @@ jobs:
       run: dotnet build -c Release Iyzipay
     - name: NETCORE1 Tests
       run: |
+        sudo apt-get update
         sudo apt-get install dotnet-dev-1.1.9
         dotnet test -c Release Iyzipay.Tests -f netcoreapp1.1
     - name: NET45 Tests

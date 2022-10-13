@@ -17,23 +17,9 @@ jobs:
         dotnet-version: '2.1.x'
     - name: Build
       run: dotnet build -c Release Iyzipay
-    - name: NETCORE1 Tests
-      run: |
-        #curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-        #sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-        #sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
-        #wget -nv https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
-        #sudo dpkg -i packages-microsoft-prod.deb
-        #sudo add-apt-repository universe
-        #sudo apt-get install apt-transport-https
-        #sudo apt-get update
-        #sudo apt-get install dotnet-dev-1.1.14
-        wget -q https://download.visualstudio.microsoft.com/download/pr/d3bbce9c-a15e-4224-a271-064546459e53/694a1c880d7140c80215acb5dceab3db/dotnet-ubuntu.18.04-x64.1.1.13.tar.gz
-        ls -l
-        sudo mkdir -p $HOME/dotnet && sudo tar zxf dotnet-ubuntu.18.04-x64.1.1.13.tar.gz -C $HOME/dotnet
-        export PATH=$PATH:$HOME/dotnet
-        dotnet test -c Release Iyzipay.Tests -f netcoreapp1.1
     - name: NET45 Tests
       run: dotnet test -c Release Iyzipay.Tests -f net45
     - name: NETCORE2 Tests
       run: dotnet test -c Release Iyzipay.Tests -f netcoreapp2.0
+    #- name: NETCORE1 Tests
+      #run: dotnet test -c Release Iyzipay.Tests -f netcoreapp1.1

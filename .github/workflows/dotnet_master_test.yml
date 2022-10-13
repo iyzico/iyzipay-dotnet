@@ -1,0 +1,40 @@
+name: .NET
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-18.04
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '2.1.x'
+    - name: Change Version in Files
+      run: |
+        set -e
+        version_new="2.1."$((42+${{github.run_number}}))
+        version=$(cat VERSION)
+        sed -i -e 's/'$version'/'$version_new'/g' Iyzipay/IyzipayConstants.cs Iyzipay/Iyzipay.csproj VERSION
+        echo "ver=$version_new" >> $GITHUB_ENV
+    - name: Git Tasks
+      run: |
+        set -e
+        git config user.name "iyzico-ci"
+        git config user.email iyzico-ci@iyzico.com
+        git add .
+        git commit -m "Automatic commit by iyzico-ci v${{env.ver}}"
+        git push origin master
+        git tag -a v${{env.ver}} -m "Automatic tag by iyzico-ci v${{env.ver}}"
+        git push origin v${{env.ver}}
+    - name: Package
+      run: dotnet pack -c Release Iyzipay
+    - name: Publish package to nuget
+      run: dotnet nuget push Iyzipay/bin/Release/*.nupkg -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}

@@ -18,7 +18,7 @@ jobs:
     - name: Change Version in Files
       run: |
         set -e
-        version_new="2.1."$((39+${{github.run_number}}))
+        version_new="2.1."$((43+${{github.run_number}}))
         version=$(cat VERSION)
         sed -i -e 's/'$version'/'$version_new'/g' Iyzipay/IyzipayConstants.cs Iyzipay/Iyzipay.csproj VERSION
         echo "ver=$version_new" >> $GITHUB_ENV

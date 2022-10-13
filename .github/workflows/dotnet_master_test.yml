@@ -18,7 +18,7 @@ jobs:
     - name: Change Version in Files
       run: |
         set -e
-        version_new="2.1."$((42+${{github.run_number}}))
+        version_new="2.1."$((41+${{github.run_number}}))
         version=$(cat VERSION)
         sed -i -e 's/'$version'/'$version_new'/g' Iyzipay/IyzipayConstants.cs Iyzipay/Iyzipay.csproj VERSION
         echo "ver=$version_new" >> $GITHUB_ENV
@@ -32,6 +32,12 @@ jobs:
         git push origin master
         git tag -a v${{env.ver}} -m "Automatic tag by iyzico-ci v${{env.ver}}"
         git push origin v${{env.ver}}
+    - name: Github Release
+      run: |
+        echo "Creating GitHub release..."
+        create_asset_json=$( curl -# -XPOST -H "Authorization: token ${{secrets.TOKEN_GITHUB}}" -H "Content-Type: application/json" -H "Accept:application/json" --data-binary '{"tag_name": "v${{env.ver}}","target_commitish": "master","name": "iyzipay-dotnet ${{env.ver}}","body": "version ${{env.ver}}","draft": false,"prerelease": false}' https://api.github.com/repos/iyzico/iyzipay-dotnet/releases )
+        echo $create_asset_json
+        echo "GitHub release created!"
     - name: Package
       run: dotnet pack -c Release Iyzipay
     - name: Publish package to nuget

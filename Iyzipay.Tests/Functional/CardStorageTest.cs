@@ -32,7 +32,7 @@ namespace Iyzipay.Tests.Functional
             Assert.NotNull(card.SystemTime);
             Assert.AreEqual("123456789", card.ConversationId);
             Assert.AreEqual("email@email.com", card.Email);
-            Assert.AreEqual("552879", card.BinNumber);
+            Assert.AreEqual("55287900", card.BinNumber);
             Assert.AreEqual("card alias", card.CardAlias);
             Assert.AreEqual("CREDIT_CARD", card.CardType);
             Assert.AreEqual("MASTER_CARD", card.CardAssociation);
@@ -71,7 +71,7 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(Status.SUCCESS.ToString(), card.Status);
             Assert.NotNull(card.SystemTime);
             Assert.AreEqual("123456789", card.ConversationId);
-            Assert.AreEqual("552879", card.BinNumber);
+            Assert.AreEqual("55287900", card.BinNumber);
             Assert.AreEqual("card alias", card.CardAlias);
             Assert.AreEqual("CREDIT_CARD", card.CardType);
             Assert.AreEqual("MASTER_CARD", card.CardAssociation);

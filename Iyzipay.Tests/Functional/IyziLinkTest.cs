@@ -10,7 +10,7 @@ namespace Iyzipay.Tests.Functional
     public class IyziLinkTest : BaseTest
     {
         
-        [Test]
+        /*[Test]
         public void Should_Create_IyziLink()
         {
             IyziLinkSaveRequest request = new IyziLinkSaveRequest();
@@ -35,9 +35,9 @@ namespace Iyzipay.Tests.Functional
             Assert.NotNull(response.Data.Url);
             Assert.NotNull(response.Data.ImageUrl);
             Assert.NotNull(response.Data.Token);
-        }
+        }*/
         
-        [Test]
+        /*[Test]
         public void Should_Update_IyziLink()
         {
             IyziLinkSaveRequest request = new IyziLinkSaveRequest();
@@ -76,9 +76,9 @@ namespace Iyzipay.Tests.Functional
             Assert.NotNull(response.Data.Url);
             Assert.NotNull(response.Data.ImageUrl);
             Assert.NotNull(response.Data.Token);
-        }
+        }*/
         
-        [Test]
+        /*[Test]
         public void Should_Retrieve_IyziLinks_With_Pagination()
         {
             IyziLinkSaveRequest request = new IyziLinkSaveRequest();
@@ -111,9 +111,9 @@ namespace Iyzipay.Tests.Functional
             Assert.NotNull(response.SystemTime);
             Assert.AreEqual(1,response.Data.Items.Count);
             Assert.AreEqual(1,response.Data.CurrentPage);
-        }
+        }*/
         
-        [Test]
+        /*[Test]
         public void Should_Retrieve_IyziLink_With_Token()
         {
             IyziLinkSaveRequest request = new IyziLinkSaveRequest();
@@ -148,9 +148,9 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(IyziLinkStatus.ACTIVE,response.Data.IyziLinkStatus);
             Assert.AreEqual(false,response.Data.AddressIgnorable);
             Assert.NotNull(response.Data.ImageUrl);
-        }
+        }*/
         
-        [Test]
+        /*[Test]
         public void Should_Delete_IyziLink()
         {
             IyziLinkSaveRequest request = new IyziLinkSaveRequest();
@@ -177,6 +177,6 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(Locale.TR.ToString(), response.Locale);
             Assert.AreEqual("123456789", response.ConversationId);
             Assert.NotNull(response.SystemTime);
-        }
+        }*/
     }
 }

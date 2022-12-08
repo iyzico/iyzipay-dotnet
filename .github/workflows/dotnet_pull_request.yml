@@ -19,7 +19,3 @@ jobs:
       run: dotnet build -c Release Iyzipay
     - name: NET45 Tests
       run: dotnet test -c Release Iyzipay.Tests -f net45
-    - name: NETCORE2 Tests
-      run: dotnet test -c Release Iyzipay.Tests -f netcoreapp2.0
-    #- name: NETCORE1 Tests
-      #run: dotnet test -c Release Iyzipay.Tests -f netcoreapp1.1

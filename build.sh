@@ -20,15 +20,3 @@ echo Running NET45 Tests
 echo --------------------
 
 mono ./testrunner/NUnit.ConsoleRunner.*/tools/nunit3-console.exe ./Iyzipay.Tests/bin/Release/net45/Iyzipay.Tests.dll
-
-echo --------------------
-echo Running NETCORE2 Tests
-echo --------------------
-
-dotnet test ./Iyzipay.Tests -c Release -f netcoreapp2.0
-
-echo --------------------
-echo Running NETCORE1 Tests
-echo --------------------
-
-dotnet test ./Iyzipay.Tests -c Release -f netcoreapp1.1

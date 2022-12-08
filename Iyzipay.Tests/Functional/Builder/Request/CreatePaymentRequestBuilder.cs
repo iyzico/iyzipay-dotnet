@@ -32,13 +32,13 @@ namespace Iyzipay.Tests.Functional.Builder.Request
             return new CreatePaymentRequestBuilder();
         }
 
-        public new CreatePaymentRequestBuilder Locale(string locale)
+        public CreatePaymentRequestBuilder Locale(string locale)
         {
             base._locale = locale;
             return this;
         }
 
-        public new CreatePaymentRequestBuilder ConversationId(string conversationId)
+        public CreatePaymentRequestBuilder ConversationId(string conversationId)
         {
             base._conversationId = conversationId;
             return this;

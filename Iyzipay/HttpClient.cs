@@ -12,9 +12,6 @@ namespace Iyzipay
     {
 
         public HttpClient()
-#if NETSTANDARD
-            : base(new HttpClientHandler(){ SslProtocols = SslProtocols.Tls12 } )
-#endif
         {
         }
     }

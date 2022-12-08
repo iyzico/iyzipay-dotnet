@@ -8,8 +8,6 @@ You can sign up for an iyzico account at https://iyzico.com
 # Requirements
 One of the runtime environment is required from below
 * .NET Framework 4.5
-* .NET Core 1.1
-* .NET Core 2.0
 
 # Installation
 
@@ -22,13 +20,9 @@ Install-Package Iyzipay
  Or you can download the latest .dll from:  https://github.com/iyzico/iyzipay-dotnet/releases/latest
  
 For .NET Framework:
-* Newtonsoft.Json 8.0.2 from http://www.newtonsoft.com/json#
+* Newtonsoft.Json 13.0.2 from http://www.newtonsoft.com/json#
 
-For .NET Standard 1.3:
-* Newtonsoft.Json 11.0.2 from http://www.newtonsoft.com/json#
-* System.Security.Cryptography.Algorithms 4.3.0
-
-For .NET Standard 2.0:
+For .NET Standard 2.1:
 * Newtonsoft.Json 11.0.2 from http://www.newtonsoft.com/json#
 
 

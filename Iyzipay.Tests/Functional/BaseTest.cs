@@ -20,16 +20,7 @@ namespace Iyzipay.Tests.Functional
 
         protected void PrintResponse<T>(T resource)
         {
-#if RELEASE
-            return;
-#endif
-
-#if NETCORE1 || NETCORE2
-            TraceListener consoleListener = new TextWriterTraceListener(System.Console.Out);
-#else
             TraceListener consoleListener = new ConsoleTraceListener();
-#endif
-
             Trace.Listeners.Add(consoleListener);
             Trace.WriteLine(JsonConvert.SerializeObject(resource, new JsonSerializerSettings()
             {

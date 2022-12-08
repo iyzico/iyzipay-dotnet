@@ -13,10 +13,7 @@ namespace Iyzipay
         private static readonly HttpClient HttpClient;
         static RestHttpClientV2()
         {
-#if !NETSTANDARD
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-#endif
-            
             HttpClient = new HttpClient();
         }
 

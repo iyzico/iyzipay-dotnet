@@ -40,13 +40,13 @@ namespace Iyzipay
                 requestMessage.Headers.Add(header.Key, header.Value);
             }
             
-            HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result; 
+            HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
             return JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
         }
 
         public T Post<T>(String url, Dictionary<string,string> headers, BaseRequest request)
         { 
-            HttpRequestMessage requestMessage = new HttpRequestMessage
+            /*HttpRequestMessage requestMessage = new HttpRequestMessage
             {
                 Method = HttpMethod.Post, 
                 RequestUri = new Uri(url), 
@@ -59,7 +59,9 @@ namespace Iyzipay
             }
 
             HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
-            return JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+            return JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);*/
+
+            return HttpClient.SendHttpRequestAsync<T>(url, HttpMethod.Post, headers, request).Result;
         }
 
         public T Delete<T>(String url, Dictionary<string, string> headers, BaseRequest request)
@@ -76,7 +78,7 @@ namespace Iyzipay
                 requestMessage.Headers.Add(header.Key, header.Value);
             }
 
-            HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result; 
+            HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
             return JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
         }
 
@@ -94,7 +96,7 @@ namespace Iyzipay
                 requestMessage.Headers.Add(header.Key, header.Value);
             }
 
-            HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result; 
+            HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
             return JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
         }
     }

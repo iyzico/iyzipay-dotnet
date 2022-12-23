@@ -22,6 +22,7 @@ namespace Iyzipay.Tests.Functional.Builder.Request
         private string _callbackUrl;
         private string _posOrderId;
         private string _connectorName;
+        private LoyaltyReward _reward;
 
         private CreatePaymentRequestBuilder()
         {
@@ -140,6 +141,12 @@ namespace Iyzipay.Tests.Functional.Builder.Request
             return this;
         }
 
+        public CreatePaymentRequestBuilder Reward(LoyaltyReward reward)
+        {
+            _reward = reward;
+            return this;
+        }
+
         public CreatePaymentRequest Build()
         {
             CreatePaymentRequest createPaymentRequest = new CreatePaymentRequest();
@@ -161,6 +168,7 @@ namespace Iyzipay.Tests.Functional.Builder.Request
             createPaymentRequest.PosOrderId = _posOrderId;
             createPaymentRequest.ConnectorName = _connectorName;
             createPaymentRequest.Currency = _currency;
+            createPaymentRequest.Reward = _reward;
             return createPaymentRequest;
         }
 

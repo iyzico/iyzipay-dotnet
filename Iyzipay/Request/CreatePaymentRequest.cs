@@ -22,6 +22,7 @@ namespace Iyzipay.Request
         public String PosOrderId { get; set; }
         public String ConnectorName { get; set; }
         public String Currency { get; set; }
+        public LoyaltyReward Reward { get; set; }
 
         public override String ToPKIRequestString()
         {

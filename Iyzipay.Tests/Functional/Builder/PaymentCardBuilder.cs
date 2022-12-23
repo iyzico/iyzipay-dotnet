@@ -102,5 +102,27 @@ namespace Iyzipay.Tests.Functional.Builder
             _cardAlias = "card alias";
             return this;
         }
+
+        public PaymentCardBuilder BuildWithYKBCardCredentials()
+        {
+            _cardHolderName = "John Doe";
+            _cardNumber = "5451030000000000";
+            _expireYear = "2030";
+            _expireMonth = "09";
+            _cvc = "711";
+            _cardAlias = "card alias";
+            return this;
+        }
+
+        public PaymentCardBuilder BuildWithDenizBankCardCredentials()
+        {
+            _cardHolderName = "John Doe";
+            _cardNumber = "5549607159333771";
+            _expireYear = "2030";
+            _expireMonth = "09";
+            _cvc = "711";
+            _cardAlias = "card alias";
+            return this;
+        }
     }
 }

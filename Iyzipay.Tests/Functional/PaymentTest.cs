@@ -148,5 +148,73 @@ namespace Iyzipay.Tests.Functional
             Assert.Null(payment.ErrorGroup);
             Assert.NotNull(payment.BasketId);
         }
+
+        [Test]
+        public void Should_Create_Payment_With_Loyalty_Ykb_World()
+        {
+            LoyaltyReward reward = new LoyaltyReward();
+            reward.RewardUsage = 1;
+            reward.RewardAmount = "0.1";
+
+            CreatePaymentRequest request = CreatePaymentRequestBuilder.Create()
+                .StandardListingPayment()
+                .Reward(reward)
+                .PaymentCard(PaymentCardBuilder.Create().BuildWithYKBCardCredentials().Build())
+                .Build();
+
+            Payment payment = Payment.Create(request, _options);
+
+            PrintResponse(payment);
+
+            Assert.Null(payment.ConnectorName);
+            Assert.AreEqual(Locale.TR.ToString(), payment.Locale);
+            Assert.AreEqual(Status.SUCCESS.ToString(), payment.Status);
+            Assert.NotNull(payment.SystemTime);
+            Assert.Null(payment.ErrorCode);
+            Assert.Null(payment.ErrorMessage);
+            Assert.Null(payment.ErrorGroup);
+            Assert.NotNull(payment.PaymentId);
+            Assert.NotNull(payment.BasketId);
+            Assert.AreEqual(payment.Price, "1");
+            Assert.AreEqual(payment.PaidPrice, "1.1");
+            Assert.AreEqual(payment.IyziCommissionRateAmount.RemoveTrailingZeros(), "0.028875");
+            Assert.AreEqual(payment.IyziCommissionFee.RemoveTrailingZeros(), "0.25");
+            Assert.AreEqual(payment.MerchantCommissionRate.RemoveTrailingZeros(), "10");
+            Assert.AreEqual(payment.MerchantCommissionRateAmount.RemoveTrailingZeros(), "0.1");
+        }
+
+        [Test]
+        public void Should_Create_Payment_With_Loyalty_Denizbank_Bonus()
+        {
+            LoyaltyReward reward = new LoyaltyReward();
+            reward.RewardUsage = 1;
+            reward.RewardAmount = "0.1";
+
+            CreatePaymentRequest request = CreatePaymentRequestBuilder.Create()
+                .StandardListingPayment()
+                .Reward(reward)
+                .PaymentCard(PaymentCardBuilder.Create().BuildWithDenizBankCardCredentials().Build())
+                .Build();
+
+            Payment payment = Payment.Create(request, _options);
+
+            PrintResponse(payment);
+
+            Assert.Null(payment.ConnectorName);
+            Assert.AreEqual(Locale.TR.ToString(), payment.Locale);
+            Assert.AreEqual(Status.SUCCESS.ToString(), payment.Status);
+            Assert.NotNull(payment.SystemTime);
+            Assert.Null(payment.ErrorCode);
+            Assert.Null(payment.ErrorMessage);
+            Assert.Null(payment.ErrorGroup);
+            Assert.NotNull(payment.PaymentId);
+            Assert.NotNull(payment.BasketId);
+            Assert.AreEqual(payment.Price, "1");
+            Assert.AreEqual(payment.PaidPrice, "1.1");
+            Assert.AreEqual(payment.IyziCommissionRateAmount.RemoveTrailingZeros(), "0.028875");
+            Assert.AreEqual(payment.IyziCommissionFee.RemoveTrailingZeros(), "0.25");
+            Assert.AreEqual(payment.MerchantCommissionRate.RemoveTrailingZeros(), "10");
+            Assert.AreEqual(payment.MerchantCommissionRateAmount.RemoveTrailingZeros(), "0.1");
+        }
     }
 }

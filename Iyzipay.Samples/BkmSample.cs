@@ -17,6 +17,10 @@ namespace Iyzipay.Samples
             request.BasketId = "B67832";
             request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
             request.CallbackUrl = "https://www.merchant.com/callback";
+			
+			List<int> enabledInstallments = new List<int>();
+            enabledInstallments.Add(1);
+            request.EnabledInstallments = enabledInstallments;
 
             Buyer buyer = new Buyer();
             buyer.Id = "BY789";

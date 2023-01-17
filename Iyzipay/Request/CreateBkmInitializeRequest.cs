@@ -15,6 +15,7 @@ namespace Iyzipay.Request
         public Address BillingAddress { get; set; }
         public List<BasketItem> BasketItems { get; set; }
         public String CallbackUrl { get; set; }
+		public List<int> EnabledInstallments { get; set; }
 
         public override String ToPKIRequestString()
         {
@@ -29,6 +30,7 @@ namespace Iyzipay.Request
                 .AppendList("basketItems", BasketItems)
                 .Append("callbackUrl", CallbackUrl)
                 .Append("paymentSource", PaymentSource)
+				.AppendList("enabledInstallments", EnabledInstallments)
                 .GetRequestString();
         }
     }

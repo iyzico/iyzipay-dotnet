@@ -8,7 +8,7 @@ namespace Iyzipay.Model.V2.Transaction
         public static TransactionDetail Retrieve(RetrieveTransactionDetailRequest request, Options options)
         {
             String url;
-            if (request.PaymentId == null)
+            if (String.IsNullOrEmpty(request.PaymentId))
             {
                 url = options.BaseUrl
                 + "/v2/reporting/payment/details?paymentConversationId="

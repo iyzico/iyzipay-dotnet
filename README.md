@@ -1,6 +1,5 @@
 # iyzipay-dotnet
 
-[![Build Status](https://travis-ci.org/iyzico/iyzipay-dotnet.svg?branch=master)](https://travis-ci.org/iyzico/iyzipay-dotnet)
 [![NuGet](https://img.shields.io/nuget/v/Iyzipay.svg)](https://www.nuget.org/packages/Iyzipay/)
 
 You can sign up for an iyzico account at https://iyzico.com

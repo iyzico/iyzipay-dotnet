@@ -13,6 +13,9 @@ namespace Iyzipay.Model
         public String CardAlias { get; set; }
         public String CardToken { get; set; }
         public String CardUserKey { get; set; }
+        public String RegisterConsumerCard { get; set; }
+        public String ConsumerToken { get; set; }
+        public String UcsToken { get; set; }
 
         public String ToPKIRequestString()
         {
@@ -26,6 +29,9 @@ namespace Iyzipay.Model
                 .Append("cardAlias", CardAlias)
                 .Append("cardToken", CardToken)
                 .Append("cardUserKey", CardUserKey)
+                .Append("registerConsumerCard", RegisterConsumerCard)
+                .Append("consumerToken", ConsumerToken)
+                .Append("ucsToken", UcsToken)
                 .GetRequestString();
         }
     }

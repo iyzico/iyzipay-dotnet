@@ -23,6 +23,7 @@ namespace Iyzipay.Request
         public String ConnectorName { get; set; }
         public String Currency { get; set; }
         public LoyaltyReward Reward { get; set; }
+        public String GsmNumber { get; set; }
 
         public override String ToPKIRequestString()
         {
@@ -44,6 +45,7 @@ namespace Iyzipay.Request
                 .Append("posOrderId", PosOrderId)
                 .Append("connectorName", ConnectorName)
                 .Append("callbackUrl", CallbackUrl)
+                .Append("gsmNumber", GsmNumber)
                 .GetRequestString();
         }
     }

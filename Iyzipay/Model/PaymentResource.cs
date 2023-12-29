@@ -23,7 +23,7 @@ namespace Iyzipay.Model
         public String CardToken { get; set; }
         public String CardUserKey { get; set; }
         public String BinNumber { get; set; }
-	    public String LastFourDigits { get; set; }
+	public String LastFourDigits { get; set; }
         public String BasketId { get; set; }
         [JsonProperty(PropertyName = "itemTransactions")]
         public List<PaymentItem> PaymentItems { get; set; }
@@ -31,5 +31,6 @@ namespace Iyzipay.Model
         public String AuthCode { get; set; }
         public String HostReference { get; set; }
         public String Phase { get; set; }
+	public int? MdStatus { get; set; }
     }
 }

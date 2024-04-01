@@ -20,8 +20,11 @@ namespace Iyzipay.Samples
             request.Price = "1";
             request.Currency = Currency.TRY.ToString();
             request.AddressIgnorable = false;
-            request.SoldLimit = 1;
             request.InstallmentRequested = false;
+            request.StockEnabled = true;
+            request.StockCount = 1;
+            request.InstallmentRequested = false;
+            request.SourceType = "API";
             
             ResponseData<IyziLinkSave> response = IyziLink.Create(request, options);
             PrintResponse(response);
@@ -47,7 +50,9 @@ namespace Iyzipay.Samples
             updateRequest.Price = "10";
             updateRequest.Currency = Currency.TRY.ToString();
             updateRequest.AddressIgnorable = false;
-            updateRequest.SoldLimit = 1;
+            updateRequest.StockEnabled = true;
+            updateRequest.StockCount = 1;
+            updateRequest.SourceType = "API";
             updateRequest.InstallmentRequested = false;
             
             ResponseData<IyziLinkSave> response = IyziLink.Update("token", updateRequest, options);

@@ -10,7 +10,9 @@ namespace Iyzipay.Model.V2.Subscription
         public string IdentityNumber { get; set; }
         public string Email { get; set; }
         public string GsmNumber { get; set; }
-        public Address BillingAddress { get; set; }
+		public string ContactEmail { get; set; }
+		public string ContactGsmNumber { get; set; }
+		public Address BillingAddress { get; set; }
         public Address ShippingAddress { get; set; }
     }
 }

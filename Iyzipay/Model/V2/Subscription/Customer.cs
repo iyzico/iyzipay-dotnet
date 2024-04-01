@@ -16,7 +16,13 @@ namespace Iyzipay.Model.V2.Subscription
             string uri = $"{options.BaseUrl}/v2/subscription/customers/{request.CustomerReferenceCode}";
             return RestHttpClientV2.Create().Post<ResponseData<CustomerResource>>( uri, GetHttpHeadersWithRequestBody(request, uri ,options), request);
         }
-        
+
+        public static IyzipayResourceV2 Delete(DeleteCustomerRequest request, Options options)
+        {
+            string uri = $"{options.BaseUrl}/v2/subscription/customers/delete/{request.CustomerReferenceCode}";
+            return RestHttpClientV2.Create().Post<IyzipayResourceV2>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
+        }
+
         public static ResponseData<CustomerResource> Retrieve(RetrieveCustomerRequest request, Options options)
         {
             string uri = $"{options.BaseUrl}/v2/subscription/customers/{request.CustomerReferenceCode}";

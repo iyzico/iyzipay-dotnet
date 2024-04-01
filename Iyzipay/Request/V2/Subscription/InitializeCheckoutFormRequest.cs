@@ -2,7 +2,7 @@ using Iyzipay.Model;
 
 namespace Iyzipay.Request.V2.Subscription
 {
-    public class InitializeCheckoutFormRequest : BaseRequestV2
+	public class InitializeCheckoutFormRequest : BaseRequestV2
     {
         public string CallbackUrl { get; set; }
         public string PricingPlanReferenceCode { get; set; }

@@ -30,5 +30,30 @@ namespace Iyzipay.Samples
             Assert.IsNotNull(transactionReport.SystemTime);
             Assert.IsNull(transactionReport.ErrorMessage);
         }
+
+        [Test]
+        public void Should_Retrieve_ScrollTransactionReport()
+        {
+            RetrieveScrollTransactionReportRequest request = new RetrieveScrollTransactionReportRequest()
+            {
+                ConversationId = "123",
+                TransactionDate = "2018-06-28",
+                Locale = Locale.TR.ToString(),
+                DocumentScrollVoSortingOrder ="ASC",
+                LastId = 1689853839161
+            };
+
+            TransactionReport transactionReport = TransactionReport.Retrieve(request, options);
+
+            PrintResponse<TransactionReport>(transactionReport);
+
+            Assert.AreEqual(Status.SUCCESS.ToString(), transactionReport.Status);
+            Assert.AreEqual(200, transactionReport.StatusCode);
+            Assert.AreEqual("123", transactionReport.ConversationId);
+            Assert.AreEqual(1, transactionReport.CurrentPage);
+            Assert.IsNotNull(transactionReport.TotalPageCount);
+            Assert.IsNotNull(transactionReport.SystemTime);
+            Assert.IsNull(transactionReport.ErrorMessage);
+        }
     }
 }

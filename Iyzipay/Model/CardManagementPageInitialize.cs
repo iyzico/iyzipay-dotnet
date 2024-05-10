@@ -1,4 +1,5 @@
 using Iyzipay.Request;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
@@ -8,8 +9,8 @@ namespace Iyzipay.Model
         public string Token { get; set; }
         public string CardPageUrl { get; set; }
         
-        public static CardManagementPageInitialize Create(CreateCardManagementPageInitializeRequest request, Options options) {
-            return RestHttpClient.Create().Post<CardManagementPageInitialize>(options.BaseUrl + "/v1/card-management/pages", GetHttpHeaders(request, options), request);
+        public static Task<CardManagementPageInitialize> Create(CreateCardManagementPageInitializeRequest request, Options options) {
+            return RestHttpClient.Create().PostAsync<CardManagementPageInitialize>(options.BaseUrl + "/v1/card-management/pages", GetHttpHeaders(request, options), request);
         }
     }
     

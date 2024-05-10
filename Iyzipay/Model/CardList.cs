@@ -1,6 +1,7 @@
 ﻿using Iyzipay.Request;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
@@ -9,9 +10,9 @@ namespace Iyzipay.Model
         public String CardUserKey { get; set; }
         public List<Card> CardDetails { get; set; }
 
-        public static CardList Retrieve(RetrieveCardListRequest request, Options options)
+        public static Task<CardList> Retrieve(RetrieveCardListRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<CardList>(options.BaseUrl + "/cardstorage/cards", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().PostAsync<CardList>(options.BaseUrl + "/cardstorage/cards", GetHttpHeaders(request, options), request);
         }
     }
 }

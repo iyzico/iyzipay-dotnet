@@ -1,5 +1,6 @@
 ﻿using Iyzipay.Request;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
@@ -7,9 +8,9 @@ namespace Iyzipay.Model
     {
         public List<PayoutCompletedTransaction> PayoutCompletedTransactions { get; set; }
 
-        public static PayoutCompletedTransactionList Retrieve(RetrieveTransactionsRequest request, Options options)
+        public static Task<PayoutCompletedTransactionList> Retrieve(RetrieveTransactionsRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<PayoutCompletedTransactionList>(options.BaseUrl + "/reporting/settlement/payoutcompleted", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().PostAsync<PayoutCompletedTransactionList>(options.BaseUrl + "/reporting/settlement/payoutcompleted", GetHttpHeaders(request, options), request);
         }
     }
 }

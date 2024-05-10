@@ -1,5 +1,6 @@
 ﻿using Iyzipay.Request;
 using System;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
@@ -9,19 +10,19 @@ namespace Iyzipay.Model
         public String CardToken { get; set; }
         public String CardNumber { get; set; }
         public Boolean Blacklisted { get; set; }
-        public static CardBlacklist Create(CreateCardBlacklistRequest request, Options options)
+        public static Task<CardBlacklist> Create(CreateCardBlacklistRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<CardBlacklist>(options.BaseUrl + "/cardstorage/blacklist/card", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().PostAsync<CardBlacklist>(options.BaseUrl + "/cardstorage/blacklist/card", GetHttpHeaders(request, options), request);
         }
 
-        public static CardBlacklist Update(UpdateCardBlacklistRequest request, Options options)
+        public static Task<CardBlacklist> Update(UpdateCardBlacklistRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<CardBlacklist>(options.BaseUrl + "/cardstorage/blacklist/card/inactive", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().PostAsync<CardBlacklist>(options.BaseUrl + "/cardstorage/blacklist/card/inactive", GetHttpHeaders(request, options), request);
         }
 
-        public static CardBlacklist Retrieve(RetrieveCardBlacklistRequest request, Options options)
+        public static Task<CardBlacklist> Retrieve(RetrieveCardBlacklistRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<CardBlacklist>(options.BaseUrl + "/cardstorage/blacklist/card/retrieve", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().PostAsync<CardBlacklist>(options.BaseUrl + "/cardstorage/blacklist/card/retrieve", GetHttpHeaders(request, options), request);
         }
     }
 }

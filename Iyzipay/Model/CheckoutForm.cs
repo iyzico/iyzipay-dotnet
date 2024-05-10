@@ -1,5 +1,6 @@
 ﻿using Iyzipay.Request;
 using System;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
@@ -8,9 +9,9 @@ namespace Iyzipay.Model
         public String Token { get; set; }
         public String CallbackUrl { get; set; }      
 
-        public static CheckoutForm Retrieve(RetrieveCheckoutFormRequest request, Options options)
+        public static Task<CheckoutForm> Retrieve(RetrieveCheckoutFormRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<CheckoutForm>(options.BaseUrl + "/payment/iyzipos/checkoutform/auth/ecom/detail", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().PostAsync<CheckoutForm>(options.BaseUrl + "/payment/iyzipos/checkoutform/auth/ecom/detail", GetHttpHeaders(request, options), request);
         }
     }
 }

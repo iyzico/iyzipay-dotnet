@@ -1,5 +1,6 @@
 ﻿using Iyzipay.Request;
 using System;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
@@ -7,9 +8,9 @@ namespace Iyzipay.Model
     {
         public String PaymentTransactionId { get; set; }
 
-        public static Disapproval Create(CreateApprovalRequest request, Options options)
+        public static Task<Disapproval> Create(CreateApprovalRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<Disapproval>(options.BaseUrl + "/payment/iyzipos/item/disapprove", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().PostAsync<Disapproval>(options.BaseUrl + "/payment/iyzipos/item/disapprove", GetHttpHeaders(request, options), request);
         }
     }
 }

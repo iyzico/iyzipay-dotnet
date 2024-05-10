@@ -1,5 +1,6 @@
 ﻿using Iyzipay.Request;
 using System;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
@@ -9,9 +10,9 @@ namespace Iyzipay.Model
         public String CallbackUrl { get; set; }
         public String PaymentStatus { get; set; }
 
-        public static BasicBkm Retrieve(RetrieveBkmRequest request, Options options)
+        public static Task<BasicBkm> Retrieve(RetrieveBkmRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<BasicBkm>(options.BaseUrl + "/payment/bkm/auth/detail/basic", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().PostAsync<BasicBkm>(options.BaseUrl + "/payment/bkm/auth/detail/basic", GetHttpHeaders(request, options), request);
         }
     }
 }

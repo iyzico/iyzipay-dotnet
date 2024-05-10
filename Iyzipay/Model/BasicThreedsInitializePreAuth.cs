@@ -1,6 +1,7 @@
 ﻿using Iyzipay.Request;
 using System;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
@@ -9,9 +10,9 @@ namespace Iyzipay.Model
         [JsonProperty(PropertyName = "threeDSHtmlContent")]
         public String HtmlContent { get; set; }
 
-        public static BasicThreedsInitializePreAuth Create(CreateBasicPaymentRequest request, Options options)
+        public static async Task<BasicThreedsInitializePreAuth> Create(CreateBasicPaymentRequest request, Options options)
         {
-            BasicThreedsInitializePreAuth response = RestHttpClient.Create().Post<BasicThreedsInitializePreAuth>(options.BaseUrl + "/payment/3dsecure/initialize/preauth/basic", GetHttpHeaders(request, options), request);
+            BasicThreedsInitializePreAuth response = await RestHttpClient.Create().PostAsync<BasicThreedsInitializePreAuth>(options.BaseUrl + "/payment/3dsecure/initialize/preauth/basic", GetHttpHeaders(request, options), request);
 
             if (response != null)
             {

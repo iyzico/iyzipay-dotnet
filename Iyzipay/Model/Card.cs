@@ -1,5 +1,6 @@
 ﻿using Iyzipay.Request;
 using System;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
@@ -18,14 +19,14 @@ namespace Iyzipay.Model
         public long? CardBankCode { get; set; }
         public String CardBankName { get; set; }
 
-        public static Card Create(CreateCardRequest request, Options options)
+        public static Task<Card> Create(CreateCardRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<Card>(options.BaseUrl + "/cardstorage/card", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().PostAsync<Card>(options.BaseUrl + "/cardstorage/card", GetHttpHeaders(request, options), request);
         }
 
-        public static Card Delete(DeleteCardRequest request, Options options)
+        public static Task<Card> Delete(DeleteCardRequest request, Options options)
         {
-            return RestHttpClient.Create().Delete<Card>(options.BaseUrl + "/cardstorage/card", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().DeleteAsync<Card>(options.BaseUrl + "/cardstorage/card", GetHttpHeaders(request, options), request);
         }
     }
 }

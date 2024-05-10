@@ -1,5 +1,6 @@
 ﻿using Iyzipay.Request;
 using System;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
@@ -11,9 +12,9 @@ namespace Iyzipay.Model
         public string CardFamily { get; set; }
         public string Currency { get; set; }
 
-        public static LoyaltyInquiry Create(LoyaltyInquiryRequest request, Options options)
+        public static Task<LoyaltyInquiry> Create(LoyaltyInquiryRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<LoyaltyInquiry>(options.BaseUrl + "/payment/loyalty/inquire", GetHttpHeaders(request, options), request);
+            return RestHttpClient.Create().PostAsync<LoyaltyInquiry>(options.BaseUrl + "/payment/loyalty/inquire", GetHttpHeaders(request, options), request);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Iyzipay.Request;
 using System;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
@@ -8,9 +9,9 @@ namespace Iyzipay.Model
         public String HtmlContent { get; set; }
         public String Token { get; set; }
         
-        public static BkmInitialize Create(CreateBkmInitializeRequest request, Options options)
+        public static async Task<BkmInitialize> Create(CreateBkmInitializeRequest request, Options options)
         {
-            BkmInitialize response = RestHttpClient.Create().Post<BkmInitialize>(options.BaseUrl + "/payment/bkm/initialize", GetHttpHeaders(request, options), request);
+            BkmInitialize response = await RestHttpClient.Create().PostAsync<BkmInitialize>(options.BaseUrl + "/payment/bkm/initialize", GetHttpHeaders(request, options), request);
 
             if (response != null)
             {

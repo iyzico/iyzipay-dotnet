@@ -1,5 +1,6 @@
 ﻿using Iyzipay.Request;
 using System;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
@@ -12,9 +13,9 @@ namespace Iyzipay.Model
         public String AuthCode { get; set; }
         public String HostReference { get; set; }
 
-        public static Cancel Create(CreateCancelRequest request, Options options)
-        {
-            return RestHttpClient.Create().Post<Cancel>(options.BaseUrl + "/payment/cancel", GetHttpHeaders(request, options), request);
-        }
+        public static Task<Cancel> Create(CreateCancelRequest request, Options options)
+		{
+			return RestHttpClient.Create().PostAsync<Cancel>(options.BaseUrl + "/payment/cancel", GetHttpHeaders(request, options), request);
+		}
     }
 }

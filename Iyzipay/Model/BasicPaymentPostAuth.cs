@@ -2,11 +2,12 @@
 
 namespace Iyzipay.Model
 {
-    public class BasicPaymentPostAuth : BasicPaymentResource
-    {        
-        public static BasicPaymentPostAuth Create(CreatePaymentPostAuthRequest request, Options options)
-        {
-            return RestHttpClient.Create().Post<BasicPaymentPostAuth>(options.BaseUrl + "/payment/postauth/basic", GetHttpHeaders(request, options), request);
-        }
-    }
+	public class BasicPaymentPostAuth : BasicPaymentResource
+	{
+		public static BasicPaymentPostAuth Create(CreatePaymentPostAuthRequest request, Options options)
+		{
+			var uri = options.BaseUrl + "/payment/postauth/basic";
+			return RestHttpClientV2.Create().Post<BasicPaymentPostAuth>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
+		}
+	}
 }

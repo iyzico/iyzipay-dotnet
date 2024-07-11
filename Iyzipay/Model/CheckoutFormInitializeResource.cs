@@ -2,11 +2,11 @@
 
 namespace Iyzipay.Model
 {
-    public class CheckoutFormInitializeResource : IyzipayResource
+    public class CheckoutFormInitializeResource : IyzipayResourceV2
     {
-        public String Token { get; set; }
-        public String CheckoutFormContent { get; set; }
+        public string Token { get; set; }
+        public string CheckoutFormContent { get; set; }
         public long? TokenExpireTime { get; set; }
-        public String PaymentPageUrl { get; set; }
+        public string PaymentPageUrl { get; set; }
     }
 }

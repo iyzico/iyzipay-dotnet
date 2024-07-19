@@ -6,13 +6,17 @@ namespace Iyzipay.Samples
 {
 	public class SignatureVerification
 	{
-		public static string GenerateHash(string apiKey, string secretKey, string randomString, string dataToEncrypt)
+		public static string CalculateHmacSHA256Signature(string secretKey, string[] parameters)
 		{
-			HashAlgorithm algorithm = new HMACSHA256(Encoding.UTF8.GetBytes(secretKey));
-			byte[] computedHash = algorithm.ComputeHash(Encoding.UTF8.GetBytes(dataToEncrypt));
-			string computedHashAsHex = BitConverter.ToString(computedHash).Replace("-", "").ToLower();
-			string authorizationString = "apiKey:" + apiKey + "&randomKey:" + randomString + "&signature:" + computedHashAsHex;
-			return Convert.ToBase64String(Encoding.UTF8.GetBytes(authorizationString));
+			string dataToSign = string.Join(":", parameters);
+			byte[] keyBytes = Encoding.UTF8.GetBytes(secretKey);
+			byte[] dataBytes = Encoding.UTF8.GetBytes(dataToSign);
+
+			using (var hmac = new HMACSHA256(keyBytes))
+			{
+				byte[] hashBytes = hmac.ComputeHash(dataBytes);
+				return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+			}
 		}
 	}
 }

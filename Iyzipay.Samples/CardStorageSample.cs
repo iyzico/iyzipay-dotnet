@@ -1,13 +1,14 @@
 ﻿using Iyzipay.Model;
 using Iyzipay.Request;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Samples
 {
     public class CardStorageSample : Sample
     {
         [Test]
-        public void Should_Create_User_And_Add_Card()
+        public async Task Should_Create_User_And_Add_CardAsync()
         {
             CreateCardRequest request = new CreateCardRequest();
             request.Locale = Locale.TR.ToString();
@@ -23,7 +24,7 @@ namespace Iyzipay.Samples
             cardInformation.ExpireYear = "2030";
             request.Card = cardInformation;
 
-            Card card = Card.Create(request, options);
+            Card card = await Card.Create(request, options);
 
             PrintResponse<Card>(card);
 
@@ -48,7 +49,7 @@ namespace Iyzipay.Samples
         }
 
         [Test]
-        public void Should_Create_Card()
+        public async Task Should_Create_CardAsync()
         {
             CreateCardRequest request = new CreateCardRequest();
             request.Locale = Locale.TR.ToString();
@@ -63,7 +64,7 @@ namespace Iyzipay.Samples
             cardInformation.ExpireYear = "2030";
             request.Card = cardInformation;
 
-            Card card = Card.Create(request, options);
+            Card card = await Card.Create(request, options);
 
             PrintResponse<Card>(card);
 
@@ -88,7 +89,7 @@ namespace Iyzipay.Samples
         }
 
         [Test]
-        public void Should_Delete_Card()
+        public async Task Should_Delete_CardAsync()
         {
             DeleteCardRequest request = new DeleteCardRequest();
             request.Locale = Locale.TR.ToString();
@@ -96,7 +97,7 @@ namespace Iyzipay.Samples
             request.CardToken = "card token";
             request.CardUserKey = "card user key";
 
-            Card card = Card.Delete(request, options);
+            Card card = await Card.Delete(request, options);
 
             PrintResponse<Card>(card);
 
@@ -121,14 +122,14 @@ namespace Iyzipay.Samples
         }
 
         [Test]
-        public void Should_Retrieve_Cards()
+        public async Task Should_Retrieve_CardsAsync()
         {
             RetrieveCardListRequest request = new RetrieveCardListRequest();
             request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.CardUserKey = "card user key";
 
-            CardList cardList = CardList.Retrieve(request, options);
+            CardList cardList = await CardList.Retrieve(request, options);
 
             PrintResponse<CardList>(cardList);
 

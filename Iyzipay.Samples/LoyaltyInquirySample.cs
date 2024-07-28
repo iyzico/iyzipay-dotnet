@@ -2,13 +2,14 @@
 using Iyzipay.Request;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Samples
 {
     public class LoyaltyInquirySample : Sample
     {
         [Test]
-        public void Should_Inquire_Loyalty()
+        public async Task Should_Inquire_LoyaltyAsync()
         {
             LoyaltyInquiryRequest request = new LoyaltyInquiryRequest();
             LoyaltyPaymentCard loyaltyPaymentCard = new LoyaltyPaymentCard();
@@ -24,7 +25,7 @@ namespace Iyzipay.Samples
             request.PaymentCard = loyaltyPaymentCard;
             request.Currency = "TRY";
 
-            LoyaltyInquiry loyaltyInquiry = LoyaltyInquiry.Create(request, options);
+            LoyaltyInquiry loyaltyInquiry = await LoyaltyInquiry.Create(request, options);
 
             PrintResponse<LoyaltyInquiry>(loyaltyInquiry);
 

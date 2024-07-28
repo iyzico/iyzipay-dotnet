@@ -5,14 +5,15 @@ using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-	public class ThreedsInitialize : IyzipayResource
+	public class ThreedsInitialize : IyzipayResourceV2
 	{
 		[JsonProperty(PropertyName = "threeDSHtmlContent")]
-		public String HtmlContent { get; set; }
+		public string HtmlContent { get; set; }
 
 		public static async Task<ThreedsInitialize> Create(CreatePaymentRequest request, Options options)
 		{
-			ThreedsInitialize response = await RestHttpClient.Create().PostAsync<ThreedsInitialize>(options.BaseUrl + "/payment/3dsecure/initialize", GetHttpHeaders(request, options), request);
+			var uri = options.BaseUrl + "/payment/3dsecure/initialize";
+			ThreedsInitialize response = await RestHttpClientV2.Create().PostAsync<ThreedsInitialize>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
 
 			if (response != null)
 			{

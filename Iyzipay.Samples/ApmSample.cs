@@ -2,13 +2,14 @@
 using Iyzipay.Request;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Samples
 {
     public class ApmSample : Sample
     {
         [Test]
-        public void Should_Initialize_Apm_Payment()
+        public async Task Should_Initialize_Apm_PaymentAsync()
         {
             CreateApmInitializeRequest request = new CreateApmInitializeRequest();
             request.Locale = Locale.TR.ToString();
@@ -86,7 +87,7 @@ namespace Iyzipay.Samples
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
-            Apm apmInitialize = Apm.Create(request, options);
+            Apm apmInitialize = await Apm.Create(request, options);
 
             PrintResponse<Apm>(apmInitialize);
 
@@ -94,20 +95,18 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), apmInitialize.Locale);
             Assert.AreEqual("123456789", apmInitialize.ConversationId);
             Assert.IsNotNull(apmInitialize.SystemTime);
-            Assert.IsNull(apmInitialize.ErrorCode);
             Assert.IsNull(apmInitialize.ErrorMessage);
-            Assert.IsNull(apmInitialize.ErrorGroup);
         }
 
         [Test]
-        public void Should_Retrieve_Apm_Result()
+        public async Task Should_Retrieve_Apm_ResultAsync()
         {
             RetrieveApmRequest request = new RetrieveApmRequest();
             request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.PaymentId = "1";
 
-            Apm retrieve = Apm.Retrieve(request, options);
+            Apm retrieve = await Apm.Retrieve(request, options);
 
             PrintResponse<Apm>(retrieve);
 

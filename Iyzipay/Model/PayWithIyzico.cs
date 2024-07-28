@@ -11,7 +11,8 @@ namespace Iyzipay.Model
 
         public static Task<PayWithIyzico> Retrieve(RetrievePayWithIyzicoRequest request, Options options)
         {
-            return RestHttpClient.Create().PostAsync<PayWithIyzico>(options.BaseUrl + "/payment/iyzipos/checkoutform/auth/ecom/detail", GetHttpHeaders(request, options), request);
+            var uri = options.BaseUrl + "/payment/iyzipos/checkoutform/auth/ecom/detail";
+            return RestHttpClientV2.Create().PostAsync<PayWithIyzico>(uri, GetHttpHeadersWithRequestBody(request, uri,options), request);
         }
     }
 }

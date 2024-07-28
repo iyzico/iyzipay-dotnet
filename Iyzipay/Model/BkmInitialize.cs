@@ -4,20 +4,21 @@ using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    public class BkmInitialize : IyzipayResource
-    {
-        public String HtmlContent { get; set; }
-        public String Token { get; set; }
+    public class BkmInitialize : IyzipayResourceV2
+	{
+        public string HtmlContent { get; set; }
+        public string Token { get; set; }
         
         public static async Task<BkmInitialize> Create(CreateBkmInitializeRequest request, Options options)
         {
-            BkmInitialize response = await RestHttpClient.Create().PostAsync<BkmInitialize>(options.BaseUrl + "/payment/bkm/initialize", GetHttpHeaders(request, options), request);
+			var uri = options.BaseUrl + "/payment/bkm/initialize";
+			BkmInitialize response = await RestHttpClientV2.Create().PostAsync<BkmInitialize>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
 
-            if (response != null)
-            {
-                response.HtmlContent = DigestHelper.DecodeString(response.HtmlContent);
-            }
-            return response;
-        }
-    }
+			if (response != null)
+			{
+				response.HtmlContent = DigestHelper.DecodeString(response.HtmlContent);
+			}
+			return response;
+		}
+	}
 }

@@ -5,20 +5,21 @@ using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    public class ThreedsInitializePreAuth : IyzipayResource
-    {
-        [JsonProperty(PropertyName = "threeDSHtmlContent")]
-        public String HtmlContent { get; set; }
+	public class ThreedsInitializePreAuth : IyzipayResourceV2
+	{
+		[JsonProperty(PropertyName = "threeDSHtmlContent")]
+		public string HtmlContent { get; set; }
 
         public static async Task<ThreedsInitializePreAuth> Create(CreatePaymentRequest request, Options options)
         {
-            ThreedsInitializePreAuth response = await RestHttpClient.Create().PostAsync<ThreedsInitializePreAuth>(options.BaseUrl + "/payment/3dsecure/initialize/preauth", GetHttpHeaders(request, options), request);
+			var uri = options.BaseUrl + "/payment/3dsecure/initialize/preauth";
+			ThreedsInitializePreAuth response = await RestHttpClientV2.Create().PostAsync<ThreedsInitializePreAuth>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
 
-            if (response != null)
-            {
-                response.HtmlContent = DigestHelper.DecodeString(response.HtmlContent);
-            }
-            return response;
-        }
-    }
+			if (response != null)
+			{
+				response.HtmlContent = DigestHelper.DecodeString(response.HtmlContent);
+			}
+			return response;
+		}
+	}
 }

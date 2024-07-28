@@ -2,13 +2,14 @@
 using Iyzipay.Request;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Samples
 {
 	public class PaymentSample : Sample
 	{
 		[Test]
-		public void Should_Create_Payment()
+		public async Task Should_Create_PaymentAsync()
 		{
 			CreatePaymentRequest request = new CreatePaymentRequest();
 			request.Locale = Locale.TR.ToString();
@@ -91,7 +92,7 @@ namespace Iyzipay.Samples
 			basketItems.Add(thirdBasketItem);
 			request.BasketItems = basketItems;
 
-			Payment payment = Payment.Create(request, options);
+			Payment payment = await Payment.Create(request, options);
 
 			PrintResponse<Payment>(payment);
 
@@ -99,13 +100,11 @@ namespace Iyzipay.Samples
 			Assert.AreEqual(Locale.TR.ToString(), payment.Locale);
 			Assert.AreEqual("123456789", payment.ConversationId);
 			Assert.IsNotNull(payment.SystemTime);
-			Assert.IsNull(payment.ErrorCode);
 			Assert.IsNull(payment.ErrorMessage);
-			Assert.IsNull(payment.ErrorGroup);
 		}
 
 		[Test]
-		public void Should_Create_Payment_Usage_Reward()
+		public async Task Should_Create_Payment_Usage_RewardAsync()
 		{
 			CreatePaymentRequest request = new CreatePaymentRequest();
 			request.Locale = Locale.TR.ToString();
@@ -193,20 +192,18 @@ namespace Iyzipay.Samples
 			loyaltyReward.RewardUsage = 1;
 			request.Reward = loyaltyReward;
 			
-			Payment payment = Payment.Create(request, options);
+			Payment payment = await Payment.Create(request, options);
 			PrintResponse<Payment>(payment);
 
 			Assert.AreEqual(Status.SUCCESS.ToString(), payment.Status);
 			Assert.AreEqual(Locale.TR.ToString(), payment.Locale);
 			Assert.AreEqual("123456789", payment.ConversationId);
 			Assert.IsNotNull(payment.SystemTime);
-			Assert.IsNull(payment.ErrorCode);
 			Assert.IsNull(payment.ErrorMessage);
-			Assert.IsNull(payment.ErrorGroup);
 		}
 
 		[Test]
-		public void Should_Create_Marketplace_Payment()
+		public async Task Should_Create_Marketplace_PaymentAsync()
 		{
 			CreatePaymentRequest request = new CreatePaymentRequest();
 			request.Locale = Locale.TR.ToString();
@@ -295,7 +292,7 @@ namespace Iyzipay.Samples
 			basketItems.Add(thirdBasketItem);
 			request.BasketItems = basketItems;
 
-			Payment payment = Payment.Create(request, options);
+			Payment payment = await Payment.Create(request, options);
 
 			PrintResponse<Payment>(payment);
 
@@ -303,13 +300,11 @@ namespace Iyzipay.Samples
 			Assert.AreEqual(Locale.TR.ToString(), payment.Locale);
 			Assert.AreEqual("123456789", payment.ConversationId);
 			Assert.IsNotNull(payment.SystemTime);
-			Assert.IsNull(payment.ErrorCode);
 			Assert.IsNull(payment.ErrorMessage);
-			Assert.IsNull(payment.ErrorGroup);
 		}
 
 		[Test]
-		public void Should_Create_Payment_With_Registered_Card()
+		public async Task Should_Create_Payment_With_Registered_CardAsync()
 		{
 			CreatePaymentRequest request = new CreatePaymentRequest();
 			request.Locale = Locale.TR.ToString();
@@ -388,7 +383,7 @@ namespace Iyzipay.Samples
 			basketItems.Add(thirdBasketItem);
 			request.BasketItems = basketItems;
 
-			Payment payment = Payment.Create(request, options);
+			Payment payment = await Payment.Create(request, options);
 
 			PrintResponse<Payment>(payment);
 
@@ -396,13 +391,11 @@ namespace Iyzipay.Samples
 			Assert.AreEqual(Locale.TR.ToString(), payment.Locale);
 			Assert.AreEqual("123456789", payment.ConversationId);
 			Assert.IsNotNull(payment.SystemTime);
-			Assert.IsNull(payment.ErrorCode);
 			Assert.IsNull(payment.ErrorMessage);
-			Assert.IsNull(payment.ErrorGroup);
 		}
 
 		[Test]
-		public void Should_Create_Ucs_Payment_And_Register_Card()
+		public async Task Should_Create_Ucs_Payment_And_Register_CardAsync()
 		{
 			CreatePaymentRequest request = new CreatePaymentRequest();
 			request.Locale = Locale.TR.ToString();
@@ -486,7 +479,7 @@ namespace Iyzipay.Samples
 			basketItems.Add(thirdBasketItem);
 			request.BasketItems = basketItems;
 
-			Payment payment = Payment.Create(request, options);
+			Payment payment = await Payment.Create(request, options);
 
 			PrintResponse<Payment>(payment);
 
@@ -494,13 +487,11 @@ namespace Iyzipay.Samples
 			Assert.AreEqual(Locale.TR.ToString(), payment.Locale);
 			Assert.AreEqual("123456789", payment.ConversationId);
 			Assert.IsNotNull(payment.SystemTime);
-			Assert.IsNull(payment.ErrorCode);
 			Assert.IsNull(payment.ErrorMessage);
-			Assert.IsNull(payment.ErrorGroup);
 		}
 
 		[Test]
-		public void Should_Create_Ucs_Payment_With_Registered_Card()
+		public async Task Should_Create_Ucs_Payment_With_Registered_CardAsync()
 		{
 			CreatePaymentRequest request = new CreatePaymentRequest();
 			request.Locale = Locale.TR.ToString();
@@ -580,7 +571,7 @@ namespace Iyzipay.Samples
 			basketItems.Add(thirdBasketItem);
 			request.BasketItems = basketItems;
 
-			Payment payment = Payment.Create(request, options);
+			Payment payment = await Payment.Create(request, options);
 
 			PrintResponse<Payment>(payment);
 
@@ -588,13 +579,11 @@ namespace Iyzipay.Samples
 			Assert.AreEqual(Locale.TR.ToString(), payment.Locale);
 			Assert.AreEqual("123456789", payment.ConversationId);
 			Assert.IsNotNull(payment.SystemTime);
-			Assert.IsNull(payment.ErrorCode);
 			Assert.IsNull(payment.ErrorMessage);
-			Assert.IsNull(payment.ErrorGroup);
 		}
 
 		[Test]
-		public void Should_Retrieve_Payment_Result()
+		public async Task Should_Retrieve_Payment_ResultAsync()
 		{
 			RetrievePaymentRequest request = new RetrievePaymentRequest();
 			request.Locale = Locale.TR.ToString();
@@ -602,7 +591,7 @@ namespace Iyzipay.Samples
 			request.PaymentId = "1";
 			request.PaymentConversationId = "123456789";
 
-			Payment payment = Payment.Retrieve(request, options);
+			Payment payment = await Payment.Retrieve(request, options);
 
 			PrintResponse<Payment>(payment);
 
@@ -610,9 +599,7 @@ namespace Iyzipay.Samples
 			Assert.AreEqual(Locale.TR.ToString(), payment.Locale);
 			Assert.AreEqual("123456789", payment.ConversationId);
 			Assert.IsNotNull(payment.SystemTime);
-			Assert.IsNull(payment.ErrorCode);
 			Assert.IsNull(payment.ErrorMessage);
-			Assert.IsNull(payment.ErrorGroup);
 		}
 
 	}

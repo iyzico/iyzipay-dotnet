@@ -4,14 +4,16 @@ using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    public class CheckoutForm : PaymentResource
-    {
-        public String Token { get; set; }
-        public String CallbackUrl { get; set; }      
+	public class CheckoutForm : PaymentResource
+	{
+		public string Token { get; set; }
+		public string CallbackUrl { get; set; }
 
         public static Task<CheckoutForm> Retrieve(RetrieveCheckoutFormRequest request, Options options)
         {
-            return RestHttpClient.Create().PostAsync<CheckoutForm>(options.BaseUrl + "/payment/iyzipos/checkoutform/auth/ecom/detail", GetHttpHeaders(request, options), request);
+			var uri = options.BaseUrl + "/payment/iyzipos/checkoutform/auth/ecom/detail";
+
+			return RestHttpClientV2.Create().PostAsync<CheckoutForm>(options.BaseUrl + uri, GetHttpHeadersWithRequestBody(request,uri, options), request);
         }
     }
 }

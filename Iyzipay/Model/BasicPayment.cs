@@ -3,11 +3,12 @@ using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    public class BasicPayment : BasicPaymentResource
-    {
-        public static Task<BasicPayment> Create(CreateBasicPaymentRequest request, Options options)
-        {
-            return RestHttpClient.Create().PostAsync<BasicPayment>(options.BaseUrl + "/payment/auth/basic", GetHttpHeaders(request, options), request);
-        }
-    }
+	public class BasicPayment : BasicPaymentResource
+	{
+		public static Task<BasicPayment> Create(CreateBasicPaymentRequest request, Options options)
+		{
+			var uri = options.BaseUrl + "/payment/auth/basic";
+			return RestHttpClientV2.Create().PostAsync<BasicPayment>(options.BaseUrl + uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
+		}
+	}
 }

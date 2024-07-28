@@ -1,13 +1,14 @@
 ﻿using Iyzipay.Request;
 using Iyzipay.Model;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Samples
 {
     public class SubMerchantSample : Sample
     {
         [Test]
-        public void Should_Create_Personal_Sub_Merchant()
+        public async Task Should_Create_Personal_Sub_MerchantAsync()
         {
             CreateSubMerchantRequest request = new CreateSubMerchantRequest();
             request.Locale = Locale.TR.ToString();
@@ -24,7 +25,7 @@ namespace Iyzipay.Samples
             request.IdentityNumber = "31300864726";
             request.Currency = Currency.TRY.ToString();
 
-            SubMerchant subMerchant = SubMerchant.Create(request, options);
+            SubMerchant subMerchant = await SubMerchant.Create(request, options);
 
             PrintResponse<SubMerchant>(subMerchant);
 
@@ -38,7 +39,7 @@ namespace Iyzipay.Samples
         }
 
         [Test]
-        public void Should_Create_Private_Sub_Merchant()
+        public async Task Should_Create_Private_Sub_MerchantAsync()
         {
             CreateSubMerchantRequest request = new CreateSubMerchantRequest();
             request.Locale = Locale.TR.ToString();
@@ -55,7 +56,7 @@ namespace Iyzipay.Samples
             request.IdentityNumber = "31300864726";
             request.Currency = Currency.TRY.ToString();
 
-            SubMerchant subMerchant = SubMerchant.Create(request, options);
+            SubMerchant subMerchant = await SubMerchant.Create(request, options);
 
             PrintResponse<SubMerchant>(subMerchant);
 
@@ -69,7 +70,7 @@ namespace Iyzipay.Samples
         }
 
         [Test]
-        public void Should_Create_Limited_Company_Sub_Merchant()
+        public async Task Should_Create_Limited_Company_Sub_MerchantAsync()
         {
             CreateSubMerchantRequest request = new CreateSubMerchantRequest();
             request.Locale = Locale.TR.ToString();
@@ -86,7 +87,7 @@ namespace Iyzipay.Samples
             request.Iban = "TR180006200119000006672315";
             request.Currency = Currency.TRY.ToString();
 
-            SubMerchant subMerchant = SubMerchant.Create(request, options);
+            SubMerchant subMerchant = await SubMerchant.Create(request, options);
 
             PrintResponse<SubMerchant>(subMerchant);
 
@@ -100,7 +101,7 @@ namespace Iyzipay.Samples
         }
 
         [Test]
-        public void Should_Update_Personal_Sub_Merchant()
+        public async Task Should_Update_Personal_Sub_MerchantAsync()
         {
             UpdateSubMerchantRequest request = new UpdateSubMerchantRequest();
             request.Locale = Locale.TR.ToString();
@@ -116,7 +117,7 @@ namespace Iyzipay.Samples
             request.IdentityNumber = "31300864726";
             request.Currency = Currency.TRY.ToString();
 
-            SubMerchant subMerchant = SubMerchant.Update(request, options);
+            SubMerchant subMerchant = await SubMerchant.Update(request, options);
 
             PrintResponse<SubMerchant>(subMerchant);
 
@@ -130,7 +131,7 @@ namespace Iyzipay.Samples
         }
 
         [Test]
-        public void Should_Update_Private_Sub_Merchant()
+        public async Task Should_Update_Private_Sub_MerchantAsync()
         {
             UpdateSubMerchantRequest request = new UpdateSubMerchantRequest();
             request.Locale = Locale.TR.ToString();
@@ -146,7 +147,7 @@ namespace Iyzipay.Samples
             request.IdentityNumber = "31300864726";
             request.Currency = Currency.TRY.ToString();
 
-            SubMerchant subMerchant = SubMerchant.Update(request, options);
+            SubMerchant subMerchant = await SubMerchant.Update(request, options);
 
             PrintResponse<SubMerchant>(subMerchant);
 
@@ -160,7 +161,7 @@ namespace Iyzipay.Samples
         }
 
         [Test]
-        public void Should_Update_Limited_Company_Sub_Merchant()
+        public async Task Should_Update_Limited_Company_Sub_MerchantAsync()
         {
             UpdateSubMerchantRequest request = new UpdateSubMerchantRequest();
             request.Locale = Locale.TR.ToString();
@@ -176,7 +177,7 @@ namespace Iyzipay.Samples
             request.Iban = "TR180006200119000006672315";
             request.Currency = Currency.TRY.ToString();
 
-            SubMerchant subMerchant = SubMerchant.Update(request, options);
+            SubMerchant subMerchant = await SubMerchant.Update(request, options);
 
             PrintResponse<SubMerchant>(subMerchant);
 
@@ -190,14 +191,14 @@ namespace Iyzipay.Samples
         }
 
         [Test]
-        public void Should_Retrieve_Sub_Merchant()
+        public async Task Should_Retrieve_Sub_MerchantAsync()
         {
             RetrieveSubMerchantRequest request = new RetrieveSubMerchantRequest();
             request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.SubMerchantExternalId = "AS49224";
 
-            SubMerchant subMerchant = SubMerchant.Retrieve(request, options);
+            SubMerchant subMerchant = await SubMerchant.Retrieve(request, options);
 
             PrintResponse<SubMerchant>(subMerchant);
 

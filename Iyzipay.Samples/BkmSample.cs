@@ -2,13 +2,14 @@
 using Iyzipay.Model;
 using System.Collections.Generic;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Samples
 {
     public class BkmSample : Sample
     {
         [Test]
-        public void Should_Initialize_Bkm()
+        public async Task Should_Initialize_BkmAsync()
         {
             CreateBkmInitializeRequest request = new CreateBkmInitializeRequest();
             request.Locale = Locale.TR.ToString();
@@ -83,7 +84,7 @@ namespace Iyzipay.Samples
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
-            BkmInitialize bkmInitialize = BkmInitialize.Create(request, options);
+            BkmInitialize bkmInitialize = await BkmInitialize.Create(request, options);
 
             PrintResponse<BkmInitialize>(bkmInitialize);
 
@@ -91,21 +92,19 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), bkmInitialize.Locale);
             Assert.AreEqual("123456789", bkmInitialize.ConversationId);
             Assert.IsNotNull(bkmInitialize.SystemTime);
-            Assert.IsNull(bkmInitialize.ErrorCode);
             Assert.IsNull(bkmInitialize.ErrorMessage);
-            Assert.IsNull(bkmInitialize.ErrorGroup);
             Assert.IsNotNull(bkmInitialize.HtmlContent);
         }
 
         [Test]
-        public void Should_Retrieve_Bkm_Result()
+        public async Task Should_Retrieve_Bkm_ResultAsync()
         {
             RetrieveBkmRequest request = new RetrieveBkmRequest();
             request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.Token = "token";
 
-            Bkm bkm = Bkm.Retrieve(request, options);
+            Bkm bkm = await Bkm.Retrieve(request, options);
 
             PrintResponse<Bkm>(bkm);
 
@@ -113,9 +112,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), bkm.Locale);
             Assert.AreEqual("123456789", bkm.ConversationId);
             Assert.IsNotNull(bkm.SystemTime);
-            Assert.IsNull(bkm.ErrorCode);
             Assert.IsNull(bkm.ErrorMessage);
-            Assert.IsNull(bkm.ErrorGroup);
         }
     }
 }

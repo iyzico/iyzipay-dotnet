@@ -7,7 +7,8 @@ namespace Iyzipay.Model
     {
         public static Task<CheckoutFormInitialize> Create(CreateCheckoutFormInitializeRequest request, Options options)
         {
-            return RestHttpClient.Create().PostAsync<CheckoutFormInitialize>(options.BaseUrl + "/payment/iyzipos/checkoutform/initialize/auth/ecom", GetHttpHeaders(request, options), request);
+            var uri = options.BaseUrl + "/payment/iyzipos/checkoutform/initialize/auth/ecom";
+            return RestHttpClientV2.Create().PostAsync<CheckoutFormInitialize>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
         }
     }
 }

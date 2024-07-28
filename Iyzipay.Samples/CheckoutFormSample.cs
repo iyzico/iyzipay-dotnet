@@ -2,13 +2,14 @@
 using Iyzipay.Request;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Samples
 {
     public class CheckoutFormSample : Sample
     {
         [Test]
-        public void Should_Initialize_Checkout_Form()
+        public async Task Should_Initialize_Checkout_FormAsync()
         {
             CreateCheckoutFormInitializeRequest request = new CreateCheckoutFormInitializeRequest();
             request.Locale = Locale.TR.ToString();
@@ -88,7 +89,7 @@ namespace Iyzipay.Samples
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
-            CheckoutFormInitialize checkoutFormInitialize = CheckoutFormInitialize.Create(request, options);
+            CheckoutFormInitialize checkoutFormInitialize = await CheckoutFormInitialize.Create(request, options);
 
             PrintResponse<CheckoutFormInitialize>(checkoutFormInitialize);
 
@@ -96,21 +97,19 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), checkoutFormInitialize.Locale);
             Assert.AreEqual("123456789", checkoutFormInitialize.ConversationId);
             Assert.IsNotNull(checkoutFormInitialize.SystemTime);
-            Assert.IsNull(checkoutFormInitialize.ErrorCode);
             Assert.IsNull(checkoutFormInitialize.ErrorMessage);
-            Assert.IsNull(checkoutFormInitialize.ErrorGroup);
             Assert.IsNotNull(checkoutFormInitialize.CheckoutFormContent);
             Assert.IsNotNull(checkoutFormInitialize.PaymentPageUrl);
         }
 
         [Test]
-        public void Should_Retrieve_Checkout_Form_Result()
+        public async Task Should_Retrieve_Checkout_Form_ResultAsync()
         {
             RetrieveCheckoutFormRequest request = new RetrieveCheckoutFormRequest();
             request.ConversationId = "123456789";
             request.Token = "token";
 
-            CheckoutForm checkoutForm = CheckoutForm.Retrieve(request, options);
+            CheckoutForm checkoutForm = await CheckoutForm.Retrieve(request, options);
 
             PrintResponse<CheckoutForm>(checkoutForm);
 
@@ -118,9 +117,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), checkoutForm.Locale);
             Assert.AreEqual("123456789", checkoutForm.ConversationId);
             Assert.IsNotNull(checkoutForm.SystemTime);
-            Assert.IsNull(checkoutForm.ErrorCode);
             Assert.IsNull(checkoutForm.ErrorMessage);
-            Assert.IsNull(checkoutForm.ErrorGroup);
         }
     }
 }

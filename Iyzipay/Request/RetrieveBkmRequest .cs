@@ -2,16 +2,8 @@
 
 namespace Iyzipay.Request
 {
-    public class RetrieveBkmRequest : BaseRequest
+    public class RetrieveBkmRequest : BaseRequestV2
     {
-        public String Token { set; get; }
-
-        public override String ToPKIRequestString()
-        {
-            return ToStringRequestBuilder.NewInstance()
-                .AppendSuper(base.ToPKIRequestString())
-                .Append("token", Token)
-                .GetRequestString();
-        }
+        public string Token { set; get; }
     }
 }

@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Iyzipay
 {
@@ -58,6 +59,26 @@ namespace Iyzipay
 
 			HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
 			var response = JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+			response.AppendWithHttpResponseHeaders(httpResponseMessage);
+			return response;
+		}
+		public async Task<T> PostAsync<T>(String url, Dictionary<string, string> headers, BaseRequestV2 request) where T : IyzipayResourceV2
+		{
+			HttpRequestMessage requestMessage = new HttpRequestMessage
+			{
+				Method = HttpMethod.Post,
+				RequestUri = new Uri(url),
+				Content = JsonBuilder.ToJsonString(request)
+			};
+
+			foreach (var header in headers)
+			{
+				requestMessage.Headers.Add(header.Key, header.Value);
+			}
+
+			HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
+			var readAsString = await httpResponseMessage.Content.ReadAsStringAsync();
+			var response = JsonConvert.DeserializeObject<T>(readAsString);
 			response.AppendWithHttpResponseHeaders(httpResponseMessage);
 			return response;
 		}

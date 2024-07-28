@@ -1,20 +1,21 @@
 ﻿using Iyzipay.Request;
 using Iyzipay.Model;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Samples
 {
     public class RetrievePayoutTransactionsSample : Sample
     {
         [Test]
-        public void Should_Retrieve_Payout_Completed_Transactions()
+        public async Task Should_Retrieve_Payout_Completed_TransactionsAsync()
         {
             RetrieveTransactionsRequest request = new RetrieveTransactionsRequest();
             request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.Date = "2015-01-22 19:13:00";
 
-            PayoutCompletedTransactionList payoutCompletedTransactionList = PayoutCompletedTransactionList.Retrieve(request, options);
+            PayoutCompletedTransactionList payoutCompletedTransactionList = await PayoutCompletedTransactionList.Retrieve(request, options);
 
             PrintResponse<PayoutCompletedTransactionList>(payoutCompletedTransactionList);
 
@@ -28,14 +29,14 @@ namespace Iyzipay.Samples
         }
 
         [Test]
-        public void Should_Retrieve_Bounced_Bank_Transfers()
+        public async Task Should_Retrieve_Bounced_Bank_TransfersAsync()
         {
             RetrieveTransactionsRequest request = new RetrieveTransactionsRequest();
             request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.Date = "2015-06-02 19:13:00";
 
-            BouncedBankTransferList bouncedBankTransferList = BouncedBankTransferList.Retrieve(request, options);
+            BouncedBankTransferList bouncedBankTransferList = await BouncedBankTransferList.Retrieve(request, options);
 
             PrintResponse<BouncedBankTransferList>(bouncedBankTransferList);
 

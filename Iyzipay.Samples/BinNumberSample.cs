@@ -1,20 +1,21 @@
 ﻿using Iyzipay.Request;
 using Iyzipay.Model;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Samples
 {
     public class BinNumberSample : Sample
     {
         [Test]
-        public void Should_Retrieve_Bin_Number()
+        public async Task Should_Retrieve_Bin_NumberAsync()
         {
             RetrieveBinNumberRequest request = new RetrieveBinNumberRequest();
             request.Locale = Locale.TR.ToString();
             request.ConversationId = "123456789";
             request.BinNumber = "554960";
 
-            BinNumber binNumber = BinNumber.Retrieve(request, options);
+            BinNumber binNumber = await BinNumber.Retrieve(request, options);
 
             PrintResponse<BinNumber>(binNumber);
 

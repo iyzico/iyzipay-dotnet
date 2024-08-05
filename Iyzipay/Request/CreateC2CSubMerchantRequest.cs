@@ -2,29 +2,15 @@
 
 namespace Iyzipay.Request
 {
-	public class CreateC2CSubMerchantRequest : BaseRequest
+	public class CreateC2CSubMerchantRequest : BaseRequestV2
     {
-        public String Name { get; set; }
-        public String Surname { get; set; }
-        public String Email { get; set; }
-        public String GsmNumber { get; set; }
-        public String TckNo { get; set; }
-        public String BirthDate { get; set; }
-        public String Address { get; set; }
-        public String ExternalId { get; set; }
-
-        public override String ToPKIRequestString()
-        {
-            return ToStringRequestBuilder.NewInstance()
-                .AppendSuper(base.ToPKIRequestString())
-                .Append("name", Name)
-                .Append("surname", Surname)
-                .Append("gsmNumber", GsmNumber)
-                .Append("tckNo", TckNo)
-                .Append("birthDate", BirthDate)
-                .Append("address", Address)
-                .Append("externalId", ExternalId)
-                .GetRequestString();
-        }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Email { get; set; }
+        public string GsmNumber { get; set; }
+        public string TckNo { get; set; }
+        public string BirthDate { get; set; }
+        public string Address { get; set; }
+        public string ExternalId { get; set; }
     }
 }

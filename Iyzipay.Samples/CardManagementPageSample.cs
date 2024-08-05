@@ -39,9 +39,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual("123456789", cardManagementPageInitialize.ConversationId);
             Assert.NotNull(cardManagementPageInitialize.Token);
             Assert.NotNull(cardManagementPageInitialize.CardPageUrl);
-            Assert.Null(cardManagementPageInitialize.ErrorCode);
             Assert.Null(cardManagementPageInitialize.ErrorMessage);
-            Assert.Null(cardManagementPageInitialize.ErrorGroup);
         }
     }
 }

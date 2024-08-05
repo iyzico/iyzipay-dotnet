@@ -3,16 +3,8 @@ using System;
 
 namespace Iyzipay.Request
 {
-    public class RetrieveCardBlacklistRequest : BaseRequest
+    public class RetrieveCardBlacklistRequest : BaseRequestV2
     {
-        public String CardNumber { get; set; }
-
-        public override String ToPKIRequestString()
-        {
-            return ToStringRequestBuilder.NewInstance()
-                .AppendSuper(base.ToPKIRequestString())
-                .Append("cardNumber", CardNumber)
-                .GetRequestString();
-        }
+        public string CardNumber { get; set; }
     }
 }

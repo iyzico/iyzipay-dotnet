@@ -23,9 +23,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), approval.Locale);
             Assert.AreEqual("123456789", approval.ConversationId);
             Assert.IsNotNull(approval.SystemTime);
-            Assert.IsNull(approval.ErrorCode);
             Assert.IsNull(approval.ErrorMessage);
-            Assert.IsNull(approval.ErrorGroup);
         }
     }
 }

@@ -26,9 +26,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), refund.Locale);
             Assert.AreEqual("123456789", refund.ConversationId);
             Assert.IsNotNull(refund.SystemTime);
-            Assert.IsNull(refund.ErrorCode);
             Assert.IsNull(refund.ErrorMessage);
-            Assert.IsNull(refund.ErrorGroup);
         }
 
         [Test]
@@ -50,9 +48,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), amountBasedRefund.Locale);
             Assert.AreEqual("--", amountBasedRefund.ConversationId);
             Assert.IsNotNull(amountBasedRefund.SystemTime);
-            Assert.IsNull(amountBasedRefund.ErrorCode);
             Assert.IsNull(amountBasedRefund.ErrorMessage);
-            Assert.IsNull(amountBasedRefund.ErrorGroup);
         }
 
 
@@ -76,9 +72,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), refund.Locale);
             Assert.AreEqual("123456789", refund.ConversationId);
             Assert.IsNotNull(refund.SystemTime);
-            Assert.IsNull(refund.ErrorCode);
             Assert.IsNull(refund.ErrorMessage);
-            Assert.IsNull(refund.ErrorGroup);
         }
 
     }

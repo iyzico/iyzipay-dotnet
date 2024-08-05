@@ -33,9 +33,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), loyaltyInquiry.Locale);
             Assert.AreEqual("123456789", loyaltyInquiry.ConversationId);
             Assert.IsNotNull(loyaltyInquiry.SystemTime);
-            Assert.IsNull(loyaltyInquiry.ErrorCode);
             Assert.IsNull(loyaltyInquiry.ErrorMessage);
-            Assert.IsNull(loyaltyInquiry.ErrorGroup);
         }
     }
 }

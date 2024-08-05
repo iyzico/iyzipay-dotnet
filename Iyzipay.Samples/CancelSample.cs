@@ -24,9 +24,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), cancel.Locale);
             Assert.AreEqual("123456789", cancel.ConversationId);
             Assert.IsNotNull(cancel.SystemTime);
-            Assert.IsNull(cancel.ErrorCode);
             Assert.IsNull(cancel.ErrorMessage);
-            Assert.IsNull(cancel.ErrorGroup);
         }
 
         [Test]
@@ -48,9 +46,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), cancel.Locale);
             Assert.AreEqual("123456789", cancel.ConversationId);
             Assert.IsNotNull(cancel.SystemTime);
-            Assert.IsNull(cancel.ErrorCode);
             Assert.IsNull(cancel.ErrorMessage);
-            Assert.IsNull(cancel.ErrorGroup);
         }
     }
 }

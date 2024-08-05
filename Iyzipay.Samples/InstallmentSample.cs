@@ -24,9 +24,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), installmentInfo.Locale);
             Assert.AreEqual("123456789", installmentInfo.ConversationId);
             Assert.IsNotNull(installmentInfo.SystemTime);
-            Assert.IsNull(installmentInfo.ErrorCode);
             Assert.IsNull(installmentInfo.ErrorMessage);
-            Assert.IsNull(installmentInfo.ErrorGroup);
             Assert.IsNotNull(installmentInfo.InstallmentDetails);
             Assert.IsNotEmpty(installmentInfo.InstallmentDetails);
         }

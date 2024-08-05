@@ -23,9 +23,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), binNumber.Locale);
             Assert.AreEqual("123456789", binNumber.ConversationId);
             Assert.IsNotNull(binNumber.SystemTime);
-            Assert.IsNull(binNumber.ErrorCode);
             Assert.IsNull(binNumber.ErrorMessage);
-            Assert.IsNull(binNumber.ErrorGroup);
             Assert.AreEqual("554960", binNumber.Bin);
             Assert.AreEqual("CREDIT_CARD", binNumber.CardType);
             Assert.AreEqual("MASTER_CARD", binNumber.CardAssociation);

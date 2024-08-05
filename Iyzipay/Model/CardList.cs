@@ -13,7 +13,7 @@ namespace Iyzipay.Model
         public static Task<CardList> Retrieve(RetrieveCardListRequest request, Options options)
         {
             var uri = options.BaseUrl + "/cardstorage/cards";
-            return RestHttpClientV2.Create().PostAsync<CardList>(uri, GetHttpHeaders(request, uri, options), request);
+            return RestHttpClientV2.Create().PostAsync<CardList>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
         }
     }
 }

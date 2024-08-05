@@ -16,8 +16,7 @@ namespace Iyzipay.Model
 		public static Task<Cancel> Create(CreateCancelRequest request, Options options)
 		{
 			var uri = options.BaseUrl + "/payment/cancel";
-
-			return RestHttpClient.Create().PostAsync<Cancel>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
+			return RestHttpClientV2.Create().PostAsync<Cancel>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
 		}
 	}
 }

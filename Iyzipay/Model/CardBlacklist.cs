@@ -24,7 +24,8 @@ namespace Iyzipay.Model
 
         public static Task<CardBlacklist> Retrieve(RetrieveCardBlacklistRequest request, Options options)
         {
-            return RestHttpClient.Create().PostAsync<CardBlacklist>(options.BaseUrl + "/cardstorage/blacklist/card/retrieve", GetHttpHeaders(request, options), request);
+            var uri = options.BaseUrl + "/cardstorage/blacklist/card/retrieve";
+            return RestHttpClientV2.Create().PostAsync<CardBlacklist>(uri, GetHttpHeadersWithRequestBody(request, uri,options), request);
         }
     }
 }

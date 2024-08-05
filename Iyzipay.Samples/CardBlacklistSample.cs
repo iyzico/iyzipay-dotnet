@@ -26,9 +26,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), cardBlacklist.Locale);
             Assert.AreEqual("123456789", cardBlacklist.ConversationId);
             Assert.IsNotNull(cardBlacklist.SystemTime);
-            Assert.IsNull(cardBlacklist.ErrorCode);
             Assert.IsNull(cardBlacklist.ErrorMessage);
-            Assert.IsNull(cardBlacklist.ErrorGroup);
             Assert.IsNotNull(cardBlacklist.CardUserKey);
             Assert.IsNotNull(cardBlacklist.CardToken);
             
@@ -53,9 +51,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), cardBlacklist.Locale);
             Assert.AreEqual("123456789", cardBlacklist.ConversationId);
             Assert.IsNotNull(cardBlacklist.SystemTime);
-            Assert.IsNull(cardBlacklist.ErrorCode);
             Assert.IsNull(cardBlacklist.ErrorMessage);
-            Assert.IsNull(cardBlacklist.ErrorGroup);
             Assert.IsNotNull(cardBlacklist.CardUserKey);
             Assert.IsNotNull(cardBlacklist.CardToken);
         }
@@ -75,9 +71,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Status.SUCCESS.ToString(), cardBlacklist.Status);
             Assert.AreEqual(Locale.TR.ToString(), cardBlacklist.Locale);
             Assert.IsNotNull(cardBlacklist.SystemTime);
-            Assert.IsNull(cardBlacklist.ErrorCode);
             Assert.IsNull(cardBlacklist.ErrorMessage);
-            Assert.IsNull(cardBlacklist.ErrorGroup);
             Assert.IsNotNull(cardBlacklist.CardNumber);
             Assert.IsNotNull(cardBlacklist.Blacklisted);
         }

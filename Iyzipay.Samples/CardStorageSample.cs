@@ -32,9 +32,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), card.Locale);
             Assert.AreEqual("123456789", card.ConversationId);
             Assert.IsNotNull(card.SystemTime);
-            Assert.IsNull(card.ErrorCode);
             Assert.IsNull(card.ErrorMessage);
-            Assert.IsNull(card.ErrorGroup);
             Assert.AreEqual("55287900", card.BinNumber);
             Assert.AreEqual("card alias", card.CardAlias);
             Assert.AreEqual("CREDIT_CARD", card.CardType);
@@ -72,9 +70,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), card.Locale);
             Assert.AreEqual("123456789", card.ConversationId);
             Assert.IsNotNull(card.SystemTime);
-            Assert.IsNull(card.ErrorCode);
             Assert.IsNull(card.ErrorMessage);
-            Assert.IsNull(card.ErrorGroup);
             Assert.AreEqual("55287900", card.BinNumber);
             Assert.AreEqual("card alias", card.CardAlias);
             Assert.AreEqual("CREDIT_CARD", card.CardType);
@@ -105,9 +101,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), card.Locale);
             Assert.AreEqual("123456789", card.ConversationId);
             Assert.IsNotNull(card.SystemTime);
-            Assert.IsNull(card.ErrorCode);
             Assert.IsNull(card.ErrorMessage);
-            Assert.IsNull(card.ErrorGroup);
             Assert.IsNull(card.BinNumber);
             Assert.IsNull(card.CardAlias);
             Assert.IsNull(card.CardType);
@@ -137,9 +131,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), cardList.Locale);
             Assert.AreEqual("123456789", cardList.ConversationId);
             Assert.IsNotNull(cardList.SystemTime);
-            Assert.IsNull(cardList.ErrorCode);
             Assert.IsNull(cardList.ErrorMessage);
-            Assert.IsNull(cardList.ErrorGroup);
             Assert.IsNotNull(cardList.CardDetails);
             Assert.IsNotEmpty(cardList.CardDetails);
             Assert.IsNotNull(cardList.CardUserKey);

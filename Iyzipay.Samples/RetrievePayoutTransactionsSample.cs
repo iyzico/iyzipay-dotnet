@@ -23,9 +23,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), payoutCompletedTransactionList.Locale);
             Assert.AreEqual("123456789", payoutCompletedTransactionList.ConversationId);
             Assert.IsNotNull(payoutCompletedTransactionList.SystemTime);
-            Assert.IsNull(payoutCompletedTransactionList.ErrorCode);
             Assert.IsNull(payoutCompletedTransactionList.ErrorMessage);
-            Assert.IsNull(payoutCompletedTransactionList.ErrorGroup);
         }
 
         [Test]

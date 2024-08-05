@@ -4,25 +4,27 @@ using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    public class Refund : IyzipayResource
-    {
-        public String PaymentId { get; set; }
-        public String PaymentTransactionId { get; set; }
-        public String Price { get; set; }
-        public String Currency { get; set; }
-        public String ConnectorName { get; set; }
-        public String AuthCode { get; set; }
-        public String HostReference { get; set; }
+	public class Refund : IyzipayResourceV2
+	{
+		public string PaymentId { get; set; }
+		public string PaymentTransactionId { get; set; }
+		public string Price { get; set; }
+		public string Currency { get; set; }
+		public string ConnectorName { get; set; }
+		public string AuthCode { get; set; }
+		public string HostReference { get; set; }
 
-        public static Task<Refund> Create(CreateRefundRequest request, Options options)
-        {
-            return RestHttpClient.Create().PostAsync<Refund>(options.BaseUrl + "/payment/refund", GetHttpHeaders(request, options), request);
-        }
+		public static Task<Refund> Create(CreateRefundRequest request, Options options)
+		{
+			var uri = options.BaseUrl + "/payment/refund";
+			return RestHttpClientV2.Create().PostAsync<Refund>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
+		}
 
-        public static Task<Refund> CreateAmountBasedRefundRequest(CreateAmountBasedRefundRequest request, Options options)
-        {
-            return RestHttpClient.Create().PostAsync<Refund>(options.BaseUrl + "/v2/payment/refund", GetHttpHeaders(request, options), request);
-        }
+		public static Task<Refund> CreateAmountBasedRefundRequest(CreateAmountBasedRefundRequest request, Options options)
+		{
+			var uri = options.BaseUrl + "/v2/payment/refund";
+			return RestHttpClientV2.Create().PostAsync<Refund>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
+		}
 
-    }
+	}
 }

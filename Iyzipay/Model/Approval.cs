@@ -4,13 +4,14 @@ using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    public class Approval : IyzipayResource
-    {
-        public String PaymentTransactionId { get; set; }
+	public class Approval : IyzipayResourceV2
+	{
+		public string PaymentTransactionId { get; set; }
 
-        public static Task<Approval> Create(CreateApprovalRequest request, Options options)
-        {
-            return  RestHttpClient.Create().PostAsync<Approval>(options.BaseUrl + "/payment/iyzipos/item/approve", GetHttpHeaders(request, options), request);
-        }
-    }
+		public static Task<Approval> Create(CreateApprovalRequest request, Options options)
+		{
+			var uri = options.BaseUrl + "/payment/iyzipos/item/approve";
+			return RestHttpClientV2.Create().PostAsync<Approval>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
+		}
+	}
 }

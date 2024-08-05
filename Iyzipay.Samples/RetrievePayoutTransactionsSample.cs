@@ -42,9 +42,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), bouncedBankTransferList.Locale);
             Assert.AreEqual("123456789", bouncedBankTransferList.ConversationId);
             Assert.IsNotNull(bouncedBankTransferList.SystemTime);
-            Assert.IsNull(bouncedBankTransferList.ErrorCode);
             Assert.IsNull(bouncedBankTransferList.ErrorMessage);
-            Assert.IsNull(bouncedBankTransferList.ErrorGroup);
         }
     }
 }

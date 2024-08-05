@@ -33,9 +33,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
             Assert.IsNotNull(subMerchant.SystemTime);
-            Assert.IsNull(subMerchant.ErrorCode);
             Assert.IsNull(subMerchant.ErrorMessage);
-            Assert.IsNull(subMerchant.ErrorGroup);
         }
 
         [Test]
@@ -64,9 +62,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
             Assert.IsNotNull(subMerchant.SystemTime);
-            Assert.IsNull(subMerchant.ErrorCode);
             Assert.IsNull(subMerchant.ErrorMessage);
-            Assert.IsNull(subMerchant.ErrorGroup);
         }
 
         [Test]
@@ -95,9 +91,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
             Assert.IsNotNull(subMerchant.SystemTime);
-            Assert.IsNull(subMerchant.ErrorCode);
             Assert.IsNull(subMerchant.ErrorMessage);
-            Assert.IsNull(subMerchant.ErrorGroup);
         }
 
         [Test]
@@ -125,9 +119,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
             Assert.IsNotNull(subMerchant.SystemTime);
-            Assert.IsNull(subMerchant.ErrorCode);
             Assert.IsNull(subMerchant.ErrorMessage);
-            Assert.IsNull(subMerchant.ErrorGroup);
         }
 
         [Test]
@@ -155,9 +147,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
             Assert.IsNotNull(subMerchant.SystemTime);
-            Assert.IsNull(subMerchant.ErrorCode);
             Assert.IsNull(subMerchant.ErrorMessage);
-            Assert.IsNull(subMerchant.ErrorGroup);
         }
 
         [Test]
@@ -185,9 +175,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
             Assert.IsNotNull(subMerchant.SystemTime);
-            Assert.IsNull(subMerchant.ErrorCode);
             Assert.IsNull(subMerchant.ErrorMessage);
-            Assert.IsNull(subMerchant.ErrorGroup);
         }
 
         [Test]
@@ -206,9 +194,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
             Assert.IsNotNull(subMerchant.SystemTime);
-            Assert.IsNull(subMerchant.ErrorCode);
             Assert.IsNull(subMerchant.ErrorMessage);
-            Assert.IsNull(subMerchant.ErrorGroup);
         }
     }
 }

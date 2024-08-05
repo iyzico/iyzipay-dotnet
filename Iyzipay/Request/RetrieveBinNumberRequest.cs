@@ -2,16 +2,8 @@
 
 namespace Iyzipay.Request
 {
-    public class RetrieveBinNumberRequest : BaseRequest
+    public class RetrieveBinNumberRequest : BaseRequestV2
     {
-        public String BinNumber { get; set; }
-
-        public override String ToPKIRequestString()
-        {
-            return ToStringRequestBuilder.NewInstance()
-                .AppendSuper(base.ToPKIRequestString())
-                .Append("binNumber", BinNumber)
-                .GetRequestString();
-        }
+        public string BinNumber { get; set; }
     }
 }

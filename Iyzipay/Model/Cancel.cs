@@ -4,18 +4,20 @@ using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    public class Cancel : IyzipayResource
-    {
-        public String PaymentId { get; set; }
-        public String Price { get; set; }
-        public String Currency { get; set; }
-        public String ConnectorName { get; set; }
-        public String AuthCode { get; set; }
-        public String HostReference { get; set; }
+	public class Cancel : IyzipayResourceV2
+	{
+		public string PaymentId { get; set; }
+		public string Price { get; set; }
+		public string Currency { get; set; }
+		public string ConnectorName { get; set; }
+		public string AuthCode { get; set; }
+		public string HostReference { get; set; }
 
-        public static Task<Cancel> Create(CreateCancelRequest request, Options options)
+		public static Task<Cancel> Create(CreateCancelRequest request, Options options)
 		{
-			return RestHttpClient.Create().PostAsync<Cancel>(options.BaseUrl + "/payment/cancel", GetHttpHeaders(request, options), request);
+			var uri = options.BaseUrl + "/payment/cancel";
+
+			return RestHttpClient.Create().PostAsync<Cancel>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
 		}
-    }
+	}
 }

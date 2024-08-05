@@ -10,6 +10,7 @@ namespace Iyzipay
     public class IyzipayResourceV2
     {
         private static readonly String AUTHORIZATION = "Authorization";
+        private static readonly String AUTHORIZATION_FALLBACK_HEADER = "AUTHORIZATION_FALLBACK_HEADER";
         private static readonly String CONVERSATION_ID_HEADER_NAME = "x-conversation-id";
         private static readonly String CLIENT_VERSION_HEADER_NAME = "x-iyzi-client-version";
         private static readonly String IYZIWS_V2_HEADER_NAME = "IYZWSv2 ";
@@ -42,6 +43,7 @@ namespace Iyzipay
         {
             Dictionary<string, string> headers = GetCommonHttpHeaders(request, url, options);
             headers.Add(AUTHORIZATION, PrepareAuthorizationStringWithRequestBody(request, url, options));
+            headers.Add(AUTHORIZATION_FALLBACK_HEADER, PrepareAuthorizationStringWithRequestBody(request, url, options));
             return headers;
         }
 

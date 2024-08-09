@@ -21,6 +21,7 @@ namespace Iyzipay.Request
         public String CardUserKey { get; set; }
         public String PosOrderId { get; set; }
         public List<int> EnabledInstallments { get; set; }
+        public bool? ShippingAmountExcluded { get; set; }
 
         public override String ToPKIRequestString()
         {
@@ -41,6 +42,7 @@ namespace Iyzipay.Request
                 .Append("forceThreeDS", ForceThreeDS)
                 .Append("cardUserKey", CardUserKey)
                 .AppendList("enabledInstallments", EnabledInstallments)
+                .Append("shippingAmountExcluded", ShippingAmountExcluded)
                 .GetRequestString();
         }
     }

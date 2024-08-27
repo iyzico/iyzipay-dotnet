@@ -92,6 +92,10 @@ namespace Iyzipay
         private static String FindUriPath(String url)
         {
             int startIndex = url.IndexOf("/v2");
+            if (startIndex == -1)
+            {
+                startIndex = url.IndexOf(".com")+4;
+            }
             int endIndex = url.IndexOf("?");
             int length = endIndex == -1 ? url.Length - startIndex : endIndex - startIndex;
             return url.Substring(startIndex, length);

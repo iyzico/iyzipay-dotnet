@@ -6,5 +6,14 @@ namespace Iyzipay.Request
     {
         public string TxId { get; set; }
         public string SmsVerificationCode { get; set; }
+        public override string ToPKIRequestString()
+        {
+            return ToStringRequestBuilder.NewInstance()
+                .AppendSuper(base.ToPKIRequestString())
+                .Append("txId", TxId)
+                .Append("smsVerificationCode", SmsVerificationCode)
+                .GetRequestString();
+        }
+
     }
 }

@@ -9,11 +9,13 @@ namespace Iyzipay
 {
     public class IyzipayResourceV2
     {
-        private static readonly String AUTHORIZATION = "Authorization";
-        private static readonly String AUTHORIZATION_FALLBACK_HEADER = "AUTHORIZATION_FALLBACK_HEADER";
-        private static readonly String CONVERSATION_ID_HEADER_NAME = "x-conversation-id";
-        private static readonly String CLIENT_VERSION_HEADER_NAME = "x-iyzi-client-version";
-        private static readonly String IYZIWS_V2_HEADER_NAME = "IYZWSv2 ";
+        private static readonly string AUTHORIZATION = "Authorization";
+        private static readonly string AUTHORIZATION_FALLBACK_HEADER = "AUTHORIZATION_FALLBACK_HEADER";
+        private static readonly string CONVERSATION_ID_HEADER_NAME = "x-conversation-id";
+        private static readonly string CLIENT_VERSION_HEADER_NAME = "x-iyzi-client-version";
+        private static readonly string IYZIWS_V2_HEADER_NAME = "IYZWSv2 ";
+        private static readonly string IYZIWS_HEADER_NAME = "IYZWS ";
+        private static readonly string COLON = ":";
 
         public String Status { get; set; }
         public int StatusCode { get; set; }
@@ -43,7 +45,7 @@ namespace Iyzipay
         {
             Dictionary<string, string> headers = GetCommonHttpHeaders(request, url, options);
             headers.Add(AUTHORIZATION, PrepareAuthorizationStringWithRequestBody(request, url, options));
-            headers.Add(AUTHORIZATION_FALLBACK_HEADER, PrepareAuthorizationStringWithRequestBody(request, url, options));
+            headers.Add(AUTHORIZATION_FALLBACK_HEADER, PrepareAuthorizationString(request, url, options));
             return headers;
         }
 
@@ -83,7 +85,11 @@ namespace Iyzipay
             String hash = HashGeneratorV2.GenerateHash(options.ApiKey, options.SecretKey, randomKey, dataToEncrypt);
             return IYZIWS_V2_HEADER_NAME + hash;
         }
-
+        private static string PrepareAuthorizationString(BaseRequestV2 request, string randomString, Options options)
+        {
+            string hash = HashGenerator.GenerateHash(options.ApiKey, options.SecretKey, randomString, request);
+            return IYZIWS_HEADER_NAME + options.ApiKey + COLON + hash;
+        }
         private static String GenerateRandomKey()
         {
             return DateTime.Now.ToString("ddMMyyyyhhmmssffff");

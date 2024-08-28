@@ -21,5 +21,28 @@ namespace Iyzipay.Request
         public string SettlementDescriptionTemplate { get; set; }
         public string SwiftCode { get; set; }
 
+        public override string ToPKIRequestString()
+        {
+            return ToStringRequestBuilder.NewInstance()
+                .AppendSuper(base.ToPKIRequestString())
+                .Append("name", Name)
+                .Append("email", Email)
+                .Append("gsmNumber", GsmNumber)
+                .Append("address", Address)
+                .Append("iban", Iban)
+                .Append("taxOffice", TaxOffice)
+                .Append("contactName", ContactName)
+                .Append("contactSurname", ContactSurname)
+                .Append("legalCompanyTitle", LegalCompanyTitle)
+                .Append("swiftCode", SwiftCode)
+                .Append("currency", Currency)
+                .Append("settlementDescriptionTemplate", SettlementDescriptionTemplate)
+                .Append("subMerchantExternalId", SubMerchantExternalId)
+                .Append("identityNumber", IdentityNumber)
+                .Append("taxNumber", TaxNumber)
+                .Append("subMerchantType", SubMerchantType)
+                .GetRequestString();
+        }
+
     }
 }

@@ -23,5 +23,23 @@ namespace Iyzipay.Request
         {
             this.Installment = SINGLE_INSTALLMENT;
         }
+
+        public override string ToPKIRequestString()
+        {
+            return ToStringRequestBuilder.NewInstance()
+                .AppendSuper(base.ToPKIRequestString())
+                .AppendPrice("price", Price)
+                .AppendPrice("paidPrice", PaidPrice)
+                .Append("installment", Installment)
+                .Append("buyerEmail", BuyerEmail)
+                .Append("buyerId", BuyerId)
+                .Append("buyerIp", BuyerIp)
+                .Append("posOrderId", PosOrderId)
+                .Append("paymentCard", PaymentCard)
+                .Append("currency", Currency)
+                .Append("connectorName", ConnectorName)
+                .Append("callbackUrl", CallbackUrl)
+                .GetRequestString();
+        }
     }
 }

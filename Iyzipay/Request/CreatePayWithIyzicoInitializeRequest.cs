@@ -21,5 +21,27 @@ namespace Iyzipay.Request
         public string CardUserKey { get; set; }
         public string PosOrderId { get; set; }
         public List<int> EnabledInstallments { get; set; }
+
+        public override string ToPKIRequestString()
+        {
+            return ToStringRequestBuilder.NewInstance()
+                .AppendSuper(base.ToPKIRequestString())
+                .AppendPrice("price", Price)
+                .Append("basketId", BasketId)
+                .Append("paymentGroup", PaymentGroup)
+                .Append("buyer", Buyer)
+                .Append("shippingAddress", ShippingAddress)
+                .Append("billingAddress", BillingAddress)
+                .AppendList("basketItems", BasketItems)
+                .Append("callbackUrl", CallbackUrl)
+                .Append("paymentSource", PaymentSource)
+                .Append("currency", Currency)
+                .Append("posOrderId", PosOrderId)
+                .AppendPrice("paidPrice", PaidPrice)
+                .Append("forceThreeDS", ForceThreeDS)
+                .Append("cardUserKey", CardUserKey)
+                .AppendList("enabledInstallments", EnabledInstallments)
+                .GetRequestString();
+        }
     }
 }

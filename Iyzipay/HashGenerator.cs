@@ -17,5 +17,12 @@ namespace Iyzipay
             byte[] computeHash = algorithm.ComputeHash(Encoding.UTF8.GetBytes(hashStr));
             return Convert.ToBase64String(computeHash);
         }
+        public static String GenerateHash(String apiKey, String secretKey, String randomString, BaseRequestV2 request)
+        {
+            HashAlgorithm algorithm = new SHA1Managed();
+            string hashStr = apiKey + randomString + secretKey + request.ToPKIRequestString();
+            byte[] computeHash = algorithm.ComputeHash(Encoding.UTF8.GetBytes(hashStr));
+            return Convert.ToBase64String(computeHash);
+        }
     }
 }

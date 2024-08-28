@@ -24,5 +24,30 @@ namespace Iyzipay.Request
         public Address ShippingAddress { get; set; }
         public Address BillingAddress { get; set; }
         public List<BasketItem> BasketItems { get; set; }
+
+        public override string ToPKIRequestString()
+        {
+            return ToStringRequestBuilder.NewInstance()
+                .AppendSuper(base.ToPKIRequestString())
+                .AppendPrice("price", Price)
+                .AppendPrice("paidPrice", PaidPrice)
+                .Append("paymentChannel", PaymentChannel)
+                .Append("paymentGroup", PaymentGroup)
+                .Append("paymentSource", PaymentSource)
+                .Append("currency", Currency)
+                .Append("merchantOrderId", MerchantOrderId)
+                .Append("countryCode", CountryCode)
+                .Append("accountHolderName", AccountHolderName)
+                .Append("merchantCallbackUrl", MerchantCallbackUrl)
+                .Append("merchantErrorUrl", MerchantErrorUrl)
+                .Append("merchantNotificationUrl", MerchantNotificationUrl)
+                .Append("apmType", ApmType)
+                .Append("basketId", BasketId)
+                .Append("buyer", Buyer)
+                .Append("shippingAddress", ShippingAddress)
+                .Append("billingAddress", BillingAddress)
+                .AppendList("basketItems", BasketItems)
+                .GetRequestString();
+        }
     }
 }

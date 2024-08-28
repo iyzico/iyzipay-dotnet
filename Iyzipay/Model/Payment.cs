@@ -8,7 +8,7 @@ namespace Iyzipay.Model
 		public static Task<Payment> Create(CreatePaymentRequest request, Options options)
 		{
 			var uri = options.BaseUrl + "/payment/auth";
-			return RestHttpClientV2.Create().PostAsync<Payment>(options.BaseUrl + "/payment/auth", GetHttpHeadersWithRequestBody(request, uri, options), request);
+			return RestHttpClientV2.Create().PostAsync<Payment>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
 		}
 
 		public static Task<Payment> Retrieve(RetrievePaymentRequest request, Options options)

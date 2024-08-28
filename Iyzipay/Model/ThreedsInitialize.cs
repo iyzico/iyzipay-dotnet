@@ -9,6 +9,8 @@ namespace Iyzipay.Model
 	{
 		[JsonProperty(PropertyName = "threeDSHtmlContent")]
 		public string HtmlContent { get; set; }
+		public string PaymentId { get; set; }
+		public string Signature { get; set; }
 
 		public static async Task<ThreedsInitialize> Create(CreatePaymentRequest request, Options options)
 		{

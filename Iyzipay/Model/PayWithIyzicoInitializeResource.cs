@@ -8,5 +8,6 @@ namespace Iyzipay.Model
         public string CheckoutFormContent { get; set; }
         public long? TokenExpireTime { get; set; }
         public string PayWithIyzicoPageUrl { get; set; }
+        public string Signature { get; set; }
     }
 }

@@ -9,11 +9,11 @@ namespace Iyzipay.Model
 		public string Token { get; set; }
 		public string CallbackUrl { get; set; }
 
-        public static Task<CheckoutForm> Retrieve(RetrieveCheckoutFormRequest request, Options options)
-        {
+		public static Task<CheckoutForm> Retrieve(RetrieveCheckoutFormRequest request, Options options)
+		{
 			var uri = options.BaseUrl + "/payment/iyzipos/checkoutform/auth/ecom/detail";
 
-			return RestHttpClientV2.Create().PostAsync<CheckoutForm>(options.BaseUrl + uri, GetHttpHeadersWithRequestBody(request,uri, options), request);
-        }
-    }
+			return RestHttpClientV2.Create().PostAsync<CheckoutForm>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
+		}
+	}
 }

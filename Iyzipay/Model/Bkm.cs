@@ -7,7 +7,7 @@ namespace Iyzipay.Model
     public class Bkm : PaymentResource
     {
         public string Token { get; set; }
-        public string CallbackUrl { get; set; }     
+        public string CallbackUrl { get; set; }
 
         public static Task<Bkm> Retrieve(RetrieveBkmRequest request, Options options)
         {

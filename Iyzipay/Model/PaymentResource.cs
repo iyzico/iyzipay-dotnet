@@ -11,6 +11,7 @@ namespace Iyzipay.Model
         public int? Installment { get; set; }
         public string Currency { get; set; }
         public string PaymentId { get; set; }
+        public string Signature { get; set; }
         public string PaymentStatus { get; set; }
         public int? FraudStatus { get; set; }
         public string MerchantCommissionRate { get; set; }

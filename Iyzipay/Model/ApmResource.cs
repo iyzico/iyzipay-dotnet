@@ -10,6 +10,7 @@ namespace Iyzipay.Model
         public string Price { get; set; }
         public string PaidPrice { get; set; }
         public string PaymentId { get; set; }
+        public string Signature { get; set; }
         public string MerchantCommissionRate { get; set; }
         public string MerchantCommissionRateAmount { get; set; }
         public string IyziCommissionRateAmount { get; set; }

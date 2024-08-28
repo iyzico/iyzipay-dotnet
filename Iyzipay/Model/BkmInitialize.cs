@@ -8,8 +8,9 @@ namespace Iyzipay.Model
 	{
         public string HtmlContent { get; set; }
         public string Token { get; set; }
-        
-        public static async Task<BkmInitialize> Create(CreateBkmInitializeRequest request, Options options)
+		public string Signature { get; set; }
+
+		public static async Task<BkmInitialize> Create(CreateBkmInitializeRequest request, Options options)
         {
 			var uri = options.BaseUrl + "/payment/bkm/initialize";
 			BkmInitialize response = await RestHttpClientV2.Create().PostAsync<BkmInitialize>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);

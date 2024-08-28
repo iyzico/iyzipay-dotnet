@@ -9,8 +9,9 @@ namespace Iyzipay.Model
 	{
 		[JsonProperty(PropertyName = "threeDSHtmlContent")]
 		public string HtmlContent { get; set; }
-
-        public static async Task<ThreedsInitializePreAuth> Create(CreatePaymentRequest request, Options options)
+		public string PaymentId { get; set; }
+		public string Signature { get; set; }
+		public static async Task<ThreedsInitializePreAuth> Create(CreatePaymentRequest request, Options options)
         {
 			var uri = options.BaseUrl + "/payment/3dsecure/initialize/preauth";
 			ThreedsInitializePreAuth response = await RestHttpClientV2.Create().PostAsync<ThreedsInitializePreAuth>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);

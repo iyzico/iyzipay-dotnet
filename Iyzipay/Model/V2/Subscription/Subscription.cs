@@ -30,7 +30,7 @@ namespace Iyzipay.Model.V2.Subscription
 		}
 		public static ResponseData<SubscriptionCreatedResource> InitializeWithCustomer(SubscriptionInitializeWithCustomerRequest request, Options options)
 		{
-			string uri = $"{options.BaseUrl}/v2/subscription/with-customer";
+			string uri = $"{options.BaseUrl}/v2/subscription/initialize/with-customer";
 			return RestHttpClientV2.Create().Post<ResponseData<SubscriptionCreatedResource>>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
 		}
 

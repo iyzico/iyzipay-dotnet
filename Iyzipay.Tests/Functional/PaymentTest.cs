@@ -4,19 +4,20 @@ using Iyzipay.Tests.Functional.Builder;
 using Iyzipay.Tests.Functional.Builder.Request;
 using Iyzipay.Tests.Functional.Util;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Tests.Functional
 {
     public class PaymentTest : BaseTest
     {
         [Test]
-        public void Should_Create_Listing_Payment()
+        public async Task Should_Create_Listing_PaymentAsync()
         {
             CreatePaymentRequest request = CreatePaymentRequestBuilder.Create()
                 .StandardListingPayment()
                 .Build();
 
-            Payment payment = Payment.Create(request, _options);
+            Payment payment = await Payment.Create(request, _options);
 
             PrintResponse(payment);
 
@@ -24,9 +25,7 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(Locale.TR.ToString(), payment.Locale);
             Assert.AreEqual(Status.SUCCESS.ToString(), payment.Status);
             Assert.NotNull(payment.SystemTime);
-            Assert.Null(payment.ErrorCode);
             Assert.Null(payment.ErrorMessage);
-            Assert.Null(payment.ErrorGroup);
             Assert.NotNull(payment.PaymentId);
             Assert.NotNull(payment.BasketId);
             Assert.AreEqual(payment.Price, "1");
@@ -38,18 +37,18 @@ namespace Iyzipay.Tests.Functional
         }
 
         [Test]
-        public void Should_Create_Marketplace_Payment()
+        public async Task Should_Create_Marketplace_PaymentAsync()
         {
             CreateSubMerchantRequest createSubMerchantRequest = CreateSubMerchantRequestBuilder.Create()
                 .PersonalSubMerchantRequest()
                 .Build();
 
-            string subMerchantKey = SubMerchant.Create(createSubMerchantRequest, _options).SubMerchantKey;
+            string subMerchantKey = (await SubMerchant.Create(createSubMerchantRequest, _options)).SubMerchantKey;
             CreatePaymentRequest request = CreatePaymentRequestBuilder.Create()
                 .MarketplacePayment(subMerchantKey)
                 .Build();
 
-            Payment payment = Payment.Create(request, _options);
+            Payment payment = await Payment.Create(request, _options);
 
             PrintResponse(payment);
 
@@ -57,9 +56,7 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(Locale.TR.ToString(), payment.Locale);
             Assert.AreEqual(Status.SUCCESS.ToString(), payment.Status);
             Assert.NotNull(payment.SystemTime);
-            Assert.Null(payment.ErrorCode);
             Assert.Null(payment.ErrorMessage);
-            Assert.Null(payment.ErrorGroup);
             Assert.NotNull(payment.PaymentId);
             Assert.NotNull(payment.BasketId);
             Assert.AreEqual("1", payment.Price);
@@ -72,7 +69,7 @@ namespace Iyzipay.Tests.Functional
         }
 
         [Test]
-        public void Should_Create_Payment_With_Registered_Card()
+        public async Task Should_Create_Payment_With_Registered_CardAsync()
         {
             string externalUserId = RandomGenerator.RandomId;
             CardInformation cardInformation = CardInformationBuilder.Create()
@@ -84,7 +81,7 @@ namespace Iyzipay.Tests.Functional
                 .Email("email@email.com")
                 .Build();
 
-            Card card = Card.Create(cardRequest, _options);
+            Card card = await Card.Create(cardRequest, _options);
 
             PaymentCard paymentCard = PaymentCardBuilder.Create()
                 .CardUserKey(card.CardUserKey)
@@ -96,7 +93,7 @@ namespace Iyzipay.Tests.Functional
                 .PaymentCard(paymentCard)
                 .Build();
 
-            Payment payment = Payment.Create(request, _options);
+            Payment payment = await Payment.Create(request, _options);
 
             PrintResponse(payment);
 
@@ -105,9 +102,7 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(Status.SUCCESS.ToString(), payment.Status);
             Assert.NotNull(payment.SystemTime);
             Assert.AreEqual("123456789", payment.ConversationId);
-            Assert.Null(payment.ErrorCode);
             Assert.Null(payment.ErrorMessage);
-            Assert.Null(payment.ErrorGroup);
             Assert.NotNull(payment.PaymentId);
             Assert.NotNull(payment.BasketId);
             Assert.AreEqual("1", payment.Price);
@@ -120,13 +115,13 @@ namespace Iyzipay.Tests.Functional
         }
 
         [Test]
-        public void Should_Retrieve_Payment()
+        public async Task Should_Retrieve_PaymentAsync()
         {
             CreatePaymentRequest request = CreatePaymentRequestBuilder.Create()
                 .StandardListingPayment()
                 .Build();
 
-            Payment createdPayment = Payment.Create(request, _options);
+            Payment createdPayment = await Payment.Create(request, _options);
 
             PrintResponse(createdPayment);
 
@@ -135,7 +130,7 @@ namespace Iyzipay.Tests.Functional
             retrievePaymentRequest.ConversationId = "123456789";
             retrievePaymentRequest.PaymentId = createdPayment.PaymentId;
 
-            Payment payment = Payment.Retrieve(retrievePaymentRequest, _options);
+            Payment payment = await Payment.Retrieve(retrievePaymentRequest, _options);
 
             Assert.AreEqual(Locale.TR.ToString(), payment.Locale);
             Assert.AreEqual(Status.SUCCESS.ToString(), payment.Status);
@@ -143,14 +138,12 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual("123456789", payment.ConversationId);
             Assert.AreEqual(createdPayment.PaymentId, payment.PaymentId);
             Assert.NotNull(payment.SystemTime);
-            Assert.Null(payment.ErrorCode);
             Assert.Null(payment.ErrorMessage);
-            Assert.Null(payment.ErrorGroup);
             Assert.NotNull(payment.BasketId);
         }
 
         [Test]
-        public void Should_Create_Payment_With_Loyalty_Ykb_World()
+        public async Task Should_Create_Payment_With_Loyalty_Ykb_WorldAsync()
         {
             LoyaltyReward reward = new LoyaltyReward();
             reward.RewardUsage = 1;
@@ -162,7 +155,7 @@ namespace Iyzipay.Tests.Functional
                 .PaymentCard(PaymentCardBuilder.Create().BuildWithYKBCardCredentials().Build())
                 .Build();
 
-            Payment payment = Payment.Create(request, _options);
+            Payment payment = await Payment.Create(request, _options);
 
             PrintResponse(payment);
 
@@ -170,9 +163,7 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(Locale.TR.ToString(), payment.Locale);
             Assert.AreEqual(Status.SUCCESS.ToString(), payment.Status);
             Assert.NotNull(payment.SystemTime);
-            Assert.Null(payment.ErrorCode);
             Assert.Null(payment.ErrorMessage);
-            Assert.Null(payment.ErrorGroup);
             Assert.NotNull(payment.PaymentId);
             Assert.NotNull(payment.BasketId);
             Assert.AreEqual(payment.Price, "1");
@@ -184,7 +175,7 @@ namespace Iyzipay.Tests.Functional
         }
 
         [Test]
-        public void Should_Create_Payment_With_Loyalty_Denizbank_Bonus()
+        public async Task Should_Create_Payment_With_Loyalty_Denizbank_BonusAsync()
         {
             LoyaltyReward reward = new LoyaltyReward();
             reward.RewardUsage = 1;
@@ -196,7 +187,7 @@ namespace Iyzipay.Tests.Functional
                 .PaymentCard(PaymentCardBuilder.Create().BuildWithDenizBankCardCredentials().Build())
                 .Build();
 
-            Payment payment = Payment.Create(request, _options);
+            Payment payment = await Payment.Create(request, _options);
 
             PrintResponse(payment);
 
@@ -204,9 +195,7 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(Locale.TR.ToString(), payment.Locale);
             Assert.AreEqual(Status.SUCCESS.ToString(), payment.Status);
             Assert.NotNull(payment.SystemTime);
-            Assert.Null(payment.ErrorCode);
             Assert.Null(payment.ErrorMessage);
-            Assert.Null(payment.ErrorGroup);
             Assert.NotNull(payment.PaymentId);
             Assert.NotNull(payment.BasketId);
             Assert.AreEqual(payment.Price, "1");

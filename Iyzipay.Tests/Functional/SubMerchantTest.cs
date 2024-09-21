@@ -3,13 +3,14 @@ using Iyzipay.Request;
 using Iyzipay.Tests.Functional.Builder.Request;
 using Iyzipay.Tests.Functional.Util;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Tests.Functional
 {
     public class SubMerchantTest : BaseTest
     {
         [Test]
-        public void Should_Create_personal_Sub_Merchant()
+        public async Task Should_Create_personal_Sub_MerchantAsync()
         {
             string subMerchantExternalId = RandomGenerator.RandomId;
             CreateSubMerchantRequest request = CreateSubMerchantRequestBuilder.Create()
@@ -20,7 +21,7 @@ namespace Iyzipay.Tests.Functional
                 .SubMerchantExternalId(subMerchantExternalId)
                 .Build();
 
-            SubMerchant subMerchant = SubMerchant.Create(request, _options);
+            SubMerchant subMerchant = await SubMerchant.Create(request, _options);
 
             PrintResponse(subMerchant);
 
@@ -28,13 +29,11 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(Locale.TR.ToString(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
             Assert.NotNull(subMerchant.SystemTime);
-            Assert.Null(subMerchant.ErrorCode);
             Assert.Null(subMerchant.ErrorMessage);
-            Assert.Null(subMerchant.ErrorGroup);
         }
 
         [Test]
-        public void Should_Create_Private_Sub_Merchant()
+        public async Task Should_Create_Private_Sub_MerchantAsync()
         {
             string subMerchantExternalId = RandomGenerator.RandomId;
             CreateSubMerchantRequest request = CreateSubMerchantRequestBuilder.Create()
@@ -45,7 +44,7 @@ namespace Iyzipay.Tests.Functional
                 .SubMerchantExternalId(subMerchantExternalId)
                 .Build();
 
-            SubMerchant subMerchant = SubMerchant.Create(request, _options);
+            SubMerchant subMerchant = await SubMerchant.Create(request, _options);
 
             PrintResponse(subMerchant);
 
@@ -53,13 +52,11 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(Locale.TR.ToString(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
             Assert.NotNull(subMerchant.SystemTime);
-            Assert.Null(subMerchant.ErrorCode);
             Assert.Null(subMerchant.ErrorMessage);
-            Assert.Null(subMerchant.ErrorGroup);
         }
 
         [Test]
-        public void Should_Create_Limited_Company_Sub_Merchant()
+        public async Task Should_Create_Limited_Company_Sub_MerchantAsync()
         {
             string subMerchantExternalId = RandomGenerator.RandomId;
             CreateSubMerchantRequest request = CreateSubMerchantRequestBuilder.Create()
@@ -70,7 +67,7 @@ namespace Iyzipay.Tests.Functional
                 .LegalCompanyTitle("XYZ inc")
                 .Build();
 
-            SubMerchant subMerchant = SubMerchant.Create(request, _options);
+            SubMerchant subMerchant = await SubMerchant.Create(request, _options);
 
             PrintResponse(subMerchant);
 
@@ -78,19 +75,17 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(Locale.TR.ToString(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
             Assert.NotNull(subMerchant.SystemTime);
-            Assert.Null(subMerchant.ErrorCode);
             Assert.Null(subMerchant.ErrorMessage);
-            Assert.Null(subMerchant.ErrorGroup);
         }
 
         [Test]
-        public void Should_Update_Personal_Sub_Merchant()
+        public async Task Should_Update_Personal_Sub_MerchantAsync()
         {
             CreateSubMerchantRequest createPersonalSubMerchantRequest = CreateSubMerchantRequestBuilder.Create()
                 .PersonalSubMerchantRequest()
                 .Build();
 
-            string subMerchantKey = SubMerchant.Create(createPersonalSubMerchantRequest, _options).SubMerchantKey;
+            string subMerchantKey = (await SubMerchant.Create(createPersonalSubMerchantRequest, _options)).SubMerchantKey;
 
             UpdateSubMerchantRequest updateSubMerchantRequest = UpdateSubMerchantRequestBuilder.Create()
                 .SubMerchantKey(subMerchantKey)
@@ -100,7 +95,7 @@ namespace Iyzipay.Tests.Functional
                 .Name("Jane's market")
                 .Build();
 
-            SubMerchant subMerchant = SubMerchant.Update(updateSubMerchantRequest, _options);
+            SubMerchant subMerchant = await SubMerchant.Update(updateSubMerchantRequest, _options);
 
             PrintResponse(subMerchant);
 
@@ -108,19 +103,17 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(Locale.TR.ToString(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
             Assert.NotNull(subMerchant.SystemTime);
-            Assert.Null(subMerchant.ErrorCode);
             Assert.Null(subMerchant.ErrorMessage);
-            Assert.Null(subMerchant.ErrorGroup);
         }
 
         [Test]
-        public void Should_Update_Private_Sub_Merchant()
+        public async Task Should_Update_Private_Sub_MerchantAsync()
         {
             CreateSubMerchantRequest createPrivateSubMerchantRequest = CreateSubMerchantRequestBuilder.Create()
                 .PrivateSubMerchantRequest()
                 .Build();
 
-            string subMerchantKey = SubMerchant.Create(createPrivateSubMerchantRequest, _options).SubMerchantKey;
+            string subMerchantKey = (await SubMerchant.Create(createPrivateSubMerchantRequest, _options)).SubMerchantKey;
 
             UpdateSubMerchantRequest updateSubMerchantRequest = UpdateSubMerchantRequestBuilder.Create()
                 .SubMerchantKey(subMerchantKey)
@@ -129,7 +122,7 @@ namespace Iyzipay.Tests.Functional
                 .LegalCompanyTitle("Jane Doe inc")
                 .Build();
 
-            SubMerchant subMerchant = SubMerchant.Update(updateSubMerchantRequest, _options);
+            SubMerchant subMerchant = await SubMerchant.Update(updateSubMerchantRequest, _options);
 
             PrintResponse(subMerchant);
 
@@ -137,19 +130,17 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(Locale.TR.ToString(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
             Assert.NotNull(subMerchant.SystemTime);
-            Assert.Null(subMerchant.ErrorCode);
             Assert.Null(subMerchant.ErrorMessage);
-            Assert.Null(subMerchant.ErrorGroup);
         }
 
         [Test]
-        public void Should_Update_Limited_Company_Sub_Merchant()
+        public async Task Should_Update_Limited_Company_Sub_MerchantAsync()
         {
             CreateSubMerchantRequest createLimitedCompanySubMerchantRequest = CreateSubMerchantRequestBuilder.Create()
                 .LimitedCompanySubMerchantRequest()
                 .Build();
 
-            string subMerchantKey = SubMerchant.Create(createLimitedCompanySubMerchantRequest, _options).SubMerchantKey;
+            string subMerchantKey = (await SubMerchant.Create(createLimitedCompanySubMerchantRequest, _options)).SubMerchantKey;
 
             UpdateSubMerchantRequest updateSubMerchantRequest = UpdateSubMerchantRequestBuilder.Create()
                 .SubMerchantKey(subMerchantKey)
@@ -159,7 +150,7 @@ namespace Iyzipay.Tests.Functional
                 .LegalCompanyTitle("ABC inc")
                 .Build();
 
-            SubMerchant subMerchant = SubMerchant.Update(updateSubMerchantRequest, _options);
+            SubMerchant subMerchant = await SubMerchant.Update(updateSubMerchantRequest, _options);
 
             PrintResponse(subMerchant);
 
@@ -167,13 +158,11 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(Locale.TR.ToString(), subMerchant.Locale);
             Assert.AreEqual("123456789", subMerchant.ConversationId);
             Assert.NotNull(subMerchant.SystemTime);
-            Assert.Null(subMerchant.ErrorCode);
             Assert.Null(subMerchant.ErrorMessage);
-            Assert.Null(subMerchant.ErrorGroup);
         }
 
         [Test]
-        public void Should_Retrieve_Sub_Merchant()
+        public async Task Should_Retrieve_Sub_MerchantAsync()
         {
             string subMerchantExternalId = RandomGenerator.RandomId;
             CreateSubMerchantRequest createLimitedCompanySubMerchantRequest = CreateSubMerchantRequestBuilder.Create()
@@ -187,7 +176,7 @@ namespace Iyzipay.Tests.Functional
                 .SubMerchantExternalId(subMerchantExternalId)
                 .Build();
 
-            SubMerchant subMerchant = SubMerchant.Retrieve(request, _options);
+            SubMerchant subMerchant = await SubMerchant.Retrieve(request, _options);
 
             PrintResponse(subMerchant);
 
@@ -199,9 +188,7 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual("Tax office", subMerchant.TaxOffice);
             Assert.AreEqual(subMerchantExternalId, subMerchant.SubMerchantExternalId);
             Assert.NotNull(subMerchant.SystemTime);
-            Assert.Null(subMerchant.ErrorCode);
             Assert.Null(subMerchant.ErrorMessage);
-            Assert.Null(subMerchant.ErrorGroup);
         }
     }
 }

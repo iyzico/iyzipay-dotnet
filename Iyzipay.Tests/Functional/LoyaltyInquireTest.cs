@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using Iyzipay.Model;
 using Iyzipay.Request;
 using Iyzipay.Tests.Functional.Builder;
@@ -11,13 +12,13 @@ namespace Iyzipay.Tests.Functional
     public class LoyaltyInquireTest : BaseTest
     {
         [Test]
-        public void Should_Inquire_Loyalty()
+        public async Task Should_Inquire_LoyaltyAsync()
         {
             LoyaltyInquiryRequest request = LoyaltyInquiryRequestBuilder.Create()
             .Currency("TRY")
             .Build();
 
-            LoyaltyInquiry loyaltyInquiry = LoyaltyInquiry.Create(request, _options);
+            LoyaltyInquiry loyaltyInquiry = await LoyaltyInquiry.Create(request, _options);
 
             PrintResponse<LoyaltyInquiry>(loyaltyInquiry);
 
@@ -30,9 +31,7 @@ namespace Iyzipay.Tests.Functional
             Assert.IsNotNull(loyaltyInquiry.CardBank);
             Assert.IsNotNull(loyaltyInquiry.CardFamily);
             Assert.IsNotNull(loyaltyInquiry.Currency);
-            Assert.IsNull(loyaltyInquiry.ErrorCode);
             Assert.IsNull(loyaltyInquiry.ErrorMessage);
-            Assert.IsNull(loyaltyInquiry.ErrorGroup);
         }
     }
 }

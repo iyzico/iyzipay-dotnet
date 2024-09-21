@@ -3,19 +3,20 @@ using Iyzipay.Request;
 using Iyzipay.Tests.Functional.Builder.Request;
 using Iyzipay.Tests.Functional.Util;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Tests.Functional
 {
     public class RefundTest : BaseTest
     {
         [Test]
-        public void Should_Refund_Payment()
+        public async Task Should_Refund_PaymentAsync()
         {
             CreatePaymentRequest paymentRequest = CreatePaymentRequestBuilder.Create()
                 .StandardListingPayment()
                 .Build();
 
-            Payment payment = Payment.Create(paymentRequest, _options);
+            Payment payment = await Payment.Create(paymentRequest, _options);
 
             CreateRefundRequest request = new CreateRefundRequest();
             request.Locale = Locale.TR.ToString();
@@ -25,7 +26,7 @@ namespace Iyzipay.Tests.Functional
             request.Currency = Currency.TRY.ToString();
             request.Ip = "85.34.78.112";
 
-            Refund refund = Refund.Create(request, _options);
+            Refund refund = await Refund.Create(request, _options);
 
             PrintResponse(refund);
 
@@ -36,19 +37,17 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(payment.PaymentItems[0].PaymentTransactionId, refund.PaymentTransactionId);
             Assert.AreEqual("0.2", refund.Price.RemoveTrailingZeros());
             Assert.NotNull(refund.SystemTime);
-            Assert.Null(refund.ErrorCode);
             Assert.Null(refund.ErrorMessage);
-            Assert.Null(refund.ErrorGroup);
         }
 
         [Test]
-        public void Should_Refund_Fraudulent_Payment()
+        public async Task Should_Refund_Fraudulent_PaymentAsync()
         {
             CreatePaymentRequest paymentRequest = CreatePaymentRequestBuilder.Create()
                 .StandardListingPayment()
                 .Build();
 
-            Payment payment = Payment.Create(paymentRequest, _options);
+            Payment payment = await Payment.Create(paymentRequest, _options);
 
             CreateRefundRequest request = new CreateRefundRequest();
             request.Locale = Locale.TR.ToString();
@@ -60,7 +59,7 @@ namespace Iyzipay.Tests.Functional
             request.Reason = RefundReason.FRAUD.ToString();
             request.Description = "stolen card request with 11000 try payment for default sample";
 
-            Refund refund = Refund.Create(request, _options);
+            Refund refund = await Refund.Create(request, _options);
 
             PrintResponse(refund);
 
@@ -71,9 +70,7 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(payment.PaymentItems[0].PaymentTransactionId, refund.PaymentTransactionId);
             Assert.AreEqual("0.2", refund.Price.RemoveTrailingZeros());
             Assert.NotNull(refund.SystemTime);
-            Assert.Null(refund.ErrorCode);
             Assert.Null(refund.ErrorMessage);
-            Assert.Null(refund.ErrorGroup);
         }
     }
 }

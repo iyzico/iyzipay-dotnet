@@ -3,6 +3,7 @@ using Iyzipay.Request;
 using Iyzipay.Tests.Functional;
 using Iyzipay.Tests.Functional.Builder.Request;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Tests.Functional
 {
@@ -16,10 +17,10 @@ namespace Iyzipay.Tests.Functional
         }
 
         [Test]
-        public void Should_Retrieve_Cards()
+        public async Task Should_Retrieve_CardsAsync()
         {
             CreateCardManagementPageInitializeRequest initializeRequest = CardManagementPageRequestBuilder.Create().Build();
-            CardManagementPageInitialize cardManagementPageInitialize = CardManagementPageInitialize.Create(initializeRequest, _options);
+            CardManagementPageInitialize cardManagementPageInitialize = await CardManagementPageInitialize.Create(initializeRequest, _options);
             
             RetrieveCardManagementPageCardRequest retrieveCardRequest = CardManagementRetrieveCardBuilder.Create()
                 .PageToken(cardManagementPageInitialize.Token)

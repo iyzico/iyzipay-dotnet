@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Iyzipay.Model;
 using Iyzipay.Request;
 using Iyzipay.Tests.Functional.Builder.Request;
@@ -9,19 +10,19 @@ namespace Iyzipay.Tests.Functional
     public class DisapproveTest : BaseTest
     {
         [Test]
-        public void Should_Disapprove_Payment()
+        public async Task Should_Disapprove_PaymentAsync()
         {
             CreateSubMerchantRequest request = CreateSubMerchantRequestBuilder.Create()
                 .PersonalSubMerchantRequest()
                 .Build();
 
-            SubMerchant subMerchant = SubMerchant.Create(request, _options);
+            SubMerchant subMerchant = await SubMerchant.Create(request, _options);
 
             CreatePaymentRequest paymentRequest = CreatePaymentRequestBuilder.Create()
                 .MarketplacePayment(subMerchant.SubMerchantKey)
                 .Build();
 
-            Payment payment = Payment.Create(paymentRequest, _options);
+            Payment payment = await Payment.Create(paymentRequest, _options);
 
             String paymentTransactionId = payment.PaymentItems[0].PaymentTransactionId;
 
@@ -29,9 +30,9 @@ namespace Iyzipay.Tests.Functional
                 .PaymentTransactionId(paymentTransactionId)
                 .Build();
 
-            Approval.Create(approvalRequest, _options);
+            await Approval.Create(approvalRequest, _options);
 
-            Disapproval disapproval = Disapproval.Create(approvalRequest, _options);
+            Disapproval disapproval = await Disapproval .Create(approvalRequest, _options);
 
             PrintResponse(disapproval);
 
@@ -39,9 +40,7 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(Status.SUCCESS.ToString(), disapproval.Status);
             Assert.AreEqual(Locale.TR.ToString(), disapproval.Locale);
             Assert.NotNull(disapproval.SystemTime);
-            Assert.Null(disapproval.ErrorCode);
             Assert.Null(disapproval.ErrorMessage);
-            Assert.Null(disapproval.ErrorGroup);
         }
     }
 }

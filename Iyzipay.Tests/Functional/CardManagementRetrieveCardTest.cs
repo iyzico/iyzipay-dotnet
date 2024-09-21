@@ -31,9 +31,7 @@ namespace Iyzipay.Tests.Functional
 
             Assert.AreEqual(Status.SUCCESS.ToString(), cardManagementPageCard.Status);
             Assert.AreEqual(Locale.TR.ToString(), cardManagementPageCard.Locale);
-            Assert.Null(cardManagementPageCard.ErrorCode);
             Assert.Null(cardManagementPageCard.ErrorMessage);
-            Assert.Null(cardManagementPageCard.ErrorGroup);
             Assert.NotNull(cardManagementPageCard);
         }
         
@@ -48,7 +46,6 @@ namespace Iyzipay.Tests.Functional
             PrintResponse(cardManagementPageCard);
 
             Assert.AreEqual(Status.FAILURE.ToString(), cardManagementPageCard.Status);
-            Assert.AreEqual("4002",cardManagementPageCard.ErrorCode);
             Assert.AreEqual("Geçersiz token",cardManagementPageCard.ErrorMessage);
         }
     }

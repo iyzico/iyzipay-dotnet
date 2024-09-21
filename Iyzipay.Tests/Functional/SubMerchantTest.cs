@@ -170,7 +170,7 @@ namespace Iyzipay.Tests.Functional
                 .SubMerchantExternalId(subMerchantExternalId)
                 .Build();
 
-            SubMerchant.Create(createLimitedCompanySubMerchantRequest, _options);
+            await SubMerchant.Create(createLimitedCompanySubMerchantRequest, _options);
 
             RetrieveSubMerchantRequest request = RetrieveSubMerchantRequestBuilder.Create()
                 .SubMerchantExternalId(subMerchantExternalId)

@@ -88,10 +88,10 @@ namespace Iyzipay.Tests.Functional
 					Country = "Türkiye",
 					Description = "shipping-address-description",
 					ContactName = "shipping-contact-name",
-					ZipCode = "010102"
+					ZipCode = "010102",
 				},
 				ConversationId = "123456789",
-				GsmNumber = "+905350000000",
+				GsmNumber = "+905555555555",
 				IdentityNumber = "55555555555"
 			};
 
@@ -103,7 +103,7 @@ namespace Iyzipay.Tests.Functional
 				Name = "upd-customer-name",
 				Surname = "upd-customer-surname",
 				Enail = "upd-customer-email",
-				GsmNumber = "upd-customer-gsm-number",
+				GsmNumber = "+905555555555",
 				BillingAddress = new Address
 				{
 					City = "upd-İstanbul",
@@ -132,7 +132,7 @@ namespace Iyzipay.Tests.Functional
 			Assert.AreEqual($"iyzico-{randomString}@iyzico.com", response.Data.Email);
 			Assert.AreEqual("upd-customer-name", response.Data.Name);
 			Assert.AreEqual("upd-customer-surname", response.Data.Surname);
-			Assert.AreEqual("+905350000000", response.Data.GsmNumber);
+			Assert.AreEqual("+905555555555", response.Data.GsmNumber);
 			Assert.AreEqual("55555555551", response.Data.IdentityNumber);
 			Assert.AreEqual("upd-İstanbul", response.Data.BillingAddress.City);
 			Assert.AreEqual("upd-Türkiye", response.Data.BillingAddress.Country);

@@ -1,9 +1,14 @@
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Iyzipay.Model;
 using Iyzipay.Model.V2;
 using Iyzipay.Model.V2.Subscription;
+using Iyzipay.Request;
 using Iyzipay.Request.V2.Subscription;
+using Iyzipay.Tests.Functional.Builder;
+using Iyzipay.Tests.Functional.Builder.Request;
+using Iyzipay.Tests.Functional.Util;
 using Newtonsoft.Json;
 using NUnit.Framework;
 
@@ -345,7 +350,7 @@ namespace Iyzipay.Tests.Functional
 		}
 
 		[Test]
-		public void Should_Activate_Subscription()
+		public async Task Should_Activate_SubscriptionAsync()
 		{
 			string randomString = DateTime.Now.ToString("yyyyMMddHHmmssfff");
 			CreateProductRequest createProductRequest = new CreateProductRequest
@@ -374,6 +379,19 @@ namespace Iyzipay.Tests.Functional
 			};
 
 			PlanResource planResource = Plan.Create(createPlanRequest, _options).Data;
+
+			string externalUserId = RandomGenerator.RandomId;
+			CardInformation cardInformation = CardInformationBuilder
+				.Create()
+				.Build();
+
+			CreateCardRequest createCardRequest = CreateCardRequestBuilder.Create()
+				.Card(cardInformation)
+				.ExternalId(externalUserId)
+				.Email("email@email.com")
+				.Build();
+
+			await Card.Create(createCardRequest, _options);
 
 			SubscriptionInitializeRequest subscriptionInitializeRequest = new SubscriptionInitializeRequest
 			{

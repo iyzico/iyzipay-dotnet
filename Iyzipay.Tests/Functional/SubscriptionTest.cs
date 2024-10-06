@@ -380,19 +380,6 @@ namespace Iyzipay.Tests.Functional
 
 			PlanResource planResource = Plan.Create(createPlanRequest, _options).Data;
 
-			string externalUserId = RandomGenerator.RandomId;
-			CardInformation cardInformation = CardInformationBuilder
-				.Create()
-				.Build();
-
-			CreateCardRequest createCardRequest = CreateCardRequestBuilder.Create()
-				.Card(cardInformation)
-				.ExternalId(externalUserId)
-				.Email("email@email.com")
-				.Build();
-
-			await Card.Create(createCardRequest, _options);
-
 			SubscriptionInitializeRequest subscriptionInitializeRequest = new SubscriptionInitializeRequest
 			{
 				Locale = Locale.TR.ToString(),

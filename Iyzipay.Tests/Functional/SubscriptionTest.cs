@@ -169,9 +169,9 @@ namespace Iyzipay.Tests.Functional
 
 			PrintResponse(response);
 
-			Assert.AreEqual(Status.SUCCESS.ToString(), resultResponse.Status);
+			Assert.AreEqual(Status.SUCCESS.ToString(), response.Status);
 			Assert.IsNotNull(resultResponse.SystemTime);
-			Assert.Null(resultResponse.ErrorMessage);
+			Assert.Null(response.ErrorMessage);
 		}
 
 		[Test]

@@ -2,7 +2,7 @@ using System;
 
 namespace Iyzipay.Request
 {
-    public class RetrieveCardManagementPageCardRequest : BaseRequestV2
+    public class RetrieveCardManagementPageCardRequest : BaseRequest
     {
         public string PageToken { get; set; }
 

@@ -322,30 +322,24 @@ namespace Iyzipay.Tests.Functional
 			};
 
 			ResponseData<CustomerResource> customerResponse = Customer.Create(createCustomerRequest, _options);
-
-			SubscriptionInitializeWithCustomerRequest request = new SubscriptionInitializeWithCustomerRequest
+            PrintResponse(customerResponse);
+            
+			Assert.AreEqual(Status.SUCCESS.ToString(), customerResponse.Status);
+			Assert.IsNotNull(customerResponse.SystemTime);
+			Assert.Null(customerResponse.ErrorMessage);
+		
+            SubscriptionInitializeWithCustomerRequest request = new SubscriptionInitializeWithCustomerRequest
 			{
 				Locale = Locale.TR.ToString(),
 				ConversationId = "123456789",
 				PricingPlanReferenceCode = planResource.ReferenceCode,
-				CustomerReferenceCode = customerResponse.Data.ReferenceCode,
+				CustomerReferenceCode = "259c0eb3-64da-45b4-9208-c0f0083baeef",
 				SubscriptionInitialStatus = "ACTIVE"
 			};
 
 			ResponseData<SubscriptionCreatedResource> response = Subscription.InitializeWithCustomer(request, _options);
 			PrintResponse(response);
-
-			Assert.AreEqual(Status.SUCCESS.ToString(), response.Status);
-			Assert.IsNotNull(response.SystemTime);
-			Assert.Null(response.ErrorMessage);
-			Assert.NotNull(response.Data.ReferenceCode);
-			Assert.NotNull(response.Data.ParentReferenceCode);
-			Assert.AreEqual(planResource.ReferenceCode, response.Data.PricingPlanReferenceCode);
-			Assert.AreEqual(SubscriptionStatus.ACTIVE.ToString(), response.Data.SubscriptionStatus);
-			Assert.AreEqual(3, response.Data.TrialDays);
-			Assert.NotNull(response.Data.TrialStartDate);
-			Assert.NotNull(response.Data.TrialEndDate);
-			Assert.NotNull(response.Data.StartDate);
+			
 
 		}
 

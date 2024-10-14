@@ -20,7 +20,7 @@ namespace Iyzipay.Tests.Functional
         public async Task Should_Retrieve_CardsAsync()
         {
             CreateCardManagementPageInitializeRequest initializeRequest = CardManagementPageRequestBuilder.Create().Build();
-            CardManagementPageInitialize cardManagementPageInitialize = await CardManagementPageInitialize.Create(initializeRequest, _options);
+            CardManagementPageInitialize cardManagementPageInitialize = CardManagementPageInitialize.Create(initializeRequest, _options);
             
             RetrieveCardManagementPageCardRequest retrieveCardRequest = CardManagementRetrieveCardBuilder.Create()
                 .PageToken(cardManagementPageInitialize.Token)

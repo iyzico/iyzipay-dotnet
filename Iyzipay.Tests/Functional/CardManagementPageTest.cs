@@ -21,7 +21,7 @@ namespace Iyzipay.Tests.Functional
         {
             CreateCardManagementPageInitializeRequest request = CardManagementPageRequestBuilder.Create().Build();
 
-            CardManagementPageInitialize cardManagementPageInitialize = await CardManagementPageInitialize.Create(request, _options);
+            CardManagementPageInitialize cardManagementPageInitialize = CardManagementPageInitialize.Create(request, _options);
             PrintResponse(cardManagementPageInitialize);
 
             Assert.AreEqual(Locale.TR.ToString(), cardManagementPageInitialize.Locale);
@@ -38,7 +38,7 @@ namespace Iyzipay.Tests.Functional
         {
             CreateCardManagementPageInitializeRequest request = CardManagementPageRequestBuilder.Create().CallbackUrl("").Build();
             
-            CardManagementPageInitialize cardManagementPageInitialize = await CardManagementPageInitialize.Create(request, _options);
+            CardManagementPageInitialize cardManagementPageInitialize = CardManagementPageInitialize.Create(request, _options);
             PrintResponse(cardManagementPageInitialize);
 
             Assert.AreEqual(Status.FAILURE.ToString(), cardManagementPageInitialize.Status);

@@ -1,4 +1,5 @@
 using System;
+using Iyzipay.Model;
 using Newtonsoft.Json;
 
 namespace Iyzipay.Request
@@ -18,6 +19,7 @@ namespace Iyzipay.Request
 		public int StockCount { get; set; }
 		public string SourceType { get; set; }
 		public bool? InstallmentRequested { get; set; }
+        public ProductBuyerInfo ProductBuyerInfo { get; set; }
 
-	}
+    }
 }

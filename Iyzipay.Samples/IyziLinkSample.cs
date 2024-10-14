@@ -19,13 +19,24 @@ namespace Iyzipay.Samples
             request.Base64EncodedImage = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8H8BwGwAF0QIs4BDpAAAAAABJRU5ErkJggg==";
             request.Price = "1";
             request.Currency = Currency.TRY.ToString();
-            request.AddressIgnorable = false;
+            request.AddressIgnorable = true;
             request.InstallmentRequested = false;
             request.StockEnabled = true;
             request.StockCount = 1;
             request.InstallmentRequested = false;
             request.SourceType = "API";
-            
+
+            ProductBuyerInfo productBuyerInfo = new ProductBuyerInfo();
+            productBuyerInfo.BuyerName = "John";
+            productBuyerInfo.BuyerSurname = "Doe";
+            productBuyerInfo.BuyerCity = "Ankara";
+            productBuyerInfo.BuyerCountry = "Turkey";
+            productBuyerInfo.BuyerGsmNumber = "+905554443322";
+            productBuyerInfo.BuyerEmail = "john.doe@iyzico.com";
+            productBuyerInfo.BuyerAddress = "Turkey";
+            request.ProductBuyerInfo = productBuyerInfo;
+
+
             ResponseData<IyziLinkSave> response = IyziLink.Create(request, options);
             PrintResponse(response);
             

@@ -4,31 +4,32 @@ using Newtonsoft.Json;
 
 namespace Iyzipay.Model
 {
-    public class ApmResource : IyzipayResource
+    public class ApmResource : IyzipayResourceV2
     {
-        public String RedirectUrl { get; set; }
-        public String Price { get; set; }
-        public String PaidPrice { get; set; }
-        public String PaymentId { get; set; }
-        public String MerchantCommissionRate { get; set; }
-        public String MerchantCommissionRateAmount { get; set; }
-        public String IyziCommissionRateAmount { get; set; }
-        public String IyziCommissionFee { get; set; }
-        public String BasketId { get; set; }
-        public String Currency { get; set; }
+        public string RedirectUrl { get; set; }
+        public string Price { get; set; }
+        public string PaidPrice { get; set; }
+        public string PaymentId { get; set; }
+        public string Signature { get; set; }
+        public string MerchantCommissionRate { get; set; }
+        public string MerchantCommissionRateAmount { get; set; }
+        public string IyziCommissionRateAmount { get; set; }
+        public string IyziCommissionFee { get; set; }
+        public string BasketId { get; set; }
+        public string Currency { get; set; }
         [JsonProperty(PropertyName = "itemTransactions")]
         public List<PaymentItem> PaymentItems { get; set; }
-        public String Phase { get; set; }
-        public String AccountHolderName { get; set; }
-        public String AccountNumber { get; set; }
-        public String BankName { get; set; }
-        public String BankCode { get; set; }
-        public String Bic { get; set; }
-        public String PaymentPurpose { get; set; }
-        public String Iban { get; set; }
-        public String CountryCode { get; set; }
-        public String Apm { get; set; }
-        public String MobilePhone { get; set; }
-        public String PaymentStatus { get; set; }         
+        public string Phase { get; set; }
+        public string AccountHolderName { get; set; }
+        public string AccountNumber { get; set; }
+        public string BankName { get; set; }
+        public string BankCode { get; set; }
+        public string Bic { get; set; }
+        public string PaymentPurpose { get; set; }
+        public string Iban { get; set; }
+        public string CountryCode { get; set; }
+        public string Apm { get; set; }
+        public string MobilePhone { get; set; }
+        public string PaymentStatus { get; set; }         
     }
 }

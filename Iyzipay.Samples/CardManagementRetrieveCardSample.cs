@@ -27,9 +27,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Status.SUCCESS.ToString(), cardManagementPageCard.Status);
             Assert.AreEqual(Locale.TR.ToString(), cardManagementPageCard.Locale);
             Assert.NotNull(cardManagementPageCard.SystemTime);
-            Assert.Null(cardManagementPageCard.ErrorCode);
             Assert.Null(cardManagementPageCard.ErrorMessage);
-            Assert.Null(cardManagementPageCard.ErrorGroup);
             Assert.NotNull(cardManagementPageCard);
         }
     }

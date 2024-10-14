@@ -2,14 +2,14 @@
 
 namespace Iyzipay.Request
 {
-    public class CreateCrossBookingRequest : BaseRequest
+    public class CreateCrossBookingRequest : BaseRequestV2
     {
-        public String SubMerchantKey { get; set; }
-        public String Price { get; set; }
-        public String Reason { get; set; }
-        public String Currency { get; set; }
+        public string SubMerchantKey { get; set; }
+        public string Price { get; set; }
+        public string Reason { get; set; }
+        public string Currency { get; set; }
 
-        public override String ToPKIRequestString()
+        public override string ToPKIRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
                 .AppendSuper(base.ToPKIRequestString())

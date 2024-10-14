@@ -2,13 +2,14 @@
 
 namespace Iyzipay.Request
 {
-    public class UpdatePaymentItemRequest : BaseRequest
+    public class UpdatePaymentItemRequest : BaseRequestV2
     {
-        public String SubMerchantKey { get; set; }
-        public String PaymentTransactionId { get; set; }
-        public String SubMerchantPrice { get; set; }
+        public string SubMerchantKey { get; set; }
+        public string PaymentTransactionId { get; set; }
+        public string SubMerchantPrice { get; set; }
 
-        public override String ToPKIRequestString()
+
+        public override string ToPKIRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
                 .AppendSuper(base.ToPKIRequestString())

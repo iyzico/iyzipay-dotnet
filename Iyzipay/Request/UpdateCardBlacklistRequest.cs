@@ -3,12 +3,13 @@ using System;
 
 namespace Iyzipay.Request
 {
-    public class UpdateCardBlacklistRequest : BaseRequest
+    public class UpdateCardBlacklistRequest : BaseRequestV2
     {
-        public String CardToken { get; set; }
-        public String CardUserKey { get; set; }
+        public string CardToken { get; set; }
+        public string CardUserKey { get; set; }
 
-        public override String ToPKIRequestString()
+
+        public override string ToPKIRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
                 .AppendSuper(base.ToPKIRequestString())

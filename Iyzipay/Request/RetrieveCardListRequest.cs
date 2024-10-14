@@ -2,11 +2,11 @@
 
 namespace Iyzipay.Request
 {
-    public class RetrieveCardListRequest : BaseRequest
+    public class RetrieveCardListRequest : BaseRequestV2
     {
-        public String CardUserKey { get; set; }
+        public string CardUserKey { get; set; }
 
-        public override String ToPKIRequestString()
+        public override string ToPKIRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
                 .AppendSuper(base.ToPKIRequestString())

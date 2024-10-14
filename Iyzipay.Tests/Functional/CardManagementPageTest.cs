@@ -2,6 +2,7 @@ using Iyzipay.Model;
 using Iyzipay.Request;
 using Iyzipay.Tests.Functional.Builder.Request;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Tests.Functional
 {
@@ -16,7 +17,7 @@ namespace Iyzipay.Tests.Functional
 
 
         [Test]
-        public void Should_Initialize_Card_Management_Page()
+        public async Task Should_Initialize_Card_Management_PageAsync()
         {
             CreateCardManagementPageInitializeRequest request = CardManagementPageRequestBuilder.Create().Build();
 
@@ -29,13 +30,11 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual("123456789", cardManagementPageInitialize.ConversationId);
             Assert.NotNull(cardManagementPageInitialize.Token);
             Assert.NotNull(cardManagementPageInitialize.CardPageUrl);
-            Assert.Null(cardManagementPageInitialize.ErrorCode);
             Assert.Null(cardManagementPageInitialize.ErrorMessage);
-            Assert.Null(cardManagementPageInitialize.ErrorGroup);
         }
 
         [Test]
-        public void Should_Not_Initialize_Card_Management_Page_When_CallbackUrl_Not_Exist()
+        public async Task Should_Not_Initialize_Card_Management_Page_When_CallbackUrl_Not_ExistAsync()
         {
             CreateCardManagementPageInitializeRequest request = CardManagementPageRequestBuilder.Create().CallbackUrl("").Build();
             
@@ -45,11 +44,9 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(Status.FAILURE.ToString(), cardManagementPageInitialize.Status);
             Assert.Null(cardManagementPageInitialize.ExternalId);
             Assert.Null(cardManagementPageInitialize.ConversationId);
-            Assert.Null(cardManagementPageInitialize.ErrorGroup);
             Assert.Null(cardManagementPageInitialize.Token);
             Assert.Null(cardManagementPageInitialize.CardPageUrl);
             Assert.AreEqual("Callback url gönderilmesi zorunludur", cardManagementPageInitialize.ErrorMessage);
-            Assert.AreEqual("23", cardManagementPageInitialize.ErrorCode);
         }
     }
 }

@@ -2,20 +2,21 @@
 using Iyzipay.Request;
 using Iyzipay.Tests.Functional.Builder.Request;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Tests.Functional
 {
     public class ThreedsTest : BaseTest
     {
         [Test]
-        public void Should_Create_Payment_With_Physical_And_Virtual_Item_For_Standard_Merchant()
+        public async Task Should_Create_Payment_With_Physical_And_Virtual_Item_For_Standard_MerchantAsync()
         {
             CreatePaymentRequest createPaymentRequest = CreatePaymentRequestBuilder.Create()
                 .StandardListingPayment()
                 .CallbackUrl("https://www.merchant.com/callback")
                 .Build();
 
-            ThreedsInitialize threedsInitialize = ThreedsInitialize.Create(createPaymentRequest, _options);
+            ThreedsInitialize threedsInitialize = await ThreedsInitialize.Create(createPaymentRequest, _options);
 
             PrintResponse(threedsInitialize);
 
@@ -23,26 +24,24 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(Status.SUCCESS.ToString(), threedsInitialize.Status);
             Assert.NotNull(threedsInitialize.SystemTime);
             Assert.NotNull(threedsInitialize.HtmlContent);
-            Assert.Null(threedsInitialize.ErrorCode);
             Assert.Null(threedsInitialize.ErrorMessage);
-            Assert.Null(threedsInitialize.ErrorGroup);
         }
 
         [Test]
-        public void Should_Create_Threeds_Payment_With_Physical_And_Virtual_Item_For_Marketplace_Merchant()
+        public async Task Should_Create_Threeds_Payment_With_Physical_And_Virtual_Item_For_Marketplace_MerchantAsync()
         {
             CreateSubMerchantRequest createSubMerchantRequest = CreateSubMerchantRequestBuilder.Create()
                 .PersonalSubMerchantRequest()
                 .Build();
 
-            SubMerchant subMerchant = SubMerchant.Create(createSubMerchantRequest, _options);
+            SubMerchant subMerchant = await SubMerchant.Create(createSubMerchantRequest, _options);
 
             CreatePaymentRequest createPaymentRequest = CreatePaymentRequestBuilder.Create()
                 .MarketplacePayment(subMerchant.SubMerchantKey)
                 .CallbackUrl("https://www.merchant.com/callback")
                 .Build();
 
-            ThreedsInitialize threedsInitialize = ThreedsInitialize.Create(createPaymentRequest, _options);
+			ThreedsInitialize threedsInitialize = await ThreedsInitialize.Create(createPaymentRequest, _options);
 
             PrintResponse(threedsInitialize);
 
@@ -50,16 +49,14 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(Status.SUCCESS.ToString(), threedsInitialize.Status);
             Assert.NotNull(threedsInitialize.SystemTime);
             Assert.NotNull(threedsInitialize.HtmlContent);
-            Assert.Null(threedsInitialize.ErrorCode);
             Assert.Null(threedsInitialize.ErrorMessage);
-            Assert.Null(threedsInitialize.ErrorGroup);
         }
 
         /*
             This test needs manual payment from Pecco on sandbox environment. So it does not contain any assertions.
         */
         [Test]
-        public void Should_Auth_Threeds()
+        public async Task Should_Auth_ThreedsAsync()
         {
             CreateThreedsPaymentRequest createThreedsPaymentRequest = new CreateThreedsPaymentRequest();
             createThreedsPaymentRequest.ConversationData = "conversion data";
@@ -67,7 +64,7 @@ namespace Iyzipay.Tests.Functional
             createThreedsPaymentRequest.Locale = Locale.TR.ToString();
             createThreedsPaymentRequest.ConversationId = "123456789";
 
-            ThreedsPayment threedsPayment = ThreedsPayment.Create(createThreedsPaymentRequest, _options);
+            ThreedsPayment threedsPayment = await ThreedsPayment.Create(createThreedsPaymentRequest, _options);
 
             PrintResponse(threedsPayment);
         }

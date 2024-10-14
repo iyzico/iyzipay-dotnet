@@ -2,11 +2,11 @@
 
 namespace Iyzipay.Request
 {
-    public class RetrieveCheckoutFormRequest : BaseRequest
+    public class RetrieveCheckoutFormRequest : BaseRequestV2
     {
-        public String Token { set; get; }
+        public string Token { set; get; }
 
-        public override String ToPKIRequestString()
+        public override string ToPKIRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
                 .AppendSuper(base.ToPKIRequestString())

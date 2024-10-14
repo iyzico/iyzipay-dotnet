@@ -2,17 +2,17 @@
 
 namespace Iyzipay.Request
 {
-   public class RetrievePaymentRequest : BaseRequest
+   public class RetrievePaymentRequest : BaseRequestV2
     {
-        public String PaymentId { get; set; }
-        public String PaymentConversationId { get; set; }
+        public string PaymentId { get; set; }
+        public string PaymentConversationId { get; set; }
 
-        public override String ToPKIRequestString()
+        public override string ToPKIRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
                 .AppendSuper(base.ToPKIRequestString())
                 .Append("paymentId", PaymentId)
-                .Append("paymentConversationId", PaymentConversationId)             
+                .Append("paymentConversationId", PaymentConversationId)
                 .GetRequestString();
         }
     }

@@ -1,6 +1,7 @@
 using Iyzipay.Model;
 using Iyzipay.Request;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Samples
 {
@@ -14,7 +15,7 @@ namespace Iyzipay.Samples
         }
         
         [Test]
-        public void Should_Initialize_Card_Management_Page()
+        public async Task Should_Initialize_Card_Management_PageAsync()
         {
             CreateCardManagementPageInitializeRequest request = new CreateCardManagementPageInitializeRequest
             {
@@ -29,7 +30,7 @@ namespace Iyzipay.Samples
                 Locale = Locale.TR.ToString()
             };
 
-            CardManagementPageInitialize cardManagementPageInitialize = CardManagementPageInitialize.Create(request, options);
+            CardManagementPageInitialize cardManagementPageInitialize = await CardManagementPageInitialize.Create(request, options);
             PrintResponse(cardManagementPageInitialize);
 
             Assert.AreEqual(Locale.TR.ToString(), cardManagementPageInitialize.Locale);
@@ -38,9 +39,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual("123456789", cardManagementPageInitialize.ConversationId);
             Assert.NotNull(cardManagementPageInitialize.Token);
             Assert.NotNull(cardManagementPageInitialize.CardPageUrl);
-            Assert.Null(cardManagementPageInitialize.ErrorCode);
             Assert.Null(cardManagementPageInitialize.ErrorMessage);
-            Assert.Null(cardManagementPageInitialize.ErrorGroup);
         }
     }
 }

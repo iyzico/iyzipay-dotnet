@@ -2,16 +2,16 @@
 
 namespace Iyzipay.Request
 {
-    public class CreateRefundRequest : BaseRequest
+    public class CreateRefundRequest : BaseRequestV2
     {
-        public String PaymentTransactionId { get; set; }
-        public String Price { get; set; }
-        public String Ip { get; set; }
-        public String Currency { get; set; }
-        public String Reason { get; set; }
-        public String Description { get; set; }
+        public string PaymentTransactionId { get; set; }
+        public string Price { get; set; }
+        public string Ip { get; set; }
+        public string Currency { get; set; }
+        public string Reason { get; set; }
+        public string Description { get; set; }
 
-        public override String ToPKIRequestString()
+        public override string ToPKIRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
                 .AppendSuper(base.ToPKIRequestString())
@@ -23,5 +23,6 @@ namespace Iyzipay.Request
                 .Append("description", Description)
                 .GetRequestString();
         }
+
     }
 }

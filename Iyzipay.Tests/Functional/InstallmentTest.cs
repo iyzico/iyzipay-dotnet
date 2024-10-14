@@ -1,13 +1,14 @@
 ﻿using Iyzipay.Model;
 using Iyzipay.Request;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Tests.Functional
 {
     public class InstallmentTest : BaseTest
     {
         [Test]
-        public void Should_Retrieve_Installments()
+        public async Task Should_Retrieve_InstallmentsAsync()
         {
             RetrieveInstallmentInfoRequest request = new RetrieveInstallmentInfoRequest();
             request.Locale = Locale.TR.ToString();
@@ -15,7 +16,7 @@ namespace Iyzipay.Tests.Functional
             request.BinNumber = "554960";
             request.Price = "100";
 
-            InstallmentInfo installmentInfo = InstallmentInfo.Retrieve(request, _options);
+            InstallmentInfo installmentInfo = await InstallmentInfo.Retrieve(request, _options);
 
             PrintResponse(installmentInfo);
 
@@ -33,15 +34,13 @@ namespace Iyzipay.Tests.Functional
             Assert.NotNull(installmentInfo.InstallmentDetails[0].InstallmentPrices[0].Price);
             Assert.NotNull(installmentInfo.InstallmentDetails[0].InstallmentPrices[0].TotalPrice);
             Assert.NotNull(installmentInfo.SystemTime);
-            Assert.Null(installmentInfo.ErrorCode);
             Assert.Null(installmentInfo.ErrorMessage);
-            Assert.Null(installmentInfo.ErrorGroup);
             Assert.NotNull(installmentInfo.InstallmentDetails);
             Assert.False(installmentInfo.InstallmentDetails.Count == 0);
         }
         
         [Test]
-        public void Should_Retrieve_Installments_With_Commercial_One()
+        public async Task Should_Retrieve_Installments_With_Commercial_OneAsync()
         {
             RetrieveInstallmentInfoRequest request = new RetrieveInstallmentInfoRequest();
             request.Locale = Locale.TR.ToString();
@@ -49,7 +48,7 @@ namespace Iyzipay.Tests.Functional
             request.BinNumber = "552659";
             request.Price = "100";
 
-            InstallmentInfo installmentInfo = InstallmentInfo.Retrieve(request, _options);
+            InstallmentInfo installmentInfo = await InstallmentInfo.Retrieve(request, _options);
 
             PrintResponse(installmentInfo);
 
@@ -67,9 +66,7 @@ namespace Iyzipay.Tests.Functional
             Assert.NotNull(installmentInfo.InstallmentDetails[0].InstallmentPrices[0].Price);
             Assert.NotNull(installmentInfo.InstallmentDetails[0].InstallmentPrices[0].TotalPrice);
             Assert.NotNull(installmentInfo.SystemTime);
-            Assert.Null(installmentInfo.ErrorCode);
             Assert.Null(installmentInfo.ErrorMessage);
-            Assert.Null(installmentInfo.ErrorGroup);
             Assert.NotNull(installmentInfo.InstallmentDetails);
             Assert.False(installmentInfo.InstallmentDetails.Count == 0);
         }

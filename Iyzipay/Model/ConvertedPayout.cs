@@ -4,15 +4,15 @@ namespace Iyzipay.Model
 {
     public class ConvertedPayout
     {
-        public String PaidPrice { get; set; }
-        public String IyziCommissionRateAmount { get; set; }
-        public String IyziCommissionFee { get; set; }
-        public String BlockageRateAmountMerchant { get; set; }
-        public String BlockageRateAmountSubMerchant { get; set; }
-        public String SubMerchantPayoutAmount { get; set; }
-        public String MerchantPayoutAmount { get; set; }
-        public String IyziConversionRate { get; set; }
-        public String IyziConversionRateAmount { get; set; }
-        public String Currency { get; set; }
+        public string PaidPrice { get; set; }
+        public string IyziCommissionRateAmount { get; set; }
+        public string IyziCommissionFee { get; set; }
+        public string BlockageRateAmountMerchant { get; set; }
+        public string BlockageRateAmountSubMerchant { get; set; }
+        public string SubMerchantPayoutAmount { get; set; }
+        public string MerchantPayoutAmount { get; set; }
+        public string IyziConversionRate { get; set; }
+        public string IyziConversionRateAmount { get; set; }
+        public string Currency { get; set; }
     }
 }

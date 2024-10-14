@@ -2,11 +2,11 @@
 
 namespace Iyzipay.Request
 {
-    public class CreateApprovalRequest : BaseRequest
+    public class CreateApprovalRequest : BaseRequestV2
     {
-        public String PaymentTransactionId { get; set; }
+        public string PaymentTransactionId { get; set; }
 
-        public override String ToPKIRequestString()
+        public override string ToPKIRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
                 .AppendSuper(base.ToPKIRequestString())

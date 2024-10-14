@@ -2,11 +2,12 @@
 
 namespace Iyzipay.Request
 {
-    public class RetrieveTransactionsRequest: BaseRequest
+    public class RetrieveTransactionsRequest: BaseRequestV2
     {
-        public String Date { get; set; }
+        public string Date { get; set; }
 
-        public override String ToPKIRequestString()
+
+        public override string ToPKIRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
                 .AppendSuper(base.ToPKIRequestString())

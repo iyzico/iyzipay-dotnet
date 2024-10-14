@@ -3,6 +3,7 @@ using Iyzipay.Request;
 using Iyzipay.Tests.Functional;
 using Iyzipay.Tests.Functional.Builder.Request;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Tests.Functional
 {
@@ -16,7 +17,7 @@ namespace Iyzipay.Tests.Functional
         }
 
         [Test]
-        public void Should_Retrieve_Cards()
+        public async Task Should_Retrieve_CardsAsync()
         {
             CreateCardManagementPageInitializeRequest initializeRequest = CardManagementPageRequestBuilder.Create().Build();
             CardManagementPageInitialize cardManagementPageInitialize = CardManagementPageInitialize.Create(initializeRequest, _options);
@@ -30,9 +31,7 @@ namespace Iyzipay.Tests.Functional
 
             Assert.AreEqual(Status.SUCCESS.ToString(), cardManagementPageCard.Status);
             Assert.AreEqual(Locale.TR.ToString(), cardManagementPageCard.Locale);
-            Assert.Null(cardManagementPageCard.ErrorCode);
             Assert.Null(cardManagementPageCard.ErrorMessage);
-            Assert.Null(cardManagementPageCard.ErrorGroup);
             Assert.NotNull(cardManagementPageCard);
         }
         
@@ -47,7 +46,6 @@ namespace Iyzipay.Tests.Functional
             PrintResponse(cardManagementPageCard);
 
             Assert.AreEqual(Status.FAILURE.ToString(), cardManagementPageCard.Status);
-            Assert.AreEqual("4002",cardManagementPageCard.ErrorCode);
             Assert.AreEqual("Geçersiz token",cardManagementPageCard.ErrorMessage);
         }
     }

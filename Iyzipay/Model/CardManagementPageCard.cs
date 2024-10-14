@@ -8,10 +8,10 @@ namespace Iyzipay.Model
         private string ExternalId { get; set; }
         private string CardUserKey { get; set; }
         private List<Card> CardDetails { get; set; }
-        
+
         public static CardManagementPageCard Retrieve(RetrieveCardManagementPageCardRequest request, Options options)
         {
-            return RestHttpClient.Create().Get<CardManagementPageCard>(PrepareRetrieveCardManagementPageCardRequest(request,options),GetHttpHeaders(request,options));
+            return RestHttpClient.Create().Get<CardManagementPageCard>(PrepareRetrieveCardManagementPageCardRequest(request, options), GetHttpHeaders(request, options));
         }
 
         private static string PrepareRetrieveCardManagementPageCardRequest(RetrieveCardManagementPageCardRequest request, Options options)

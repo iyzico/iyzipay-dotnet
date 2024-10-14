@@ -4,18 +4,19 @@ using System.Collections.Generic;
 
 namespace Iyzipay.Request
 {
-    public class CreateBasicBkmInitializeRequest : BaseRequest
+    public class CreateBasicBkmInitializeRequest : BaseRequestV2
     {
-        public String ConnectorName { get; set; }
-        public String Price { get; set; }
-        public String CallbackUrl { get; set; }
-        public String BuyerEmail { get; set; }
-        public String BuyerId { get; set; }
-        public String BuyerIp { get; set; }
-        public String PosOrderId { get; set; }
+        public string ConnectorName { get; set; }
+        public string Price { get; set; }
+        public string CallbackUrl { get; set; }
+        public string BuyerEmail { get; set; }
+        public string BuyerId { get; set; }
+        public string BuyerIp { get; set; }
+        public string PosOrderId { get; set; }
         public List<BkmInstallment> InstallmentDetails { get; set; }
-        
-        public override String ToPKIRequestString()
+
+
+        public override string ToPKIRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
                 .AppendSuper(base.ToPKIRequestString())

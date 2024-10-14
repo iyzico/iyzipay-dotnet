@@ -4,28 +4,29 @@ using System.Collections.Generic;
 
 namespace Iyzipay.Request
 {
-    public class CreatePaymentRequest : BaseRequest
+    public class CreatePaymentRequest : BaseRequestV2
     {
-        public String Price { get; set; }
-        public String PaidPrice { get; set; }
+        public string Price { get; set; }
+        public string PaidPrice { get; set; }
         public int? Installment { get; set; }
-        public String PaymentChannel { get; set; }
-        public String BasketId { get; set; }
-        public String PaymentGroup { get; set; }
+        public string PaymentChannel { get; set; }
+        public string BasketId { get; set; }
+        public string PaymentGroup { get; set; }
         public PaymentCard PaymentCard { get; set; }
         public Buyer Buyer { get; set; }
         public Address ShippingAddress { get; set; }
         public Address BillingAddress { get; set; }
         public List<BasketItem> BasketItems { get; set; }
-        public String PaymentSource { get; set; }
-        public String CallbackUrl { get; set; }
-        public String PosOrderId { get; set; }
-        public String ConnectorName { get; set; }
-        public String Currency { get; set; }
+        public string PaymentSource { get; set; }
+        public string CallbackUrl { get; set; }
+        public string PosOrderId { get; set; }
+        public string ConnectorName { get; set; }
+        public string Currency { get; set; }
         public LoyaltyReward Reward { get; set; }
-        public String GsmNumber { get; set; }
+        public string GsmNumber { get; set; }
 
-        public override String ToPKIRequestString()
+
+        public override string ToPKIRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
                 .AppendSuper(base.ToPKIRequestString())
@@ -35,7 +36,7 @@ namespace Iyzipay.Request
                 .Append("paymentChannel", PaymentChannel)
                 .Append("basketId", BasketId)
                 .Append("paymentGroup", PaymentGroup)
-                .Append("paymentCard", PaymentCard)               
+                .Append("paymentCard", PaymentCard)
                 .Append("buyer", Buyer)
                 .Append("shippingAddress", ShippingAddress)
                 .Append("billingAddress", BillingAddress)

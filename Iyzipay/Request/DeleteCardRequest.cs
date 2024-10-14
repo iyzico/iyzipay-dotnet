@@ -2,12 +2,13 @@
 
 namespace Iyzipay.Request
 {
-    public class DeleteCardRequest : BaseRequest
+    public class DeleteCardRequest : BaseRequestV2
     {
-        public String CardUserKey { get; set; }
-        public String CardToken { get; set; }
+        public string CardUserKey { get; set; }
+        public string CardToken { get; set; }
 
-        public override String ToPKIRequestString()
+
+        public override string ToPKIRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
                 .AppendSuper(base.ToPKIRequestString())

@@ -3,12 +3,12 @@ using Iyzipay.Model;
 
 namespace Iyzipay.Request
 {
-    public class LoyaltyInquiryRequest : BaseRequest
+    public class LoyaltyInquiryRequest : BaseRequestV2
     {
         public LoyaltyPaymentCard PaymentCard { set; get; }
         public string Currency { set; get; }
 
-        public override String ToPKIRequestString()
+        public override string ToPKIRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
                 .AppendSuper(base.ToPKIRequestString())

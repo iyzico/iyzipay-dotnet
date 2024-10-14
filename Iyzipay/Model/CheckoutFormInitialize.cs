@@ -1,12 +1,14 @@
 ﻿using Iyzipay.Request;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
     public class CheckoutFormInitialize : CheckoutFormInitializeResource
     {
-        public static CheckoutFormInitialize Create(CreateCheckoutFormInitializeRequest request, Options options)
+        public static Task<CheckoutFormInitialize> Create(CreateCheckoutFormInitializeRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<CheckoutFormInitialize>(options.BaseUrl + "/payment/iyzipos/checkoutform/initialize/auth/ecom", GetHttpHeaders(request, options), request);
+            var uri = options.BaseUrl + "/payment/iyzipos/checkoutform/initialize/auth/ecom";
+            return RestHttpClientV2.Create().PostAsync<CheckoutFormInitialize>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
         }
     }
 }

@@ -5,15 +5,15 @@ namespace Iyzipay.Model
 {
     public class InstallmentDetail
     {
-        public String BinNumber { get; set; }
+        public string BinNumber { get; set; }
         public int Commercial { get; set; }
-        public String Price { get; set; }
-        public String CardType { get; set; }
-        public String CardAssociation { get; set; }
-        public String CardFamilyName { get; set; }
+        public string Price { get; set; }
+        public string CardType { get; set; }
+        public string CardAssociation { get; set; }
+        public string CardFamilyName { get; set; }
         public int? Force3Ds { get; set; }
         public long? BankCode { get; set; }
-        public String BankName { get; set; }
+        public string BankName { get; set; }
         public int? ForceCvc { get; set; }
         public List<InstallmentPrice> InstallmentPrices { get; set; }
     }

@@ -2,11 +2,10 @@
 
 namespace Iyzipay.Request
 {
-    public class RetrieveSubMerchantRequest : BaseRequest
+    public class RetrieveSubMerchantRequest : BaseRequestV2
     {
-        public String SubMerchantExternalId { get; set; }
-
-        public override String ToPKIRequestString()
+        public string SubMerchantExternalId { get; set; }
+        public override string ToPKIRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
                 .AppendSuper(base.ToPKIRequestString())

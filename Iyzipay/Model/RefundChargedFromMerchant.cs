@@ -1,19 +1,21 @@
 ﻿using Iyzipay.Request;
 using System;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    public class RefundChargedFromMerchant : IyzipayResource
-    {
-        public String PaymentId { get; set; }
-        public String PaymentTransactionId { get; set; }
-        public String Price { get; set; }
-        public String AuthCode { get; set; }
-        public String HostReference { get; set; }
+	public class RefundChargedFromMerchant : IyzipayResourceV2
+	{
+		public string PaymentId { get; set; }
+		public string PaymentTransactionId { get; set; }
+		public string Price { get; set; }
+		public string AuthCode { get; set; }
+		public string HostReference { get; set; }
 
-        public static RefundChargedFromMerchant Create(CreateRefundRequest request, Options options)
-        {
-            return RestHttpClient.Create().Post<RefundChargedFromMerchant>(options.BaseUrl + "/payment/iyzipos/refund/merchant/charge", GetHttpHeaders(request, options), request);
-        }
-    }
+		public static Task<RefundChargedFromMerchant> Create(CreateRefundRequest request, Options options)
+		{
+			var uri = options.BaseUrl + "/payment/iyzipos/refund/merchant/charge";
+			return RestHttpClientV2.Create().PostAsync<RefundChargedFromMerchant>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
+		}
+	}
 }

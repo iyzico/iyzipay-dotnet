@@ -9,7 +9,7 @@ namespace Iyzipay.Tests.Functional
 {
     public class IyziLinkTest : BaseTest
     {
-        
+
         /*[Test]
         public void Should_Create_IyziLink()
         {
@@ -22,8 +22,10 @@ namespace Iyzipay.Tests.Functional
             request.Price = "1";
             request.Currency = Currency.TRY.ToString();
             request.AddressIgnorable = false;
-            request.SoldLimit = 1;
+            request.StockEnabled = true;
+            request.StockCount = 1;
             request.InstallmentRequested = false;
+            request.SourceType = "API";
             
             ResponseData<IyziLinkSave> response = IyziLink.Create(request, _options);
             PrintResponse(response);
@@ -36,7 +38,7 @@ namespace Iyzipay.Tests.Functional
             Assert.NotNull(response.Data.ImageUrl);
             Assert.NotNull(response.Data.Token);
         }*/
-        
+
         /*[Test]
         public void Should_Update_IyziLink()
         {
@@ -77,7 +79,7 @@ namespace Iyzipay.Tests.Functional
             Assert.NotNull(response.Data.ImageUrl);
             Assert.NotNull(response.Data.Token);
         }*/
-        
+
         /*[Test]
         public void Should_Retrieve_IyziLinks_With_Pagination()
         {
@@ -112,7 +114,7 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(1,response.Data.Items.Count);
             Assert.AreEqual(1,response.Data.CurrentPage);
         }*/
-        
+
         /*[Test]
         public void Should_Retrieve_IyziLink_With_Token()
         {
@@ -149,7 +151,7 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual(false,response.Data.AddressIgnorable);
             Assert.NotNull(response.Data.ImageUrl);
         }*/
-        
+
         /*[Test]
         public void Should_Delete_IyziLink()
         {

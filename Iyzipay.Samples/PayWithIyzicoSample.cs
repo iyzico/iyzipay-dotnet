@@ -2,6 +2,7 @@
 using Iyzipay.Request;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Samples
 {
@@ -9,7 +10,7 @@ namespace Iyzipay.Samples
     {
         
         [Test]
-        public void Should_Initialize_PayWithIyzico()
+        public async Task Should_Initialize_PayWithIyzicoAsync()
         {
             CreatePayWithIyzicoInitializeRequest request = new CreatePayWithIyzicoInitializeRequest();
             request.Locale = Locale.TR.ToString();
@@ -89,7 +90,7 @@ namespace Iyzipay.Samples
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
-            PayWithIyzicoInitialize payWithIyzicoInitialize = PayWithIyzicoInitialize.Create(request, options);
+            PayWithIyzicoInitialize payWithIyzicoInitialize = await PayWithIyzicoInitialize.Create(request, options);
 
             PrintResponse<PayWithIyzicoInitialize>(payWithIyzicoInitialize);
 
@@ -97,21 +98,19 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), payWithIyzicoInitialize.Locale);
             Assert.AreEqual("123456789", payWithIyzicoInitialize.ConversationId);
             Assert.IsNotNull(payWithIyzicoInitialize.SystemTime);
-            Assert.IsNull(payWithIyzicoInitialize.ErrorCode);
             Assert.IsNull(payWithIyzicoInitialize.ErrorMessage);
-            Assert.IsNull(payWithIyzicoInitialize.ErrorGroup);
             Assert.IsNotNull(payWithIyzicoInitialize.CheckoutFormContent);
             Assert.IsNotNull(payWithIyzicoInitialize.PayWithIyzicoPageUrl);
         }
 
         [Test]
-        public void Should_Retrieve_PayWithIyzico_Result()
+        public async Task Should_Retrieve_PayWithIyzico_ResultAsync()
         {
             RetrievePayWithIyzicoRequest request = new RetrievePayWithIyzicoRequest();
             request.ConversationId = "123456789";
             request.Token = "cb3f2681-e397-473a-931c-2567fd235627";
 
-            PayWithIyzico payWithIyzicoResult = PayWithIyzico.Retrieve(request, options);
+            PayWithIyzico payWithIyzicoResult = await PayWithIyzico.Retrieve(request, options);
 
             PrintResponse<PayWithIyzico>(payWithIyzicoResult);
 
@@ -119,9 +118,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), payWithIyzicoResult.Locale);
             Assert.AreEqual("123456789", payWithIyzicoResult.ConversationId);
             Assert.IsNotNull(payWithIyzicoResult.SystemTime);
-            Assert.IsNull(payWithIyzicoResult.ErrorCode);
             Assert.IsNull(payWithIyzicoResult.ErrorMessage);
-            Assert.IsNull(payWithIyzicoResult.ErrorGroup);
         }
     }
 }

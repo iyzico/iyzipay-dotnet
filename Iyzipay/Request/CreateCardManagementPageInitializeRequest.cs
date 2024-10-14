@@ -11,8 +11,8 @@ namespace Iyzipay.Request
         public string CardUserKey { get; set; }
         public string CallbackUrl { get; set; }
         public bool DebitCardAllowed { get; set; }
-        
-        public override String ToPKIRequestString()
+
+        public override string ToPKIRequestString()
         {
             return ToStringRequestBuilder.NewInstance()
                 .AppendSuper(base.ToPKIRequestString())

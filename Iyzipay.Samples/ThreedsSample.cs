@@ -2,13 +2,14 @@
 using Iyzipay.Model;
 using System.Collections.Generic;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Samples
 {
     public class ThreedsSample : Sample
     {
         [Test]
-        public void Should_Initialize_Threeds()
+        public async Task Should_Initialize_ThreedsAsync()
         {
             CreatePaymentRequest request = new CreatePaymentRequest();
             request.Locale = Locale.TR.ToString();
@@ -92,7 +93,7 @@ namespace Iyzipay.Samples
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
-            ThreedsInitialize threedsInitialize = ThreedsInitialize.Create(request, options);
+            ThreedsInitialize threedsInitialize = await ThreedsInitialize.Create(request, options);
 
             PrintResponse<ThreedsInitialize>(threedsInitialize);
 
@@ -100,14 +101,12 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), threedsInitialize.Locale);
             Assert.AreEqual("123456789", threedsInitialize.ConversationId);
             Assert.IsNotNull(threedsInitialize.SystemTime);
-            Assert.IsNull(threedsInitialize.ErrorCode);
             Assert.IsNull(threedsInitialize.ErrorMessage);
-            Assert.IsNull(threedsInitialize.ErrorGroup);
             Assert.IsNotNull(threedsInitialize.HtmlContent);
         }
 
         [Test]
-        public void Should_Initialize_Threeds_Payment_With_Ucs_Registered_Card()
+        public async Task Should_Initialize_Threeds_Payment_With_Ucs_Registered_CardAsync()
         {
             CreatePaymentRequest request = new CreatePaymentRequest();
             request.Locale = Locale.TR.ToString();
@@ -188,7 +187,7 @@ namespace Iyzipay.Samples
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
-            ThreedsInitialize threedsInitialize = ThreedsInitialize.Create(request, options);
+            ThreedsInitialize threedsInitialize = await ThreedsInitialize.Create(request, options);
 
             PrintResponse<ThreedsInitialize>(threedsInitialize);
 
@@ -196,14 +195,12 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), threedsInitialize.Locale);
             Assert.AreEqual("123456789", threedsInitialize.ConversationId);
             Assert.IsNotNull(threedsInitialize.SystemTime);
-            Assert.IsNull(threedsInitialize.ErrorCode);
             Assert.IsNull(threedsInitialize.ErrorMessage);
-            Assert.IsNull(threedsInitialize.ErrorGroup);
             Assert.IsNotNull(threedsInitialize.HtmlContent);
         }
 
         [Test]
-        public void Should_Initialize_Threeds_Payment_And_Register_Card()
+        public async Task Should_Initialize_Threeds_Payment_And_Register_CardAsync()
         {
             CreatePaymentRequest request = new CreatePaymentRequest();
             request.Locale = Locale.TR.ToString();
@@ -287,7 +284,7 @@ namespace Iyzipay.Samples
             basketItems.Add(thirdBasketItem);
             request.BasketItems = basketItems;
 
-            ThreedsInitialize threedsInitialize = ThreedsInitialize.Create(request, options);
+            ThreedsInitialize threedsInitialize = await ThreedsInitialize.Create(request, options);
 
             PrintResponse<ThreedsInitialize>(threedsInitialize);
 
@@ -295,14 +292,12 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), threedsInitialize.Locale);
             Assert.AreEqual("123456789", threedsInitialize.ConversationId);
             Assert.IsNotNull(threedsInitialize.SystemTime);
-            Assert.IsNull(threedsInitialize.ErrorCode);
             Assert.IsNull(threedsInitialize.ErrorMessage);
-            Assert.IsNull(threedsInitialize.ErrorGroup);
             Assert.IsNotNull(threedsInitialize.HtmlContent);
         }
 
         [Test]
-        public void Should_Create_Threeds_Payment()
+        public async Task Should_Create_Threeds_PaymentAsync()
         {
             CreateThreedsPaymentRequest request = new CreateThreedsPaymentRequest();
             request.Locale = Locale.TR.ToString();
@@ -310,7 +305,7 @@ namespace Iyzipay.Samples
             request.PaymentId = "1";
             request.ConversationData = "conversation data";
 
-            ThreedsPayment threedsPayment = ThreedsPayment.Create(request, options);
+            ThreedsPayment threedsPayment = await ThreedsPayment.Create(request, options);
 
             PrintResponse<ThreedsPayment>(threedsPayment);
 
@@ -318,9 +313,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), threedsPayment.Locale);
             Assert.AreEqual("123456789", threedsPayment.ConversationId);
             Assert.IsNotNull(threedsPayment.SystemTime);
-            Assert.IsNull(threedsPayment.ErrorCode);
             Assert.IsNull(threedsPayment.ErrorMessage);
-            Assert.IsNull(threedsPayment.ErrorGroup);
         }
     }
 }

@@ -1,27 +1,31 @@
 ﻿using Iyzipay.Request;
 using System;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    public class CardBlacklist : IyzipayResource
+    public class CardBlacklist : IyzipayResourceV2
     {
-        public String CardUserKey { get; set; }
-        public String CardToken { get; set; }
-        public String CardNumber { get; set; }
-        public Boolean Blacklisted { get; set; }
-        public static CardBlacklist Create(CreateCardBlacklistRequest request, Options options)
-        {
-            return RestHttpClient.Create().Post<CardBlacklist>(options.BaseUrl + "/cardstorage/blacklist/card", GetHttpHeaders(request, options), request);
+        public string CardUserKey { get; set; }
+        public string CardToken { get; set; }
+        public string CardNumber { get; set; }
+        public bool Blacklisted { get; set; }
+        public static Task<CardBlacklist> Create(CreateCardBlacklistRequest request, Options options)
+		{
+			var uri = options.BaseUrl + "/cardstorage/blacklist/card";
+			return RestHttpClientV2.Create().PostAsync<CardBlacklist>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
         }
 
-        public static CardBlacklist Update(UpdateCardBlacklistRequest request, Options options)
+        public static Task<CardBlacklist> Update(UpdateCardBlacklistRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<CardBlacklist>(options.BaseUrl + "/cardstorage/blacklist/card/inactive", GetHttpHeaders(request, options), request);
+            var uri = options.BaseUrl + "/cardstorage/blacklist/card/inactive";
+            return RestHttpClientV2.Create().PostAsync<CardBlacklist>(uri, GetHttpHeadersWithRequestBody(request, uri,options), request);
         }
 
-        public static CardBlacklist Retrieve(RetrieveCardBlacklistRequest request, Options options)
+        public static Task<CardBlacklist> Retrieve(RetrieveCardBlacklistRequest request, Options options)
         {
-            return RestHttpClient.Create().Post<CardBlacklist>(options.BaseUrl + "/cardstorage/blacklist/card/retrieve", GetHttpHeaders(request, options), request);
+            var uri = options.BaseUrl + "/cardstorage/blacklist/card/retrieve";
+            return RestHttpClientV2.Create().PostAsync<CardBlacklist>(uri, GetHttpHeadersWithRequestBody(request, uri,options), request);
         }
     }
 }

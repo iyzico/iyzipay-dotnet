@@ -1,23 +1,25 @@
 ﻿using Iyzipay.Request;
 using System;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Model
 {
-    public class BasicThreedsInitializePreAuth : IyzipayResource
-    {
-        [JsonProperty(PropertyName = "threeDSHtmlContent")]
-        public String HtmlContent { get; set; }
+	public class BasicThreedsInitializePreAuth : IyzipayResourceV2
+	{
+		[JsonProperty(PropertyName = "threeDSHtmlContent")]
+		public string HtmlContent { get; set; }
 
-        public static BasicThreedsInitializePreAuth Create(CreateBasicPaymentRequest request, Options options)
-        {
-            BasicThreedsInitializePreAuth response = RestHttpClient.Create().Post<BasicThreedsInitializePreAuth>(options.BaseUrl + "/payment/3dsecure/initialize/preauth/basic", GetHttpHeaders(request, options), request);
+		public static async Task<BasicThreedsInitializePreAuth> Create(CreateBasicPaymentRequest request, Options options)
+		{
+			var uri = options.BaseUrl + "/payment/3dsecure/initialize/preauth/basic";
+			BasicThreedsInitializePreAuth response = await RestHttpClientV2.Create().PostAsync<BasicThreedsInitializePreAuth>(options.BaseUrl + uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
 
-            if (response != null)
-            {
-                response.HtmlContent = DigestHelper.DecodeString(response.HtmlContent);
-            }
-            return response;
-        }
-    }
+			if (response != null)
+			{
+				response.HtmlContent = DigestHelper.DecodeString(response.HtmlContent);
+			}
+			return response;
+		}
+	}
 }

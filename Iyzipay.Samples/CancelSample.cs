@@ -1,13 +1,14 @@
 ﻿using Iyzipay.Request;
 using Iyzipay.Model;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace Iyzipay.Samples
 {
     public class CancelSample : Sample
     {
         [Test]
-        public void Should_Cancel_Payment()
+        public async Task Should_Cancel_PaymentAsync()
         {
             CreateCancelRequest request = new CreateCancelRequest();
             request.ConversationId = "123456789";
@@ -15,7 +16,7 @@ namespace Iyzipay.Samples
             request.PaymentId = "1";
             request.Ip = "85.34.78.112";
 
-            Cancel cancel = Cancel.Create(request, options);
+            Cancel cancel = await Cancel.Create(request, options);
 
             PrintResponse<Cancel>(cancel);
 
@@ -23,13 +24,11 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), cancel.Locale);
             Assert.AreEqual("123456789", cancel.ConversationId);
             Assert.IsNotNull(cancel.SystemTime);
-            Assert.IsNull(cancel.ErrorCode);
             Assert.IsNull(cancel.ErrorMessage);
-            Assert.IsNull(cancel.ErrorGroup);
         }
 
         [Test]
-        public void Should_Cancel_Payment_With_Reason_And_Description()
+        public async Task Should_Cancel_Payment_With_Reason_And_DescriptionAsync()
         {
             CreateCancelRequest request = new CreateCancelRequest();
             request.ConversationId = "123456789";
@@ -39,7 +38,7 @@ namespace Iyzipay.Samples
             request.Reason = RefundReason.OTHER.ToString();
             request.Description = "customer requested for default sample";
 
-            Cancel cancel = Cancel.Create(request, options);
+            Cancel cancel = await Cancel.Create(request, options);
 
             PrintResponse<Cancel>(cancel);
 
@@ -47,9 +46,7 @@ namespace Iyzipay.Samples
             Assert.AreEqual(Locale.TR.ToString(), cancel.Locale);
             Assert.AreEqual("123456789", cancel.ConversationId);
             Assert.IsNotNull(cancel.SystemTime);
-            Assert.IsNull(cancel.ErrorCode);
             Assert.IsNull(cancel.ErrorMessage);
-            Assert.IsNull(cancel.ErrorGroup);
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text;
 
 namespace Iyzipay
 {
@@ -64,11 +65,12 @@ namespace Iyzipay
 		}
 		public async Task<T> PostAsync<T>(String url, Dictionary<string, string> headers, BaseRequestV2 request) where T : IyzipayResourceV2
 		{
+			var content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
 			HttpRequestMessage requestMessage = new HttpRequestMessage
 			{
 				Method = HttpMethod.Post,
 				RequestUri = new Uri(url),
-				Content = JsonBuilder.ToJsonString(request)
+				Content = content
 			};
 
 			foreach (var header in headers)

@@ -7,7 +7,7 @@ namespace Iyzipay.Request.V2.Subscription
         public string CustomerReferenceCode { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public string Enail { get; set; }
+        public string Email { get; set; }
         public string GsmNumber { get; set; }
         public string IdentityNumber { get; set; }
         public Address BillingAddress { get; set; }

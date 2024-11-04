@@ -102,7 +102,7 @@ namespace Iyzipay.Tests.Functional
 				Locale = Locale.TR.ToString(),
 				Name = "upd-customer-name",
 				Surname = "upd-customer-surname",
-				Enail = "upd-customer-email",
+				Email = "upd-customer-email",
 				GsmNumber = "+905555555555",
 				BillingAddress = new Address
 				{

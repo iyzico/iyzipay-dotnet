@@ -30,7 +30,7 @@ namespace Iyzipay.Samples
                 Locale = Locale.TR.ToString()
             };
 
-            CardManagementPageInitialize cardManagementPageInitialize = await CardManagementPageInitialize.Create(request, options);
+            CardManagementPageInitialize cardManagementPageInitialize = CardManagementPageInitialize.Create(request, options);
             PrintResponse(cardManagementPageInitialize);
 
             Assert.AreEqual(Locale.TR.ToString(), cardManagementPageInitialize.Locale);

@@ -9,7 +9,7 @@ namespace Iyzipay.Model
         public String BuyerCity { get; set; }
         public String BuyerCountry { get; set; }
         public String BuyerGsmNumber { get; set; }
-        public String BuyerEmail { get; set; }
+        public String BuyerEmailAddress { get; set; }
         public String BuyerAddress { get; set; }
     }
 }

@@ -32,7 +32,7 @@ namespace Iyzipay.Samples
             productBuyerInfo.BuyerCity = "Ankara";
             productBuyerInfo.BuyerCountry = "Turkey";
             productBuyerInfo.BuyerGsmNumber = "+905554443322";
-            productBuyerInfo.BuyerEmail = "john.doe@iyzico.com";
+            productBuyerInfo.BuyerEmailAddress = "john.doe@iyzico.com";
             productBuyerInfo.BuyerAddress = "Turkey";
             request.ProductBuyerInfo = productBuyerInfo;
 

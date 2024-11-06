@@ -4,6 +4,8 @@ using System.Net;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace Iyzipay
 {
@@ -71,8 +73,11 @@ namespace Iyzipay
         {
             String randomKey = GenerateRandomKey();
             String uriPath = FindUriPath(url);
-
-            String payload = request != null ? uriPath + JsonBuilder.SerializeObjectToPrettyJson(request) : uriPath;
+            var settings = new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+            };
+            String payload = request != null ? uriPath + JsonConvert.SerializeObject(request, settings) : uriPath; 
             String dataToEncrypt = randomKey + payload;
             String hash = HashGeneratorV2.GenerateHash(options.ApiKey, options.SecretKey, randomKey, dataToEncrypt); 
             return IYZIWS_V2_HEADER_NAME + hash;

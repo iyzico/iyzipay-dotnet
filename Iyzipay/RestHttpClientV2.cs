@@ -109,6 +109,11 @@ namespace Iyzipay
                 Content = content
             };
 
+            foreach (var header in headers)
+            {
+                requestMessage.Headers.Add(header.Key, header.Value);
+            }
+
             HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
 			var response = JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
 			response.AppendWithHttpResponseHeaders(httpResponseMessage);
@@ -128,6 +133,11 @@ namespace Iyzipay
                 RequestUri = new Uri(url),
                 Content = content
             };
+
+            foreach (var header in headers)
+            {
+                requestMessage.Headers.Add(header.Key, header.Value);
+            }
 
             HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
 			var readAsString = await httpResponseMessage.Content.ReadAsStringAsync();
@@ -150,6 +160,11 @@ namespace Iyzipay
                 RequestUri = new Uri(url),
                 Content = content
             };
+
+            foreach (var header in headers)
+            {
+                requestMessage.Headers.Add(header.Key, header.Value);
+            }
 
             HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
             var response = JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);

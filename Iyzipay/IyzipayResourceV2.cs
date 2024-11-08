@@ -21,9 +21,7 @@ namespace Iyzipay
 
         public String Status { get; set; }
         public int StatusCode { get; set; }
-        public String ErrorCode { get; set; }
         public String ErrorMessage { get; set; }
-        public String ErrorGroup { get; set; }
         public String ConversationId { get; set; }
         public long SystemTime { get; set; }
         public String Locale { get; set; }

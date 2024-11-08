@@ -76,6 +76,7 @@ namespace Iyzipay
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
             };
             var content = new StringContent(JsonConvert.SerializeObject(request, settings), Encoding.UTF8, "application/json");
+            string jsonContent = content.ReadAsStringAsync().Result;
             HttpRequestMessage requestMessage = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,

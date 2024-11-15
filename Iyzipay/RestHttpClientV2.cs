@@ -6,6 +6,8 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Serialization;
+using System.Text;
 
 namespace Iyzipay
 {
@@ -64,18 +66,23 @@ namespace Iyzipay
 		}
 		public async Task<T> PostAsync<T>(String url, Dictionary<string, string> headers, BaseRequestV2 request) where T : IyzipayResourceV2
 		{
+			var settings = new JsonSerializerSettings
+			{
+				ContractResolver = new CamelCasePropertyNamesContractResolver(),
+			};
+			var temp = JsonConvert.SerializeObject(request, settings);
+			var content = new StringContent(temp, Encoding.UTF8, "application/json");
 			HttpRequestMessage requestMessage = new HttpRequestMessage
 			{
 				Method = HttpMethod.Post,
 				RequestUri = new Uri(url),
-				Content = JsonBuilder.ToJsonString(request)
+				Content = content
 			};
 
 			foreach (var header in headers)
 			{
 				requestMessage.Headers.Add(header.Key, header.Value);
 			}
-
 			HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
 			var readAsString = await httpResponseMessage.Content.ReadAsStringAsync();
 			var response = JsonConvert.DeserializeObject<T>(readAsString);
@@ -126,24 +133,24 @@ namespace Iyzipay
 
 
 		public T Patch<T>(String url, Dictionary<string, string> headers, BaseRequestV2 request) where T : IyzipayResourceV2
-        {
-            HttpRequestMessage requestMessage = new HttpRequestMessage
-            {
-                Method = HttpMethod.Put,//todo: [EY] Patch olarak değiştirilmeli fakat kütüphane güncellenmesi gerekiyor.
-                RequestUri = new Uri(url),
-                Content = JsonBuilder.ToJsonString(request)
-            };
+		{
+			HttpRequestMessage requestMessage = new HttpRequestMessage
+			{
+				Method = HttpMethod.Put,//todo: [EY] Patch olarak değiştirilmeli fakat kütüphane güncellenmesi gerekiyor.
+				RequestUri = new Uri(url),
+				Content = JsonBuilder.ToJsonString(request)
+			};
 
-            foreach (var header in headers)
-            {
-                requestMessage.Headers.Add(header.Key, header.Value);
-            }
+			foreach (var header in headers)
+			{
+				requestMessage.Headers.Add(header.Key, header.Value);
+			}
 
-            HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
-            var response = JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
-            response.AppendWithHttpResponseHeaders(httpResponseMessage);
-            return response;
-        }
+			HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
+			var response = JsonConvert.DeserializeObject<T>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+			response.AppendWithHttpResponseHeaders(httpResponseMessage);
+			return response;
+		}
 
 		public T Delete<T>(String url, Dictionary<string, string> headers, BaseRequestV2 request) where T : IyzipayResourceV2
 		{

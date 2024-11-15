@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Serialization;
+using System.Text;
 
 namespace Iyzipay
 {
@@ -45,12 +45,18 @@ namespace Iyzipay
 
 		public T Post<T>(String url, Dictionary<string, string> headers, BaseRequestV2 request) where T : IyzipayResourceV2
 		{
-			HttpRequestMessage requestMessage = new HttpRequestMessage
-			{
-				Method = HttpMethod.Post,
-				RequestUri = new Uri(url),
-				Content = JsonBuilder.ToJsonString(request)
-			};
+            var settings = new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+            };
+            var content = new StringContent(JsonConvert.SerializeObject(request, settings), Encoding.UTF8, "application/json");
+
+            HttpRequestMessage requestMessage = new HttpRequestMessage
+            {
+                Method = HttpMethod.Post,
+                RequestUri = new Uri(url),
+                Content = content
+            };
 
 			foreach (var header in headers)
 			{
@@ -64,14 +70,20 @@ namespace Iyzipay
 		}
 		public async Task<T> PostAsync<T>(String url, Dictionary<string, string> headers, BaseRequestV2 request) where T : IyzipayResourceV2
 		{
-			HttpRequestMessage requestMessage = new HttpRequestMessage
-			{
-				Method = HttpMethod.Post,
-				RequestUri = new Uri(url),
-				Content = JsonBuilder.ToJsonString(request)
-			};
+            var settings = new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+            };
+            var content = new StringContent(JsonConvert.SerializeObject(request, settings), Encoding.UTF8, "application/json");
 
-			foreach (var header in headers)
+            HttpRequestMessage requestMessage = new HttpRequestMessage
+            {
+                Method = HttpMethod.Post,
+                RequestUri = new Uri(url),
+                Content = content
+            };
+
+            foreach (var header in headers)
 			{
 				requestMessage.Headers.Add(header.Key, header.Value);
 			}
@@ -85,14 +97,20 @@ namespace Iyzipay
 
 		public T Put<T>(String url, Dictionary<string, string> headers, BaseRequestV2 request) where T : IyzipayResourceV2
 		{
-			HttpRequestMessage requestMessage = new HttpRequestMessage
-			{
-				Method = HttpMethod.Put,
-				RequestUri = new Uri(url),
-				Content = JsonBuilder.ToJsonString(request)
-			};
+            var settings = new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+            };
+            var content = new StringContent(JsonConvert.SerializeObject(request, settings), Encoding.UTF8, "application/json");
 
-			foreach (var header in headers)
+            HttpRequestMessage requestMessage = new HttpRequestMessage
+            {
+                Method = HttpMethod.Put,
+                RequestUri = new Uri(url),
+                Content = content
+            };
+
+            foreach (var header in headers)
 			{
 				requestMessage.Headers.Add(header.Key, header.Value);
 			}
@@ -105,14 +123,20 @@ namespace Iyzipay
 
 		public async Task<T> PutAsync<T>(String url, Dictionary<string, string> headers, BaseRequestV2 request) where T : IyzipayResourceV2
 		{
-			HttpRequestMessage requestMessage = new HttpRequestMessage
-			{
-				Method = HttpMethod.Put,
-				RequestUri = new Uri(url),
-				Content = JsonBuilder.ToJsonString(request)
-			};
+            var settings = new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+            };
+            var content = new StringContent(JsonConvert.SerializeObject(request, settings), Encoding.UTF8, "application/json");
 
-			foreach (var header in headers)
+            HttpRequestMessage requestMessage = new HttpRequestMessage
+            {
+                Method = HttpMethod.Put,
+                RequestUri = new Uri(url),
+                Content = content
+            };
+
+            foreach (var header in headers)
 			{
 				requestMessage.Headers.Add(header.Key, header.Value);
 			}
@@ -127,11 +151,17 @@ namespace Iyzipay
 
 		public T Patch<T>(String url, Dictionary<string, string> headers, BaseRequestV2 request) where T : IyzipayResourceV2
         {
+            var settings = new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+            };
+            var content = new StringContent(JsonConvert.SerializeObject(request, settings), Encoding.UTF8, "application/json");
+
             HttpRequestMessage requestMessage = new HttpRequestMessage
             {
-                Method = HttpMethod.Put,//todo: [EY] Patch olarak değiştirilmeli fakat kütüphane güncellenmesi gerekiyor.
+                Method = HttpMethod.Put,
                 RequestUri = new Uri(url),
-                Content = JsonBuilder.ToJsonString(request)
+                Content = content
             };
 
             foreach (var header in headers)
@@ -147,14 +177,20 @@ namespace Iyzipay
 
 		public T Delete<T>(String url, Dictionary<string, string> headers, BaseRequestV2 request) where T : IyzipayResourceV2
 		{
-			HttpRequestMessage requestMessage = new HttpRequestMessage
-			{
-				Method = HttpMethod.Delete,
-				RequestUri = new Uri(url),
-				Content = JsonBuilder.ToJsonString(request)
-			};
+            var settings = new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+            };
+            var content = new StringContent(JsonConvert.SerializeObject(request, settings), Encoding.UTF8, "application/json");
 
-			foreach (var header in headers)
+            HttpRequestMessage requestMessage = new HttpRequestMessage
+            {
+                Method = HttpMethod.Delete,
+                RequestUri = new Uri(url),
+                Content = content
+            };
+
+            foreach (var header in headers)
 			{
 				requestMessage.Headers.Add(header.Key, header.Value);
 			}
@@ -167,14 +203,20 @@ namespace Iyzipay
 
 		public async Task<T> DeleteAsync<T>(String url, Dictionary<string, string> headers, BaseRequestV2 request) where T : IyzipayResourceV2
 		{
-			HttpRequestMessage requestMessage = new HttpRequestMessage
-			{
-				Method = HttpMethod.Delete,
-				RequestUri = new Uri(url),
-				Content = JsonBuilder.ToJsonString(request)
-			};
+            var settings = new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+            };
+            var content = new StringContent(JsonConvert.SerializeObject(request, settings), Encoding.UTF8, "application/json");
 
-			foreach (var header in headers)
+            HttpRequestMessage requestMessage = new HttpRequestMessage
+            {
+                Method = HttpMethod.Delete,
+                RequestUri = new Uri(url),
+                Content = content
+            };
+
+            foreach (var header in headers)
 			{
 				requestMessage.Headers.Add(header.Key, header.Value);
 			}

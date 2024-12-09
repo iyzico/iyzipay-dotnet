@@ -88,7 +88,7 @@ namespace Iyzipay
 				requestMessage.Headers.Add(header.Key, header.Value);
 			}
 
-			HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
+			HttpResponseMessage httpResponseMessage = await HttpClient.SendAsync(requestMessage);
 			var readAsString = await httpResponseMessage.Content.ReadAsStringAsync();
 			var response = JsonConvert.DeserializeObject<T>(readAsString);
 			response.AppendWithHttpResponseHeaders(httpResponseMessage);
@@ -141,7 +141,7 @@ namespace Iyzipay
 				requestMessage.Headers.Add(header.Key, header.Value);
 			}
 
-			HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
+			HttpResponseMessage httpResponseMessage = await HttpClient.SendAsync(requestMessage);
 			var readAsString = await httpResponseMessage.Content.ReadAsStringAsync();
 			var response = JsonConvert.DeserializeObject<T>(readAsString);
 			response.AppendWithHttpResponseHeaders(httpResponseMessage);
@@ -221,7 +221,7 @@ namespace Iyzipay
 				requestMessage.Headers.Add(header.Key, header.Value);
 			}
 
-			HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
+			HttpResponseMessage httpResponseMessage = await HttpClient .SendAsync(requestMessage);
 			var readAsString = await httpResponseMessage.Content.ReadAsStringAsync();
 			var response = JsonConvert.DeserializeObject<T>(readAsString);
 			response.AppendWithHttpResponseHeaders(httpResponseMessage);

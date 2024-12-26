@@ -7,6 +7,7 @@ namespace Iyzipay.Request
         public string SubMerchantKey { get; set; }
         public string PaymentTransactionId { get; set; }
         public string SubMerchantPrice { get; set; }
+        public string WithholdingTax { get; set; }
 
 
         public override string ToPKIRequestString()

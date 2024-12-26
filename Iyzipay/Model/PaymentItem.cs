@@ -25,6 +25,7 @@ namespace Iyzipay.Model
 		public string SubMerchantPayoutAmount { get; set; }
 		public string MerchantPayoutAmount { get; set; }
 		public ConvertedPayout ConvertedPayout { get; set; }
+		public string WithholdingTax { get; set; }
 
 		public static Task<PaymentItem> Update(UpdatePaymentItemRequest request, Options options)
 		{

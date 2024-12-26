@@ -13,6 +13,7 @@ namespace Iyzipay.Model
 		public String SubMerchantKey { get; set; }
 		public String SubMerchantPrice { get; set; }
 		public bool ChargedFromMerchant { get; set; }
+		public String WithholdingTax { get; set; }
 
 		public String ToPKIRequestString()
 		{
@@ -26,6 +27,7 @@ namespace Iyzipay.Model
 				.Append("subMerchantKey", SubMerchantKey)
 				.AppendPrice("subMerchantPrice", SubMerchantPrice)
 				.Append("chargedFromMerchant", ChargedFromMerchant)
+				.AppendPrice("withholdingTax", WithholdingTax)
 				.GetRequestString();
 		}
 	}

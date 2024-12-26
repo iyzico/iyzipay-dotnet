@@ -17,7 +17,6 @@ namespace Iyzipay.Request
                 .Append("subMerchantKey", SubMerchantKey)
                 .Append("paymentTransactionId", PaymentTransactionId)
                 .Append("subMerchantPrice", SubMerchantPrice)
-                .AppendPrice("withholdingTax", WithholdingTax)
                 .GetRequestString();
         }
     }

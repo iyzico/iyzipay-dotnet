@@ -27,7 +27,6 @@ namespace Iyzipay.Model
 				.Append("subMerchantKey", SubMerchantKey)
 				.AppendPrice("subMerchantPrice", SubMerchantPrice)
 				.Append("chargedFromMerchant", ChargedFromMerchant)
-				.AppendPrice("withholdingTax", WithholdingTax)
 				.GetRequestString();
 		}
 	}

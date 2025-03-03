@@ -17,6 +17,7 @@ namespace Iyzipay.Request
         public Address BillingAddress { get; set; }
         public List<BasketItem> BasketItems { get; set; }
         public string CallbackUrl { get; set; }
+        public string GoBackUrl { get; set; }
         public int? ForceThreeDS { get; set; }
         public string CardUserKey { get; set; }
         public string PosOrderId { get; set; }
@@ -34,6 +35,7 @@ namespace Iyzipay.Request
                 .Append("billingAddress", BillingAddress)
                 .AppendList("basketItems", BasketItems)
                 .Append("callbackUrl", CallbackUrl)
+                .Append("goBackUrl", GoBackUrl)
                 .Append("paymentSource", PaymentSource)
                 .Append("currency", Currency)
                 .Append("posOrderId", PosOrderId)

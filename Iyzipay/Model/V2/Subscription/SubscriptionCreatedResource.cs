@@ -12,5 +12,6 @@ namespace Iyzipay.Model.V2.Subscription
         public long? TrialEndDate { get; set; }
         public long? CreatedDate { get; set; }
         public long? StartDate { get; set; }
+        public long? EndDate { get; set; }
     }
 }

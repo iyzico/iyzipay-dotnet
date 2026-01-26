@@ -2,7 +2,7 @@ using System;
 
 namespace Iyzipay.Request
 {
-    public class CreateCardManagementPageInitializeRequest : BaseRequest
+    public class CreateCardManagementPageInitializeRequest : BaseRequestV2
     {
         public bool AddNewCardEnabled { get; set; }
         public bool ValidateNewCard { get; set; }

@@ -12,7 +12,7 @@ namespace Iyzipay.Model
 		public static Task<CardManagementPageInitialize> Create(CreateCardManagementPageInitializeRequest request, Options options)
 		{
 			var uri = $"{options.BaseUrl}/v1/card-management/pages";
-			return RestHttpClientV2.Create().PostAsync<CardManagementPageInitialize>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
+			return RestHttpClientV2.Create().Post<CardManagementPageInitialize>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
 		}
 	}
 

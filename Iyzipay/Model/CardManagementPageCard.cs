@@ -12,7 +12,7 @@ namespace Iyzipay.Model
         public static CardManagementPageCard Retrieve(RetrieveCardManagementPageCardRequest request, Options options)
         {
             var uri = $"{options.BaseUrl}/v1/card-management/pages/{request.PageToken}/cards?locale={request.Locale}&conversationId={request.ConversationId}";
-            return RestHttpClientV2.Create().PostAsync<CardManagementPageCard>(uri, GetHttpHeadersWithUrlParams(request, uri, options));
+            return RestHttpClientV2.Create().Post<CardManagementPageCard>(uri, GetHttpHeadersWithUrlParams(request, uri, options), request);
         }
     }
 }

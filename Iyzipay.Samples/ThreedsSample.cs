@@ -315,5 +315,27 @@ namespace Iyzipay.Samples
             Assert.IsNotNull(threedsPayment.SystemTime);
             Assert.IsNull(threedsPayment.ErrorMessage);
         }
+
+        [Test]
+        public async Task Should_Create_Threeds_Payment_V2_Async()
+        {
+            CreateThreedsPaymentRequestV2 request = new CreateThreedsPaymentRequestV2();
+            request.Locale = Locale.TR.ToString();
+            request.ConversationId = "123456789";
+            request.PaymentId = "1";
+            request.PaidPrice = "1.0";
+            request.BasketId = "B67832";
+            request.Currency = Currency.TRY.ToString();
+
+            ThreedsPayment threedsPayment = await ThreedsPayment.CreateV2(request, options);
+
+            PrintResponse<ThreedsPayment>(threedsPayment);
+
+            Assert.AreEqual(Status.SUCCESS.ToString(), threedsPayment.Status);
+            Assert.AreEqual(Locale.TR.ToString(), threedsPayment.Locale);
+            Assert.AreEqual("123456789", threedsPayment.ConversationId);
+            Assert.IsNotNull(threedsPayment.SystemTime);
+            Assert.IsNull(threedsPayment.ErrorMessage);
+        }
     }
 }

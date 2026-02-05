@@ -4,7 +4,7 @@ using Iyzipay.Model;
 
 namespace Iyzipay.Request
 {
-    public class CreateIyziupFormInitializeRequest : BaseRequest
+    public class CreateIyziupFormInitializeRequest : BaseRequestV2
     {
         public String MerchantOrderId { get; set; }
         public String PaymentGroup { get; set; }

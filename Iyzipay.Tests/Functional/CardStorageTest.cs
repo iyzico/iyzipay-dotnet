@@ -77,7 +77,7 @@ namespace Iyzipay.Tests.Functional
             Assert.AreEqual("CREDIT_CARD", card.CardType);
             Assert.AreEqual("MASTER_CARD", card.CardAssociation);
             Assert.AreEqual("Paraf", card.CardFamily);
-            Assert.AreEqual("Halk Bankası", card.CardBankName);
+            Assert.AreEqual("Halkbank", card.CardBankName);
             Assert.AreEqual(externalUserId, card.ExternalId);
             Assert.True(card.CardBankCode.Equals(12L));
         }

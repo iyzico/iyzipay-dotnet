@@ -24,7 +24,6 @@ For .NET Framework:
 For .NET Standard 2.1:
 * Newtonsoft.Json 11.0.2 from http://www.newtonsoft.com/json#
 
-
 # Note
 
 For .Net Framework usage, decimal deserialized to string with trim "0" operation from the end by newtonsoft library.

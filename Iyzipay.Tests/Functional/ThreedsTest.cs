@@ -68,5 +68,24 @@ namespace Iyzipay.Tests.Functional
 
             PrintResponse(threedsPayment);
         }
+
+        /*
+            Uses v2 endpoint with enhanced security parameters.
+        */
+        [Test]
+        public async Task Should_Auth_Threeds_V2_Async()
+        {
+            CreateThreedsPaymentRequestV2 createThreedsPaymentRequestV2 = new CreateThreedsPaymentRequestV2();
+            createThreedsPaymentRequestV2.PaymentId = "1";
+            createThreedsPaymentRequestV2.Locale = Locale.TR.ToString();
+            createThreedsPaymentRequestV2.ConversationId = "123456789";
+            createThreedsPaymentRequestV2.PaidPrice = "1.1";
+            createThreedsPaymentRequestV2.BasketId = "B67832";
+            createThreedsPaymentRequestV2.Currency = Currency.TRY.ToString();
+
+            ThreedsPayment threedsPayment = await ThreedsPayment.CreateV2(createThreedsPaymentRequestV2, _options);
+
+            PrintResponse(threedsPayment);
+        }
     }
 }

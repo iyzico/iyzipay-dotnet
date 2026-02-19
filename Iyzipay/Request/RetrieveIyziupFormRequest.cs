@@ -2,7 +2,7 @@ using System;
 
 namespace Iyzipay.Request
 {
-    public class RetrieveIyziupFormRequest : BaseRequest
+    public class RetrieveIyziupFormRequest : BaseRequestV2
     {
         public String Token { set; get; }
 

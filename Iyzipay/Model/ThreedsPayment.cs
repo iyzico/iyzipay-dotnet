@@ -11,6 +11,12 @@ namespace Iyzipay.Model
 			return RestHttpClientV2.Create().PostAsync<ThreedsPayment>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
 		}
 
+		public static Task<ThreedsPayment> CreateV2(CreateThreedsPaymentRequestV2 request, Options options)
+		{
+			var uri = options.BaseUrl + "/payment/v2/3dsecure/auth";
+			return RestHttpClientV2.Create().PostAsync<ThreedsPayment>(uri, GetHttpHeadersWithRequestBody(request, uri, options), request);
+		}
+
 		public static Task<ThreedsPayment> Retrieve(RetrievePaymentRequest request, Options options)
 		{
 			var uri = options.BaseUrl + "/payment/detail";

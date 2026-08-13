@@ -88,11 +88,13 @@ namespace Iyzipay
 				requestMessage.Headers.Add(header.Key, header.Value);
 			}
 
-			HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
-			var readAsString = await httpResponseMessage.Content.ReadAsStringAsync();
-			var response = JsonConvert.DeserializeObject<T>(readAsString);
-			response.AppendWithHttpResponseHeaders(httpResponseMessage);
-			return response;
+			using (HttpResponseMessage httpResponseMessage = await HttpClient.SendAsync(requestMessage).ConfigureAwait(false))
+			{
+				var readAsString = await httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+				var response = JsonConvert.DeserializeObject<T>(readAsString);
+				response.AppendWithHttpResponseHeaders(httpResponseMessage);
+				return response;
+			}
 		}
 
 		public T Put<T>(String url, Dictionary<string, string> headers, BaseRequestV2 request) where T : IyzipayResourceV2
@@ -141,11 +143,13 @@ namespace Iyzipay
 				requestMessage.Headers.Add(header.Key, header.Value);
 			}
 
-			HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
-			var readAsString = await httpResponseMessage.Content.ReadAsStringAsync();
-			var response = JsonConvert.DeserializeObject<T>(readAsString);
-			response.AppendWithHttpResponseHeaders(httpResponseMessage);
-			return response;
+			using (HttpResponseMessage httpResponseMessage = await HttpClient.SendAsync(requestMessage).ConfigureAwait(false))
+			{
+				var readAsString = await httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+				var response = JsonConvert.DeserializeObject<T>(readAsString);
+				response.AppendWithHttpResponseHeaders(httpResponseMessage);
+				return response;
+			}
 		}
 
 
@@ -221,11 +225,13 @@ namespace Iyzipay
 				requestMessage.Headers.Add(header.Key, header.Value);
 			}
 
-			HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(requestMessage).Result;
-			var readAsString = await httpResponseMessage.Content.ReadAsStringAsync();
-			var response = JsonConvert.DeserializeObject<T>(readAsString);
-			response.AppendWithHttpResponseHeaders(httpResponseMessage);
-			return response;
+			using (HttpResponseMessage httpResponseMessage = await HttpClient.SendAsync(requestMessage).ConfigureAwait(false))
+			{
+				var readAsString = await httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+				var response = JsonConvert.DeserializeObject<T>(readAsString);
+				response.AppendWithHttpResponseHeaders(httpResponseMessage);
+				return response;
+			}
 		}
 	}
 }

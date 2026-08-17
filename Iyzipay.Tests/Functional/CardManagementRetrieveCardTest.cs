@@ -13,7 +13,7 @@ namespace Iyzipay.Tests.Functional
         public void SetUp()
         {
             Initialize();
-            _options.BaseUrl = "https://sandbox-cm.iyzipay.com";
+            _options.BaseUrl = "https://sandbox-api.iyzipay.com";
         }
 
         [Test]

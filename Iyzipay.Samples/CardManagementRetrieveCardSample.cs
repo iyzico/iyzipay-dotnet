@@ -10,7 +10,7 @@ namespace Iyzipay.Samples
         public void SetUp()
         {
             Initialize();
-            options.BaseUrl = "https://sandbox-cm.iyzipay.com";
+            options.BaseUrl = "https://sandbox-api.iyzipay.com";
         }
         
         [Test]
